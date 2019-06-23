@@ -1,3 +1,30 @@
 /* You can add global styles to this file, and also import other style files */
 
-body { margin: 0; }
+body { 
+    margin: 0; 
+    background: #212c3d;
+}
+
+.mat-card {
+    background: #212c3d;
+    color: #eee;
+}
+
+.sidenav {
+    background: #212c3d;
+    color: #eee;
+}
+
+.mat-primary {
+    background: #29374a !important;
+    color: #eee;
+}
+
+.mat-list-item-content {
+    color: #eee;
+}
+
+menu {
+    margin-top: 0;
+    margin-left: -40px;
+}

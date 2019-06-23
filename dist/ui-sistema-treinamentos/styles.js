@@ -48,7 +48,7 @@ module.exports = ".mat-elevation-z0{box-shadow:0 0 0 0 rgba(0,0,0,.2),0 0 0 0 rg
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "/* You can add global styles to this file, and also import other style files */\n\nbody { margin: 0; }\n"
+module.exports = "/* You can add global styles to this file, and also import other style files */\n\nbody { \n    margin: 0; \n    background: #212c3d;\n}\n\n.mat-card {\n    background: #212c3d;\n    color: #eee;\n}\n\n.sidenav {\n    background: #212c3d;\n    color: #eee;\n}\n\n.mat-primary {\n    background: #29374a !important;\n    color: #eee;\n}\n\n.mat-list-item-content {\n    color: #eee;\n}\n\nmenu {\n    margin-top: 0;\n    margin-left: -40px;\n}"
 
 /***/ }),
 
