@@ -1,0 +1,81 @@
+<!-- <p>
+  {{curso | json}}
+</p> -->
+
+
+<mat-card class="example-card">
+  <mat-card-header>
+    <div mat-card-avatar class="example-header-image"></div>
+    <mat-card-title>
+      <h1>{{curso.titulo}}</h1>
+    </mat-card-title>
+    <mat-card-subtitle>
+      <h2>Instrutor: {{curso.instrutor.nome}}</h2>
+    </mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+
+    <mat-card class="example-card" *ngFor="let u of curso.unidades">
+      <mat-card-header>
+        <div mat-card-avatar class="example-header-image"></div>
+        <mat-card-title>
+          <h3>{{u.titulo}}</h3>
+        </mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+
+        <mat-card class="example-card">
+          <mat-card-header>
+            <div mat-card-avatar class="example-header-image"></div>
+            <mat-card-title>
+              <h4>Videos</h4>
+            </mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+            <mat-nav-list>
+              <a mat-list-item  *ngFor="let v of u.videos" (click)=teste(u)> {{v.titulo}} </a>
+            </mat-nav-list>
+          </mat-card-content>
+        </mat-card>
+
+
+        <mat-card class="example-card">
+          <mat-card-header>
+            <div mat-card-avatar class="example-header-image"></div>
+            <mat-card-title>
+              <h4>Arquivos</h4>
+            </mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+            <mat-nav-list>
+              <a mat-list-item href="/arquivos/{{v.link}}" target="_blank" *ngFor="let v of u.arquivos"> {{v.titulo}} </a>
+            </mat-nav-list>
+          </mat-card-content>
+        </mat-card>
+
+
+        <mat-card class="example-card">
+            <mat-card-header>
+              <div mat-card-avatar class="example-header-image"></div>
+              <mat-card-title>
+                <h4>Questionários</h4>
+              </mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+              <mat-nav-list>
+                <a mat-list-item routerLink="/unidades/{{u._id}}" *ngFor="let v of u.questionarios"> {{v.titulo}} </a>
+              </mat-nav-list>
+            </mat-card-content>
+          </mat-card>
+
+      </mat-card-content>
+    </mat-card>
+
+
+
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-button>LIKE</button>
+    <button mat-button>SHARE</button>
+  </mat-card-actions>
+</mat-card>
