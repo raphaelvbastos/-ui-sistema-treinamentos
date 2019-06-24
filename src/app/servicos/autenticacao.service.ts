@@ -14,7 +14,8 @@ const httpOptions = {
 
 export class AutenticacaoService {
 
-    private url = 'http://localhost:8080/login/';
+    // private url = 'http://localhost:8080/login/';
+    private url = 'https://api-sistema-treinamento.herokuapp.com/';
 
     constructor(private http: HttpClient, public router: Router) {
     }
