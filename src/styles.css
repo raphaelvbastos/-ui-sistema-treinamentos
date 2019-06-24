@@ -28,3 +28,50 @@ menu {
     margin-top: 0;
     margin-left: -40px;
 }
+
+
+.alert {
+  max-width: 250px;
+  padding: 10px;
+  margin-top: 10px;
+  border: 1px solid transparent;
+  border-radius: 3px;
+}
+
+.alert-danger {
+    background-color: #d43f3a;
+    border-color: #d43f3a;
+    color: #eee;
+  }
+
+/* .example-full-width {
+    width: 300px;
+}
+
+.example-full-width .mat-input-element {
+    font-size: 20px;    
+} */
+
+.contains {
+    text-align: center;
+}
+
+.login-box, .register-box {
+    margin: auto;
+    margin-top: 10%;
+    width: 400px;
+}.login-page, .register-page {
+    background: #d2d6de;
+}
+
+.login-box{
+    margin: auto;
+    margin-top: 5%;
+}
+
+.inputLogin {
+    width: 350px;
+    background: none !important;
+    color: #212c3d;
+    font-size: 1.3em;
+}
