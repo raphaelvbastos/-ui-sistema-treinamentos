@@ -98,15 +98,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
 /* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./app.component */ "./src/app/app.component.ts");
 /* harmony import */ var _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/platform-browser/animations */ "./node_modules/@angular/platform-browser/fesm5/animations.js");
-/* harmony import */ var _menu_menu_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./menu/menu.component */ "./src/app/menu/menu.component.ts");
+/* harmony import */ var _paginas_menu_menu_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./paginas/menu/menu.component */ "./src/app/paginas/menu/menu.component.ts");
 /* harmony import */ var _angular_cdk_layout__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @angular/cdk/layout */ "./node_modules/@angular/cdk/esm5/layout.es5.js");
 /* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm5/material.es5.js");
-/* harmony import */ var _painel_painel_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./painel/painel.component */ "./src/app/painel/painel.component.ts");
-/* harmony import */ var _tabela_tabela_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./tabela/tabela.component */ "./src/app/tabela/tabela.component.ts");
-/* harmony import */ var _pagina_cursos_pagina_cursos_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./pagina-cursos/pagina-cursos.component */ "./src/app/pagina-cursos/pagina-cursos.component.ts");
-/* harmony import */ var _pagina_curso_pagina_curso_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./pagina-curso/pagina-curso.component */ "./src/app/pagina-curso/pagina-curso.component.ts");
+/* harmony import */ var _paginas_painel_painel_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./paginas/painel/painel.component */ "./src/app/paginas/painel/painel.component.ts");
+/* harmony import */ var _paginas_tabela_tabela_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./paginas/tabela/tabela.component */ "./src/app/paginas/tabela/tabela.component.ts");
+/* harmony import */ var _paginas_pagina_cursos_pagina_cursos_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./paginas/pagina-cursos/pagina-cursos.component */ "./src/app/paginas/pagina-cursos/pagina-cursos.component.ts");
+/* harmony import */ var _paginas_pagina_curso_pagina_curso_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./paginas/pagina-curso/pagina-curso.component */ "./src/app/paginas/pagina-curso/pagina-curso.component.ts");
 /* harmony import */ var _rotas_rotas_module__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./rotas/rotas.module */ "./src/app/rotas/rotas.module.ts");
-/* harmony import */ var _login_login_component__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./login/login.component */ "./src/app/login/login.component.ts");
+/* harmony import */ var _paginas_login_login_component__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./paginas/login/login.component */ "./src/app/paginas/login/login.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -136,12 +136,12 @@ var AppModule = /** @class */ (function () {
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
             declarations: [
                 _app_component__WEBPACK_IMPORTED_MODULE_5__["AppComponent"],
-                _menu_menu_component__WEBPACK_IMPORTED_MODULE_7__["MenuComponent"],
-                _painel_painel_component__WEBPACK_IMPORTED_MODULE_10__["PainelComponent"],
-                _tabela_tabela_component__WEBPACK_IMPORTED_MODULE_11__["TabelaComponent"],
-                _pagina_cursos_pagina_cursos_component__WEBPACK_IMPORTED_MODULE_12__["PaginaCursosComponent"],
-                _pagina_curso_pagina_curso_component__WEBPACK_IMPORTED_MODULE_13__["PaginaCursoComponent"],
-                _login_login_component__WEBPACK_IMPORTED_MODULE_15__["LoginComponent"]
+                _paginas_menu_menu_component__WEBPACK_IMPORTED_MODULE_7__["MenuComponent"],
+                _paginas_painel_painel_component__WEBPACK_IMPORTED_MODULE_10__["PainelComponent"],
+                _paginas_tabela_tabela_component__WEBPACK_IMPORTED_MODULE_11__["TabelaComponent"],
+                _paginas_pagina_cursos_pagina_cursos_component__WEBPACK_IMPORTED_MODULE_12__["PaginaCursosComponent"],
+                _paginas_pagina_curso_pagina_curso_component__WEBPACK_IMPORTED_MODULE_13__["PaginaCursoComponent"],
+                _paginas_login_login_component__WEBPACK_IMPORTED_MODULE_15__["LoginComponent"]
             ],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"],
@@ -176,10 +176,10 @@ var AppModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ "./src/app/login/login.component.css":
-/*!*******************************************!*\
-  !*** ./src/app/login/login.component.css ***!
-  \*******************************************/
+/***/ "./src/app/paginas/login/login.component.css":
+/*!***************************************************!*\
+  !*** ./src/app/paginas/login/login.component.css ***!
+  \***************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -187,10 +187,10 @@ module.exports = ""
 
 /***/ }),
 
-/***/ "./src/app/login/login.component.html":
-/*!********************************************!*\
-  !*** ./src/app/login/login.component.html ***!
-  \********************************************/
+/***/ "./src/app/paginas/login/login.component.html":
+/*!****************************************************!*\
+  !*** ./src/app/paginas/login/login.component.html ***!
+  \****************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -198,10 +198,10 @@ module.exports = "<!-- <mat-card class=\"example-card\">\n  <mat-card-header>\n 
 
 /***/ }),
 
-/***/ "./src/app/login/login.component.ts":
-/*!******************************************!*\
-  !*** ./src/app/login/login.component.ts ***!
-  \******************************************/
+/***/ "./src/app/paginas/login/login.component.ts":
+/*!**************************************************!*\
+  !*** ./src/app/paginas/login/login.component.ts ***!
+  \**************************************************/
 /*! exports provided: LoginComponent */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -209,7 +209,7 @@ module.exports = "<!-- <mat-card class=\"example-card\">\n  <mat-card-header>\n 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LoginComponent", function() { return LoginComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _servicos_autenticacao_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../servicos/autenticacao.service */ "./src/app/servicos/autenticacao.service.ts");
+/* harmony import */ var _servicos_autenticacao_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../servicos/autenticacao.service */ "./src/app/servicos/autenticacao.service.ts");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -251,8 +251,8 @@ var LoginComponent = /** @class */ (function () {
     LoginComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-login',
-            template: __webpack_require__(/*! ./login.component.html */ "./src/app/login/login.component.html"),
-            styles: [__webpack_require__(/*! ./login.component.css */ "./src/app/login/login.component.css")]
+            template: __webpack_require__(/*! ./login.component.html */ "./src/app/paginas/login/login.component.html"),
+            styles: [__webpack_require__(/*! ./login.component.css */ "./src/app/paginas/login/login.component.css")]
         }),
         __metadata("design:paramtypes", [_servicos_autenticacao_service__WEBPACK_IMPORTED_MODULE_1__["AutenticacaoService"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]])
     ], LoginComponent);
@@ -263,10 +263,10 @@ var LoginComponent = /** @class */ (function () {
 
 /***/ }),
 
-/***/ "./src/app/menu/menu.component.css":
-/*!*****************************************!*\
-  !*** ./src/app/menu/menu.component.css ***!
-  \*****************************************/
+/***/ "./src/app/paginas/menu/menu.component.css":
+/*!*************************************************!*\
+  !*** ./src/app/paginas/menu/menu.component.css ***!
+  \*************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -274,10 +274,10 @@ module.exports = ".sidenav-container {\n  height: 100%;\n}\n\n.sidenav {\n  widt
 
 /***/ }),
 
-/***/ "./src/app/menu/menu.component.html":
-/*!******************************************!*\
-  !*** ./src/app/menu/menu.component.html ***!
-  \******************************************/
+/***/ "./src/app/paginas/menu/menu.component.html":
+/*!**************************************************!*\
+  !*** ./src/app/paginas/menu/menu.component.html ***!
+  \**************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -285,10 +285,10 @@ module.exports = "<mat-sidenav-container class=\"sidenav-container\">\n  <mat-si
 
 /***/ }),
 
-/***/ "./src/app/menu/menu.component.ts":
-/*!****************************************!*\
-  !*** ./src/app/menu/menu.component.ts ***!
-  \****************************************/
+/***/ "./src/app/paginas/menu/menu.component.ts":
+/*!************************************************!*\
+  !*** ./src/app/paginas/menu/menu.component.ts ***!
+  \************************************************/
 /*! exports provided: MenuComponent */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -319,8 +319,8 @@ var MenuComponent = /** @class */ (function () {
     MenuComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'menu',
-            template: __webpack_require__(/*! ./menu.component.html */ "./src/app/menu/menu.component.html"),
-            styles: [__webpack_require__(/*! ./menu.component.css */ "./src/app/menu/menu.component.css")]
+            template: __webpack_require__(/*! ./menu.component.html */ "./src/app/paginas/menu/menu.component.html"),
+            styles: [__webpack_require__(/*! ./menu.component.css */ "./src/app/paginas/menu/menu.component.css")]
         }),
         __metadata("design:paramtypes", [_angular_cdk_layout__WEBPACK_IMPORTED_MODULE_1__["BreakpointObserver"]])
     ], MenuComponent);
@@ -331,10 +331,10 @@ var MenuComponent = /** @class */ (function () {
 
 /***/ }),
 
-/***/ "./src/app/pagina-curso/pagina-curso.component.css":
-/*!*********************************************************!*\
-  !*** ./src/app/pagina-curso/pagina-curso.component.css ***!
-  \*********************************************************/
+/***/ "./src/app/paginas/pagina-curso/pagina-curso.component.css":
+/*!*****************************************************************!*\
+  !*** ./src/app/paginas/pagina-curso/pagina-curso.component.css ***!
+  \*****************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -342,10 +342,10 @@ module.exports = ""
 
 /***/ }),
 
-/***/ "./src/app/pagina-curso/pagina-curso.component.html":
-/*!**********************************************************!*\
-  !*** ./src/app/pagina-curso/pagina-curso.component.html ***!
-  \**********************************************************/
+/***/ "./src/app/paginas/pagina-curso/pagina-curso.component.html":
+/*!******************************************************************!*\
+  !*** ./src/app/paginas/pagina-curso/pagina-curso.component.html ***!
+  \******************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -353,10 +353,10 @@ module.exports = "<!-- <p>\n  {{curso | json}}\n</p> -->\n\n\n<mat-card class=\"
 
 /***/ }),
 
-/***/ "./src/app/pagina-curso/pagina-curso.component.ts":
-/*!********************************************************!*\
-  !*** ./src/app/pagina-curso/pagina-curso.component.ts ***!
-  \********************************************************/
+/***/ "./src/app/paginas/pagina-curso/pagina-curso.component.ts":
+/*!****************************************************************!*\
+  !*** ./src/app/paginas/pagina-curso/pagina-curso.component.ts ***!
+  \****************************************************************/
 /*! exports provided: PaginaCursoComponent */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -364,7 +364,7 @@ module.exports = "<!-- <p>\n  {{curso | json}}\n</p> -->\n\n\n<mat-card class=\"
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PaginaCursoComponent", function() { return PaginaCursoComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _servicos_servico_cursos_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../servicos/servico-cursos.service */ "./src/app/servicos/servico-cursos.service.ts");
+/* harmony import */ var _servicos_servico_cursos_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../servicos/servico-cursos.service */ "./src/app/servicos/servico-cursos.service.ts");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -396,8 +396,8 @@ var PaginaCursoComponent = /** @class */ (function () {
     PaginaCursoComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-pagina-curso',
-            template: __webpack_require__(/*! ./pagina-curso.component.html */ "./src/app/pagina-curso/pagina-curso.component.html"),
-            styles: [__webpack_require__(/*! ./pagina-curso.component.css */ "./src/app/pagina-curso/pagina-curso.component.css")]
+            template: __webpack_require__(/*! ./pagina-curso.component.html */ "./src/app/paginas/pagina-curso/pagina-curso.component.html"),
+            styles: [__webpack_require__(/*! ./pagina-curso.component.css */ "./src/app/paginas/pagina-curso/pagina-curso.component.css")]
         }),
         __metadata("design:paramtypes", [_servicos_servico_cursos_service__WEBPACK_IMPORTED_MODULE_1__["ServicoCursosService"],
             _angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"]])
@@ -409,10 +409,10 @@ var PaginaCursoComponent = /** @class */ (function () {
 
 /***/ }),
 
-/***/ "./src/app/pagina-cursos/pagina-cursos.component.css":
-/*!***********************************************************!*\
-  !*** ./src/app/pagina-cursos/pagina-cursos.component.css ***!
-  \***********************************************************/
+/***/ "./src/app/paginas/pagina-cursos/pagina-cursos.component.css":
+/*!*******************************************************************!*\
+  !*** ./src/app/paginas/pagina-cursos/pagina-cursos.component.css ***!
+  \*******************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -420,10 +420,10 @@ module.exports = ""
 
 /***/ }),
 
-/***/ "./src/app/pagina-cursos/pagina-cursos.component.html":
-/*!************************************************************!*\
-  !*** ./src/app/pagina-cursos/pagina-cursos.component.html ***!
-  \************************************************************/
+/***/ "./src/app/paginas/pagina-cursos/pagina-cursos.component.html":
+/*!********************************************************************!*\
+  !*** ./src/app/paginas/pagina-cursos/pagina-cursos.component.html ***!
+  \********************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -431,10 +431,10 @@ module.exports = "<mat-card class=\"example-card\">\n  <mat-card-header>\n    <d
 
 /***/ }),
 
-/***/ "./src/app/pagina-cursos/pagina-cursos.component.ts":
-/*!**********************************************************!*\
-  !*** ./src/app/pagina-cursos/pagina-cursos.component.ts ***!
-  \**********************************************************/
+/***/ "./src/app/paginas/pagina-cursos/pagina-cursos.component.ts":
+/*!******************************************************************!*\
+  !*** ./src/app/paginas/pagina-cursos/pagina-cursos.component.ts ***!
+  \******************************************************************/
 /*! exports provided: PaginaCursosComponent */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -442,7 +442,7 @@ module.exports = "<mat-card class=\"example-card\">\n  <mat-card-header>\n    <d
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PaginaCursosComponent", function() { return PaginaCursosComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _servicos_servico_cursos_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../servicos/servico-cursos.service */ "./src/app/servicos/servico-cursos.service.ts");
+/* harmony import */ var _servicos_servico_cursos_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../servicos/servico-cursos.service */ "./src/app/servicos/servico-cursos.service.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -468,8 +468,8 @@ var PaginaCursosComponent = /** @class */ (function () {
     PaginaCursosComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-pagina-cursos',
-            template: __webpack_require__(/*! ./pagina-cursos.component.html */ "./src/app/pagina-cursos/pagina-cursos.component.html"),
-            styles: [__webpack_require__(/*! ./pagina-cursos.component.css */ "./src/app/pagina-cursos/pagina-cursos.component.css")]
+            template: __webpack_require__(/*! ./pagina-cursos.component.html */ "./src/app/paginas/pagina-cursos/pagina-cursos.component.html"),
+            styles: [__webpack_require__(/*! ./pagina-cursos.component.css */ "./src/app/paginas/pagina-cursos/pagina-cursos.component.css")]
         }),
         __metadata("design:paramtypes", [_servicos_servico_cursos_service__WEBPACK_IMPORTED_MODULE_1__["ServicoCursosService"]])
     ], PaginaCursosComponent);
@@ -480,10 +480,10 @@ var PaginaCursosComponent = /** @class */ (function () {
 
 /***/ }),
 
-/***/ "./src/app/painel/painel.component.css":
-/*!*********************************************!*\
-  !*** ./src/app/painel/painel.component.css ***!
-  \*********************************************/
+/***/ "./src/app/paginas/painel/painel.component.css":
+/*!*****************************************************!*\
+  !*** ./src/app/paginas/painel/painel.component.css ***!
+  \*****************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -491,10 +491,10 @@ module.exports = ".grid-container {\n  margin: 20px;\n}\n\n.dashboard-card {\n  
 
 /***/ }),
 
-/***/ "./src/app/painel/painel.component.html":
-/*!**********************************************!*\
-  !*** ./src/app/painel/painel.component.html ***!
-  \**********************************************/
+/***/ "./src/app/paginas/painel/painel.component.html":
+/*!******************************************************!*\
+  !*** ./src/app/paginas/painel/painel.component.html ***!
+  \******************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -502,10 +502,10 @@ module.exports = "<div class=\"grid-container\">\n  <h1 class=\"mat-h1\">Dashboa
 
 /***/ }),
 
-/***/ "./src/app/painel/painel.component.ts":
-/*!********************************************!*\
-  !*** ./src/app/painel/painel.component.ts ***!
-  \********************************************/
+/***/ "./src/app/paginas/painel/painel.component.ts":
+/*!****************************************************!*\
+  !*** ./src/app/paginas/painel/painel.component.ts ***!
+  \****************************************************/
 /*! exports provided: PainelComponent */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -532,11 +532,213 @@ var PainelComponent = /** @class */ (function () {
     PainelComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'painel',
-            template: __webpack_require__(/*! ./painel.component.html */ "./src/app/painel/painel.component.html"),
-            styles: [__webpack_require__(/*! ./painel.component.css */ "./src/app/painel/painel.component.css")]
+            template: __webpack_require__(/*! ./painel.component.html */ "./src/app/paginas/painel/painel.component.html"),
+            styles: [__webpack_require__(/*! ./painel.component.css */ "./src/app/paginas/painel/painel.component.css")]
         })
     ], PainelComponent);
     return PainelComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/paginas/tabela/tabela-datasource.ts":
+/*!*****************************************************!*\
+  !*** ./src/app/paginas/tabela/tabela-datasource.ts ***!
+  \*****************************************************/
+/*! exports provided: TabelaDataSource */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TabelaDataSource", function() { return TabelaDataSource; });
+/* harmony import */ var _angular_cdk_collections__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/cdk/collections */ "./node_modules/@angular/cdk/esm5/collections.es5.js");
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
+var __extends = (undefined && undefined.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+
+
+
+// TODO: replace this with real data from your application
+var EXAMPLE_DATA = [
+    { id: 1, name: 'Hydrogen' },
+    { id: 2, name: 'Helium' },
+    { id: 3, name: 'Lithium' },
+    { id: 4, name: 'Beryllium' },
+    { id: 5, name: 'Boron' },
+    { id: 6, name: 'Carbon' },
+    { id: 7, name: 'Nitrogen' },
+    { id: 8, name: 'Oxygen' },
+    { id: 9, name: 'Fluorine' },
+    { id: 10, name: 'Neon' },
+    { id: 11, name: 'Sodium' },
+    { id: 12, name: 'Magnesium' },
+    { id: 13, name: 'Aluminum' },
+    { id: 14, name: 'Silicon' },
+    { id: 15, name: 'Phosphorus' },
+    { id: 16, name: 'Sulfur' },
+    { id: 17, name: 'Chlorine' },
+    { id: 18, name: 'Argon' },
+    { id: 19, name: 'Potassium' },
+    { id: 20, name: 'Calcium' },
+];
+/**
+ * Data source for the Tabela view. This class should
+ * encapsulate all logic for fetching and manipulating the displayed data
+ * (including sorting, pagination, and filtering).
+ */
+var TabelaDataSource = /** @class */ (function (_super) {
+    __extends(TabelaDataSource, _super);
+    function TabelaDataSource(paginator, sort) {
+        var _this = _super.call(this) || this;
+        _this.paginator = paginator;
+        _this.sort = sort;
+        _this.data = EXAMPLE_DATA;
+        return _this;
+    }
+    /**
+     * Connect this data source to the table. The table will only update when
+     * the returned stream emits new items.
+     * @returns A stream of the items to be rendered.
+     */
+    TabelaDataSource.prototype.connect = function () {
+        var _this = this;
+        // Combine everything that affects the rendered data into one update
+        // stream for the data-table to consume.
+        var dataMutations = [
+            Object(rxjs__WEBPACK_IMPORTED_MODULE_2__["of"])(this.data),
+            this.paginator.page,
+            this.sort.sortChange
+        ];
+        // Set the paginators length
+        this.paginator.length = this.data.length;
+        return rxjs__WEBPACK_IMPORTED_MODULE_2__["merge"].apply(void 0, dataMutations).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["map"])(function () {
+            return _this.getPagedData(_this.getSortedData(_this.data.slice()));
+        }));
+    };
+    /**
+     *  Called when the table is being destroyed. Use this function, to clean up
+     * any open connections or free any held resources that were set up during connect.
+     */
+    TabelaDataSource.prototype.disconnect = function () { };
+    /**
+     * Paginate the data (client-side). If you're using server-side pagination,
+     * this would be replaced by requesting the appropriate data from the server.
+     */
+    TabelaDataSource.prototype.getPagedData = function (data) {
+        var startIndex = this.paginator.pageIndex * this.paginator.pageSize;
+        return data.splice(startIndex, this.paginator.pageSize);
+    };
+    /**
+     * Sort the data (client-side). If you're using server-side sorting,
+     * this would be replaced by requesting the appropriate data from the server.
+     */
+    TabelaDataSource.prototype.getSortedData = function (data) {
+        var _this = this;
+        if (!this.sort.active || this.sort.direction === '') {
+            return data;
+        }
+        return data.sort(function (a, b) {
+            var isAsc = _this.sort.direction === 'asc';
+            switch (_this.sort.active) {
+                case 'name': return compare(a.name, b.name, isAsc);
+                case 'id': return compare(+a.id, +b.id, isAsc);
+                default: return 0;
+            }
+        });
+    };
+    return TabelaDataSource;
+}(_angular_cdk_collections__WEBPACK_IMPORTED_MODULE_0__["DataSource"]));
+
+/** Simple sort comparator for example ID/Name columns (for client-side sorting). */
+function compare(a, b, isAsc) {
+    return (a < b ? -1 : 1) * (isAsc ? 1 : -1);
+}
+
+
+/***/ }),
+
+/***/ "./src/app/paginas/tabela/tabela.component.css":
+/*!*****************************************************!*\
+  !*** ./src/app/paginas/tabela/tabela.component.css ***!
+  \*****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = ""
+
+/***/ }),
+
+/***/ "./src/app/paginas/tabela/tabela.component.html":
+/*!******************************************************!*\
+  !*** ./src/app/paginas/tabela/tabela.component.html ***!
+  \******************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"mat-elevation-z8\">\n  <mat-table #table [dataSource]=\"dataSource\" matSort aria-label=\"Elements\">\n\n    <!-- Id Column -->\n    <ng-container matColumnDef=\"id\">\n      <mat-header-cell *matHeaderCellDef mat-sort-header>Id</mat-header-cell>\n      <mat-cell *matCellDef=\"let row\">{{row.id}}</mat-cell>\n    </ng-container>\n\n    <!-- Name Column -->\n    <ng-container matColumnDef=\"name\">\n      <mat-header-cell *matHeaderCellDef mat-sort-header>Name</mat-header-cell>\n      <mat-cell *matCellDef=\"let row\">{{row.name}}</mat-cell>\n    </ng-container>\n\n    <mat-header-row *matHeaderRowDef=\"displayedColumns\"></mat-header-row>\n    <mat-row *matRowDef=\"let row; columns: displayedColumns;\"></mat-row>\n  </mat-table>\n\n  <mat-paginator #paginator\n    [length]=\"dataSource.data.length\"\n    [pageIndex]=\"0\"\n    [pageSize]=\"50\"\n    [pageSizeOptions]=\"[25, 50, 100, 250]\">\n  </mat-paginator>\n</div>"
+
+/***/ }),
+
+/***/ "./src/app/paginas/tabela/tabela.component.ts":
+/*!****************************************************!*\
+  !*** ./src/app/paginas/tabela/tabela.component.ts ***!
+  \****************************************************/
+/*! exports provided: TabelaComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TabelaComponent", function() { return TabelaComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm5/material.es5.js");
+/* harmony import */ var _tabela_datasource__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./tabela-datasource */ "./src/app/paginas/tabela/tabela-datasource.ts");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+var TabelaComponent = /** @class */ (function () {
+    function TabelaComponent() {
+        /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
+        this.displayedColumns = ['id', 'name'];
+    }
+    TabelaComponent.prototype.ngOnInit = function () {
+        this.dataSource = new _tabela_datasource__WEBPACK_IMPORTED_MODULE_2__["TabelaDataSource"](this.paginator, this.sort);
+    };
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"])(_angular_material__WEBPACK_IMPORTED_MODULE_1__["MatPaginator"]),
+        __metadata("design:type", _angular_material__WEBPACK_IMPORTED_MODULE_1__["MatPaginator"])
+    ], TabelaComponent.prototype, "paginator", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"])(_angular_material__WEBPACK_IMPORTED_MODULE_1__["MatSort"]),
+        __metadata("design:type", _angular_material__WEBPACK_IMPORTED_MODULE_1__["MatSort"])
+    ], TabelaComponent.prototype, "sort", void 0);
+    TabelaComponent = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: 'tabela',
+            template: __webpack_require__(/*! ./tabela.component.html */ "./src/app/paginas/tabela/tabela.component.html"),
+            styles: [__webpack_require__(/*! ./tabela.component.css */ "./src/app/paginas/tabela/tabela.component.css")]
+        })
+    ], TabelaComponent);
+    return TabelaComponent;
 }());
 
 
@@ -556,9 +758,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm5/common.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
-/* harmony import */ var _pagina_curso_pagina_curso_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../pagina-curso/pagina-curso.component */ "./src/app/pagina-curso/pagina-curso.component.ts");
-/* harmony import */ var _pagina_cursos_pagina_cursos_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../pagina-cursos/pagina-cursos.component */ "./src/app/pagina-cursos/pagina-cursos.component.ts");
-/* harmony import */ var _login_login_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../login/login.component */ "./src/app/login/login.component.ts");
+/* harmony import */ var _paginas_pagina_curso_pagina_curso_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../paginas/pagina-curso/pagina-curso.component */ "./src/app/paginas/pagina-curso/pagina-curso.component.ts");
+/* harmony import */ var _paginas_pagina_cursos_pagina_cursos_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../paginas/pagina-cursos/pagina-cursos.component */ "./src/app/paginas/pagina-cursos/pagina-cursos.component.ts");
+/* harmony import */ var _paginas_login_login_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../paginas/login/login.component */ "./src/app/paginas/login/login.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -572,9 +774,9 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 
 
 var rotas = [
-    { path: "cursos", component: _pagina_cursos_pagina_cursos_component__WEBPACK_IMPORTED_MODULE_4__["PaginaCursosComponent"] },
-    { path: "cursos/:id", component: _pagina_curso_pagina_curso_component__WEBPACK_IMPORTED_MODULE_3__["PaginaCursoComponent"] },
-    { path: "", component: _login_login_component__WEBPACK_IMPORTED_MODULE_5__["LoginComponent"] },
+    { path: "cursos", component: _paginas_pagina_cursos_pagina_cursos_component__WEBPACK_IMPORTED_MODULE_4__["PaginaCursosComponent"] },
+    { path: "cursos/:id", component: _paginas_pagina_curso_pagina_curso_component__WEBPACK_IMPORTED_MODULE_3__["PaginaCursoComponent"] },
+    { path: "", component: _paginas_login_login_component__WEBPACK_IMPORTED_MODULE_5__["LoginComponent"] },
 ];
 var RotasModule = /** @class */ (function () {
     function RotasModule() {
@@ -729,208 +931,6 @@ var ServicoCursosService = /** @class */ (function () {
 
 /***/ }),
 
-/***/ "./src/app/tabela/tabela-datasource.ts":
-/*!*********************************************!*\
-  !*** ./src/app/tabela/tabela-datasource.ts ***!
-  \*********************************************/
-/*! exports provided: TabelaDataSource */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TabelaDataSource", function() { return TabelaDataSource; });
-/* harmony import */ var _angular_cdk_collections__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/cdk/collections */ "./node_modules/@angular/cdk/esm5/collections.es5.js");
-/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
-/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
-var __extends = (undefined && undefined.__extends) || (function () {
-    var extendStatics = Object.setPrototypeOf ||
-        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
-    return function (d, b) {
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
-
-
-
-// TODO: replace this with real data from your application
-var EXAMPLE_DATA = [
-    { id: 1, name: 'Hydrogen' },
-    { id: 2, name: 'Helium' },
-    { id: 3, name: 'Lithium' },
-    { id: 4, name: 'Beryllium' },
-    { id: 5, name: 'Boron' },
-    { id: 6, name: 'Carbon' },
-    { id: 7, name: 'Nitrogen' },
-    { id: 8, name: 'Oxygen' },
-    { id: 9, name: 'Fluorine' },
-    { id: 10, name: 'Neon' },
-    { id: 11, name: 'Sodium' },
-    { id: 12, name: 'Magnesium' },
-    { id: 13, name: 'Aluminum' },
-    { id: 14, name: 'Silicon' },
-    { id: 15, name: 'Phosphorus' },
-    { id: 16, name: 'Sulfur' },
-    { id: 17, name: 'Chlorine' },
-    { id: 18, name: 'Argon' },
-    { id: 19, name: 'Potassium' },
-    { id: 20, name: 'Calcium' },
-];
-/**
- * Data source for the Tabela view. This class should
- * encapsulate all logic for fetching and manipulating the displayed data
- * (including sorting, pagination, and filtering).
- */
-var TabelaDataSource = /** @class */ (function (_super) {
-    __extends(TabelaDataSource, _super);
-    function TabelaDataSource(paginator, sort) {
-        var _this = _super.call(this) || this;
-        _this.paginator = paginator;
-        _this.sort = sort;
-        _this.data = EXAMPLE_DATA;
-        return _this;
-    }
-    /**
-     * Connect this data source to the table. The table will only update when
-     * the returned stream emits new items.
-     * @returns A stream of the items to be rendered.
-     */
-    TabelaDataSource.prototype.connect = function () {
-        var _this = this;
-        // Combine everything that affects the rendered data into one update
-        // stream for the data-table to consume.
-        var dataMutations = [
-            Object(rxjs__WEBPACK_IMPORTED_MODULE_2__["of"])(this.data),
-            this.paginator.page,
-            this.sort.sortChange
-        ];
-        // Set the paginators length
-        this.paginator.length = this.data.length;
-        return rxjs__WEBPACK_IMPORTED_MODULE_2__["merge"].apply(void 0, dataMutations).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["map"])(function () {
-            return _this.getPagedData(_this.getSortedData(_this.data.slice()));
-        }));
-    };
-    /**
-     *  Called when the table is being destroyed. Use this function, to clean up
-     * any open connections or free any held resources that were set up during connect.
-     */
-    TabelaDataSource.prototype.disconnect = function () { };
-    /**
-     * Paginate the data (client-side). If you're using server-side pagination,
-     * this would be replaced by requesting the appropriate data from the server.
-     */
-    TabelaDataSource.prototype.getPagedData = function (data) {
-        var startIndex = this.paginator.pageIndex * this.paginator.pageSize;
-        return data.splice(startIndex, this.paginator.pageSize);
-    };
-    /**
-     * Sort the data (client-side). If you're using server-side sorting,
-     * this would be replaced by requesting the appropriate data from the server.
-     */
-    TabelaDataSource.prototype.getSortedData = function (data) {
-        var _this = this;
-        if (!this.sort.active || this.sort.direction === '') {
-            return data;
-        }
-        return data.sort(function (a, b) {
-            var isAsc = _this.sort.direction === 'asc';
-            switch (_this.sort.active) {
-                case 'name': return compare(a.name, b.name, isAsc);
-                case 'id': return compare(+a.id, +b.id, isAsc);
-                default: return 0;
-            }
-        });
-    };
-    return TabelaDataSource;
-}(_angular_cdk_collections__WEBPACK_IMPORTED_MODULE_0__["DataSource"]));
-
-/** Simple sort comparator for example ID/Name columns (for client-side sorting). */
-function compare(a, b, isAsc) {
-    return (a < b ? -1 : 1) * (isAsc ? 1 : -1);
-}
-
-
-/***/ }),
-
-/***/ "./src/app/tabela/tabela.component.css":
-/*!*********************************************!*\
-  !*** ./src/app/tabela/tabela.component.css ***!
-  \*********************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = ""
-
-/***/ }),
-
-/***/ "./src/app/tabela/tabela.component.html":
-/*!**********************************************!*\
-  !*** ./src/app/tabela/tabela.component.html ***!
-  \**********************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "<div class=\"mat-elevation-z8\">\n  <mat-table #table [dataSource]=\"dataSource\" matSort aria-label=\"Elements\">\n\n    <!-- Id Column -->\n    <ng-container matColumnDef=\"id\">\n      <mat-header-cell *matHeaderCellDef mat-sort-header>Id</mat-header-cell>\n      <mat-cell *matCellDef=\"let row\">{{row.id}}</mat-cell>\n    </ng-container>\n\n    <!-- Name Column -->\n    <ng-container matColumnDef=\"name\">\n      <mat-header-cell *matHeaderCellDef mat-sort-header>Name</mat-header-cell>\n      <mat-cell *matCellDef=\"let row\">{{row.name}}</mat-cell>\n    </ng-container>\n\n    <mat-header-row *matHeaderRowDef=\"displayedColumns\"></mat-header-row>\n    <mat-row *matRowDef=\"let row; columns: displayedColumns;\"></mat-row>\n  </mat-table>\n\n  <mat-paginator #paginator\n    [length]=\"dataSource.data.length\"\n    [pageIndex]=\"0\"\n    [pageSize]=\"50\"\n    [pageSizeOptions]=\"[25, 50, 100, 250]\">\n  </mat-paginator>\n</div>"
-
-/***/ }),
-
-/***/ "./src/app/tabela/tabela.component.ts":
-/*!********************************************!*\
-  !*** ./src/app/tabela/tabela.component.ts ***!
-  \********************************************/
-/*! exports provided: TabelaComponent */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TabelaComponent", function() { return TabelaComponent; });
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm5/material.es5.js");
-/* harmony import */ var _tabela_datasource__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./tabela-datasource */ "./src/app/tabela/tabela-datasource.ts");
-var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (undefined && undefined.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-
-var TabelaComponent = /** @class */ (function () {
-    function TabelaComponent() {
-        /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
-        this.displayedColumns = ['id', 'name'];
-    }
-    TabelaComponent.prototype.ngOnInit = function () {
-        this.dataSource = new _tabela_datasource__WEBPACK_IMPORTED_MODULE_2__["TabelaDataSource"](this.paginator, this.sort);
-    };
-    __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"])(_angular_material__WEBPACK_IMPORTED_MODULE_1__["MatPaginator"]),
-        __metadata("design:type", _angular_material__WEBPACK_IMPORTED_MODULE_1__["MatPaginator"])
-    ], TabelaComponent.prototype, "paginator", void 0);
-    __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"])(_angular_material__WEBPACK_IMPORTED_MODULE_1__["MatSort"]),
-        __metadata("design:type", _angular_material__WEBPACK_IMPORTED_MODULE_1__["MatSort"])
-    ], TabelaComponent.prototype, "sort", void 0);
-    TabelaComponent = __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
-            selector: 'tabela',
-            template: __webpack_require__(/*! ./tabela.component.html */ "./src/app/tabela/tabela.component.html"),
-            styles: [__webpack_require__(/*! ./tabela.component.css */ "./src/app/tabela/tabela.component.css")]
-        })
-    ], TabelaComponent);
-    return TabelaComponent;
-}());
-
-
-
-/***/ }),
-
 /***/ "./src/environments/environment.ts":
 /*!*****************************************!*\
   !*** ./src/environments/environment.ts ***!
@@ -991,7 +991,7 @@ Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_1__["platformB
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /home/raphael/Documentos/ui-sistema-treinamentos/src/main.ts */"./src/main.ts");
+module.exports = __webpack_require__(/*! /home/raphael/ui-sistema-treinamentos/src/main.ts */"./src/main.ts");
 
 
 /***/ })
