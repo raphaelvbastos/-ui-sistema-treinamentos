@@ -241,7 +241,6 @@ var LoginComponent = /** @class */ (function () {
             else {
                 _this.showMsg = true;
             }
-            console.log(result);
             // if (result.success) {
             //   this.goTo('home');
             // }

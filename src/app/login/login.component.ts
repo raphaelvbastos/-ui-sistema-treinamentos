@@ -24,7 +24,6 @@ export class LoginComponent implements OnInit {
       } else {
         this.showMsg = true;
       }
-      console.log(result)
       // if (result.success) {
       //   this.goTo('home');
       // }
