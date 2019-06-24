@@ -24,6 +24,10 @@
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
       <span>Sistema de Treinamentos</span>
+      <div style="color: #fff;position: absolute;right: 10px;">
+        <i class="material-icons md-48">person</i>
+        <span *ngIf="usuario">e: {{ usuario.email }}</span>
+      </div>
     </mat-toolbar>
     <router-outlet></router-outlet>
   </mat-sidenav-content>

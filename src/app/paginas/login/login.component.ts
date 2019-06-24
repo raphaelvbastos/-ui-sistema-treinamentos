@@ -15,11 +15,16 @@ export class LoginComponent implements OnInit {
   constructor(public as: AutenticacaoService, public router: Router) { }
 
   ngOnInit() {
+    // this.as.usuarioLogado.subscribe(users => this.usuario = users);
+    
   }
 
   login() {
     this.as.login(this.usuario).subscribe(result => {
       if(result != null) {
+
+        // this.as.alterarUsuario(this.as.getUsuario());
+        
         this.router.navigate(["/cursos"]);
       } else {
         this.showMsg = true;

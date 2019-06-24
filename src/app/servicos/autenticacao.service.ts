@@ -1,11 +1,11 @@
-import {Injectable} from '@angular/core';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {Observable, of} from 'rxjs';
-import {catchError, tap} from 'rxjs/internal/operators';
-import {Router} from '@angular/router';
+import { Injectable } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable, of, BehaviorSubject } from 'rxjs';
+import { catchError, tap } from 'rxjs/internal/operators';
+import { Router } from '@angular/router';
 
 const httpOptions = {
-    headers: new HttpHeaders({'Content-Type': 'application/json'})
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 };
 
 @Injectable({
@@ -16,6 +16,11 @@ export class AutenticacaoService {
 
     // private url = 'http://localhost:8080/login/';
     private url = 'https://api-sistema-treinamento.herokuapp.com/login';
+
+    usuarioModelo = { email: '', senha: '' };
+
+    public usuario = new BehaviorSubject(this.usuarioModelo);
+    usuarioLogado = this.usuario.asObservable();
 
     constructor(private http: HttpClient, public router: Router) {
     }
@@ -38,17 +43,27 @@ export class AutenticacaoService {
         // }
 
         if (data != null) {
-          localStorage.setItem('usuario', data);
-          return;
-      }
+            localStorage.setItem('usuario', JSON.stringify(data));
+            this.usuario = data;          
+            return;
+        }
     }
 
     canActivate(): boolean {
-      const token = localStorage.getItem('usuario');
-          if (token == null)   {
-              this.router.navigate(['login']);
-              return false;
-          }
-          return true;
-      }
+        const token = localStorage.getItem('usuario');
+        if (token == null) {
+            this.router.navigate(['login']);
+            return false;
+        }
+        return true;
+    }
+
+    getUsuario(): any {
+        const usuario = JSON.parse(localStorage.getItem('usuario'));
+        return usuario;
+    }
+
+    alterarUsuario(usu: any) {
+        this.usuario.next(usu);
+    }
 }

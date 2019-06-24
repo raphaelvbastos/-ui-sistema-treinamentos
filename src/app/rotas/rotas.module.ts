@@ -9,6 +9,7 @@ const rotas: Routes = [
   { path: "cursos", component: PaginaCursosComponent },
   { path: "cursos/:id", component: PaginaCursoComponent },
   { path: "", component: LoginComponent },
+  { path: "login", component: LoginComponent },
 ]
 
 
