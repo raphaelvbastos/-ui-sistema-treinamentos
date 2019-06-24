@@ -634,7 +634,7 @@ var AutenticacaoService = /** @class */ (function () {
         this.http = http;
         this.router = router;
         // private url = 'http://localhost:8080/login/';
-        this.url = 'https://api-sistema-treinamento.herokuapp.com/';
+        this.url = 'https://api-sistema-treinamento.herokuapp.com/login';
     }
     AutenticacaoService.prototype.login = function (data) {
         var _this = this;
