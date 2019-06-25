@@ -304,7 +304,7 @@ module.exports = ".sidenav-container {\n  height: 100%;\n}\n\n.sidenav {\n  widt
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<mat-sidenav-container class=\"sidenav-container\">\n  <mat-sidenav\n    #drawer\n    class=\"sidenav\"\n    fixedInViewport=\"true\"\n    [attr.role]=\"(isHandset$ | async) ? 'dialog' : 'navigation'\"\n    [mode]=\"(isHandset$ | async) ? 'over' : 'side'\"\n    [opened]=\"!(isHandset$ | async)\">\n    <mat-toolbar color=\"primary\">Menu</mat-toolbar>\n    <mat-nav-list>\n      <a mat-list-item href=\"/cursos\">Cursos</a>\n      <a mat-list-item href=\"/curso\">Curso</a>\n      <a mat-list-item href=\"#\">Link 3</a>\n    </mat-nav-list>\n  </mat-sidenav>\n  <mat-sidenav-content>\n    <mat-toolbar color=\"primary\">\n      <button\n        type=\"button\"\n        aria-label=\"Toggle sidenav\"\n        mat-icon-button\n        (click)=\"drawer.toggle()\"\n        *ngIf=\"isHandset$ | async\">\n        <mat-icon aria-label=\"Side nav toggle icon\">menu</mat-icon>\n      </button>\n      <span>Sistema de Treinamentos</span>\n      <div style=\"color: #fff;position: absolute;right: 10px;\">\n        <i class=\"material-icons md-48\">person</i>\n        <span *ngIf=\"usuario\">e: {{ usuario.email }}</span>\n      </div>\n    </mat-toolbar>\n    <router-outlet></router-outlet>\n  </mat-sidenav-content>\n</mat-sidenav-container>\n"
+module.exports = "<mat-sidenav-container class=\"sidenav-container\">\n  <mat-sidenav\n    #drawer\n    class=\"sidenav\"\n    fixedInViewport=\"true\"\n    [attr.role]=\"(isHandset$ | async) ? 'dialog' : 'navigation'\"\n    [mode]=\"(isHandset$ | async) ? 'over' : 'side'\"\n    [opened]=\"!(isHandset$ | async)\">\n    <mat-toolbar color=\"primary\">Menu</mat-toolbar>\n    <mat-nav-list>\n      <a mat-list-item href=\"/cursos\">Cursos</a>\n      <a mat-list-item href=\"/curso\">Curso</a>\n      <a mat-list-item href=\"#\">Link 3</a>\n    </mat-nav-list>\n  </mat-sidenav>\n  <mat-sidenav-content>\n    <mat-toolbar color=\"primary\">\n      <button\n        type=\"button\"\n        aria-label=\"Toggle sidenav\"\n        mat-icon-button\n        (click)=\"drawer.toggle()\"\n        *ngIf=\"isHandset$ | async\">\n        <mat-icon aria-label=\"Side nav toggle icon\">menu</mat-icon>\n      </button>\n      <span>Sistema de Treinamentos</span>\n      <div style=\"color: #fff;position: absolute;right: 10px;\">\n        <a *ngIf=\"usuarioIniciado(usuario)\" (click)=\"logoff()\" title=\"Sair\">\n          <i class=\"material-icons md-48\">exit_to_app</i>\n        </a>\n      </div>\n    </mat-toolbar>\n    <router-outlet></router-outlet>\n  </mat-sidenav-content>\n</mat-sidenav-container>\n"
 
 /***/ }),
 
@@ -348,6 +348,15 @@ var MenuComponent = /** @class */ (function () {
     MenuComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.as.usuarioLogado.subscribe(function (users) { return _this.usuario = users; });
+    };
+    MenuComponent.prototype.usuarioIniciado = function (usuario) {
+        if (usuario != null && typeof usuario.email != "undefined") {
+            return true;
+        }
+        return false;
+    };
+    MenuComponent.prototype.logoff = function () {
+        this.as.encerrarSessao();
     };
     MenuComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
@@ -914,6 +923,11 @@ var AutenticacaoService = /** @class */ (function () {
         var usuario = JSON.parse(localStorage.getItem('usuario'));
         return usuario;
     };
+    AutenticacaoService.prototype.encerrarSessao = function () {
+        localStorage.removeItem("usuario");
+        this.alterarUsuario(new _modelos_usuariomodel__WEBPACK_IMPORTED_MODULE_5__["Usuario"]());
+        this.router.navigate(['login']);
+    };
     AutenticacaoService.prototype.alterarUsuario = function (usuarioLogado) {
         this.usuario.next(usuarioLogado);
     };
@@ -1042,7 +1056,7 @@ Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_1__["platformB
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /home/raphael/Documentos/ui-sistema-treinamentos/src/main.ts */"./src/main.ts");
+module.exports = __webpack_require__(/*! /home/raphael/ui-sistema-treinamentos/src/main.ts */"./src/main.ts");
 
 
 /***/ })

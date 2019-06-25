@@ -26,5 +26,16 @@ export class MenuComponent implements OnInit {
     this.as.usuarioLogado.subscribe(users => this.usuario = users);
   }
 
+  usuarioIniciado(usuario: Usuario): boolean {
+    if(usuario != null && typeof usuario.email != "undefined") {
+      return true;
+    }
+
+    return false;
+  }
+
+  logoff(): any {
+    this.as.encerrarSessao();
+  }
 
 }

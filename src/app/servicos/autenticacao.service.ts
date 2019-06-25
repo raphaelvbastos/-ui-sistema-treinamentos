@@ -63,6 +63,12 @@ export class AutenticacaoService {
         return usuario;
     }
 
+    encerrarSessao(): any {
+        localStorage.removeItem("usuario");
+        this.alterarUsuario(new Usuario());
+        this.router.navigate(['login']);
+    }
+
     alterarUsuario(usuarioLogado: Usuario) {
         this.usuario.next(usuarioLogado)
     }
