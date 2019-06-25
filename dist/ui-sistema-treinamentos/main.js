@@ -176,6 +176,26 @@ var AppModule = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "./src/app/modelos/usuariomodel.ts":
+/*!*****************************************!*\
+  !*** ./src/app/modelos/usuariomodel.ts ***!
+  \*****************************************/
+/*! exports provided: Usuario */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Usuario", function() { return Usuario; });
+var Usuario = /** @class */ (function () {
+    function Usuario() {
+    }
+    return Usuario;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/app/paginas/login/login.component.css":
 /*!***************************************************!*\
   !*** ./src/app/paginas/login/login.component.css ***!
@@ -211,6 +231,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _servicos_autenticacao_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../servicos/autenticacao.service */ "./src/app/servicos/autenticacao.service.ts");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _modelos_usuariomodel__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../modelos/usuariomodel */ "./src/app/modelos/usuariomodel.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -223,11 +244,12 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 
+
 var LoginComponent = /** @class */ (function () {
     function LoginComponent(as, router) {
         this.as = as;
         this.router = router;
-        this.usuario = { email: '', senha: '' };
+        this.usuario = new _modelos_usuariomodel__WEBPACK_IMPORTED_MODULE_3__["Usuario"]();
         this.showMsg = false;
     }
     LoginComponent.prototype.ngOnInit = function () {
@@ -236,6 +258,7 @@ var LoginComponent = /** @class */ (function () {
         var _this = this;
         this.as.login(this.usuario).subscribe(function (result) {
             if (result != null) {
+                _this.as.usuarioLogado.subscribe(function (users) { return _this.usuario = users; });
                 _this.router.navigate(["/cursos"]);
             }
             else {
@@ -281,7 +304,7 @@ module.exports = ".sidenav-container {\n  height: 100%;\n}\n\n.sidenav {\n  widt
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<mat-sidenav-container class=\"sidenav-container\">\n  <mat-sidenav\n    #drawer\n    class=\"sidenav\"\n    fixedInViewport=\"true\"\n    [attr.role]=\"(isHandset$ | async) ? 'dialog' : 'navigation'\"\n    [mode]=\"(isHandset$ | async) ? 'over' : 'side'\"\n    [opened]=\"!(isHandset$ | async)\">\n    <mat-toolbar color=\"primary\">Menu</mat-toolbar>\n    <mat-nav-list>\n      <a mat-list-item href=\"/cursos\">Cursos</a>\n      <a mat-list-item href=\"/curso\">Curso</a>\n      <a mat-list-item href=\"#\">Link 3</a>\n    </mat-nav-list>\n  </mat-sidenav>\n  <mat-sidenav-content>\n    <mat-toolbar color=\"primary\">\n      <button\n        type=\"button\"\n        aria-label=\"Toggle sidenav\"\n        mat-icon-button\n        (click)=\"drawer.toggle()\"\n        *ngIf=\"isHandset$ | async\">\n        <mat-icon aria-label=\"Side nav toggle icon\">menu</mat-icon>\n      </button>\n      <span>Sistema de Treinamentos</span>\n    </mat-toolbar>\n    <router-outlet></router-outlet>\n  </mat-sidenav-content>\n</mat-sidenav-container>\n"
+module.exports = "<mat-sidenav-container class=\"sidenav-container\">\n  <mat-sidenav\n    #drawer\n    class=\"sidenav\"\n    fixedInViewport=\"true\"\n    [attr.role]=\"(isHandset$ | async) ? 'dialog' : 'navigation'\"\n    [mode]=\"(isHandset$ | async) ? 'over' : 'side'\"\n    [opened]=\"!(isHandset$ | async)\">\n    <mat-toolbar color=\"primary\">Menu</mat-toolbar>\n    <mat-nav-list>\n      <a mat-list-item href=\"/cursos\">Cursos</a>\n      <a mat-list-item href=\"/curso\">Curso</a>\n      <a mat-list-item href=\"#\">Link 3</a>\n    </mat-nav-list>\n  </mat-sidenav>\n  <mat-sidenav-content>\n    <mat-toolbar color=\"primary\">\n      <button\n        type=\"button\"\n        aria-label=\"Toggle sidenav\"\n        mat-icon-button\n        (click)=\"drawer.toggle()\"\n        *ngIf=\"isHandset$ | async\">\n        <mat-icon aria-label=\"Side nav toggle icon\">menu</mat-icon>\n      </button>\n      <span>Sistema de Treinamentos</span>\n      <div style=\"color: #fff;position: absolute;right: 10px;\">\n        <i class=\"material-icons md-48\">person</i>\n        <span *ngIf=\"usuario\">e: {{ usuario.email }}</span>\n      </div>\n    </mat-toolbar>\n    <router-outlet></router-outlet>\n  </mat-sidenav-content>\n</mat-sidenav-container>\n"
 
 /***/ }),
 
@@ -298,6 +321,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_cdk_layout__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/cdk/layout */ "./node_modules/@angular/cdk/esm5/layout.es5.js");
 /* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
+/* harmony import */ var src_app_servicos_autenticacao_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/servicos/autenticacao.service */ "./src/app/servicos/autenticacao.service.ts");
+/* harmony import */ var _modelos_usuariomodel__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../modelos/usuariomodel */ "./src/app/modelos/usuariomodel.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -310,19 +335,27 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 
+
+
 var MenuComponent = /** @class */ (function () {
-    function MenuComponent(breakpointObserver) {
+    function MenuComponent(breakpointObserver, as) {
         this.breakpointObserver = breakpointObserver;
+        this.as = as;
+        this.usuario = new _modelos_usuariomodel__WEBPACK_IMPORTED_MODULE_4__["Usuario"]();
         this.isHandset$ = this.breakpointObserver.observe(_angular_cdk_layout__WEBPACK_IMPORTED_MODULE_1__["Breakpoints"].Handset)
             .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["map"])(function (result) { return result.matches; }));
     }
+    MenuComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.as.usuarioLogado.subscribe(function (users) { return _this.usuario = users; });
+    };
     MenuComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'menu',
             template: __webpack_require__(/*! ./menu.component.html */ "./src/app/paginas/menu/menu.component.html"),
             styles: [__webpack_require__(/*! ./menu.component.css */ "./src/app/paginas/menu/menu.component.css")]
         }),
-        __metadata("design:paramtypes", [_angular_cdk_layout__WEBPACK_IMPORTED_MODULE_1__["BreakpointObserver"]])
+        __metadata("design:paramtypes", [_angular_cdk_layout__WEBPACK_IMPORTED_MODULE_1__["BreakpointObserver"], src_app_servicos_autenticacao_service__WEBPACK_IMPORTED_MODULE_3__["AutenticacaoService"]])
     ], MenuComponent);
     return MenuComponent;
 }());
@@ -443,6 +476,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PaginaCursosComponent", function() { return PaginaCursosComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _servicos_servico_cursos_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../servicos/servico-cursos.service */ "./src/app/servicos/servico-cursos.service.ts");
+/* harmony import */ var src_app_servicos_autenticacao_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/servicos/autenticacao.service */ "./src/app/servicos/autenticacao.service.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -454,10 +488,13 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 };
 
 
+
 var PaginaCursosComponent = /** @class */ (function () {
-    function PaginaCursosComponent(ps) {
+    function PaginaCursosComponent(ps, as) {
         var _this = this;
         this.ps = ps;
+        this.as = as;
+        this.as.canActivate();
         // this.projetos = ps.getProjetos();
         ps.getCursos().subscribe(function (dados) {
             _this.cursos = dados;
@@ -471,7 +508,7 @@ var PaginaCursosComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./pagina-cursos.component.html */ "./src/app/paginas/pagina-cursos/pagina-cursos.component.html"),
             styles: [__webpack_require__(/*! ./pagina-cursos.component.css */ "./src/app/paginas/pagina-cursos/pagina-cursos.component.css")]
         }),
-        __metadata("design:paramtypes", [_servicos_servico_cursos_service__WEBPACK_IMPORTED_MODULE_1__["ServicoCursosService"]])
+        __metadata("design:paramtypes", [_servicos_servico_cursos_service__WEBPACK_IMPORTED_MODULE_1__["ServicoCursosService"], src_app_servicos_autenticacao_service__WEBPACK_IMPORTED_MODULE_2__["AutenticacaoService"]])
     ], PaginaCursosComponent);
     return PaginaCursosComponent;
 }());
@@ -777,6 +814,7 @@ var rotas = [
     { path: "cursos", component: _paginas_pagina_cursos_pagina_cursos_component__WEBPACK_IMPORTED_MODULE_4__["PaginaCursosComponent"] },
     { path: "cursos/:id", component: _paginas_pagina_curso_pagina_curso_component__WEBPACK_IMPORTED_MODULE_3__["PaginaCursoComponent"] },
     { path: "", component: _paginas_login_login_component__WEBPACK_IMPORTED_MODULE_5__["LoginComponent"] },
+    { path: "login", component: _paginas_login_login_component__WEBPACK_IMPORTED_MODULE_5__["LoginComponent"] },
 ];
 var RotasModule = /** @class */ (function () {
     function RotasModule() {
@@ -814,6 +852,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var rxjs_internal_operators__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rxjs/internal/operators */ "./node_modules/rxjs/internal/operators/index.js");
 /* harmony import */ var rxjs_internal_operators__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(rxjs_internal_operators__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _modelos_usuariomodel__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../modelos/usuariomodel */ "./src/app/modelos/usuariomodel.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -828,6 +867,7 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 
+
 var httpOptions = {
     headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]({ 'Content-Type': 'application/json' })
 };
@@ -837,6 +877,9 @@ var AutenticacaoService = /** @class */ (function () {
         this.router = router;
         // private url = 'http://localhost:8080/login/';
         this.url = 'https://api-sistema-treinamento.herokuapp.com/login';
+        this.usuarioModelo = new _modelos_usuariomodel__WEBPACK_IMPORTED_MODULE_5__["Usuario"]();
+        this.usuario = new rxjs__WEBPACK_IMPORTED_MODULE_2__["BehaviorSubject"](this.usuarioModelo);
+        this.usuarioLogado = this.usuario.asObservable();
     }
     AutenticacaoService.prototype.login = function (data) {
         var _this = this;
@@ -854,7 +897,8 @@ var AutenticacaoService = /** @class */ (function () {
         //     return;
         // }
         if (data != null) {
-            localStorage.setItem('usuario', data);
+            localStorage.setItem('usuario', JSON.stringify(data));
+            this.alterarUsuario(data);
             return;
         }
     };
@@ -865,6 +909,13 @@ var AutenticacaoService = /** @class */ (function () {
             return false;
         }
         return true;
+    };
+    AutenticacaoService.prototype.getUsuario = function () {
+        var usuario = JSON.parse(localStorage.getItem('usuario'));
+        return usuario;
+    };
+    AutenticacaoService.prototype.alterarUsuario = function (usuarioLogado) {
+        this.usuario.next(usuarioLogado);
     };
     AutenticacaoService = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])({
@@ -991,7 +1042,7 @@ Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_1__["platformB
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /home/raphael/ui-sistema-treinamentos/src/main.ts */"./src/main.ts");
+module.exports = __webpack_require__(/*! /home/raphael/Documentos/ui-sistema-treinamentos/src/main.ts */"./src/main.ts");
 
 
 /***/ })

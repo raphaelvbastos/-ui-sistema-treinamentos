@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AutenticacaoService } from '../../servicos/autenticacao.service';
 import { Router } from '@angular/router';
+import { Usuario } from '../../modelos/usuariomodel';
 
 @Component({
   selector: 'app-login',
@@ -9,21 +10,19 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
-  usuario = { email: '', senha: '' };
+  usuario = new Usuario();
   showMsg: boolean = false;
 
   constructor(public as: AutenticacaoService, public router: Router) { }
 
-  ngOnInit() {
-    // this.as.usuarioLogado.subscribe(users => this.usuario = users);
-    
+  ngOnInit() {    
   }
 
   login() {
     this.as.login(this.usuario).subscribe(result => {
       if(result != null) {
 
-        // this.as.alterarUsuario(this.as.getUsuario());
+       this.as.usuarioLogado.subscribe(users => this.usuario = users);
         
         this.router.navigate(["/cursos"]);
       } else {
