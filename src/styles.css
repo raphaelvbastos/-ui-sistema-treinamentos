@@ -59,19 +59,23 @@ menu {
 .login-box, .register-box {
     margin: auto;
     margin-top: 10%;
-    width: 400px;
+    width: 300px;
 }.login-page, .register-page {
     background: #d2d6de;
 }
 
 .login-box{
     margin: auto;
-    margin-top: 5%;
+    margin-top: 15%;
 }
 
 .inputLogin {
-    width: 350px;
+    width: 270px;
     background: none !important;
     color: #212c3d;
     font-size: 1.3em;
+}
+
+mat-sidenav-content {
+    background: #212c3d;
 }

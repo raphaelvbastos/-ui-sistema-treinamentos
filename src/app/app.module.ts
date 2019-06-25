@@ -17,6 +17,8 @@ import { PaginaCursosComponent } from './paginas/pagina-cursos/pagina-cursos.com
 import { PaginaCursoComponent } from './paginas/pagina-curso/pagina-curso.component';
 import { RotasModule } from './rotas/rotas.module';
 import { LoginComponent } from './paginas/login/login.component';
+import { FlexLayoutModule } from '@angular/flex-layout';
+
 
 
 @NgModule({
@@ -49,7 +51,8 @@ import { LoginComponent } from './paginas/login/login.component';
     HttpClientModule,
     FormsModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    FlexLayoutModule
   ],
   providers: [],
   bootstrap: [AppComponent]

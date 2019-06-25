@@ -30,7 +30,6 @@ export class MenuComponent implements OnInit {
     if(usuario != null && typeof usuario.email != "undefined") {
       return true;
     }
-
     return false;
   }
 
