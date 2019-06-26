@@ -79,3 +79,38 @@ menu {
 mat-sidenav-content {
     background: #212c3d;
 }
+
+.mat-table {
+    background:  none;
+}
+
+.mat-elevation-z8 {
+    background:  #29374a;
+    color: #eee;
+}
+
+.mat-paginator-container {
+    background:  #29374a;
+    color: #eee;
+}
+
+.mat-cell {
+    color: #ccc;
+}
+
+.mat-icon-button {
+    color: #ccc !important;
+}
+
+.mat-header-cell {
+    color: #ddd;
+    text-align: center;
+    font-weight: bold;
+}
+
+.inputFormulario {
+    color: #ccc;
+    width: 100%;
+    font-size: 1.3em;
+    background: none;
+}

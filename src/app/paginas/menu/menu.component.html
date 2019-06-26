@@ -61,11 +61,11 @@
   </mat-toolbar>
 
   <mat-sidenav-container fxFlexFill>
-    <mat-sidenav #sidenav>
+    <mat-sidenav #sidenav class="sidenav">
       <mat-nav-list>
-        <a (click)="sidenav.toggle()" href="" mat-list-item>Close</a>
-        <a *ngIf="usuarioIniciado(usuario)" href="#" mat-list-item>Menu Item 1</a>
-        <a *ngIf="usuarioIniciado(usuario)" href="#" mat-list-item>Menu Item 2</a>
+        <a (click)="sidenav.toggle()" href="" mat-list-item><i class="material-icons md-48">close</i></a>
+        <a href="#" mat-list-item>Menu Item 1</a>
+        <a href="#" mat-list-item>Menu Item 2</a>
       </mat-nav-list>
     </mat-sidenav>
     <mat-sidenav-content fxFlexFill>

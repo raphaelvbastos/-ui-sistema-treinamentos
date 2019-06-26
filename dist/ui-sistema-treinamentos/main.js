@@ -108,12 +108,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _rotas_rotas_module__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./rotas/rotas.module */ "./src/app/rotas/rotas.module.ts");
 /* harmony import */ var _paginas_login_login_component__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./paginas/login/login.component */ "./src/app/paginas/login/login.component.ts");
 /* harmony import */ var _angular_flex_layout__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! @angular/flex-layout */ "./node_modules/@angular/flex-layout/esm5/flex-layout.es5.js");
+/* harmony import */ var _paginas_usuarios_usuarios_component__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./paginas/usuarios/usuarios.component */ "./src/app/paginas/usuarios/usuarios.component.ts");
+/* harmony import */ var _paginas_usuario_usuario_component__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./paginas/usuario/usuario.component */ "./src/app/paginas/usuario/usuario.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
+
 
 
 
@@ -143,7 +147,9 @@ var AppModule = /** @class */ (function () {
                 _paginas_tabela_tabela_component__WEBPACK_IMPORTED_MODULE_11__["TabelaComponent"],
                 _paginas_pagina_cursos_pagina_cursos_component__WEBPACK_IMPORTED_MODULE_12__["PaginaCursosComponent"],
                 _paginas_pagina_curso_pagina_curso_component__WEBPACK_IMPORTED_MODULE_13__["PaginaCursoComponent"],
-                _paginas_login_login_component__WEBPACK_IMPORTED_MODULE_15__["LoginComponent"]
+                _paginas_login_login_component__WEBPACK_IMPORTED_MODULE_15__["LoginComponent"],
+                _paginas_usuarios_usuarios_component__WEBPACK_IMPORTED_MODULE_17__["UsuariosComponent"],
+                _paginas_usuario_usuario_component__WEBPACK_IMPORTED_MODULE_18__["UsuarioComponent"]
             ],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"],
@@ -307,7 +313,7 @@ module.exports = ".sidenav-container {\n  height: 100%;\n}\n\n.sidenav {\n  widt
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<!-- <mat-sidenav-container class=\"sidenav-container\">\n  <mat-sidenav\n    #drawer\n    class=\"sidenav\"\n    fixedInViewport=\"true\"\n    [attr.role]=\"(isHandset$ | async) ? 'dialog' : 'navigation'\"\n    [mode]=\"(isHandset$ | async) ? 'over' : 'side'\"\n    [opened]=\"!(isHandset$ | async)\">\n    <mat-toolbar color=\"primary\">Menu</mat-toolbar>\n    <mat-nav-list>\n      <a mat-list-item href=\"/cursos\">Cursos</a>\n      <a mat-list-item href=\"/curso\">Curso</a>\n      <a *ngIf=\"usuarioIniciado(usuario)\" mat-list-item href=\"#\">Link 3</a>\n    </mat-nav-list>\n  </mat-sidenav>\n  <mat-sidenav-content>\n    <mat-toolbar color=\"primary\">\n      <button\n        type=\"button\"\n        aria-label=\"Toggle sidenav\"\n        mat-icon-button\n        (click)=\"drawer.toggle()\"\n        *ngIf=\"isHandset$ | async\">\n        <mat-icon aria-label=\"Side nav toggle icon\">menu</mat-icon>\n      </button>\n      <span>Sistema de Treinamentos</span>\n      <div style=\"color: #fff;position: absolute;right: 10px;\">\n        <a *ngIf=\"usuarioIniciado(usuario)\" (click)=\"logoff()\" title=\"Sair\">\n          <i class=\"material-icons md-48\">exit_to_app</i>\n        </a>\n      </div>\n    </mat-toolbar>\n    <router-outlet></router-outlet>\n  </mat-sidenav-content>\n</mat-sidenav-container> -->\n\n\n<div style=\"height: 80vh;\">\n  <mat-toolbar color=\"primary\">\n    <mat-toolbar-row>\n      <button mat-icon-button (click)=\"sidenav.toggle()\" fxShow=\"true\" fxHide.gt-sm>\n        <mat-icon>menu</mat-icon>\n      </button>\n      <span>Responsive Navigation</span>\n      <span class=\"menu-spacer\"></span>\n      <div fxShow=\"true\" fxHide.lt-md>\n        <!-- The following menu items will be hidden on both SM and XS screen sizes -->\n        <a href=\"/usuarios\" mat-button>\n          <i class=\"material-icons md-48\">account_circle</i> Usuários\n        </a>\n\n        <a href=\"/cursos\" mat-button>\n          <i class=\"material-icons md-48\">school</i> Cursos\n        </a>\n\n        <a style=\"position:fixed;right:10px;\" *ngIf=\"usuarioIniciado(usuario)\" (click)=\"logoff()\" title=\"Sair\">\n          <i class=\"material-icons md-48\">exit_to_app</i>\n        </a>\n      </div>\n    </mat-toolbar-row>\n  </mat-toolbar>\n\n  <mat-sidenav-container fxFlexFill>\n    <mat-sidenav #sidenav>\n      <mat-nav-list>\n        <a (click)=\"sidenav.toggle()\" href=\"\" mat-list-item>Close</a>\n        <a *ngIf=\"usuarioIniciado(usuario)\" href=\"#\" mat-list-item>Menu Item 1</a>\n        <a *ngIf=\"usuarioIniciado(usuario)\" href=\"#\" mat-list-item>Menu Item 2</a>\n      </mat-nav-list>\n    </mat-sidenav>\n    <mat-sidenav-content fxFlexFill>\n      <router-outlet></router-outlet>\n    </mat-sidenav-content>\n  </mat-sidenav-container>\n</div>\n\n"
+module.exports = "<!-- <mat-sidenav-container class=\"sidenav-container\">\n  <mat-sidenav\n    #drawer\n    class=\"sidenav\"\n    fixedInViewport=\"true\"\n    [attr.role]=\"(isHandset$ | async) ? 'dialog' : 'navigation'\"\n    [mode]=\"(isHandset$ | async) ? 'over' : 'side'\"\n    [opened]=\"!(isHandset$ | async)\">\n    <mat-toolbar color=\"primary\">Menu</mat-toolbar>\n    <mat-nav-list>\n      <a mat-list-item href=\"/cursos\">Cursos</a>\n      <a mat-list-item href=\"/curso\">Curso</a>\n      <a *ngIf=\"usuarioIniciado(usuario)\" mat-list-item href=\"#\">Link 3</a>\n    </mat-nav-list>\n  </mat-sidenav>\n  <mat-sidenav-content>\n    <mat-toolbar color=\"primary\">\n      <button\n        type=\"button\"\n        aria-label=\"Toggle sidenav\"\n        mat-icon-button\n        (click)=\"drawer.toggle()\"\n        *ngIf=\"isHandset$ | async\">\n        <mat-icon aria-label=\"Side nav toggle icon\">menu</mat-icon>\n      </button>\n      <span>Sistema de Treinamentos</span>\n      <div style=\"color: #fff;position: absolute;right: 10px;\">\n        <a *ngIf=\"usuarioIniciado(usuario)\" (click)=\"logoff()\" title=\"Sair\">\n          <i class=\"material-icons md-48\">exit_to_app</i>\n        </a>\n      </div>\n    </mat-toolbar>\n    <router-outlet></router-outlet>\n  </mat-sidenav-content>\n</mat-sidenav-container> -->\n\n\n<div style=\"height: 80vh;\">\n  <mat-toolbar color=\"primary\">\n    <mat-toolbar-row>\n      <button mat-icon-button (click)=\"sidenav.toggle()\" fxShow=\"true\" fxHide.gt-sm>\n        <mat-icon>menu</mat-icon>\n      </button>\n      <span>Responsive Navigation</span>\n      <span class=\"menu-spacer\"></span>\n      <div fxShow=\"true\" fxHide.lt-md>\n        <!-- The following menu items will be hidden on both SM and XS screen sizes -->\n        <a href=\"/usuarios\" mat-button>\n          <i class=\"material-icons md-48\">account_circle</i> Usuários\n        </a>\n\n        <a href=\"/cursos\" mat-button>\n          <i class=\"material-icons md-48\">school</i> Cursos\n        </a>\n\n        <a style=\"position:fixed;right:10px;\" *ngIf=\"usuarioIniciado(usuario)\" (click)=\"logoff()\" title=\"Sair\">\n          <i class=\"material-icons md-48\">exit_to_app</i>\n        </a>\n      </div>\n    </mat-toolbar-row>\n  </mat-toolbar>\n\n  <mat-sidenav-container fxFlexFill>\n    <mat-sidenav #sidenav class=\"sidenav\">\n      <mat-nav-list>\n        <a (click)=\"sidenav.toggle()\" href=\"\" mat-list-item><i class=\"material-icons md-48\">close</i></a>\n        <a href=\"#\" mat-list-item>Menu Item 1</a>\n        <a href=\"#\" mat-list-item>Menu Item 2</a>\n      </mat-nav-list>\n    </mat-sidenav>\n    <mat-sidenav-content fxFlexFill>\n      <router-outlet></router-outlet>\n    </mat-sidenav-content>\n  </mat-sidenav-container>\n</div>\n\n"
 
 /***/ }),
 
@@ -794,6 +800,302 @@ var TabelaComponent = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "./src/app/paginas/usuario/usuario.component.css":
+/*!*******************************************************!*\
+  !*** ./src/app/paginas/usuario/usuario.component.css ***!
+  \*******************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = ""
+
+/***/ }),
+
+/***/ "./src/app/paginas/usuario/usuario.component.html":
+/*!********************************************************!*\
+  !*** ./src/app/paginas/usuario/usuario.component.html ***!
+  \********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<mat-card>\n  <div class=\"mat-elevation-z8\">\n      <form class=\"form my-2 my-lg-0\">\n\n          <mat-form-field class=\"inputFormulario\">\n              <input matInput placeholder=\"Nome\" [(ngModel)]=\"usuario.nome\" name=\"nome\" required>\n            </mat-form-field>\n\n          <mat-form-field class=\"inputFormulario\">\n            <input matInput placeholder=\"E-mail\" [(ngModel)]=\"usuario.email\" name=\"email\" required>\n          </mat-form-field>\n\n          <mat-form-field class=\"inputFormulario\">\n            <input matInput placeholder=\"Senha\" [(ngModel)]=\"usuario.senha\" type=\"password\" name=\"senha\"\n              required>\n          </mat-form-field>\n\n          <mat-card-actions>\n            <button mat-raised-button (click)=\"login()\" color=\"primary\">Login</button>\n          </mat-card-actions>\n        </form>\n  </div>\n</mat-card>"
+
+/***/ }),
+
+/***/ "./src/app/paginas/usuario/usuario.component.ts":
+/*!******************************************************!*\
+  !*** ./src/app/paginas/usuario/usuario.component.ts ***!
+  \******************************************************/
+/*! exports provided: UsuarioComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UsuarioComponent", function() { return UsuarioComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var src_app_modelos_usuariomodel__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! src/app/modelos/usuariomodel */ "./src/app/modelos/usuariomodel.ts");
+/* harmony import */ var src_app_servicos_usuarios_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/servicos/usuarios.service */ "./src/app/servicos/usuarios.service.ts");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+var UsuarioComponent = /** @class */ (function () {
+    function UsuarioComponent(us) {
+        this.us = us;
+        this.usuario = new src_app_modelos_usuariomodel__WEBPACK_IMPORTED_MODULE_1__["Usuario"]();
+        // this.usuario = new Usuario();
+    }
+    UsuarioComponent.prototype.ngOnInit = function () {
+        this.usuario = this.us.getUsuarioSelecionado();
+    };
+    UsuarioComponent = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: 'app-usuario',
+            template: __webpack_require__(/*! ./usuario.component.html */ "./src/app/paginas/usuario/usuario.component.html"),
+            styles: [__webpack_require__(/*! ./usuario.component.css */ "./src/app/paginas/usuario/usuario.component.css")]
+        }),
+        __metadata("design:paramtypes", [src_app_servicos_usuarios_service__WEBPACK_IMPORTED_MODULE_2__["UsuariosService"]])
+    ], UsuarioComponent);
+    return UsuarioComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/paginas/usuarios/usuarios-datasource.ts":
+/*!*********************************************************!*\
+  !*** ./src/app/paginas/usuarios/usuarios-datasource.ts ***!
+  \*********************************************************/
+/*! exports provided: UsuariosDataSource */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UsuariosDataSource", function() { return UsuariosDataSource; });
+/* harmony import */ var _angular_cdk_collections__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/cdk/collections */ "./node_modules/@angular/cdk/esm5/collections.es5.js");
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
+var __extends = (undefined && undefined.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+
+
+
+// TODO: replace this with real data from your application
+var EXAMPLE_DATA = [
+    { id: 1, name: 'Hydrogen' },
+    { id: 2, name: 'Helium' },
+    { id: 3, name: 'Lithium' },
+    { id: 4, name: 'Beryllium' },
+    { id: 5, name: 'Boron' },
+    { id: 6, name: 'Carbon' },
+    { id: 7, name: 'Nitrogen' },
+    { id: 8, name: 'Oxygen' },
+    { id: 9, name: 'Fluorine' },
+    { id: 10, name: 'Neon' },
+    { id: 11, name: 'Sodium' },
+    { id: 12, name: 'Magnesium' },
+    { id: 13, name: 'Aluminum' },
+    { id: 14, name: 'Silicon' },
+    { id: 15, name: 'Phosphorus' },
+    { id: 16, name: 'Sulfur' },
+    { id: 17, name: 'Chlorine' },
+    { id: 18, name: 'Argon' },
+    { id: 19, name: 'Potassium' },
+    { id: 20, name: 'Calcium' },
+];
+var teste = [
+    { "_id": "5d0a27e65429030004ce4f3b", "nome": "Administrador do Sistema", "email": "adm@gmail.com", "senha": "$2a$10$U8g18cixO412LjKpZ1JVZ.Kt70NukXqiU17wlY03wxCP48xXAU/4q", "tipo": [{ "_id": "5d0a27e65429030004ce4f39", "tipo": "Administrador" }], "__v": 0 }, { "_id": "5d0a27e65429030004ce4f3d", "nome": "Lucas das Pontes", "email": "lucaspontes@gmail.com", "senha": "abcdef", "tipo": [{ "_id": "5d0a27e65429030004ce4f3a", "tipo": "Empregado" }], "__v": 0 }, { "_id": "5d0d86351c9d440000ddd69d", "nome": "MODIFICADO 1", "email": "MODIFICADO1@gmail.com", "senha": "MOD1", "tipo": [{ "_id": "5d0a27e65429030004ce4f39", "tipo": "Administrador" }], "__v": 0 }, { "_id": "5d0ad417f703e91ef73571ec", "nome": "Roberval de almeida", "email": "roberval@gmail.com", "senha": "123456", "tipo": [{ "_id": "5d0a27e65429030004ce4f3a", "tipo": "Empregado" }], "__v": 0 }
+];
+/**
+ * Data source for the Usuarios view. This class should
+ * encapsulate all logic for fetching and manipulating the displayed data
+ * (including sorting, pagination, and filtering).
+ */
+var UsuariosDataSource = /** @class */ (function (_super) {
+    __extends(UsuariosDataSource, _super);
+    function UsuariosDataSource(paginator, sort, us) {
+        var _this = _super.call(this) || this;
+        _this.paginator = paginator;
+        _this.sort = sort;
+        _this.us = us;
+        return _this;
+    }
+    UsuariosDataSource.prototype.ngOnInit = function () {
+        // this.data = [];
+    };
+    /**
+     * Connect this data source to the table. The table will only update when
+     * the returned stream emits new items.
+     * @returns A stream of the items to be rendered.
+     */
+    UsuariosDataSource.prototype.connect = function () {
+        var _this = this;
+        // Combine everything that affects the rendered data into one update
+        // stream for the data-table to consume.
+        var dataMutations = [
+            Object(rxjs__WEBPACK_IMPORTED_MODULE_2__["of"])(this.data),
+            this.paginator.page,
+            this.sort.sortChange
+        ];
+        this.paginator.length = this.data.length;
+        return rxjs__WEBPACK_IMPORTED_MODULE_2__["merge"].apply(void 0, dataMutations).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["map"])(function () {
+            return _this.getPagedData(_this.getSortedData(_this.data.slice()));
+        }));
+    };
+    /**
+     *  Called when the table is being destroyed. Use this function, to clean up
+     * any open connections or free any held resources that were set up during connect.
+     */
+    UsuariosDataSource.prototype.disconnect = function () { };
+    /**
+     * Paginate the data (client-side). If you're using server-side pagination,
+     * this would be replaced by requesting the appropriate data from the server.
+     */
+    UsuariosDataSource.prototype.getPagedData = function (data) {
+        var startIndex = this.paginator.pageIndex * this.paginator.pageSize;
+        return data.splice(startIndex, this.paginator.pageSize);
+    };
+    /**
+     * Sort the data (client-side). If you're using server-side sorting,
+     * this would be replaced by requesting the appropriate data from the server.
+     */
+    UsuariosDataSource.prototype.getSortedData = function (data) {
+        var _this = this;
+        if (!this.sort.active || this.sort.direction === '') {
+            return data;
+        }
+        return data.sort(function (a, b) {
+            var isAsc = _this.sort.direction === 'asc';
+            switch (_this.sort.active) {
+                case 'name': return compare(a.nome, b.nome, isAsc);
+                case 'id': return compare(+a._id, +b._id, isAsc);
+                default: return 0;
+            }
+        });
+    };
+    return UsuariosDataSource;
+}(_angular_cdk_collections__WEBPACK_IMPORTED_MODULE_0__["DataSource"]));
+
+/** Simple sort comparator for example ID/Name columns (for client-side sorting). */
+function compare(a, b, isAsc) {
+    return (a < b ? -1 : 1) * (isAsc ? 1 : -1);
+}
+
+
+/***/ }),
+
+/***/ "./src/app/paginas/usuarios/usuarios.component.css":
+/*!*********************************************************!*\
+  !*** ./src/app/paginas/usuarios/usuarios.component.css ***!
+  \*********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = ""
+
+/***/ }),
+
+/***/ "./src/app/paginas/usuarios/usuarios.component.html":
+/*!**********************************************************!*\
+  !*** ./src/app/paginas/usuarios/usuarios.component.html ***!
+  \**********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<mat-card>\n<div class=\"mat-elevation-z8\">\n  <mat-table #table [dataSource]=\"dataSource\" matSort aria-label=\"Elements\">\n\n    <!-- Id Column -->\n    <ng-container matColumnDef=\"nome\">\n      <mat-header-cell *matHeaderCellDef mat-sort-header>Nome</mat-header-cell>\n      <mat-cell *matCellDef=\"let row\">{{row.nome}}</mat-cell>\n    </ng-container>\n\n    <!-- Name Column -->\n    <ng-container matColumnDef=\"email\">\n      <mat-header-cell *matHeaderCellDef mat-sort-header>Email</mat-header-cell>\n      <mat-cell *matCellDef=\"let row\">{{row.email}}</mat-cell>\n    </ng-container>\n\n    <ng-container matColumnDef=\"tipo\">\n      <mat-header-cell *matHeaderCellDef mat-sort-header>tipo</mat-header-cell>\n      <mat-cell *matCellDef=\"let row\">\n        <span *ngFor=\"let r of row.tipo\">{{r.tipo}}</span>\n      </mat-cell>\n    </ng-container>\n\n    <ng-container matColumnDef=\"editar\">\n      <mat-header-cell *matHeaderCellDef mat-sort-header></mat-header-cell>\n      <td mat-cell *matCellDef=\"let row\"> \n        <a (click)=\"editar(row)\"><i class=\"material-icons md-48\">edit</i></a> \n      </td>\n    </ng-container>\n\n    <ng-container matColumnDef=\"excluir\">\n      <mat-header-cell *matHeaderCellDef mat-sort-header></mat-header-cell>\n      <td mat-cell *matCellDef=\"let row\"> \n        <a (click)=\"excluir(row._id)\" style=\"margin-left: 30px;\"><i class=\"material-icons md-48\">delete</i></a>\n      </td>\n    </ng-container>\n\n    <mat-header-row *matHeaderRowDef=\"displayedColumns\"></mat-header-row>\n    <mat-row *matRowDef=\"let row; columns: displayedColumns;\"></mat-row>\n  </mat-table>\n\n  <mat-paginator #paginator\n    [length]=\"dataSource?.data?.length\"\n    [pageIndex]=\"0\"\n    [pageSize]=\"50\"\n    [pageSizeOptions]=\"[25, 50, 100, 250]\">\n  </mat-paginator>\n</div>\n</mat-card>"
+
+/***/ }),
+
+/***/ "./src/app/paginas/usuarios/usuarios.component.ts":
+/*!********************************************************!*\
+  !*** ./src/app/paginas/usuarios/usuarios.component.ts ***!
+  \********************************************************/
+/*! exports provided: UsuariosComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UsuariosComponent", function() { return UsuariosComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm5/material.es5.js");
+/* harmony import */ var _usuarios_datasource__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./usuarios-datasource */ "./src/app/paginas/usuarios/usuarios-datasource.ts");
+/* harmony import */ var src_app_servicos_usuarios_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/servicos/usuarios.service */ "./src/app/servicos/usuarios.service.ts");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+
+var UsuariosComponent = /** @class */ (function () {
+    function UsuariosComponent(us, router) {
+        this.us = us;
+        this.router = router;
+        /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
+        this.displayedColumns = ['nome', 'email', 'tipo', 'editar', 'excluir'];
+    }
+    UsuariosComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.us.getUsuarios().subscribe(function (dados) {
+            _this.dataSource = new _usuarios_datasource__WEBPACK_IMPORTED_MODULE_2__["UsuariosDataSource"](_this.paginator, _this.sort, _this.us);
+            _this.dataSource.data = dados;
+        });
+    };
+    UsuariosComponent.prototype.editar = function (objeto) {
+        this.us.setUsuarioSelecionado(objeto);
+        this.router.navigate(["/usuario"]);
+    };
+    UsuariosComponent.prototype.excluir = function (id) {
+        console.log(id);
+    };
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"])(_angular_material__WEBPACK_IMPORTED_MODULE_1__["MatPaginator"]),
+        __metadata("design:type", _angular_material__WEBPACK_IMPORTED_MODULE_1__["MatPaginator"])
+    ], UsuariosComponent.prototype, "paginator", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"])(_angular_material__WEBPACK_IMPORTED_MODULE_1__["MatSort"]),
+        __metadata("design:type", _angular_material__WEBPACK_IMPORTED_MODULE_1__["MatSort"])
+    ], UsuariosComponent.prototype, "sort", void 0);
+    UsuariosComponent = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: 'usuarios',
+            template: __webpack_require__(/*! ./usuarios.component.html */ "./src/app/paginas/usuarios/usuarios.component.html"),
+            styles: [__webpack_require__(/*! ./usuarios.component.css */ "./src/app/paginas/usuarios/usuarios.component.css")]
+        }),
+        __metadata("design:paramtypes", [src_app_servicos_usuarios_service__WEBPACK_IMPORTED_MODULE_3__["UsuariosService"], _angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"]])
+    ], UsuariosComponent);
+    return UsuariosComponent;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/app/rotas/rotas.module.ts":
 /*!***************************************!*\
   !*** ./src/app/rotas/rotas.module.ts ***!
@@ -810,6 +1112,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _paginas_pagina_curso_pagina_curso_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../paginas/pagina-curso/pagina-curso.component */ "./src/app/paginas/pagina-curso/pagina-curso.component.ts");
 /* harmony import */ var _paginas_pagina_cursos_pagina_cursos_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../paginas/pagina-cursos/pagina-cursos.component */ "./src/app/paginas/pagina-cursos/pagina-cursos.component.ts");
 /* harmony import */ var _paginas_login_login_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../paginas/login/login.component */ "./src/app/paginas/login/login.component.ts");
+/* harmony import */ var _paginas_usuarios_usuarios_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../paginas/usuarios/usuarios.component */ "./src/app/paginas/usuarios/usuarios.component.ts");
+/* harmony import */ var _paginas_usuario_usuario_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../paginas/usuario/usuario.component */ "./src/app/paginas/usuario/usuario.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -822,11 +1126,15 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 
 
 
+
+
 var rotas = [
     { path: "cursos", component: _paginas_pagina_cursos_pagina_cursos_component__WEBPACK_IMPORTED_MODULE_4__["PaginaCursosComponent"] },
     { path: "cursos/:id", component: _paginas_pagina_curso_pagina_curso_component__WEBPACK_IMPORTED_MODULE_3__["PaginaCursoComponent"] },
     { path: "", component: _paginas_login_login_component__WEBPACK_IMPORTED_MODULE_5__["LoginComponent"] },
     { path: "login", component: _paginas_login_login_component__WEBPACK_IMPORTED_MODULE_5__["LoginComponent"] },
+    { path: "usuarios", component: _paginas_usuarios_usuarios_component__WEBPACK_IMPORTED_MODULE_6__["UsuariosComponent"] },
+    { path: "usuario", component: _paginas_usuario_usuario_component__WEBPACK_IMPORTED_MODULE_7__["UsuarioComponent"] },
 ];
 var RotasModule = /** @class */ (function () {
     function RotasModule() {
@@ -993,6 +1301,63 @@ var ServicoCursosService = /** @class */ (function () {
         __metadata("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"]])
     ], ServicoCursosService);
     return ServicoCursosService;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/servicos/usuarios.service.ts":
+/*!**********************************************!*\
+  !*** ./src/app/servicos/usuarios.service.ts ***!
+  \**********************************************/
+/*! exports provided: UsuariosService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UsuariosService", function() { return UsuariosService; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+var UsuariosService = /** @class */ (function () {
+    function UsuariosService(http) {
+        this.http = http;
+        this.url = "https://api-sistema-treinamento.herokuapp.com";
+        this.cabecalhoJson = {
+            headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]({ 'Content-Type': 'application/json' })
+        };
+    }
+    UsuariosService.prototype.getUsuarios = function () {
+        return this.http.get(this.url + "/usuarios");
+    };
+    UsuariosService.prototype.getUsuario = function (id) {
+        return this.http.get(this.url + "/usuarios/" + id);
+    };
+    UsuariosService.prototype.setUsuarioSelecionado = function (usu) {
+        this.usuario = usu;
+    };
+    UsuariosService.prototype.getUsuarioSelecionado = function () {
+        return this.usuario;
+    };
+    UsuariosService = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])({
+            providedIn: 'root'
+        }),
+        __metadata("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"]])
+    ], UsuariosService);
+    return UsuariosService;
 }());
 
 

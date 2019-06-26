@@ -18,6 +18,8 @@ import { PaginaCursoComponent } from './paginas/pagina-curso/pagina-curso.compon
 import { RotasModule } from './rotas/rotas.module';
 import { LoginComponent } from './paginas/login/login.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { UsuariosComponent } from './paginas/usuarios/usuarios.component';
+import { UsuarioComponent } from './paginas/usuario/usuario.component';
 
 
 
@@ -29,7 +31,9 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     TabelaComponent,
     PaginaCursosComponent,
     PaginaCursoComponent,
-    LoginComponent
+    LoginComponent,
+    UsuariosComponent,
+    UsuarioComponent
   ],
   imports: [
     BrowserModule,
