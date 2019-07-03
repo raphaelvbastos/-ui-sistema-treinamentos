@@ -10,7 +10,7 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MenuComponent } from './paginas/menu/menu.component';
 import { LayoutModule } from '@angular/cdk/layout';
-import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule, MatGridListModule, MatCardModule, MatMenuModule, MatTableModule, MatPaginatorModule, MatSortModule, MatFormFieldModule, MatInputModule } from '@angular/material';
+import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule, MatGridListModule, MatCardModule, MatMenuModule, MatTableModule, MatPaginatorModule, MatSortModule, MatFormFieldModule, MatInputModule, MatSelectModule, MatDialog, MatDialogModule } from '@angular/material';
 import { PainelComponent } from './paginas/painel/painel.component';
 import { TabelaComponent } from './paginas/tabela/tabela.component';
 import { PaginaCursosComponent } from './paginas/pagina-cursos/pagina-cursos.component';
@@ -20,6 +20,7 @@ import { LoginComponent } from './paginas/login/login.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { UsuariosComponent } from './paginas/usuarios/usuarios.component';
 import { UsuarioComponent } from './paginas/usuario/usuario.component';
+import { ConfirmacaoComponent } from './paginas/confirmacao/confirmacao.component';
 
 
 
@@ -33,7 +34,8 @@ import { UsuarioComponent } from './paginas/usuario/usuario.component';
     PaginaCursoComponent,
     LoginComponent,
     UsuariosComponent,
-    UsuarioComponent
+    UsuarioComponent,
+    ConfirmacaoComponent
   ],
   imports: [
     BrowserModule,
@@ -56,7 +58,12 @@ import { UsuarioComponent } from './paginas/usuario/usuario.component';
     FormsModule,
     MatFormFieldModule,
     MatInputModule,
+    MatSelectModule,
+    MatDialogModule,
     FlexLayoutModule
+  ],
+  entryComponents: [
+    ConfirmacaoComponent
   ],
   providers: [],
   bootstrap: [AppComponent]

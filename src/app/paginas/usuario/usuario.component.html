@@ -1,7 +1,6 @@
 <mat-card>
   <div class="mat-elevation-z8">
       <form class="form my-2 my-lg-0">
-
           <mat-form-field class="inputFormulario">
               <input matInput placeholder="Nome" [(ngModel)]="usuario.nome" name="nome" required>
             </mat-form-field>
@@ -9,14 +8,27 @@
           <mat-form-field class="inputFormulario">
             <input matInput placeholder="E-mail" [(ngModel)]="usuario.email" name="email" required>
           </mat-form-field>
+          <div class="alert alert-danger" role="alert" [hidden]="emailDuplicado()">
+              <i class="material-icons">error</i> Email já cadastrado
+            </div>
 
           <mat-form-field class="inputFormulario">
             <input matInput placeholder="Senha" [(ngModel)]="usuario.senha" type="password" name="senha"
               required>
           </mat-form-field>
 
+          <mat-form-field class="inputFormulario">
+              <mat-label>Perfil</mat-label>
+              <mat-select required [(ngModel)]="usuario.tipo" name="perfil" [compareWith]="compareById">
+                <mat-option *ngFor="let t of tipoUsuario" [value]="t">
+                  {{t.tipo}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+
           <mat-card-actions>
-            <button mat-raised-button color="primary">Salvar</button>
+            <a mat-raised-button  color="primary" class="voltar" href="/usuarios">Voltar</a>
+            <button mat-raised-button color="primary" class="salvar" (click)="salvar()">Salvar</button>
           </mat-card-actions>
         </form>
   </div>

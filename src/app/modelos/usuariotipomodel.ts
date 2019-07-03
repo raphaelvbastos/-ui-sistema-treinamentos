@@ -1,4 +1,4 @@
-class UsuarioTipo {
+export class UsuarioTipo {
 
     tipo: string;
 

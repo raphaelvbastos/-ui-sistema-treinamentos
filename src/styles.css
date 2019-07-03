@@ -1,7 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 
-body { 
-    margin: 0; 
+body {
+    margin: 0;
     background: #212c3d;
 }
 
@@ -29,20 +29,19 @@ menu {
     margin-left: -40px;
 }
 
-
 .alert {
-  max-width: 250px;
-  padding: 10px;
-  margin-top: 10px;
-  border: 1px solid transparent;
-  border-radius: 3px;
+    max-width: 250px;
+    padding: 10px;
+    margin-top: 10px;
+    border: 1px solid transparent;
+    border-radius: 3px;
 }
 
 .alert-danger {
     background-color: #d43f3a;
     border-color: #d43f3a;
     color: #eee;
-  }
+}
 
 /* .example-full-width {
     width: 300px;
@@ -60,11 +59,13 @@ menu {
     margin: auto;
     margin-top: 10%;
     width: 300px;
-}.login-page, .register-page {
+}
+
+.login-page, .register-page {
     background: #d2d6de;
 }
 
-.login-box{
+.login-box {
     margin: auto;
     margin-top: 15%;
 }
@@ -76,21 +77,31 @@ menu {
     font-size: 1.3em;
 }
 
+.inputLogin .mat-form-field-label {
+    /* color: rgb(230, 153, 53) !important; */
+    color: #212c3d !important;
+}
+
+.inputLogin .mat-form-field-underline {
+    background-color: #212c3d !important;
+    /* background-color: rgb(230, 153, 53) !important; */
+}
+
 mat-sidenav-content {
     background: #212c3d;
 }
 
 .mat-table {
-    background:  none;
+    background: none;
 }
 
-.mat-elevation-z8 {
-    background:  #29374a;
+.mat-elevation-z8, mat-option, .mat-option-text, .mat-select-content, .mat-select-value {
+    background: #29374a;
     color: #eee;
 }
 
 .mat-paginator-container {
-    background:  #29374a;
+    background: #29374a;
     color: #eee;
 }
 
@@ -113,4 +124,77 @@ mat-sidenav-content {
     width: 100%;
     font-size: 1.3em;
     background: none;
+}
+
+.mat-elevation-z8 {
+    padding: 10px;
+}
+
+/* ::ng-deep .mat-form-field-underline .mat-form-field-ripple{
+
+    background-color:red;
+  }
+  
+  ::ng-deep .mat-form-field-underline{
+  
+    background-color:red;
+  } */
+
+.mat-form-field-label {
+    /* color: rgb(230, 153, 53) !important; */
+    color: #26C6DA !important;
+}
+
+.mat-form-field-underline {
+    background-color: #26C6DA !important;
+    /* background-color: rgb(230, 153, 53) !important; */
+}
+
+.salvar {
+    /* background-color: rgb(30, 124, 136) !important;
+    color: #eee; */
+
+    background: none !important;
+    border: 2px solid #26C6DA !important;;
+    color: #26C6DA !important;
+}
+
+.btnLogin {
+    background: none !important;
+    border: 2px solid #212c3d !important;;
+    color: #212c3d !important;
+}
+
+
+.btnCRUD {
+    cursor: pointer;
+}
+
+.voltar {
+    /* background-color: rgb(127, 210, 221) !important;
+    color: #333 !important; */
+    margin-left: 20px;
+
+    background: none !important;
+    border: 2px solid #ddd !important;;
+    color: #ddd !important;
+}
+
+.mat-dialog-container {
+    background-color: rgb(30, 124, 136) !important;
+}
+
+.mat-dialog-container {
+    font: 1em Roboto, "Helvetica Neue", sans-serif;
+    color: #222;
+}
+
+mat-header-cell {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.mat-card-actions {
+    text-align: right;
+    padding-right: 20px !important;
 }

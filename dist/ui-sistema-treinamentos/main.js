@@ -110,12 +110,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_flex_layout__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! @angular/flex-layout */ "./node_modules/@angular/flex-layout/esm5/flex-layout.es5.js");
 /* harmony import */ var _paginas_usuarios_usuarios_component__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./paginas/usuarios/usuarios.component */ "./src/app/paginas/usuarios/usuarios.component.ts");
 /* harmony import */ var _paginas_usuario_usuario_component__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./paginas/usuario/usuario.component */ "./src/app/paginas/usuario/usuario.component.ts");
+/* harmony import */ var _paginas_confirmacao_confirmacao_component__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./paginas/confirmacao/confirmacao.component */ "./src/app/paginas/confirmacao/confirmacao.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -149,7 +151,8 @@ var AppModule = /** @class */ (function () {
                 _paginas_pagina_curso_pagina_curso_component__WEBPACK_IMPORTED_MODULE_13__["PaginaCursoComponent"],
                 _paginas_login_login_component__WEBPACK_IMPORTED_MODULE_15__["LoginComponent"],
                 _paginas_usuarios_usuarios_component__WEBPACK_IMPORTED_MODULE_17__["UsuariosComponent"],
-                _paginas_usuario_usuario_component__WEBPACK_IMPORTED_MODULE_18__["UsuarioComponent"]
+                _paginas_usuario_usuario_component__WEBPACK_IMPORTED_MODULE_18__["UsuarioComponent"],
+                _paginas_confirmacao_confirmacao_component__WEBPACK_IMPORTED_MODULE_19__["ConfirmacaoComponent"]
             ],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"],
@@ -172,7 +175,12 @@ var AppModule = /** @class */ (function () {
                 _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormsModule"],
                 _angular_material__WEBPACK_IMPORTED_MODULE_9__["MatFormFieldModule"],
                 _angular_material__WEBPACK_IMPORTED_MODULE_9__["MatInputModule"],
+                _angular_material__WEBPACK_IMPORTED_MODULE_9__["MatSelectModule"],
+                _angular_material__WEBPACK_IMPORTED_MODULE_9__["MatDialogModule"],
                 _angular_flex_layout__WEBPACK_IMPORTED_MODULE_16__["FlexLayoutModule"]
+            ],
+            entryComponents: [
+                _paginas_confirmacao_confirmacao_component__WEBPACK_IMPORTED_MODULE_19__["ConfirmacaoComponent"]
             ],
             providers: [],
             bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_5__["AppComponent"]]
@@ -205,6 +213,78 @@ var Usuario = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "./src/app/paginas/confirmacao/confirmacao.component.css":
+/*!***************************************************************!*\
+  !*** ./src/app/paginas/confirmacao/confirmacao.component.css ***!
+  \***************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = ""
+
+/***/ }),
+
+/***/ "./src/app/paginas/confirmacao/confirmacao.component.html":
+/*!****************************************************************!*\
+  !*** ./src/app/paginas/confirmacao/confirmacao.component.html ***!
+  \****************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<div mat-dialog-content>\n  {{message}}\n</div>\n<div mat-dialog-actions>\n  <button mat-button (click)=\"onNoClick()\">Não</button>\n  <button mat-button [mat-dialog-close]=\"true\" cdkFocusInitial>Sim</button>\n</div>"
+
+/***/ }),
+
+/***/ "./src/app/paginas/confirmacao/confirmacao.component.ts":
+/*!**************************************************************!*\
+  !*** ./src/app/paginas/confirmacao/confirmacao.component.ts ***!
+  \**************************************************************/
+/*! exports provided: ConfirmacaoComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ConfirmacaoComponent", function() { return ConfirmacaoComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm5/material.es5.js");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var __param = (undefined && undefined.__param) || function (paramIndex, decorator) {
+    return function (target, key) { decorator(target, key, paramIndex); }
+};
+
+
+var ConfirmacaoComponent = /** @class */ (function () {
+    function ConfirmacaoComponent(dialogRef, message) {
+        this.dialogRef = dialogRef;
+        this.message = message;
+    }
+    ConfirmacaoComponent.prototype.onNoClick = function () {
+        this.dialogRef.close();
+    };
+    ConfirmacaoComponent = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: 'app-confirmacao',
+            template: __webpack_require__(/*! ./confirmacao.component.html */ "./src/app/paginas/confirmacao/confirmacao.component.html"),
+            styles: [__webpack_require__(/*! ./confirmacao.component.css */ "./src/app/paginas/confirmacao/confirmacao.component.css")]
+        }),
+        __param(1, Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"])(_angular_material__WEBPACK_IMPORTED_MODULE_1__["MAT_DIALOG_DATA"])),
+        __metadata("design:paramtypes", [_angular_material__WEBPACK_IMPORTED_MODULE_1__["MatDialogRef"], String])
+    ], ConfirmacaoComponent);
+    return ConfirmacaoComponent;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/app/paginas/login/login.component.css":
 /*!***************************************************!*\
   !*** ./src/app/paginas/login/login.component.css ***!
@@ -223,7 +303,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<!-- <mat-card class=\"example-card\">\n  <mat-card-header>\n    <mat-card-title>Login</mat-card-title>\n  </mat-card-header>\n  <mat-card-content>\n    <form class=\"example-form\">\n      <table class=\"example-full-width\" cellspacing=\"0\">\n        <tr>\n          <td>\n            <mat-form-field class=\"example-full-width\">\n              <input matInput placeholder=\"EMail\" [(ngModel)]=\"usuario.email\" name=\"email\" required>\n            </mat-form-field>\n          </td>\n        </tr>\n        <tr>\n          <td>\n            <mat-form-field class=\"example-full-width\">\n              <input matInput placeholder=\"Password\" [(ngModel)]=\"usuario.senha\" type=\"password\" name=\"senha\" required>\n            </mat-form-field>\n          </td>\n        </tr>\n      </table>\n    </form>\n\n    <div class=\"row\" *ngIf=\"showMsg\">\n      <div class=\"alert alert-danger\" role=\"alert\">\n        <i class=\"material-icons\">error</i> Email ou senha inválidos\n      </div>\n    </div>\n  </mat-card-content>\n  <mat-card-actions>\n    <button mat-raised-button (click)=\"login()\" color=\"primary\">Login</button>\n  </mat-card-actions>\n</mat-card> -->\n\n\n<div fxLayout=\"row\" fxLayoutWrap=\"wrap\">\n  <!-- column -->\n  <div fxFlex.gt-sm=\"100\" fxFlex.gt-xs=\"100\" fxFlex=\"100\">\n    <mat-card style=\"box-shadow: none\">\n      <mat-card-content>\n        <!-- Row -->\n        <div fxLayout=\"row\" fxLayoutWrap=\"wrap\">\n          <!-- column -->\n          <div fxFlex.gt-sm=\"50\" fxFlex.gt-xs=\"50\">\n            <div class=\"contains\">\n              <div class=\"login-box\">\n                <mat-card class=\"mat-elevation-z2\" style=\"background-color: #26C6DA\">\n                  <mat-card-header style=\"background-color: #26C6DA; font-weight: bold; color: #212c3d;font-size: 2em;text-align: center\">Login</mat-card-header>\n                  <mat-card-content>\n                    <form class=\"form my-2 my-lg-0\">\n                      <mat-form-field class=\"inputLogin\">\n                        <input matInput placeholder=\"E-mail\" [(ngModel)]=\"usuario.email\" name=\"email\" required>\n                      </mat-form-field>\n                      <mat-form-field class=\"inputLogin\">\n                        <input matInput placeholder=\"Senha\" [(ngModel)]=\"usuario.senha\" type=\"password\" name=\"senha\"\n                          required>\n                      </mat-form-field>\n                      <mat-card-actions>\n                        <button mat-raised-button (click)=\"login()\" color=\"primary\">Login</button>\n                      </mat-card-actions>\n                    </form>\n\n                    <div class=\"row\" *ngIf=\"showMsg\">\n                      <div class=\"alert alert-danger\" role=\"alert\">\n                        <i class=\"material-icons\">error</i> Email ou senha inválidos\n                      </div>\n                    </div>\n\n                  </mat-card-content>\n                </mat-card>\n              </div>\n\n            </div>\n            <br /><br />\n          </div>\n        </div>\n      </mat-card-content>\n    </mat-card>\n  </div>\n  <!-- column -->\n</div>"
+module.exports = "<!-- <mat-card class=\"example-card\">\n  <mat-card-header>\n    <mat-card-title>Login</mat-card-title>\n  </mat-card-header>\n  <mat-card-content>\n    <form class=\"example-form\">\n      <table class=\"example-full-width\" cellspacing=\"0\">\n        <tr>\n          <td>\n            <mat-form-field class=\"example-full-width\">\n              <input matInput placeholder=\"EMail\" [(ngModel)]=\"usuario.email\" name=\"email\" required>\n            </mat-form-field>\n          </td>\n        </tr>\n        <tr>\n          <td>\n            <mat-form-field class=\"example-full-width\">\n              <input matInput placeholder=\"Password\" [(ngModel)]=\"usuario.senha\" type=\"password\" name=\"senha\" required>\n            </mat-form-field>\n          </td>\n        </tr>\n      </table>\n    </form>\n\n    <div class=\"row\" *ngIf=\"showMsg\">\n      <div class=\"alert alert-danger\" role=\"alert\">\n        <i class=\"material-icons\">error</i> Email ou senha inválidos\n      </div>\n    </div>\n  </mat-card-content>\n  <mat-card-actions>\n    <button mat-raised-button (click)=\"login()\" color=\"primary\">Login</button>\n  </mat-card-actions>\n</mat-card> -->\n\n\n<div fxLayout=\"row\" fxLayoutWrap=\"wrap\">\n  <!-- column -->\n  <div fxFlex.gt-sm=\"100\" fxFlex.gt-xs=\"100\" fxFlex=\"100\">\n    <mat-card style=\"box-shadow: none\">\n      <mat-card-content>\n        <!-- Row -->\n        <div fxLayout=\"row\" fxLayoutWrap=\"wrap\">\n          <!-- column -->\n          <div fxFlex.gt-sm=\"50\" fxFlex.gt-xs=\"50\">\n            <div class=\"contains\">\n              <div class=\"login-box\">\n                <mat-card class=\"mat-elevation-z2\" style=\"background-color: #26C6DA\">\n                  <mat-card-header style=\"background-color: #26C6DA; font-weight: bold; color: #212c3d;font-size: 2em;text-align: center\">Login</mat-card-header>\n                  <mat-card-content>\n                    <form class=\"form my-2 my-lg-0\">\n                      <mat-form-field class=\"inputLogin\">\n                        <input matInput placeholder=\"E-mail\" [(ngModel)]=\"usuario.email\" name=\"email\" required>\n                      </mat-form-field>\n                      <mat-form-field class=\"inputLogin\">\n                        <input matInput placeholder=\"Senha\" [(ngModel)]=\"usuario.senha\" type=\"password\" name=\"senha\"\n                          required>\n                      </mat-form-field>\n                      <mat-card-actions>\n                        <button mat-raised-button (click)=\"login()\" color=\"primary\" class=\"btnLogin\">Login</button>\n                      </mat-card-actions>\n                    </form>\n\n                    <div class=\"row\" *ngIf=\"showMsg\">\n                      <div class=\"alert alert-danger\" role=\"alert\">\n                        <i class=\"material-icons\">error</i> Email ou senha inválidos\n                      </div>\n                    </div>\n\n                  </mat-card-content>\n                </mat-card>\n              </div>\n\n            </div>\n            <br /><br />\n          </div>\n        </div>\n      </mat-card-content>\n    </mat-card>\n  </div>\n  <!-- column -->\n</div>"
 
 /***/ }),
 
@@ -818,7 +898,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<mat-card>\n  <div class=\"mat-elevation-z8\">\n      <form class=\"form my-2 my-lg-0\">\n\n          <mat-form-field class=\"inputFormulario\">\n              <input matInput placeholder=\"Nome\" [(ngModel)]=\"usuario.nome\" name=\"nome\" required>\n            </mat-form-field>\n\n          <mat-form-field class=\"inputFormulario\">\n            <input matInput placeholder=\"E-mail\" [(ngModel)]=\"usuario.email\" name=\"email\" required>\n          </mat-form-field>\n\n          <mat-form-field class=\"inputFormulario\">\n            <input matInput placeholder=\"Senha\" [(ngModel)]=\"usuario.senha\" type=\"password\" name=\"senha\"\n              required>\n          </mat-form-field>\n\n          <mat-card-actions>\n            <button mat-raised-button (click)=\"login()\" color=\"primary\">Login</button>\n          </mat-card-actions>\n        </form>\n  </div>\n</mat-card>"
+module.exports = "<mat-card>\n  <div class=\"mat-elevation-z8\">\n      <form class=\"form my-2 my-lg-0\">\n          <mat-form-field class=\"inputFormulario\">\n              <input matInput placeholder=\"Nome\" [(ngModel)]=\"usuario.nome\" name=\"nome\" required>\n            </mat-form-field>\n\n          <mat-form-field class=\"inputFormulario\">\n            <input matInput placeholder=\"E-mail\" [(ngModel)]=\"usuario.email\" name=\"email\" required>\n          </mat-form-field>\n          <div class=\"alert alert-danger\" role=\"alert\" [hidden]=\"emailDuplicado()\">\n              <i class=\"material-icons\">error</i> Email já cadastrado\n            </div>\n\n          <mat-form-field class=\"inputFormulario\">\n            <input matInput placeholder=\"Senha\" [(ngModel)]=\"usuario.senha\" type=\"password\" name=\"senha\"\n              required>\n          </mat-form-field>\n\n          <mat-form-field class=\"inputFormulario\">\n              <mat-label>Perfil</mat-label>\n              <mat-select required [(ngModel)]=\"usuario.tipo\" name=\"perfil\" [compareWith]=\"compareById\">\n                <mat-option *ngFor=\"let t of tipoUsuario\" [value]=\"t\">\n                  {{t.tipo}}\n                </mat-option>\n              </mat-select>\n            </mat-form-field>\n\n          <mat-card-actions>\n            <a mat-raised-button  color=\"primary\" class=\"voltar\" href=\"/usuarios\">Voltar</a>\n            <button mat-raised-button color=\"primary\" class=\"salvar\" (click)=\"salvar()\">Salvar</button>\n          </mat-card-actions>\n        </form>\n  </div>\n</mat-card>"
 
 /***/ }),
 
@@ -835,6 +915,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var src_app_modelos_usuariomodel__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! src/app/modelos/usuariomodel */ "./src/app/modelos/usuariomodel.ts");
 /* harmony import */ var src_app_servicos_usuarios_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/servicos/usuarios.service */ "./src/app/servicos/usuarios.service.ts");
+/* harmony import */ var src_app_servicos_usuariotipo_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/servicos/usuariotipo.service */ "./src/app/servicos/usuariotipo.service.ts");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var src_app_servicos_autenticacao_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! src/app/servicos/autenticacao.service */ "./src/app/servicos/autenticacao.service.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -847,14 +930,59 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 
+
+
+
 var UsuarioComponent = /** @class */ (function () {
-    function UsuarioComponent(us) {
+    function UsuarioComponent(us, ut, router, as) {
+        var _this = this;
         this.us = us;
+        this.ut = ut;
+        this.router = router;
+        this.as = as;
         this.usuario = new src_app_modelos_usuariomodel__WEBPACK_IMPORTED_MODULE_1__["Usuario"]();
-        // this.usuario = new Usuario();
+        this.tipoUsuario = [];
+        this.usuario = new src_app_modelos_usuariomodel__WEBPACK_IMPORTED_MODULE_1__["Usuario"]();
+        this.ut.getTiposUsuario().subscribe(function (dados) {
+            _this.tipoUsuario = dados;
+        });
     }
     UsuarioComponent.prototype.ngOnInit = function () {
-        this.usuario = this.us.getUsuarioSelecionado();
+        if (this.us.getUsuarioSelecionado() != null) {
+            this.usuario = this.us.getUsuarioSelecionado();
+        }
+    };
+    UsuarioComponent.prototype.compareById = function (f1, f2) {
+        return f1 && f2 && f1._id === f2._id;
+    };
+    UsuarioComponent.prototype.emailDuplicado = function () {
+        // console.log(this.usuario.email);
+        // this.usuario.email = "";
+        return true;
+    };
+    UsuarioComponent.prototype.ehAdministrador = function () {
+        if (this.as.getUsuario() != null) {
+            if (this.as.getUsuario().tipo.tipo == "Administrador") {
+                return true;
+            }
+            return false;
+        }
+        else {
+            return false;
+        }
+    };
+    UsuarioComponent.prototype.salvar = function () {
+        var _this = this;
+        if (Object.keys(this.usuario).indexOf("_id") == -1) {
+            this.us.incluirUsuario(this.usuario).subscribe(function (dados) {
+                _this.router.navigate(["/usuarios"]);
+            });
+        }
+        else {
+            this.us.atualizarUsuario(this.usuario).subscribe(function (dados) {
+                _this.router.navigate(["/usuarios"]);
+            });
+        }
     };
     UsuarioComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
@@ -862,7 +990,7 @@ var UsuarioComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./usuario.component.html */ "./src/app/paginas/usuario/usuario.component.html"),
             styles: [__webpack_require__(/*! ./usuario.component.css */ "./src/app/paginas/usuario/usuario.component.css")]
         }),
-        __metadata("design:paramtypes", [src_app_servicos_usuarios_service__WEBPACK_IMPORTED_MODULE_2__["UsuariosService"]])
+        __metadata("design:paramtypes", [src_app_servicos_usuarios_service__WEBPACK_IMPORTED_MODULE_2__["UsuariosService"], src_app_servicos_usuariotipo_service__WEBPACK_IMPORTED_MODULE_3__["UsuariotipoService"], _angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"], src_app_servicos_autenticacao_service__WEBPACK_IMPORTED_MODULE_5__["AutenticacaoService"]])
     ], UsuarioComponent);
     return UsuarioComponent;
 }());
@@ -1019,7 +1147,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<mat-card>\n<div class=\"mat-elevation-z8\">\n  <mat-table #table [dataSource]=\"dataSource\" matSort aria-label=\"Elements\">\n\n    <!-- Id Column -->\n    <ng-container matColumnDef=\"nome\">\n      <mat-header-cell *matHeaderCellDef mat-sort-header>Nome</mat-header-cell>\n      <mat-cell *matCellDef=\"let row\">{{row.nome}}</mat-cell>\n    </ng-container>\n\n    <!-- Name Column -->\n    <ng-container matColumnDef=\"email\">\n      <mat-header-cell *matHeaderCellDef mat-sort-header>Email</mat-header-cell>\n      <mat-cell *matCellDef=\"let row\">{{row.email}}</mat-cell>\n    </ng-container>\n\n    <ng-container matColumnDef=\"tipo\">\n      <mat-header-cell *matHeaderCellDef mat-sort-header>tipo</mat-header-cell>\n      <mat-cell *matCellDef=\"let row\">\n        <span *ngFor=\"let r of row.tipo\">{{r.tipo}}</span>\n      </mat-cell>\n    </ng-container>\n\n    <ng-container matColumnDef=\"editar\">\n      <mat-header-cell *matHeaderCellDef mat-sort-header></mat-header-cell>\n      <td mat-cell *matCellDef=\"let row\"> \n        <a (click)=\"editar(row)\"><i class=\"material-icons md-48\">edit</i></a> \n      </td>\n    </ng-container>\n\n    <ng-container matColumnDef=\"excluir\">\n      <mat-header-cell *matHeaderCellDef mat-sort-header></mat-header-cell>\n      <td mat-cell *matCellDef=\"let row\"> \n        <a (click)=\"excluir(row._id)\" style=\"margin-left: 30px;\"><i class=\"material-icons md-48\">delete</i></a>\n      </td>\n    </ng-container>\n\n    <mat-header-row *matHeaderRowDef=\"displayedColumns\"></mat-header-row>\n    <mat-row *matRowDef=\"let row; columns: displayedColumns;\"></mat-row>\n  </mat-table>\n\n  <mat-paginator #paginator\n    [length]=\"dataSource?.data?.length\"\n    [pageIndex]=\"0\"\n    [pageSize]=\"50\"\n    [pageSizeOptions]=\"[25, 50, 100, 250]\">\n  </mat-paginator>\n</div>\n</mat-card>"
+module.exports = "<mat-card>\n<div class=\"mat-elevation-z8\">\n  <mat-table #table [dataSource]=\"dataSource\" matSort aria-label=\"Elements\">\n\n    <!-- Id Column -->\n    <ng-container matColumnDef=\"nome\">\n      <mat-header-cell *matHeaderCellDef mat-sort-header>Nome</mat-header-cell>\n      <mat-cell *matCellDef=\"let row\">{{row.nome}}</mat-cell>\n    </ng-container>\n\n    <!-- Name Column -->\n    <ng-container matColumnDef=\"email\">\n      <mat-header-cell *matHeaderCellDef mat-sort-header>Email</mat-header-cell>\n      <mat-cell *matCellDef=\"let row\">{{row.email}}</mat-cell>\n    </ng-container>\n\n    <ng-container matColumnDef=\"tipo\">\n      <mat-header-cell *matHeaderCellDef mat-sort-header>Tipo</mat-header-cell>\n      <!-- <mat-cell *matCellDef=\"let row\">\n        <span *ngFor=\"let r of row.tipo\">{{r.tipo}}</span>\n      </mat-cell> -->\n      <mat-cell *matCellDef=\"let row\">{{mostrarTipo(row.tipo)}}</mat-cell>\n    </ng-container>\n\n    <ng-container matColumnDef=\"editar\">\n      <mat-header-cell *matHeaderCellDef mat-sort-header></mat-header-cell>\n      <td mat-cell *matCellDef=\"let row\"> \n        <a (click)=\"editar(row)\"><i class=\"material-icons md-48 btnCRUD\" title=\"Editar\">edit</i></a> \n      </td>\n    </ng-container>\n\n    <ng-container matColumnDef=\"excluir\">\n      <mat-header-cell *matHeaderCellDef mat-sort-header></mat-header-cell>\n      <td mat-cell *matCellDef=\"let row\"> \n        <a (click)=\"openDialog(row)\" style=\"margin-left: 30px;\" class=\"btnCRUD\" title=\"Excluir\"><i class=\"material-icons md-48\">delete</i></a>\n      </td>\n    </ng-container>\n\n    <mat-header-row *matHeaderRowDef=\"displayedColumns\"></mat-header-row>\n    <mat-row *matRowDef=\"let row; columns: displayedColumns;\"></mat-row>\n  </mat-table>\n\n  <mat-paginator #paginator\n    [length]=\"dataSource?.data?.length\"\n    [pageIndex]=\"0\"\n    [pageSize]=\"50\"\n    [pageSizeOptions]=\"[25, 50, 100, 250]\">\n  </mat-paginator>\n</div>\n</mat-card>"
 
 /***/ }),
 
@@ -1038,6 +1166,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _usuarios_datasource__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./usuarios-datasource */ "./src/app/paginas/usuarios/usuarios-datasource.ts");
 /* harmony import */ var src_app_servicos_usuarios_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/servicos/usuarios.service */ "./src/app/servicos/usuarios.service.ts");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _confirmacao_confirmacao_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../confirmacao/confirmacao.component */ "./src/app/paginas/confirmacao/confirmacao.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1052,10 +1181,12 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 
+
 var UsuariosComponent = /** @class */ (function () {
-    function UsuariosComponent(us, router) {
+    function UsuariosComponent(us, router, dialog) {
         this.us = us;
         this.router = router;
+        this.dialog = dialog;
         /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
         this.displayedColumns = ['nome', 'email', 'tipo', 'editar', 'excluir'];
     }
@@ -1066,12 +1197,41 @@ var UsuariosComponent = /** @class */ (function () {
             _this.dataSource.data = dados;
         });
     };
+    UsuariosComponent.prototype.openDialog = function (objeto) {
+        var _this = this;
+        var dialogRef = this.dialog.open(_confirmacao_confirmacao_component__WEBPACK_IMPORTED_MODULE_5__["ConfirmacaoComponent"], {
+            width: '300px',
+            data: "Tem certeza que deseja excluir?"
+        });
+        dialogRef.afterClosed().subscribe(function (result) {
+            if (result) {
+                _this.excluir(objeto);
+            }
+        });
+    };
+    UsuariosComponent.prototype.atualizar = function () {
+        var _this = this;
+        this.us.getUsuarios().subscribe(function (dados) {
+            _this.dataSource = new _usuarios_datasource__WEBPACK_IMPORTED_MODULE_2__["UsuariosDataSource"](_this.paginator, _this.sort, _this.us);
+            _this.dataSource.data = dados;
+        });
+    };
+    UsuariosComponent.prototype.mostrarTipo = function (objeto) {
+        if (typeof objeto != "undefined") {
+            return objeto.tipo;
+        }
+        return "-";
+    };
     UsuariosComponent.prototype.editar = function (objeto) {
         this.us.setUsuarioSelecionado(objeto);
         this.router.navigate(["/usuario"]);
     };
-    UsuariosComponent.prototype.excluir = function (id) {
-        console.log(id);
+    UsuariosComponent.prototype.excluir = function (objeto) {
+        var _this = this;
+        this.us.setUsuarioSelecionado(objeto);
+        this.us.excluirUsuario(objeto).subscribe(function (dados) {
+            _this.atualizar();
+        });
     };
     __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"])(_angular_material__WEBPACK_IMPORTED_MODULE_1__["MatPaginator"]),
@@ -1087,7 +1247,7 @@ var UsuariosComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./usuarios.component.html */ "./src/app/paginas/usuarios/usuarios.component.html"),
             styles: [__webpack_require__(/*! ./usuarios.component.css */ "./src/app/paginas/usuarios/usuarios.component.css")]
         }),
-        __metadata("design:paramtypes", [src_app_servicos_usuarios_service__WEBPACK_IMPORTED_MODULE_3__["UsuariosService"], _angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"]])
+        __metadata("design:paramtypes", [src_app_servicos_usuarios_service__WEBPACK_IMPORTED_MODULE_3__["UsuariosService"], _angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"], _angular_material__WEBPACK_IMPORTED_MODULE_1__["MatDialog"]])
     ], UsuariosComponent);
     return UsuariosComponent;
 }());
@@ -1351,6 +1511,15 @@ var UsuariosService = /** @class */ (function () {
     UsuariosService.prototype.getUsuarioSelecionado = function () {
         return this.usuario;
     };
+    UsuariosService.prototype.incluirUsuario = function (u) {
+        return this.http.post(this.url + "/usuarios", u, this.cabecalhoJson);
+    };
+    UsuariosService.prototype.atualizarUsuario = function (u) {
+        return this.http.put(this.url + "/usuarios/" + u._id, u, this.cabecalhoJson);
+    };
+    UsuariosService.prototype.excluirUsuario = function (u) {
+        return this.http.delete(this.url + "/usuarios/" + u._id);
+    };
     UsuariosService = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])({
             providedIn: 'root'
@@ -1358,6 +1527,62 @@ var UsuariosService = /** @class */ (function () {
         __metadata("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"]])
     ], UsuariosService);
     return UsuariosService;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/servicos/usuariotipo.service.ts":
+/*!*************************************************!*\
+  !*** ./src/app/servicos/usuariotipo.service.ts ***!
+  \*************************************************/
+/*! exports provided: UsuariotipoService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UsuariotipoService", function() { return UsuariotipoService; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var UsuariotipoService = /** @class */ (function () {
+    function UsuariotipoService(http) {
+        this.http = http;
+        this.url = "https://api-sistema-treinamento.herokuapp.com";
+        this.cabecalhoJson = {
+            headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]({ 'Content-Type': 'application/json' })
+        };
+    }
+    UsuariotipoService.prototype.getTiposUsuario = function () {
+        return this.http.get(this.url + "/usuariotipo");
+    };
+    UsuariotipoService.prototype.getTipoUsuario = function (id) {
+        return this.http.get(this.url + "/usuariotipo/" + id);
+    };
+    UsuariotipoService.prototype.setUsuarioSelecionado = function (usu) {
+        this.usuarioTipo = usu;
+    };
+    UsuariotipoService.prototype.getUsuarioSelecionado = function () {
+        return this.usuarioTipo;
+    };
+    UsuariotipoService = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])({
+            providedIn: 'root'
+        }),
+        __metadata("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"]])
+    ], UsuariotipoService);
+    return UsuariotipoService;
 }());
 
 

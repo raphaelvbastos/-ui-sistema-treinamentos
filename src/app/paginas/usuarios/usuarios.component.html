@@ -15,23 +15,24 @@
     </ng-container>
 
     <ng-container matColumnDef="tipo">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>tipo</mat-header-cell>
-      <mat-cell *matCellDef="let row">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Tipo</mat-header-cell>
+      <!-- <mat-cell *matCellDef="let row">
         <span *ngFor="let r of row.tipo">{{r.tipo}}</span>
-      </mat-cell>
+      </mat-cell> -->
+      <mat-cell *matCellDef="let row">{{mostrarTipo(row.tipo)}}</mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="editar">
       <mat-header-cell *matHeaderCellDef mat-sort-header></mat-header-cell>
       <td mat-cell *matCellDef="let row"> 
-        <a (click)="editar(row)"><i class="material-icons md-48">edit</i></a> 
+        <a (click)="editar(row)"><i class="material-icons md-48 btnCRUD" title="Editar">edit</i></a> 
       </td>
     </ng-container>
 
     <ng-container matColumnDef="excluir">
       <mat-header-cell *matHeaderCellDef mat-sort-header></mat-header-cell>
       <td mat-cell *matCellDef="let row"> 
-        <a (click)="excluir(row._id)" style="margin-left: 30px;"><i class="material-icons md-48">delete</i></a>
+        <a (click)="openDialog(row)" style="margin-left: 30px;" class="btnCRUD" title="Excluir"><i class="material-icons md-48">delete</i></a>
       </td>
     </ng-container>
 

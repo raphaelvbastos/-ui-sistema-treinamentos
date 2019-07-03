@@ -25,7 +25,7 @@ export class UsuariosService {
   }
 
   getUsuario(id): Observable<Usuario> {
-    return this.http.get<Usuario>(this.url + "/usuarios/"+id);
+    return this.http.get<Usuario>(this.url + "/usuarios/" + id);
   }
 
   setUsuarioSelecionado(usu: Usuario) {
@@ -34,6 +34,18 @@ export class UsuariosService {
 
   getUsuarioSelecionado(): Usuario {
     return this.usuario;
+  }
+
+  incluirUsuario(u: Usuario): Observable<any> {
+    return this.http.post(this.url + "/usuarios", u, this.cabecalhoJson);
+  }
+
+  atualizarUsuario(u: any) {
+    return this.http.put(this.url + "/usuarios/" + u._id, u, this.cabecalhoJson);
+  }
+
+  excluirUsuario(u: any) {
+    return this.http.delete(this.url + "/usuarios/" + u._id);
   }
 
 }
