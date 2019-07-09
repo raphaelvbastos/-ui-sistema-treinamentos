@@ -16,6 +16,7 @@ export class UsuarioComponent implements OnInit {
 
   usuario = new Usuario();
   tipoUsuario = [];
+  emailValido = true;
 
   constructor(public us: UsuariosService, public ut: UsuariotipoService, public router: Router, public as: AutenticacaoService) {
     this.usuario = new Usuario();
@@ -35,9 +36,17 @@ export class UsuarioComponent implements OnInit {
   }
 
   emailDuplicado() {
-    // console.log(this.usuario.email);
-    // this.usuario.email = "";
-    return true;
+    let usuemail: Usuario;
+    this.us.getUsuarioEmail(this.usuario.email).subscribe((dados: Usuario) => {
+      usuemail = dados;
+
+      if(usuemail != null) {
+        this.emailValido = false;
+        this.usuario.email = "";
+      } else {
+        this.emailValido = true;
+      }
+    });
   }
 
   ehAdministrador() {
@@ -52,15 +61,22 @@ export class UsuarioComponent implements OnInit {
   }
 
   salvar() {
+    let tela = "/usuarios";
+    if(!this.as.ehAdministrador()) {
+      tela = "/login";
+      let perfil = {"_id":"5d0a252f024766700740e08a","tipo":"Empregado","__v":0};
+      this.usuario.tipo = perfil;
+    }
+
     if(Object.keys(this.usuario).indexOf("_id") == -1) {
       this.us.incluirUsuario(this.usuario).subscribe(
         (dados) => {
-          this.router.navigate(["/usuarios"]);
+          this.router.navigate([tela]);
         });
     } else {
       this.us.atualizarUsuario(this.usuario).subscribe(
         (dados) => {
-          this.router.navigate(["/usuarios"]);
+          this.router.navigate([tela]);
         });
     }
   }

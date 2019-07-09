@@ -28,6 +28,10 @@ export class UsuariosService {
     return this.http.get<Usuario>(this.url + "/usuarios/" + id);
   }
 
+  getUsuarioEmail(email): Observable<Usuario> {
+    return this.http.get<Usuario>(this.url + "/usuarios/email/" + email);
+  }
+
   setUsuarioSelecionado(usu: Usuario) {
     this.usuario = usu;
   }

@@ -27,7 +27,9 @@ export class MenuComponent implements OnInit {
   }
 
   usuarioIniciado(usuario: Usuario): boolean {
-    if(usuario != null && typeof usuario.email != "undefined") {
+    let usuarioAutenticado = this.as.getUsuario();
+
+    if(usuarioAutenticado != null && typeof usuarioAutenticado.email != "undefined") {
       return true;
     }
     return false;

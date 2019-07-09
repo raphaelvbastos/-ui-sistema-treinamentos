@@ -72,4 +72,23 @@ export class AutenticacaoService {
     alterarUsuario(usuarioLogado: Usuario) {
         this.usuario.next(usuarioLogado)
     }
+
+    ehAdministrador() {
+        if (this.getUsuario() != null) {
+            if (this.getUsuario().tipo.tipo == "Administrador") {
+                return true;
+            }
+            return false;
+        } else {
+            return false;
+        }
+    }
+
+    ehUsuarioAutenticado() {
+        if (this.getUsuario() != null) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
