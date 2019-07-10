@@ -49,8 +49,9 @@ const teste: any[] = [
  */
 export class UsuariosDataSource extends DataSource<any> implements OnInit {
   data: any[];
+  filter = "";
 
-  constructor(private paginator: MatPaginator, private sort: MatSort, public us: UsuariosService) {
+  constructor(private paginator: MatPaginator, public sort: MatSort, public us: UsuariosService) {
     super();
   }
 
@@ -108,7 +109,7 @@ export class UsuariosDataSource extends DataSource<any> implements OnInit {
       const isAsc = this.sort.direction === 'asc';
       switch (this.sort.active) {
         case 'name': return compare(a.nome, b.nome, isAsc);
-        case 'id': return compare(+a._id, +b._id, isAsc);
+        case '_id': return compare(+a._id, +b._id, isAsc);
         default: return 0;
       }
     });
