@@ -303,7 +303,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<!-- <mat-card class=\"example-card\">\n  <mat-card-header>\n    <mat-card-title>Login</mat-card-title>\n  </mat-card-header>\n  <mat-card-content>\n    <form class=\"example-form\">\n      <table class=\"example-full-width\" cellspacing=\"0\">\n        <tr>\n          <td>\n            <mat-form-field class=\"example-full-width\">\n              <input matInput placeholder=\"EMail\" [(ngModel)]=\"usuario.email\" name=\"email\" required>\n            </mat-form-field>\n          </td>\n        </tr>\n        <tr>\n          <td>\n            <mat-form-field class=\"example-full-width\">\n              <input matInput placeholder=\"Password\" [(ngModel)]=\"usuario.senha\" type=\"password\" name=\"senha\" required>\n            </mat-form-field>\n          </td>\n        </tr>\n      </table>\n    </form>\n\n    <div class=\"row\" *ngIf=\"showMsg\">\n      <div class=\"alert alert-danger\" role=\"alert\">\n        <i class=\"material-icons\">error</i> Email ou senha inválidos\n      </div>\n    </div>\n  </mat-card-content>\n  <mat-card-actions>\n    <button mat-raised-button (click)=\"login()\" color=\"primary\">Login</button>\n  </mat-card-actions>\n</mat-card> -->\n\n\n<div fxLayout=\"row\" fxLayoutWrap=\"wrap\">\n  <!-- column -->\n  <div fxFlex.gt-sm=\"100\" fxFlex.gt-xs=\"100\" fxFlex=\"100\">\n    <mat-card style=\"box-shadow: none\">\n      <mat-card-content>\n        <!-- Row -->\n        <div fxLayout=\"row\" fxLayoutWrap=\"wrap\">\n          <!-- column -->\n          <div fxFlex.gt-sm=\"50\" fxFlex.gt-xs=\"50\">\n            <div class=\"contains\">\n              <div class=\"login-box\">\n                <mat-card class=\"mat-elevation-z2\" style=\"background-color: #26C6DA\">\n                  <mat-card-header style=\"background-color: #26C6DA; font-weight: bold; color: #212c3d;font-size: 2em;text-align: center\">Login</mat-card-header>\n                  <mat-card-content>\n                    <form class=\"form my-2 my-lg-0\">\n                      <mat-form-field class=\"inputLogin\">\n                        <input matInput placeholder=\"E-mail\" [(ngModel)]=\"usuario.email\" name=\"email\" required>\n                      </mat-form-field>\n                      <mat-form-field class=\"inputLogin\">\n                        <input matInput placeholder=\"Senha\" [(ngModel)]=\"usuario.senha\" type=\"password\" name=\"senha\"\n                          required>\n                      </mat-form-field>\n                      <mat-card-actions>\n                        <button mat-raised-button (click)=\"login()\" color=\"primary\" class=\"btnLogin\">Login</button>\n                      </mat-card-actions>\n                    </form>\n\n                    <div class=\"row\" *ngIf=\"showMsg\">\n                      <div class=\"alert alert-danger\" role=\"alert\">\n                        <i class=\"material-icons\">error</i> Email ou senha inválidos\n                      </div>\n                    </div>\n\n                  </mat-card-content>\n                </mat-card>\n              </div>\n\n            </div>\n            <br /><br />\n          </div>\n        </div>\n      </mat-card-content>\n    </mat-card>\n  </div>\n  <!-- column -->\n</div>"
+module.exports = "<!-- <mat-card class=\"example-card\">\n  <mat-card-header>\n    <mat-card-title>Login</mat-card-title>\n  </mat-card-header>\n  <mat-card-content>\n    <form class=\"example-form\">\n      <table class=\"example-full-width\" cellspacing=\"0\">\n        <tr>\n          <td>\n            <mat-form-field class=\"example-full-width\">\n              <input matInput placeholder=\"EMail\" [(ngModel)]=\"usuario.email\" name=\"email\" required>\n            </mat-form-field>\n          </td>\n        </tr>\n        <tr>\n          <td>\n            <mat-form-field class=\"example-full-width\">\n              <input matInput placeholder=\"Password\" [(ngModel)]=\"usuario.senha\" type=\"password\" name=\"senha\" required>\n            </mat-form-field>\n          </td>\n        </tr>\n      </table>\n    </form>\n\n    <div class=\"row\" *ngIf=\"showMsg\">\n      <div class=\"alert alert-danger\" role=\"alert\">\n        <i class=\"material-icons\">error</i> Email ou senha inválidos\n      </div>\n    </div>\n  </mat-card-content>\n  <mat-card-actions>\n    <button mat-raised-button (click)=\"login()\" color=\"primary\">Login</button>\n  </mat-card-actions>\n</mat-card> -->\n\n\n<div fxLayout=\"row\" fxLayoutWrap=\"wrap\">\n  <!-- column -->\n  <div fxFlex.gt-sm=\"100\" fxFlex.gt-xs=\"100\" fxFlex=\"100\">\n    <mat-card style=\"box-shadow: none\">\n      <mat-card-content>\n        <!-- Row -->\n        <div fxLayout=\"row\" fxLayoutWrap=\"wrap\">\n          <!-- column -->\n          <div fxFlex.gt-sm=\"50\" fxFlex.gt-xs=\"50\">\n            <div class=\"contains\">\n              <div class=\"login-box\">\n                <mat-card class=\"mat-elevation-z2\" style=\"background-color: #26C6DA\">\n                  <mat-card-header style=\"background-color: #26C6DA; font-weight: bold; color: #212c3d;font-size: 2em;text-align: center\">Login</mat-card-header>\n                  <mat-card-content>\n                    <form class=\"form my-2 my-lg-0\">\n                      <mat-form-field class=\"inputLogin\">\n                        <input matInput placeholder=\"E-mail\" [(ngModel)]=\"usuario.email\" name=\"email\" required>\n                      </mat-form-field>\n                      <mat-form-field class=\"inputLogin\">\n                        <input matInput placeholder=\"Senha\" [(ngModel)]=\"usuario.senha\" type=\"password\" name=\"senha\"\n                          required>\n                      </mat-form-field>\n                      <mat-card-actions>\n                        <a mat-raised-button href=\"/usuario\" class=\"btnLogin\" style=\"margin-right: 50px\">Cadastrar</a>\n                        <button mat-raised-button (click)=\"login()\" color=\"primary\" class=\"btnLogin\">Login</button>\n                      </mat-card-actions>\n                    </form>\n\n                    <div class=\"row\" *ngIf=\"showMsg\">\n                      <div class=\"alert alert-danger\" role=\"alert\">\n                        <i class=\"material-icons\">error</i> Email ou senha inválidos\n                      </div>\n                    </div>\n\n                  </mat-card-content>\n                </mat-card>\n              </div>\n\n            </div>\n            <br /><br />\n          </div>\n        </div>\n      </mat-card-content>\n    </mat-card>\n  </div>\n  <!-- column -->\n</div>"
 
 /***/ }),
 
@@ -393,7 +393,7 @@ module.exports = ".sidenav-container {\n  height: 100%;\n}\n\n.sidenav {\n  widt
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<!-- <mat-sidenav-container class=\"sidenav-container\">\n  <mat-sidenav\n    #drawer\n    class=\"sidenav\"\n    fixedInViewport=\"true\"\n    [attr.role]=\"(isHandset$ | async) ? 'dialog' : 'navigation'\"\n    [mode]=\"(isHandset$ | async) ? 'over' : 'side'\"\n    [opened]=\"!(isHandset$ | async)\">\n    <mat-toolbar color=\"primary\">Menu</mat-toolbar>\n    <mat-nav-list>\n      <a mat-list-item href=\"/cursos\">Cursos</a>\n      <a mat-list-item href=\"/curso\">Curso</a>\n      <a *ngIf=\"usuarioIniciado(usuario)\" mat-list-item href=\"#\">Link 3</a>\n    </mat-nav-list>\n  </mat-sidenav>\n  <mat-sidenav-content>\n    <mat-toolbar color=\"primary\">\n      <button\n        type=\"button\"\n        aria-label=\"Toggle sidenav\"\n        mat-icon-button\n        (click)=\"drawer.toggle()\"\n        *ngIf=\"isHandset$ | async\">\n        <mat-icon aria-label=\"Side nav toggle icon\">menu</mat-icon>\n      </button>\n      <span>Sistema de Treinamentos</span>\n      <div style=\"color: #fff;position: absolute;right: 10px;\">\n        <a *ngIf=\"usuarioIniciado(usuario)\" (click)=\"logoff()\" title=\"Sair\">\n          <i class=\"material-icons md-48\">exit_to_app</i>\n        </a>\n      </div>\n    </mat-toolbar>\n    <router-outlet></router-outlet>\n  </mat-sidenav-content>\n</mat-sidenav-container> -->\n\n\n<div style=\"height: 80vh;\">\n  <mat-toolbar color=\"primary\">\n    <mat-toolbar-row>\n      <button mat-icon-button (click)=\"sidenav.toggle()\" fxShow=\"true\" fxHide.gt-sm>\n        <mat-icon>menu</mat-icon>\n      </button>\n      <span>Responsive Navigation</span>\n      <span class=\"menu-spacer\"></span>\n      <div fxShow=\"true\" fxHide.lt-md>\n        <!-- The following menu items will be hidden on both SM and XS screen sizes -->\n        <a href=\"/usuarios\" mat-button>\n          <i class=\"material-icons md-48\">account_circle</i> Usuários\n        </a>\n\n        <a href=\"/cursos\" mat-button>\n          <i class=\"material-icons md-48\">school</i> Cursos\n        </a>\n\n        <a style=\"position:fixed;right:10px;\" *ngIf=\"usuarioIniciado(usuario)\" (click)=\"logoff()\" title=\"Sair\">\n          <i class=\"material-icons md-48\">exit_to_app</i>\n        </a>\n      </div>\n    </mat-toolbar-row>\n  </mat-toolbar>\n\n  <mat-sidenav-container fxFlexFill>\n    <mat-sidenav #sidenav class=\"sidenav\">\n      <mat-nav-list>\n        <a (click)=\"sidenav.toggle()\" href=\"\" mat-list-item><i class=\"material-icons md-48\">close</i></a>\n        <a href=\"#\" mat-list-item>Menu Item 1</a>\n        <a href=\"#\" mat-list-item>Menu Item 2</a>\n      </mat-nav-list>\n    </mat-sidenav>\n    <mat-sidenav-content fxFlexFill>\n      <router-outlet></router-outlet>\n    </mat-sidenav-content>\n  </mat-sidenav-container>\n</div>\n\n"
+module.exports = "<!-- <mat-sidenav-container class=\"sidenav-container\">\n  <mat-sidenav\n    #drawer\n    class=\"sidenav\"\n    fixedInViewport=\"true\"\n    [attr.role]=\"(isHandset$ | async) ? 'dialog' : 'navigation'\"\n    [mode]=\"(isHandset$ | async) ? 'over' : 'side'\"\n    [opened]=\"!(isHandset$ | async)\">\n    <mat-toolbar color=\"primary\">Menu</mat-toolbar>\n    <mat-nav-list>\n      <a mat-list-item href=\"/cursos\">Cursos</a>\n      <a mat-list-item href=\"/curso\">Curso</a>\n      <a *ngIf=\"usuarioIniciado(usuario)\" mat-list-item href=\"#\">Link 3</a>\n    </mat-nav-list>\n  </mat-sidenav>\n  <mat-sidenav-content>\n    <mat-toolbar color=\"primary\">\n      <button\n        type=\"button\"\n        aria-label=\"Toggle sidenav\"\n        mat-icon-button\n        (click)=\"drawer.toggle()\"\n        *ngIf=\"isHandset$ | async\">\n        <mat-icon aria-label=\"Side nav toggle icon\">menu</mat-icon>\n      </button>\n      <span>Sistema de Treinamentos</span>\n      <div style=\"color: #fff;position: absolute;right: 10px;\">\n        <a *ngIf=\"usuarioIniciado(usuario)\" (click)=\"logoff()\" title=\"Sair\">\n          <i class=\"material-icons md-48\">exit_to_app</i>\n        </a>\n      </div>\n    </mat-toolbar>\n    <router-outlet></router-outlet>\n  </mat-sidenav-content>\n</mat-sidenav-container> -->\n\n\n<div style=\"height: 80vh;\">\n  <mat-toolbar color=\"primary\">\n    <mat-toolbar-row>\n      <button mat-icon-button (click)=\"sidenav.toggle()\" fxShow=\"true\" fxHide.gt-sm>\n        <mat-icon>menu</mat-icon>\n      </button>\n      <span>Responsive Navigation</span>\n      <span class=\"menu-spacer\"></span>\n      <div fxShow=\"true\" fxHide.lt-md>\n        <!-- The following menu items will be hidden on both SM and XS screen sizes -->\n        <a href=\"/usuarios\" mat-button *ngIf=\"this.as.ehAdministrador()\">\n          <i class=\"material-icons md-48\">account_circle</i> Usuários\n        </a>\n\n        <a href=\"/cursos\" mat-button mat-button *ngIf=\"this.as.ehUsuarioAutenticado()\">\n          <i class=\"material-icons md-48\">school</i> Cursos\n        </a>\n\n        <a style=\"position:fixed;right:10px;\" *ngIf=\"usuarioIniciado(usuario)\" (click)=\"logoff()\" title=\"Sair\">\n          <i class=\"material-icons md-48\">exit_to_app</i>\n        </a>\n      </div>\n    </mat-toolbar-row>\n  </mat-toolbar>\n\n  <mat-sidenav-container fxFlexFill>\n    <mat-sidenav #sidenav class=\"sidenav\">\n      <mat-nav-list>\n        <a (click)=\"sidenav.toggle()\" href=\"\" mat-list-item><i class=\"material-icons md-48\">close</i></a>\n        <a href=\"#\" mat-list-item>Menu Item 1</a>\n        <a href=\"#\" mat-list-item>Menu Item 2</a>\n      </mat-nav-list>\n    </mat-sidenav>\n    <mat-sidenav-content fxFlexFill>\n      <router-outlet></router-outlet>\n    </mat-sidenav-content>\n  </mat-sidenav-container>\n</div>\n\n"
 
 /***/ }),
 
@@ -439,7 +439,8 @@ var MenuComponent = /** @class */ (function () {
         this.as.usuarioLogado.subscribe(function (users) { return _this.usuario = users; });
     };
     MenuComponent.prototype.usuarioIniciado = function (usuario) {
-        if (usuario != null && typeof usuario.email != "undefined") {
+        var usuarioAutenticado = this.as.getUsuario();
+        if (usuarioAutenticado != null && typeof usuarioAutenticado.email != "undefined") {
             return true;
         }
         return false;
@@ -898,7 +899,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<mat-card>\n  <div class=\"mat-elevation-z8\">\n      <form class=\"form my-2 my-lg-0\">\n          <mat-form-field class=\"inputFormulario\">\n              <input matInput placeholder=\"Nome\" [(ngModel)]=\"usuario.nome\" name=\"nome\" required>\n            </mat-form-field>\n\n          <mat-form-field class=\"inputFormulario\">\n            <input matInput placeholder=\"E-mail\" [(ngModel)]=\"usuario.email\" name=\"email\" required>\n          </mat-form-field>\n          <div class=\"alert alert-danger\" role=\"alert\" [hidden]=\"emailDuplicado()\">\n              <i class=\"material-icons\">error</i> Email já cadastrado\n            </div>\n\n          <mat-form-field class=\"inputFormulario\">\n            <input matInput placeholder=\"Senha\" [(ngModel)]=\"usuario.senha\" type=\"password\" name=\"senha\"\n              required>\n          </mat-form-field>\n\n          <mat-form-field class=\"inputFormulario\">\n              <mat-label>Perfil</mat-label>\n              <mat-select required [(ngModel)]=\"usuario.tipo\" name=\"perfil\" [compareWith]=\"compareById\">\n                <mat-option *ngFor=\"let t of tipoUsuario\" [value]=\"t\">\n                  {{t.tipo}}\n                </mat-option>\n              </mat-select>\n            </mat-form-field>\n\n          <mat-card-actions>\n            <a mat-raised-button  color=\"primary\" class=\"voltar\" href=\"/usuarios\">Voltar</a>\n            <button mat-raised-button color=\"primary\" class=\"salvar\" (click)=\"salvar()\">Salvar</button>\n          </mat-card-actions>\n        </form>\n  </div>\n</mat-card>"
+module.exports = "<mat-card>\n  <div class=\"mat-elevation-z8\">\n      <form class=\"form my-2 my-lg-0\">\n          <mat-form-field class=\"inputFormulario\">\n              <input matInput placeholder=\"Nome\" [(ngModel)]=\"usuario.nome\" name=\"nome\" required>\n            </mat-form-field>\n\n          <mat-form-field class=\"inputFormulario\">\n            <input matInput placeholder=\"E-mail\" [(ngModel)]=\"usuario.email\" name=\"email\" required (blur)=\"emailDuplicado()\">\n          </mat-form-field>\n          <div class=\"alert alert-danger\" role=\"alert\" [hidden]=\"emailValido\">\n              <i class=\"material-icons\">error</i> Email já cadastrado\n            </div>\n\n          <mat-form-field class=\"inputFormulario\">\n            <input matInput placeholder=\"Senha\" [(ngModel)]=\"usuario.senha\" type=\"password\" name=\"senha\"\n              required>\n          </mat-form-field>\n\n          <mat-form-field class=\"inputFormulario\" *ngIf=\"this.as.ehAdministrador()\">\n              <mat-label>Perfil</mat-label>\n              <mat-select required [(ngModel)]=\"usuario.tipo\" name=\"perfil\" [compareWith]=\"compareById\">\n                <mat-option *ngFor=\"let t of tipoUsuario\" [value]=\"t\">\n                  {{t.tipo}}\n                </mat-option>\n              </mat-select>\n            </mat-form-field>\n\n          <mat-card-actions>\n            <a mat-raised-button  color=\"primary\" class=\"voltar\" href=\"/usuarios\" *ngIf=\"this.as.ehAdministrador()\">Voltar</a>\n            <a mat-raised-button  color=\"primary\" class=\"voltar\" href=\"/login\" *ngIf=\"!this.as.ehUsuarioAutenticado()\">Voltar</a>\n            <button mat-raised-button color=\"primary\" class=\"salvar\" (click)=\"salvar()\">Salvar</button>\n          </mat-card-actions>\n        </form>\n  </div>\n</mat-card>"
 
 /***/ }),
 
@@ -942,6 +943,7 @@ var UsuarioComponent = /** @class */ (function () {
         this.as = as;
         this.usuario = new src_app_modelos_usuariomodel__WEBPACK_IMPORTED_MODULE_1__["Usuario"]();
         this.tipoUsuario = [];
+        this.emailValido = true;
         this.usuario = new src_app_modelos_usuariomodel__WEBPACK_IMPORTED_MODULE_1__["Usuario"]();
         this.ut.getTiposUsuario().subscribe(function (dados) {
             _this.tipoUsuario = dados;
@@ -956,9 +958,18 @@ var UsuarioComponent = /** @class */ (function () {
         return f1 && f2 && f1._id === f2._id;
     };
     UsuarioComponent.prototype.emailDuplicado = function () {
-        // console.log(this.usuario.email);
-        // this.usuario.email = "";
-        return true;
+        var _this = this;
+        var usuemail;
+        this.us.getUsuarioEmail(this.usuario.email).subscribe(function (dados) {
+            usuemail = dados;
+            if (usuemail != null) {
+                _this.emailValido = false;
+                _this.usuario.email = "";
+            }
+            else {
+                _this.emailValido = true;
+            }
+        });
     };
     UsuarioComponent.prototype.ehAdministrador = function () {
         if (this.as.getUsuario() != null) {
@@ -973,14 +984,20 @@ var UsuarioComponent = /** @class */ (function () {
     };
     UsuarioComponent.prototype.salvar = function () {
         var _this = this;
+        var tela = "/usuarios";
+        if (!this.as.ehAdministrador()) {
+            tela = "/login";
+            var perfil = { "_id": "5d0a252f024766700740e08a", "tipo": "Empregado", "__v": 0 };
+            this.usuario.tipo = perfil;
+        }
         if (Object.keys(this.usuario).indexOf("_id") == -1) {
             this.us.incluirUsuario(this.usuario).subscribe(function (dados) {
-                _this.router.navigate(["/usuarios"]);
+                _this.router.navigate([tela]);
             });
         }
         else {
             this.us.atualizarUsuario(this.usuario).subscribe(function (dados) {
-                _this.router.navigate(["/usuarios"]);
+                _this.router.navigate([tela]);
             });
         }
     };
@@ -1402,6 +1419,25 @@ var AutenticacaoService = /** @class */ (function () {
     AutenticacaoService.prototype.alterarUsuario = function (usuarioLogado) {
         this.usuario.next(usuarioLogado);
     };
+    AutenticacaoService.prototype.ehAdministrador = function () {
+        if (this.getUsuario() != null) {
+            if (this.getUsuario().tipo.tipo == "Administrador") {
+                return true;
+            }
+            return false;
+        }
+        else {
+            return false;
+        }
+    };
+    AutenticacaoService.prototype.ehUsuarioAutenticado = function () {
+        if (this.getUsuario() != null) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    };
     AutenticacaoService = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])({
             providedIn: 'root'
@@ -1504,6 +1540,9 @@ var UsuariosService = /** @class */ (function () {
     };
     UsuariosService.prototype.getUsuario = function (id) {
         return this.http.get(this.url + "/usuarios/" + id);
+    };
+    UsuariosService.prototype.getUsuarioEmail = function (email) {
+        return this.http.get(this.url + "/usuarios/email/" + email);
     };
     UsuariosService.prototype.setUsuarioSelecionado = function (usu) {
         this.usuario = usu;
@@ -1649,7 +1688,7 @@ Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_1__["platformB
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /home/raphael/ui-sistema-treinamentos/src/main.ts */"./src/main.ts");
+module.exports = __webpack_require__(/*! /home/raphael/Documentos/ui-sistema-treinamentos/src/main.ts */"./src/main.ts");
 
 
 /***/ })
