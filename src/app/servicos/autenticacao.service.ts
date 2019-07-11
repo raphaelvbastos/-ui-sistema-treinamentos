@@ -4,6 +4,7 @@ import { Observable, of, BehaviorSubject } from 'rxjs';
 import { catchError, tap } from 'rxjs/internal/operators';
 import { Router } from '@angular/router';
 import { Usuario } from '../modelos/usuariomodel';
+import { MensagemService } from './mensagem.service';
 
 const httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -22,7 +23,7 @@ export class AutenticacaoService {
     public usuario = new BehaviorSubject(this.usuarioModelo);
     usuarioLogado = this.usuario.asObservable();
 
-    constructor(private http: HttpClient, public router: Router) {
+    constructor(private http: HttpClient, public router: Router, public ms: MensagemService) {
     }
 
     login(data): Observable<any> {
@@ -89,6 +90,20 @@ export class AutenticacaoService {
             return true;
         } else {
             return false;
+        }
+    }
+
+    permissaoAcesso(tipo: string, msg: string): void {
+        if(tipo == "ADM") {
+            if(!this.ehAdministrador()) {
+                this.ms.setMensagem(msg);
+                this.router.navigate(["/erro"]);
+            }
+        } else if(tipo == "AUTENTICADO") {
+            if(!this.ehUsuarioAutenticado()) {
+                this.ms.setMensagem(msg);
+                this.router.navigate(["/erro"]);
+            }
         }
     }
 }

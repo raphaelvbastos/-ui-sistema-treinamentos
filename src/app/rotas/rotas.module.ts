@@ -6,6 +6,7 @@ import { PaginaCursosComponent } from '../paginas/pagina-cursos/pagina-cursos.co
 import { LoginComponent } from '../paginas/login/login.component';
 import { UsuariosComponent } from '../paginas/usuarios/usuarios.component';
 import { UsuarioComponent } from '../paginas/usuario/usuario.component';
+import { ErroComponent } from '../paginas/erro/erro.component';
 
 const rotas: Routes = [
   { path: "cursos", component: PaginaCursosComponent },
@@ -14,6 +15,7 @@ const rotas: Routes = [
   { path: "login", component: LoginComponent },
   { path: "usuarios", component: UsuariosComponent },
   { path: "usuario", component: UsuarioComponent },
+  { path: "erro", component: ErroComponent },
 ]
 
 

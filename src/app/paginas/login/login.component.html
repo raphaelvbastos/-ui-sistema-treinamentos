@@ -45,7 +45,7 @@
           <div fxFlex.gt-sm="50" fxFlex.gt-xs="50">
             <div class="contains">
               <div class="login-box">
-                <mat-card class="mat-elevation-z2" style="background-color: #26C6DA">
+                <mat-card class="mat-elevation-z2" style="background-color: #26C6DA" *ngIf="!usuarioAutenticado">
                   <mat-card-header style="background-color: #26C6DA; font-weight: bold; color: #212c3d;font-size: 2em;text-align: center">Login</mat-card-header>
                   <mat-card-content>
                     <form class="form my-2 my-lg-0">
@@ -70,6 +70,17 @@
 
                   </mat-card-content>
                 </mat-card>
+
+
+                <mat-card class="mat-elevation-z2" style="background-color: #26C6DA" *ngIf="usuarioAutenticado">
+                    <mat-card-header style="background-color: #26C6DA; font-weight: bold; color: #212c3d;font-size: 2em;text-align: center">Você já está autenticado</mat-card-header>
+                    <mat-card-content>
+                      <a (click)="logoff()" title="Sair">
+                        <i class="material-icons md-48">exit_to_app</i> Sair
+                      </a>
+                    </mat-card-content>
+                </mat-card>
+
               </div>
 
             </div>

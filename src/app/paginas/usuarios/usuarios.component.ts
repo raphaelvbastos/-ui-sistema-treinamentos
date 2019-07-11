@@ -8,6 +8,8 @@ import { UsuarioTipo } from 'src/app/modelos/usuariotipomodel';
 import { ConfirmacaoComponent } from '../confirmacao/confirmacao.component';
 import { extend } from 'webdriver-js-extender';
 import { CrudListar } from 'src/app/modelos/crudmodel';
+import { AutenticacaoService } from 'src/app/servicos/autenticacao.service';
+import { MensagemService } from 'src/app/servicos/mensagem.service';
 
 @Component({
   selector: 'usuarios',
@@ -102,10 +104,12 @@ import { CrudListar } from 'src/app/modelos/crudmodel';
 
 export class UsuariosComponent extends CrudListar {
 
-  constructor(public us: UsuariosService, public router: Router, public dialog: MatDialog) {
+  constructor(public us: UsuariosService, public router: Router, public dialog: MatDialog, public as: AutenticacaoService) {
     super(us, router, dialog);
     this.tela = "/usuario";
     this.displayedColumns = ['nome', 'email', 'tipo', 'acoes'];
+
+    this.as.permissaoAcesso("ADM", "Acesso Negado");
   }
 }
 

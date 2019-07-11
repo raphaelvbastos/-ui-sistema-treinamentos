@@ -12,8 +12,11 @@ export class LoginComponent implements OnInit {
 
   usuario = new Usuario();
   showMsg: boolean = false;
+  usuarioAutenticado = false;
 
-  constructor(public as: AutenticacaoService, public router: Router) { }
+  constructor(public as: AutenticacaoService, public router: Router) { 
+    this.usuarioAutenticado = this.as.ehUsuarioAutenticado();
+  }
 
   ngOnInit() {    
   }
@@ -34,6 +37,11 @@ export class LoginComponent implements OnInit {
     });
     // console.log(this.usuario.email);
     // console.log(this.usuario.senha);
+  }
+
+  logoff(): any {
+    this.as.encerrarSessao();
+    this.usuarioAutenticado = false;
   }
 
 }

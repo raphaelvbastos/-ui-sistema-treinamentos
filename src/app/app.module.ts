@@ -21,6 +21,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { UsuariosComponent } from './paginas/usuarios/usuarios.component';
 import { UsuarioComponent } from './paginas/usuario/usuario.component';
 import { ConfirmacaoComponent } from './paginas/confirmacao/confirmacao.component';
+import { ErroComponent } from './paginas/erro/erro.component';
 
 
 
@@ -35,7 +36,8 @@ import { ConfirmacaoComponent } from './paginas/confirmacao/confirmacao.componen
     LoginComponent,
     UsuariosComponent,
     UsuarioComponent,
-    ConfirmacaoComponent
+    ConfirmacaoComponent,
+    ErroComponent
   ],
   imports: [
     BrowserModule,

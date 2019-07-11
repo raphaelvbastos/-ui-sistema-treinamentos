@@ -111,12 +111,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _paginas_usuarios_usuarios_component__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./paginas/usuarios/usuarios.component */ "./src/app/paginas/usuarios/usuarios.component.ts");
 /* harmony import */ var _paginas_usuario_usuario_component__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./paginas/usuario/usuario.component */ "./src/app/paginas/usuario/usuario.component.ts");
 /* harmony import */ var _paginas_confirmacao_confirmacao_component__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./paginas/confirmacao/confirmacao.component */ "./src/app/paginas/confirmacao/confirmacao.component.ts");
+/* harmony import */ var _paginas_erro_erro_component__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./paginas/erro/erro.component */ "./src/app/paginas/erro/erro.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -152,7 +154,8 @@ var AppModule = /** @class */ (function () {
                 _paginas_login_login_component__WEBPACK_IMPORTED_MODULE_15__["LoginComponent"],
                 _paginas_usuarios_usuarios_component__WEBPACK_IMPORTED_MODULE_17__["UsuariosComponent"],
                 _paginas_usuario_usuario_component__WEBPACK_IMPORTED_MODULE_18__["UsuarioComponent"],
-                _paginas_confirmacao_confirmacao_component__WEBPACK_IMPORTED_MODULE_19__["ConfirmacaoComponent"]
+                _paginas_confirmacao_confirmacao_component__WEBPACK_IMPORTED_MODULE_19__["ConfirmacaoComponent"],
+                _paginas_erro_erro_component__WEBPACK_IMPORTED_MODULE_20__["ErroComponent"]
             ],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"],
@@ -378,6 +381,73 @@ var ConfirmacaoComponent = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "./src/app/paginas/erro/erro.component.css":
+/*!*************************************************!*\
+  !*** ./src/app/paginas/erro/erro.component.css ***!
+  \*************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = ""
+
+/***/ }),
+
+/***/ "./src/app/paginas/erro/erro.component.html":
+/*!**************************************************!*\
+  !*** ./src/app/paginas/erro/erro.component.html ***!
+  \**************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<mat-card>\n<div class=\"mat-elevation-z8\">\n    <i class=\"material-icons md-48\" style=\"font-size: 2em\">error</i>\n    {{ mensagem }}\n</div>\n</mat-card>"
+
+/***/ }),
+
+/***/ "./src/app/paginas/erro/erro.component.ts":
+/*!************************************************!*\
+  !*** ./src/app/paginas/erro/erro.component.ts ***!
+  \************************************************/
+/*! exports provided: ErroComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ErroComponent", function() { return ErroComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var src_app_servicos_mensagem_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! src/app/servicos/mensagem.service */ "./src/app/servicos/mensagem.service.ts");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var ErroComponent = /** @class */ (function () {
+    function ErroComponent(ms) {
+        this.ms = ms;
+        this.mensagem = this.ms.getMensagem();
+    }
+    ErroComponent.prototype.ngOnInit = function () {
+    };
+    ErroComponent = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: 'app-erro',
+            template: __webpack_require__(/*! ./erro.component.html */ "./src/app/paginas/erro/erro.component.html"),
+            styles: [__webpack_require__(/*! ./erro.component.css */ "./src/app/paginas/erro/erro.component.css")]
+        }),
+        __metadata("design:paramtypes", [src_app_servicos_mensagem_service__WEBPACK_IMPORTED_MODULE_1__["MensagemService"]])
+    ], ErroComponent);
+    return ErroComponent;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/app/paginas/login/login.component.css":
 /*!***************************************************!*\
   !*** ./src/app/paginas/login/login.component.css ***!
@@ -396,7 +466,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<!-- <mat-card class=\"example-card\">\n  <mat-card-header>\n    <mat-card-title>Login</mat-card-title>\n  </mat-card-header>\n  <mat-card-content>\n    <form class=\"example-form\">\n      <table class=\"example-full-width\" cellspacing=\"0\">\n        <tr>\n          <td>\n            <mat-form-field class=\"example-full-width\">\n              <input matInput placeholder=\"EMail\" [(ngModel)]=\"usuario.email\" name=\"email\" required>\n            </mat-form-field>\n          </td>\n        </tr>\n        <tr>\n          <td>\n            <mat-form-field class=\"example-full-width\">\n              <input matInput placeholder=\"Password\" [(ngModel)]=\"usuario.senha\" type=\"password\" name=\"senha\" required>\n            </mat-form-field>\n          </td>\n        </tr>\n      </table>\n    </form>\n\n    <div class=\"row\" *ngIf=\"showMsg\">\n      <div class=\"alert alert-danger\" role=\"alert\">\n        <i class=\"material-icons\">error</i> Email ou senha inválidos\n      </div>\n    </div>\n  </mat-card-content>\n  <mat-card-actions>\n    <button mat-raised-button (click)=\"login()\" color=\"primary\">Login</button>\n  </mat-card-actions>\n</mat-card> -->\n\n\n<div fxLayout=\"row\" fxLayoutWrap=\"wrap\">\n  <!-- column -->\n  <div fxFlex.gt-sm=\"100\" fxFlex.gt-xs=\"100\" fxFlex=\"100\">\n    <mat-card style=\"box-shadow: none\">\n      <mat-card-content>\n        <!-- Row -->\n        <div fxLayout=\"row\" fxLayoutWrap=\"wrap\">\n          <!-- column -->\n          <div fxFlex.gt-sm=\"50\" fxFlex.gt-xs=\"50\">\n            <div class=\"contains\">\n              <div class=\"login-box\">\n                <mat-card class=\"mat-elevation-z2\" style=\"background-color: #26C6DA\">\n                  <mat-card-header style=\"background-color: #26C6DA; font-weight: bold; color: #212c3d;font-size: 2em;text-align: center\">Login</mat-card-header>\n                  <mat-card-content>\n                    <form class=\"form my-2 my-lg-0\">\n                      <mat-form-field class=\"inputLogin\">\n                        <input matInput placeholder=\"E-mail\" [(ngModel)]=\"usuario.email\" name=\"email\" required>\n                      </mat-form-field>\n                      <mat-form-field class=\"inputLogin\">\n                        <input matInput placeholder=\"Senha\" [(ngModel)]=\"usuario.senha\" type=\"password\" name=\"senha\"\n                          required>\n                      </mat-form-field>\n                      <mat-card-actions>\n                        <a mat-raised-button href=\"/usuario\" class=\"btnLogin\" style=\"margin-right: 50px\">Cadastrar</a>\n                        <button mat-raised-button (click)=\"login()\" color=\"primary\" class=\"btnLogin\">Login</button>\n                      </mat-card-actions>\n                    </form>\n\n                    <div class=\"row\" *ngIf=\"showMsg\">\n                      <div class=\"alert alert-danger\" role=\"alert\">\n                        <i class=\"material-icons\">error</i> Email ou senha inválidos\n                      </div>\n                    </div>\n\n                  </mat-card-content>\n                </mat-card>\n              </div>\n\n            </div>\n            <br /><br />\n          </div>\n        </div>\n      </mat-card-content>\n    </mat-card>\n  </div>\n  <!-- column -->\n</div>"
+module.exports = "<!-- <mat-card class=\"example-card\">\n  <mat-card-header>\n    <mat-card-title>Login</mat-card-title>\n  </mat-card-header>\n  <mat-card-content>\n    <form class=\"example-form\">\n      <table class=\"example-full-width\" cellspacing=\"0\">\n        <tr>\n          <td>\n            <mat-form-field class=\"example-full-width\">\n              <input matInput placeholder=\"EMail\" [(ngModel)]=\"usuario.email\" name=\"email\" required>\n            </mat-form-field>\n          </td>\n        </tr>\n        <tr>\n          <td>\n            <mat-form-field class=\"example-full-width\">\n              <input matInput placeholder=\"Password\" [(ngModel)]=\"usuario.senha\" type=\"password\" name=\"senha\" required>\n            </mat-form-field>\n          </td>\n        </tr>\n      </table>\n    </form>\n\n    <div class=\"row\" *ngIf=\"showMsg\">\n      <div class=\"alert alert-danger\" role=\"alert\">\n        <i class=\"material-icons\">error</i> Email ou senha inválidos\n      </div>\n    </div>\n  </mat-card-content>\n  <mat-card-actions>\n    <button mat-raised-button (click)=\"login()\" color=\"primary\">Login</button>\n  </mat-card-actions>\n</mat-card> -->\n\n\n<div fxLayout=\"row\" fxLayoutWrap=\"wrap\">\n  <!-- column -->\n  <div fxFlex.gt-sm=\"100\" fxFlex.gt-xs=\"100\" fxFlex=\"100\">\n    <mat-card style=\"box-shadow: none\">\n      <mat-card-content>\n        <!-- Row -->\n        <div fxLayout=\"row\" fxLayoutWrap=\"wrap\">\n          <!-- column -->\n          <div fxFlex.gt-sm=\"50\" fxFlex.gt-xs=\"50\">\n            <div class=\"contains\">\n              <div class=\"login-box\">\n                <mat-card class=\"mat-elevation-z2\" style=\"background-color: #26C6DA\" *ngIf=\"!usuarioAutenticado\">\n                  <mat-card-header style=\"background-color: #26C6DA; font-weight: bold; color: #212c3d;font-size: 2em;text-align: center\">Login</mat-card-header>\n                  <mat-card-content>\n                    <form class=\"form my-2 my-lg-0\">\n                      <mat-form-field class=\"inputLogin\">\n                        <input matInput placeholder=\"E-mail\" [(ngModel)]=\"usuario.email\" name=\"email\" required>\n                      </mat-form-field>\n                      <mat-form-field class=\"inputLogin\">\n                        <input matInput placeholder=\"Senha\" [(ngModel)]=\"usuario.senha\" type=\"password\" name=\"senha\"\n                          required>\n                      </mat-form-field>\n                      <mat-card-actions>\n                        <a mat-raised-button href=\"/usuario\" class=\"btnLogin\" style=\"margin-right: 50px\">Cadastrar</a>\n                        <button mat-raised-button (click)=\"login()\" color=\"primary\" class=\"btnLogin\">Login</button>\n                      </mat-card-actions>\n                    </form>\n\n                    <div class=\"row\" *ngIf=\"showMsg\">\n                      <div class=\"alert alert-danger\" role=\"alert\">\n                        <i class=\"material-icons\">error</i> Email ou senha inválidos\n                      </div>\n                    </div>\n\n                  </mat-card-content>\n                </mat-card>\n\n\n                <mat-card class=\"mat-elevation-z2\" style=\"background-color: #26C6DA\" *ngIf=\"usuarioAutenticado\">\n                    <mat-card-header style=\"background-color: #26C6DA; font-weight: bold; color: #212c3d;font-size: 2em;text-align: center\">Você já está autenticado</mat-card-header>\n                    <mat-card-content>\n                      <a (click)=\"logoff()\" title=\"Sair\">\n                        <i class=\"material-icons md-48\">exit_to_app</i> Sair\n                      </a>\n                    </mat-card-content>\n                </mat-card>\n\n              </div>\n\n            </div>\n            <br /><br />\n          </div>\n        </div>\n      </mat-card-content>\n    </mat-card>\n  </div>\n  <!-- column -->\n</div>"
 
 /***/ }),
 
@@ -433,6 +503,8 @@ var LoginComponent = /** @class */ (function () {
         this.router = router;
         this.usuario = new _modelos_usuariomodel__WEBPACK_IMPORTED_MODULE_3__["Usuario"]();
         this.showMsg = false;
+        this.usuarioAutenticado = false;
+        this.usuarioAutenticado = this.as.ehUsuarioAutenticado();
     }
     LoginComponent.prototype.ngOnInit = function () {
     };
@@ -452,6 +524,10 @@ var LoginComponent = /** @class */ (function () {
         });
         // console.log(this.usuario.email);
         // console.log(this.usuario.senha);
+    };
+    LoginComponent.prototype.logoff = function () {
+        this.as.encerrarSessao();
+        this.usuarioAutenticado = false;
     };
     LoginComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
@@ -1146,6 +1222,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var src_app_servicos_usuarios_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/servicos/usuarios.service */ "./src/app/servicos/usuarios.service.ts");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 /* harmony import */ var src_app_modelos_crudmodel__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/app/modelos/crudmodel */ "./src/app/modelos/crudmodel.ts");
+/* harmony import */ var src_app_servicos_autenticacao_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! src/app/servicos/autenticacao.service */ "./src/app/servicos/autenticacao.service.ts");
 var __extends = (undefined && undefined.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -1170,15 +1247,18 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 
+
 var UsuariosComponent = /** @class */ (function (_super) {
     __extends(UsuariosComponent, _super);
-    function UsuariosComponent(us, router, dialog) {
+    function UsuariosComponent(us, router, dialog, as) {
         var _this = _super.call(this, us, router, dialog) || this;
         _this.us = us;
         _this.router = router;
         _this.dialog = dialog;
+        _this.as = as;
         _this.tela = "/usuario";
         _this.displayedColumns = ['nome', 'email', 'tipo', 'acoes'];
+        _this.as.permissaoAcesso("ADM", "Acesso Negado");
         return _this;
     }
     UsuariosComponent = __decorate([
@@ -1254,7 +1334,7 @@ var UsuariosComponent = /** @class */ (function (_super) {
         //   }
         // }
         ,
-        __metadata("design:paramtypes", [src_app_servicos_usuarios_service__WEBPACK_IMPORTED_MODULE_2__["UsuariosService"], _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"], _angular_material__WEBPACK_IMPORTED_MODULE_1__["MatDialog"]])
+        __metadata("design:paramtypes", [src_app_servicos_usuarios_service__WEBPACK_IMPORTED_MODULE_2__["UsuariosService"], _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"], _angular_material__WEBPACK_IMPORTED_MODULE_1__["MatDialog"], src_app_servicos_autenticacao_service__WEBPACK_IMPORTED_MODULE_5__["AutenticacaoService"]])
     ], UsuariosComponent);
     return UsuariosComponent;
 }(src_app_modelos_crudmodel__WEBPACK_IMPORTED_MODULE_4__["CrudListar"]));
@@ -1333,12 +1413,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _paginas_login_login_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../paginas/login/login.component */ "./src/app/paginas/login/login.component.ts");
 /* harmony import */ var _paginas_usuarios_usuarios_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../paginas/usuarios/usuarios.component */ "./src/app/paginas/usuarios/usuarios.component.ts");
 /* harmony import */ var _paginas_usuario_usuario_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../paginas/usuario/usuario.component */ "./src/app/paginas/usuario/usuario.component.ts");
+/* harmony import */ var _paginas_erro_erro_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../paginas/erro/erro.component */ "./src/app/paginas/erro/erro.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -1354,6 +1436,7 @@ var rotas = [
     { path: "login", component: _paginas_login_login_component__WEBPACK_IMPORTED_MODULE_5__["LoginComponent"] },
     { path: "usuarios", component: _paginas_usuarios_usuarios_component__WEBPACK_IMPORTED_MODULE_6__["UsuariosComponent"] },
     { path: "usuario", component: _paginas_usuario_usuario_component__WEBPACK_IMPORTED_MODULE_7__["UsuarioComponent"] },
+    { path: "erro", component: _paginas_erro_erro_component__WEBPACK_IMPORTED_MODULE_8__["ErroComponent"] },
 ];
 var RotasModule = /** @class */ (function () {
     function RotasModule() {
@@ -1392,6 +1475,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var rxjs_internal_operators__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(rxjs_internal_operators__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 /* harmony import */ var _modelos_usuariomodel__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../modelos/usuariomodel */ "./src/app/modelos/usuariomodel.ts");
+/* harmony import */ var _mensagem_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./mensagem.service */ "./src/app/servicos/mensagem.service.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1407,13 +1491,15 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 
+
 var httpOptions = {
     headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]({ 'Content-Type': 'application/json' })
 };
 var AutenticacaoService = /** @class */ (function () {
-    function AutenticacaoService(http, router) {
+    function AutenticacaoService(http, router, ms) {
         this.http = http;
         this.router = router;
+        this.ms = ms;
         // private url = 'http://localhost:8080/login/';
         this.url = 'https://api-sistema-treinamento.herokuapp.com/login';
         this.usuarioModelo = new _modelos_usuariomodel__WEBPACK_IMPORTED_MODULE_5__["Usuario"]();
@@ -1480,13 +1566,70 @@ var AutenticacaoService = /** @class */ (function () {
             return false;
         }
     };
+    AutenticacaoService.prototype.permissaoAcesso = function (tipo, msg) {
+        if (tipo == "ADM") {
+            if (!this.ehAdministrador()) {
+                this.ms.setMensagem(msg);
+                this.router.navigate(["/erro"]);
+            }
+        }
+        else if (tipo == "AUTENTICADO") {
+            if (!this.ehUsuarioAutenticado()) {
+                this.ms.setMensagem(msg);
+                this.router.navigate(["/erro"]);
+            }
+        }
+    };
     AutenticacaoService = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])({
             providedIn: 'root'
         }),
-        __metadata("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"], _angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"]])
+        __metadata("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"], _angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"], _mensagem_service__WEBPACK_IMPORTED_MODULE_6__["MensagemService"]])
     ], AutenticacaoService);
     return AutenticacaoService;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/servicos/mensagem.service.ts":
+/*!**********************************************!*\
+  !*** ./src/app/servicos/mensagem.service.ts ***!
+  \**********************************************/
+/*! exports provided: MensagemService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MensagemService", function() { return MensagemService; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var MensagemService = /** @class */ (function () {
+    function MensagemService() {
+    }
+    MensagemService.prototype.setMensagem = function (msg) {
+        this.mensagem = msg;
+    };
+    MensagemService.prototype.getMensagem = function () {
+        return this.mensagem;
+    };
+    MensagemService = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])({
+            providedIn: 'root'
+        }),
+        __metadata("design:paramtypes", [])
+    ], MensagemService);
+    return MensagemService;
 }());
 
 
