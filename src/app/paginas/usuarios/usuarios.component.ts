@@ -6,6 +6,8 @@ import { Router, NavigationExtras } from '@angular/router';
 import { Usuario } from 'src/app/modelos/usuariomodel';
 import { UsuarioTipo } from 'src/app/modelos/usuariotipomodel';
 import { ConfirmacaoComponent } from '../confirmacao/confirmacao.component';
+import { extend } from 'webdriver-js-extender';
+import { CrudListar } from 'src/app/modelos/crudmodel';
 
 @Component({
   selector: 'usuarios',
@@ -97,68 +99,80 @@ import { ConfirmacaoComponent } from '../confirmacao/confirmacao.component';
 
 
 
-export class UsuariosComponent implements OnInit, AfterViewInit {
 
-  public displayedColumns = ['nome', 'email', 'tipo', 'editar', 'excluir'];
-  public dataSource = new MatTableDataSource<Usuario>(); 
+export class UsuariosComponent extends CrudListar {
 
-  @ViewChild(MatSort) sort: MatSort;
-  @ViewChild(MatPaginator) paginator: MatPaginator;
-
-  constructor(public us: UsuariosService, public router: Router, public dialog: MatDialog) { }
-
-  ngOnInit() {
-    this.atualizar();
-  }
-
-  ngAfterViewInit(): void {
-     this.dataSource.sort = this.sort;
-     this.dataSource.paginator = this.paginator;
-  }
-
-  public doFilter = (value: string) => {
-    this.dataSource.filter = value.trim().toLocaleLowerCase();
-  }
-
-  openDialog(objeto: any): void {
-    const dialogRef = this.dialog.open(ConfirmacaoComponent, {
-      width: '300px',
-      data: "Tem certeza que deseja excluir?"
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      if (result) {
-        this.excluir(objeto);
-      }
-    });
-  }
-
-  mostrarTipo(objeto: UsuarioTipo) {
-    if (typeof objeto != "undefined") {
-      return objeto.tipo;
-    }
-
-    return "-";
-  }
-
-  editar(objeto: any) {
-    this.us.setUsuarioSelecionado(objeto);
-    this.router.navigate(["/usuario"]);
-  }
-
-  excluir(objeto: any) {
-    this.us.setUsuarioSelecionado(objeto);
-    this.us.excluirUsuario(objeto).subscribe(
-      (dados) => {
-        this.atualizar();
-      });
-  }
-
-  atualizar() {
-    this.us.getUsuarios().subscribe(
-      (dados: any[]) => {
-        this.dataSource.data = dados;
-      }
-    );
+  constructor(public us: UsuariosService, public router: Router, public dialog: MatDialog) {
+    super(us, router, dialog);
+    this.tela = "/usuario";
+    this.displayedColumns = ['nome', 'email', 'tipo', 'acoes'];
   }
 }
+
+
+
+// export class UsuariosComponent implements OnInit, AfterViewInit {
+
+//   public displayedColumns = ['nome', 'email', 'tipo', 'acoes'];
+//   public dataSource = new MatTableDataSource<Usuario>(); 
+
+//   @ViewChild(MatSort) sort: MatSort;
+//   @ViewChild(MatPaginator) paginator: MatPaginator;
+
+//   constructor(public us: UsuariosService, public router: Router, public dialog: MatDialog) { }
+
+//   ngOnInit() {
+//     this.atualizar();
+//   }
+
+//   ngAfterViewInit(): void {
+//      this.dataSource.sort = this.sort;
+//      this.dataSource.paginator = this.paginator;
+//   }
+
+//   public doFilter = (value: string) => {
+//     this.dataSource.filter = value.trim().toLocaleLowerCase();
+//   }
+
+//   openDialog(objeto: any): void {
+//     const dialogRef = this.dialog.open(ConfirmacaoComponent, {
+//       width: '300px',
+//       data: "Tem certeza que deseja excluir?"
+//     });
+
+//     dialogRef.afterClosed().subscribe(result => {
+//       if (result) {
+//         this.excluir(objeto);
+//       }
+//     });
+//   }
+
+//   mostrarTipo(objeto: UsuarioTipo) {
+//     if (typeof objeto != "undefined") {
+//       return objeto.tipo;
+//     }
+
+//     return "-";
+//   }
+
+//   editar(objeto: any) {
+//     this.us.setUsuarioSelecionado(objeto);
+//     this.router.navigate(["/usuario"]);
+//   }
+
+//   excluir(objeto: any) {
+//     this.us.setUsuarioSelecionado(objeto);
+//     this.us.excluirUsuario(objeto).subscribe(
+//       (dados) => {
+//         this.atualizar();
+//       });
+//   }
+
+//   atualizar() {
+//     this.us.getUsuarios().subscribe(
+//       (dados: any[]) => {
+//         this.dataSource.data = dados;
+//       }
+//     );
+//   }
+// }

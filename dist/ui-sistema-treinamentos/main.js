@@ -193,6 +193,99 @@ var AppModule = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "./src/app/modelos/crudmodel.ts":
+/*!**************************************!*\
+  !*** ./src/app/modelos/crudmodel.ts ***!
+  \**************************************/
+/*! exports provided: CrudListar */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CrudListar", function() { return CrudListar; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm5/material.es5.js");
+/* harmony import */ var _paginas_confirmacao_confirmacao_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../paginas/confirmacao/confirmacao.component */ "./src/app/paginas/confirmacao/confirmacao.component.ts");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+var CrudListar = /** @class */ (function () {
+    function CrudListar(us, router, dialog) {
+        var _this = this;
+        this.us = us;
+        this.router = router;
+        this.dialog = dialog;
+        this.dataSource = new _angular_material__WEBPACK_IMPORTED_MODULE_1__["MatTableDataSource"]();
+        this.doFilter = function (value) {
+            _this.dataSource.filter = value.trim().toLocaleLowerCase();
+        };
+    }
+    CrudListar.prototype.ngOnInit = function () {
+        this.atualizar();
+    };
+    CrudListar.prototype.ngAfterViewInit = function () {
+        this.dataSource.sort = this.sort;
+        this.dataSource.paginator = this.paginator;
+    };
+    CrudListar.prototype.openDialog = function (objeto) {
+        var _this = this;
+        var dialogRef = this.dialog.open(_paginas_confirmacao_confirmacao_component__WEBPACK_IMPORTED_MODULE_2__["ConfirmacaoComponent"], {
+            width: '300px',
+            data: "Tem certeza que deseja excluir?"
+        });
+        dialogRef.afterClosed().subscribe(function (result) {
+            if (result) {
+                _this.excluir(objeto);
+            }
+        });
+    };
+    CrudListar.prototype.mostrarTipo = function (objeto) {
+        if (typeof objeto != "undefined") {
+            return objeto.tipo;
+        }
+        return "-";
+    };
+    CrudListar.prototype.editar = function (objeto) {
+        this.us.setObjetoSelecionado(objeto);
+        this.router.navigate([this.tela]);
+    };
+    CrudListar.prototype.excluir = function (objeto) {
+        var _this = this;
+        this.us.setObjetoSelecionado(objeto);
+        this.us.excluir(objeto).subscribe(function (dados) {
+            _this.atualizar();
+        });
+    };
+    CrudListar.prototype.atualizar = function () {
+        var _this = this;
+        this.us.get().subscribe(function (dados) {
+            _this.dataSource.data = dados;
+        });
+    };
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"])(_angular_material__WEBPACK_IMPORTED_MODULE_1__["MatSort"]),
+        __metadata("design:type", _angular_material__WEBPACK_IMPORTED_MODULE_1__["MatSort"])
+    ], CrudListar.prototype, "sort", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"])(_angular_material__WEBPACK_IMPORTED_MODULE_1__["MatPaginator"]),
+        __metadata("design:type", _angular_material__WEBPACK_IMPORTED_MODULE_1__["MatPaginator"])
+    ], CrudListar.prototype, "paginator", void 0);
+    return CrudListar;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/app/modelos/usuariomodel.ts":
 /*!*****************************************!*\
   !*** ./src/app/modelos/usuariomodel.ts ***!
@@ -950,8 +1043,8 @@ var UsuarioComponent = /** @class */ (function () {
         });
     }
     UsuarioComponent.prototype.ngOnInit = function () {
-        if (this.us.getUsuarioSelecionado() != null) {
-            this.usuario = this.us.getUsuarioSelecionado();
+        if (this.us.getObjetoSelecionado() != null) {
+            this.usuario = this.us.getObjetoSelecionado();
         }
     };
     UsuarioComponent.prototype.compareById = function (f1, f2) {
@@ -991,12 +1084,12 @@ var UsuarioComponent = /** @class */ (function () {
             this.usuario.tipo = perfil;
         }
         if (Object.keys(this.usuario).indexOf("_id") == -1) {
-            this.us.incluirUsuario(this.usuario).subscribe(function (dados) {
+            this.us.incluir(this.usuario).subscribe(function (dados) {
                 _this.router.navigate([tela]);
             });
         }
         else {
-            this.us.atualizarUsuario(this.usuario).subscribe(function (dados) {
+            this.us.atualizar(this.usuario).subscribe(function (dados) {
                 _this.router.navigate([tela]);
             });
         }
@@ -1012,136 +1105,6 @@ var UsuarioComponent = /** @class */ (function () {
     return UsuarioComponent;
 }());
 
-
-
-/***/ }),
-
-/***/ "./src/app/paginas/usuarios/usuarios-datasource.ts":
-/*!*********************************************************!*\
-  !*** ./src/app/paginas/usuarios/usuarios-datasource.ts ***!
-  \*********************************************************/
-/*! exports provided: UsuariosDataSource */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UsuariosDataSource", function() { return UsuariosDataSource; });
-/* harmony import */ var _angular_cdk_collections__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/cdk/collections */ "./node_modules/@angular/cdk/esm5/collections.es5.js");
-/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
-/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
-var __extends = (undefined && undefined.__extends) || (function () {
-    var extendStatics = Object.setPrototypeOf ||
-        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
-    return function (d, b) {
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
-
-
-
-// TODO: replace this with real data from your application
-var EXAMPLE_DATA = [
-    { id: 1, name: 'Hydrogen' },
-    { id: 2, name: 'Helium' },
-    { id: 3, name: 'Lithium' },
-    { id: 4, name: 'Beryllium' },
-    { id: 5, name: 'Boron' },
-    { id: 6, name: 'Carbon' },
-    { id: 7, name: 'Nitrogen' },
-    { id: 8, name: 'Oxygen' },
-    { id: 9, name: 'Fluorine' },
-    { id: 10, name: 'Neon' },
-    { id: 11, name: 'Sodium' },
-    { id: 12, name: 'Magnesium' },
-    { id: 13, name: 'Aluminum' },
-    { id: 14, name: 'Silicon' },
-    { id: 15, name: 'Phosphorus' },
-    { id: 16, name: 'Sulfur' },
-    { id: 17, name: 'Chlorine' },
-    { id: 18, name: 'Argon' },
-    { id: 19, name: 'Potassium' },
-    { id: 20, name: 'Calcium' },
-];
-var teste = [
-    { "_id": "5d0a27e65429030004ce4f3b", "nome": "Administrador do Sistema", "email": "adm@gmail.com", "senha": "$2a$10$U8g18cixO412LjKpZ1JVZ.Kt70NukXqiU17wlY03wxCP48xXAU/4q", "tipo": [{ "_id": "5d0a27e65429030004ce4f39", "tipo": "Administrador" }], "__v": 0 }, { "_id": "5d0a27e65429030004ce4f3d", "nome": "Lucas das Pontes", "email": "lucaspontes@gmail.com", "senha": "abcdef", "tipo": [{ "_id": "5d0a27e65429030004ce4f3a", "tipo": "Empregado" }], "__v": 0 }, { "_id": "5d0d86351c9d440000ddd69d", "nome": "MODIFICADO 1", "email": "MODIFICADO1@gmail.com", "senha": "MOD1", "tipo": [{ "_id": "5d0a27e65429030004ce4f39", "tipo": "Administrador" }], "__v": 0 }, { "_id": "5d0ad417f703e91ef73571ec", "nome": "Roberval de almeida", "email": "roberval@gmail.com", "senha": "123456", "tipo": [{ "_id": "5d0a27e65429030004ce4f3a", "tipo": "Empregado" }], "__v": 0 }
-];
-/**
- * Data source for the Usuarios view. This class should
- * encapsulate all logic for fetching and manipulating the displayed data
- * (including sorting, pagination, and filtering).
- */
-var UsuariosDataSource = /** @class */ (function (_super) {
-    __extends(UsuariosDataSource, _super);
-    function UsuariosDataSource(paginator, sort, us) {
-        var _this = _super.call(this) || this;
-        _this.paginator = paginator;
-        _this.sort = sort;
-        _this.us = us;
-        return _this;
-    }
-    UsuariosDataSource.prototype.ngOnInit = function () {
-        // this.data = [];
-    };
-    /**
-     * Connect this data source to the table. The table will only update when
-     * the returned stream emits new items.
-     * @returns A stream of the items to be rendered.
-     */
-    UsuariosDataSource.prototype.connect = function () {
-        var _this = this;
-        // Combine everything that affects the rendered data into one update
-        // stream for the data-table to consume.
-        var dataMutations = [
-            Object(rxjs__WEBPACK_IMPORTED_MODULE_2__["of"])(this.data),
-            this.paginator.page,
-            this.sort.sortChange
-        ];
-        this.paginator.length = this.data.length;
-        return rxjs__WEBPACK_IMPORTED_MODULE_2__["merge"].apply(void 0, dataMutations).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["map"])(function () {
-            return _this.getPagedData(_this.getSortedData(_this.data.slice()));
-        }));
-    };
-    /**
-     *  Called when the table is being destroyed. Use this function, to clean up
-     * any open connections or free any held resources that were set up during connect.
-     */
-    UsuariosDataSource.prototype.disconnect = function () { };
-    /**
-     * Paginate the data (client-side). If you're using server-side pagination,
-     * this would be replaced by requesting the appropriate data from the server.
-     */
-    UsuariosDataSource.prototype.getPagedData = function (data) {
-        var startIndex = this.paginator.pageIndex * this.paginator.pageSize;
-        return data.splice(startIndex, this.paginator.pageSize);
-    };
-    /**
-     * Sort the data (client-side). If you're using server-side sorting,
-     * this would be replaced by requesting the appropriate data from the server.
-     */
-    UsuariosDataSource.prototype.getSortedData = function (data) {
-        var _this = this;
-        if (!this.sort.active || this.sort.direction === '') {
-            return data;
-        }
-        return data.sort(function (a, b) {
-            var isAsc = _this.sort.direction === 'asc';
-            switch (_this.sort.active) {
-                case 'name': return compare(a.nome, b.nome, isAsc);
-                case 'id': return compare(+a._id, +b._id, isAsc);
-                default: return 0;
-            }
-        });
-    };
-    return UsuariosDataSource;
-}(_angular_cdk_collections__WEBPACK_IMPORTED_MODULE_0__["DataSource"]));
-
-/** Simple sort comparator for example ID/Name columns (for client-side sorting). */
-function compare(a, b, isAsc) {
-    return (a < b ? -1 : 1) * (isAsc ? 1 : -1);
-}
 
 
 /***/ }),
@@ -1164,7 +1127,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<mat-card>\n<div class=\"mat-elevation-z8\">\n  <mat-table #table [dataSource]=\"dataSource\" matSort aria-label=\"Elements\">\n\n    <!-- Id Column -->\n    <ng-container matColumnDef=\"nome\">\n      <mat-header-cell *matHeaderCellDef mat-sort-header>Nome</mat-header-cell>\n      <mat-cell *matCellDef=\"let row\">{{row.nome}}</mat-cell>\n    </ng-container>\n\n    <!-- Name Column -->\n    <ng-container matColumnDef=\"email\">\n      <mat-header-cell *matHeaderCellDef mat-sort-header>Email</mat-header-cell>\n      <mat-cell *matCellDef=\"let row\">{{row.email}}</mat-cell>\n    </ng-container>\n\n    <ng-container matColumnDef=\"tipo\">\n      <mat-header-cell *matHeaderCellDef mat-sort-header>Tipo</mat-header-cell>\n      <!-- <mat-cell *matCellDef=\"let row\">\n        <span *ngFor=\"let r of row.tipo\">{{r.tipo}}</span>\n      </mat-cell> -->\n      <mat-cell *matCellDef=\"let row\">{{mostrarTipo(row.tipo)}}</mat-cell>\n    </ng-container>\n\n    <ng-container matColumnDef=\"editar\">\n      <mat-header-cell *matHeaderCellDef mat-sort-header></mat-header-cell>\n      <td mat-cell *matCellDef=\"let row\"> \n        <a (click)=\"editar(row)\"><i class=\"material-icons md-48 btnCRUD\" title=\"Editar\">edit</i></a> \n      </td>\n    </ng-container>\n\n    <ng-container matColumnDef=\"excluir\">\n      <mat-header-cell *matHeaderCellDef mat-sort-header></mat-header-cell>\n      <td mat-cell *matCellDef=\"let row\"> \n        <a (click)=\"openDialog(row)\" style=\"margin-left: 30px;\" class=\"btnCRUD\" title=\"Excluir\"><i class=\"material-icons md-48\">delete</i></a>\n      </td>\n    </ng-container>\n\n    <mat-header-row *matHeaderRowDef=\"displayedColumns\"></mat-header-row>\n    <mat-row *matRowDef=\"let row; columns: displayedColumns;\"></mat-row>\n  </mat-table>\n\n  <mat-paginator #paginator\n    [length]=\"dataSource?.data?.length\"\n    [pageIndex]=\"0\"\n    [pageSize]=\"50\"\n    [pageSizeOptions]=\"[25, 50, 100, 250]\">\n  </mat-paginator>\n</div>\n</mat-card>"
+module.exports = "<mat-card>\n    <a mat-raised-button  color=\"primary\" class=\"salvar\" href=\"{{tela}}\" style=\"float: right;\"><i class=\"material-icons md-48\">person_add</i> Incluir</a>\n    <div fxLayout fxLayoutAlign=\"right right\">\n        <mat-form-field class=\"filtro formFiltro\">\n          <input matInput type=\"text\" (keyup)=\"doFilter($event.target.value)\" placeholder=\"Filtro\">\n        </mat-form-field>\n      </div>\n<div class=\"mat-elevation-z8\">\n  <!-- <mat-table #table [dataSource]=\"dataSource\" matSort aria-label=\"Elements\">\n\n    <ng-container matColumnDef=\"nome\">\n      <mat-header-cell *matHeaderCellDef mat-sort-header>Nome</mat-header-cell>\n      <mat-cell *matCellDef=\"let row\">{{row.nome}}</mat-cell>\n    </ng-container>\n\n    <ng-container matColumnDef=\"email\">\n      <mat-header-cell *matHeaderCellDef mat-sort-header>Email</mat-header-cell>\n      <mat-cell *matCellDef=\"let row\">{{row.email}}</mat-cell>\n    </ng-container>\n\n    <ng-container matColumnDef=\"tipo\">\n      <mat-header-cell *matHeaderCellDef mat-sort-header>Tipo</mat-header-cell>\n      <mat-cell *matCellDef=\"let row\">{{mostrarTipo(row.tipo)}}</mat-cell>\n    </ng-container>\n\n    <ng-container matColumnDef=\"editar\">\n      <mat-header-cell *matHeaderCellDef mat-sort-header></mat-header-cell>\n      <td mat-cell *matCellDef=\"let row\"> \n        <a (click)=\"editar(row)\"><i class=\"material-icons md-48 btnCRUDEditar\" title=\"Editar\">edit</i></a> \n      </td>\n    </ng-container>\n\n    <ng-container matColumnDef=\"excluir\">\n      <mat-header-cell *matHeaderCellDef mat-sort-header></mat-header-cell>\n      <td mat-cell *matCellDef=\"let row\"> \n        <a (click)=\"openDialog(row)\" style=\"margin-left: 30px;\" class=\"btnCRUDExcluir\" title=\"Excluir\"><i class=\"material-icons md-48\">delete</i></a>\n      </td>\n    </ng-container>\n\n    <mat-header-row *matHeaderRowDef=\"displayedColumns\"></mat-header-row>\n    <mat-row *matRowDef=\"let row; columns: displayedColumns;\"></mat-row>\n  </mat-table> -->\n\n  <mat-table [dataSource]=\"dataSource\" matSort>\n      <ng-container matColumnDef=\"nome\">\n        <mat-header-cell *matHeaderCellDef mat-sort-header>Nome</mat-header-cell>\n        <mat-cell *matCellDef=\"let row\" data-label=\"Nome\">{{row.nome}}</mat-cell>\n      </ng-container>\n  \n      <ng-container matColumnDef=\"email\">\n        <mat-header-cell *matHeaderCellDef mat-sort-header>Email</mat-header-cell>\n        <mat-cell *matCellDef=\"let row\" data-label=\"Email\">{{row.email}}</mat-cell>\n      </ng-container>\n  \n      <ng-container matColumnDef=\"tipo\">\n        <mat-header-cell *matHeaderCellDef mat-sort-header>Tipo</mat-header-cell>\n        <mat-cell *matCellDef=\"let row\" data-label=\"Tipo\">{{mostrarTipo(row.tipo)}}</mat-cell>\n      </ng-container>\n\n      <ng-container matColumnDef=\"acoes\">\n          <mat-header-cell *matHeaderCellDef mat-sort-header class=\"colunaAcoes\">Ações</mat-header-cell>\n          <mat-cell *matCellDef=\"let row\" [style.color]=\"row.color\" data-label=\"Ações\" class=\"colunaAcoes\">\n              <a (click)=\"editar(row)\" style=\"margin-right: 20px;\"><i class=\"material-icons md-48 btnCRUDEditar\" title=\"Editar\">edit</i></a> \n              <a (click)=\"openDialog(row)\" class=\"btnCRUDExcluir\" title=\"Excluir\"><i class=\"material-icons md-48\">delete</i></a>\n          </mat-cell>\n        </ng-container>\n      <mat-header-row *matHeaderRowDef=\"displayedColumns\"></mat-header-row>\n      <mat-row *matRowDef=\"let row; columns: displayedColumns;\">\n      </mat-row>\n    </mat-table>\n\n\n\n\n  <!-- <table mat-table [dataSource]=\"dataSource\" matSort aria-label=\"Elements\" style=\"width: 100%\">\n\n      <ng-container matColumnDef=\"nome\">\n        <th mat-header-cell *matHeaderCellDef mat-sort-header>Nome</th>\n        <td mat-cell *matCellDef=\"let row\">{{row.nome}}</td>\n      </ng-container>\n    \n      <ng-container matColumnDef=\"email\">\n          <th mat-header-cell *matHeaderCellDef mat-sort-header>Email</th>\n          <td mat-cell *matCellDef=\"let row\">{{row.email}}</td>\n        </ng-container>\n\n      <ng-container matColumnDef=\"tipo\">\n          <th mat-header-cell *matHeaderCellDef mat-sort-header>Tipo</th>\n          <td mat-cell *matCellDef=\"let row\">{{mostrarTipo(row.tipo)}}</td>\n      </ng-container>\n\n      <ng-container matColumnDef=\"editar\">\n          <th mat-header-cell *matHeaderCellDef mat-sort-header style=\"width: 20px;\"></th>\n          <td mat-cell *matCellDef=\"let row\">\n              <a (click)=\"editar(row)\"><i class=\"material-icons md-48 btnCRUDEditar\" title=\"Editar\">edit</i></a> \n          </td>\n      </ng-container>\n\n      <ng-container matColumnDef=\"excluir\">\n          <th mat-header-cell *matHeaderCellDef mat-sort-header style=\"width: 20px;\"></th>\n          <td mat-cell *matCellDef=\"let row\">\n              <a (click)=\"openDialog(row)\" style=\"margin-left: 30px;\" class=\"btnCRUDExcluir\" title=\"Excluir\"><i class=\"material-icons md-48\">delete</i></a>\n          </td>\n      </ng-container>\n    \n      <tr mat-header-row *matHeaderRowDef=\"displayedColumns\"></tr>\n      <tr mat-row *matRowDef=\"let row; columns: displayedColumns;\"></tr>\n    </table> -->\n\n  <mat-paginator #paginator\n    [length]=\"dataSource?.data?.length\"\n    [pageIndex]=\"0\"\n    [pageSize]=\"10\"\n    [pageSizeOptions]=\"[2, 5, 10, 50]\">\n  </mat-paginator>\n</div>\n</mat-card>"
 
 /***/ }),
 
@@ -1180,10 +1143,19 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UsuariosComponent", function() { return UsuariosComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm5/material.es5.js");
-/* harmony import */ var _usuarios_datasource__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./usuarios-datasource */ "./src/app/paginas/usuarios/usuarios-datasource.ts");
-/* harmony import */ var src_app_servicos_usuarios_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/servicos/usuarios.service */ "./src/app/servicos/usuarios.service.ts");
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
-/* harmony import */ var _confirmacao_confirmacao_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../confirmacao/confirmacao.component */ "./src/app/paginas/confirmacao/confirmacao.component.ts");
+/* harmony import */ var src_app_servicos_usuarios_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/servicos/usuarios.service */ "./src/app/servicos/usuarios.service.ts");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var src_app_modelos_crudmodel__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/app/modelos/crudmodel */ "./src/app/modelos/crudmodel.ts");
+var __extends = (undefined && undefined.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1198,77 +1170,147 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 
-
-var UsuariosComponent = /** @class */ (function () {
+var UsuariosComponent = /** @class */ (function (_super) {
+    __extends(UsuariosComponent, _super);
     function UsuariosComponent(us, router, dialog) {
-        this.us = us;
-        this.router = router;
-        this.dialog = dialog;
-        /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
-        this.displayedColumns = ['nome', 'email', 'tipo', 'editar', 'excluir'];
+        var _this = _super.call(this, us, router, dialog) || this;
+        _this.us = us;
+        _this.router = router;
+        _this.dialog = dialog;
+        _this.tela = "/usuario";
+        _this.displayedColumns = ['nome', 'email', 'tipo', 'acoes'];
+        return _this;
     }
-    UsuariosComponent.prototype.ngOnInit = function () {
-        var _this = this;
-        this.us.getUsuarios().subscribe(function (dados) {
-            _this.dataSource = new _usuarios_datasource__WEBPACK_IMPORTED_MODULE_2__["UsuariosDataSource"](_this.paginator, _this.sort, _this.us);
-            _this.dataSource.data = dados;
-        });
-    };
-    UsuariosComponent.prototype.openDialog = function (objeto) {
-        var _this = this;
-        var dialogRef = this.dialog.open(_confirmacao_confirmacao_component__WEBPACK_IMPORTED_MODULE_5__["ConfirmacaoComponent"], {
-            width: '300px',
-            data: "Tem certeza que deseja excluir?"
-        });
-        dialogRef.afterClosed().subscribe(function (result) {
-            if (result) {
-                _this.excluir(objeto);
-            }
-        });
-    };
-    UsuariosComponent.prototype.atualizar = function () {
-        var _this = this;
-        this.us.getUsuarios().subscribe(function (dados) {
-            _this.dataSource = new _usuarios_datasource__WEBPACK_IMPORTED_MODULE_2__["UsuariosDataSource"](_this.paginator, _this.sort, _this.us);
-            _this.dataSource.data = dados;
-        });
-    };
-    UsuariosComponent.prototype.mostrarTipo = function (objeto) {
-        if (typeof objeto != "undefined") {
-            return objeto.tipo;
-        }
-        return "-";
-    };
-    UsuariosComponent.prototype.editar = function (objeto) {
-        this.us.setUsuarioSelecionado(objeto);
-        this.router.navigate(["/usuario"]);
-    };
-    UsuariosComponent.prototype.excluir = function (objeto) {
-        var _this = this;
-        this.us.setUsuarioSelecionado(objeto);
-        this.us.excluirUsuario(objeto).subscribe(function (dados) {
-            _this.atualizar();
-        });
-    };
-    __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"])(_angular_material__WEBPACK_IMPORTED_MODULE_1__["MatPaginator"]),
-        __metadata("design:type", _angular_material__WEBPACK_IMPORTED_MODULE_1__["MatPaginator"])
-    ], UsuariosComponent.prototype, "paginator", void 0);
-    __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"])(_angular_material__WEBPACK_IMPORTED_MODULE_1__["MatSort"]),
-        __metadata("design:type", _angular_material__WEBPACK_IMPORTED_MODULE_1__["MatSort"])
-    ], UsuariosComponent.prototype, "sort", void 0);
     UsuariosComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'usuarios',
             template: __webpack_require__(/*! ./usuarios.component.html */ "./src/app/paginas/usuarios/usuarios.component.html"),
             styles: [__webpack_require__(/*! ./usuarios.component.css */ "./src/app/paginas/usuarios/usuarios.component.css")]
-        }),
-        __metadata("design:paramtypes", [src_app_servicos_usuarios_service__WEBPACK_IMPORTED_MODULE_3__["UsuariosService"], _angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"], _angular_material__WEBPACK_IMPORTED_MODULE_1__["MatDialog"]])
+        })
+        // export class UsuariosComponent implements OnInit {
+        //   @ViewChild(MatPaginator) paginator: MatPaginator;
+        //   @ViewChild(MatSort) sort: MatSort;
+        //   dataSource: UsuariosDataSource;
+        //   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
+        //   displayedColumns = ['nome', 'email', 'tipo', 'editar', 'excluir'];
+        //   constructor(public us: UsuariosService, public router: Router, public dialog: MatDialog) {
+        //   }
+        //   ngOnInit() {
+        //     this.us.getUsuarios().subscribe(
+        //       (dados: any[]) => {
+        //         this.dataSource = new UsuariosDataSource(this.paginator, this.sort, this.us);
+        //         this.dataSource.data = dados;
+        //         this.dataSource.sort = this.sort;
+        //       }
+        //     );
+        //   }
+        //   ngAfterViewInit(): void {
+        //     this.us.getUsuarios().subscribe(
+        //       (dados: any[]) => {
+        //         this.dataSource = new UsuariosDataSource(this.paginator, this.sort, this.us);
+        //         this.dataSource.data = dados;
+        //         this.dataSource.sort = this.sort;
+        //       }
+        //     );
+        //   }
+        //   openDialog(objeto: any): void {
+        //     const dialogRef = this.dialog.open(ConfirmacaoComponent, {
+        //       width: '300px',
+        //       data: "Tem certeza que deseja excluir?"
+        //     });
+        //     dialogRef.afterClosed().subscribe(result => {
+        //       if (result) {
+        //         this.excluir(objeto);
+        //       }
+        //     });
+        //   }
+        //   atualizar() {
+        //     this.us.getUsuarios().subscribe(
+        //       (dados: any[]) => {
+        //         this.dataSource = new UsuariosDataSource(this.paginator, this.sort, this.us);
+        //         this.dataSource.data = dados;
+        //       }
+        //     );
+        //   }
+        //   mostrarTipo(objeto: UsuarioTipo) {
+        //     if (typeof objeto != "undefined") {
+        //       return objeto.tipo;
+        //     }
+        //     return "-";
+        //   }
+        //   editar(objeto: any) {
+        //     this.us.setUsuarioSelecionado(objeto);
+        //     this.router.navigate(["/usuario"]);
+        //   }
+        //   excluir(objeto: any) {
+        //     this.us.setUsuarioSelecionado(objeto);
+        //     this.us.excluirUsuario(objeto).subscribe(
+        //       (dados) => {
+        //         this.atualizar();
+        //       });
+        //   }
+        //   public doFilter = (value: string) => {
+        //     this.dataSource.filter = value.trim().toLocaleLowerCase();
+        //   }
+        // }
+        ,
+        __metadata("design:paramtypes", [src_app_servicos_usuarios_service__WEBPACK_IMPORTED_MODULE_2__["UsuariosService"], _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"], _angular_material__WEBPACK_IMPORTED_MODULE_1__["MatDialog"]])
     ], UsuariosComponent);
     return UsuariosComponent;
-}());
+}(src_app_modelos_crudmodel__WEBPACK_IMPORTED_MODULE_4__["CrudListar"]));
 
+// export class UsuariosComponent implements OnInit, AfterViewInit {
+//   public displayedColumns = ['nome', 'email', 'tipo', 'acoes'];
+//   public dataSource = new MatTableDataSource<Usuario>(); 
+//   @ViewChild(MatSort) sort: MatSort;
+//   @ViewChild(MatPaginator) paginator: MatPaginator;
+//   constructor(public us: UsuariosService, public router: Router, public dialog: MatDialog) { }
+//   ngOnInit() {
+//     this.atualizar();
+//   }
+//   ngAfterViewInit(): void {
+//      this.dataSource.sort = this.sort;
+//      this.dataSource.paginator = this.paginator;
+//   }
+//   public doFilter = (value: string) => {
+//     this.dataSource.filter = value.trim().toLocaleLowerCase();
+//   }
+//   openDialog(objeto: any): void {
+//     const dialogRef = this.dialog.open(ConfirmacaoComponent, {
+//       width: '300px',
+//       data: "Tem certeza que deseja excluir?"
+//     });
+//     dialogRef.afterClosed().subscribe(result => {
+//       if (result) {
+//         this.excluir(objeto);
+//       }
+//     });
+//   }
+//   mostrarTipo(objeto: UsuarioTipo) {
+//     if (typeof objeto != "undefined") {
+//       return objeto.tipo;
+//     }
+//     return "-";
+//   }
+//   editar(objeto: any) {
+//     this.us.setUsuarioSelecionado(objeto);
+//     this.router.navigate(["/usuario"]);
+//   }
+//   excluir(objeto: any) {
+//     this.us.setUsuarioSelecionado(objeto);
+//     this.us.excluirUsuario(objeto).subscribe(
+//       (dados) => {
+//         this.atualizar();
+//       });
+//   }
+//   atualizar() {
+//     this.us.getUsuarios().subscribe(
+//       (dados: any[]) => {
+//         this.dataSource.data = dados;
+//       }
+//     );
+//   }
+// }
 
 
 /***/ }),
@@ -1535,28 +1577,28 @@ var UsuariosService = /** @class */ (function () {
             headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]({ 'Content-Type': 'application/json' })
         };
     }
-    UsuariosService.prototype.getUsuarios = function () {
+    UsuariosService.prototype.get = function () {
         return this.http.get(this.url + "/usuarios");
     };
-    UsuariosService.prototype.getUsuario = function (id) {
+    UsuariosService.prototype.getObjeto = function (id) {
         return this.http.get(this.url + "/usuarios/" + id);
     };
     UsuariosService.prototype.getUsuarioEmail = function (email) {
         return this.http.get(this.url + "/usuarios/email/" + email);
     };
-    UsuariosService.prototype.setUsuarioSelecionado = function (usu) {
+    UsuariosService.prototype.setObjetoSelecionado = function (usu) {
         this.usuario = usu;
     };
-    UsuariosService.prototype.getUsuarioSelecionado = function () {
+    UsuariosService.prototype.getObjetoSelecionado = function () {
         return this.usuario;
     };
-    UsuariosService.prototype.incluirUsuario = function (u) {
+    UsuariosService.prototype.incluir = function (u) {
         return this.http.post(this.url + "/usuarios", u, this.cabecalhoJson);
     };
-    UsuariosService.prototype.atualizarUsuario = function (u) {
+    UsuariosService.prototype.atualizar = function (u) {
         return this.http.put(this.url + "/usuarios/" + u._id, u, this.cabecalhoJson);
     };
-    UsuariosService.prototype.excluirUsuario = function (u) {
+    UsuariosService.prototype.excluir = function (u) {
         return this.http.delete(this.url + "/usuarios/" + u._id);
     };
     UsuariosService = __decorate([
@@ -1688,7 +1730,7 @@ Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_1__["platformB
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /home/raphael/Documentos/ui-sistema-treinamentos/src/main.ts */"./src/main.ts");
+module.exports = __webpack_require__(/*! /home/raphael/ui-sistema-treinamentos/src/main.ts */"./src/main.ts");
 
 
 /***/ })

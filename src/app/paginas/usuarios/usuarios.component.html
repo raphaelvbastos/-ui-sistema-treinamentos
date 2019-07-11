@@ -1,20 +1,18 @@
 <mat-card>
-    <a mat-raised-button  color="primary" class="salvar" href="/usuario" style="float: right;"><i class="material-icons md-48">person_add</i> Incluir</a>
+    <a mat-raised-button  color="primary" class="salvar" href="{{tela}}" style="float: right;"><i class="material-icons md-48">person_add</i> Incluir</a>
     <div fxLayout fxLayoutAlign="right right">
-        <mat-form-field class="filtro">
+        <mat-form-field class="filtro formFiltro">
           <input matInput type="text" (keyup)="doFilter($event.target.value)" placeholder="Filtro">
         </mat-form-field>
       </div>
 <div class="mat-elevation-z8">
-  <mat-table #table [dataSource]="dataSource" matSort aria-label="Elements">
+  <!-- <mat-table #table [dataSource]="dataSource" matSort aria-label="Elements">
 
-    <!-- Id Column -->
     <ng-container matColumnDef="nome">
       <mat-header-cell *matHeaderCellDef mat-sort-header>Nome</mat-header-cell>
       <mat-cell *matCellDef="let row">{{row.nome}}</mat-cell>
     </ng-container>
 
-    <!-- Name Column -->
     <ng-container matColumnDef="email">
       <mat-header-cell *matHeaderCellDef mat-sort-header>Email</mat-header-cell>
       <mat-cell *matCellDef="let row">{{row.email}}</mat-cell>
@@ -22,9 +20,6 @@
 
     <ng-container matColumnDef="tipo">
       <mat-header-cell *matHeaderCellDef mat-sort-header>Tipo</mat-header-cell>
-      <!-- <mat-cell *matCellDef="let row">
-        <span *ngFor="let r of row.tipo">{{r.tipo}}</span>
-      </mat-cell> -->
       <mat-cell *matCellDef="let row">{{mostrarTipo(row.tipo)}}</mat-cell>
     </ng-container>
 
@@ -44,7 +39,73 @@
 
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
     <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-  </mat-table>
+  </mat-table> -->
+
+  <mat-table [dataSource]="dataSource" matSort>
+      <ng-container matColumnDef="nome">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Nome</mat-header-cell>
+        <mat-cell *matCellDef="let row" data-label="Nome">{{row.nome}}</mat-cell>
+      </ng-container>
+  
+      <ng-container matColumnDef="email">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Email</mat-header-cell>
+        <mat-cell *matCellDef="let row" data-label="Email">{{row.email}}</mat-cell>
+      </ng-container>
+  
+      <ng-container matColumnDef="tipo">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Tipo</mat-header-cell>
+        <mat-cell *matCellDef="let row" data-label="Tipo">{{mostrarTipo(row.tipo)}}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="acoes">
+          <mat-header-cell *matHeaderCellDef mat-sort-header class="colunaAcoes">Ações</mat-header-cell>
+          <mat-cell *matCellDef="let row" [style.color]="row.color" data-label="Ações" class="colunaAcoes">
+              <a (click)="editar(row)" style="margin-right: 20px;"><i class="material-icons md-48 btnCRUDEditar" title="Editar">edit</i></a> 
+              <a (click)="openDialog(row)" class="btnCRUDExcluir" title="Excluir"><i class="material-icons md-48">delete</i></a>
+          </mat-cell>
+        </ng-container>
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;">
+      </mat-row>
+    </mat-table>
+
+
+
+
+  <!-- <table mat-table [dataSource]="dataSource" matSort aria-label="Elements" style="width: 100%">
+
+      <ng-container matColumnDef="nome">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Nome</th>
+        <td mat-cell *matCellDef="let row">{{row.nome}}</td>
+      </ng-container>
+    
+      <ng-container matColumnDef="email">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Email</th>
+          <td mat-cell *matCellDef="let row">{{row.email}}</td>
+        </ng-container>
+
+      <ng-container matColumnDef="tipo">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Tipo</th>
+          <td mat-cell *matCellDef="let row">{{mostrarTipo(row.tipo)}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="editar">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header style="width: 20px;"></th>
+          <td mat-cell *matCellDef="let row">
+              <a (click)="editar(row)"><i class="material-icons md-48 btnCRUDEditar" title="Editar">edit</i></a> 
+          </td>
+      </ng-container>
+
+      <ng-container matColumnDef="excluir">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header style="width: 20px;"></th>
+          <td mat-cell *matCellDef="let row">
+              <a (click)="openDialog(row)" style="margin-left: 30px;" class="btnCRUDExcluir" title="Excluir"><i class="material-icons md-48">delete</i></a>
+          </td>
+      </ng-container>
+    
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table> -->
 
   <mat-paginator #paginator
     [length]="dataSource?.data?.length"

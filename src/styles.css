@@ -153,18 +153,18 @@ mat-sidenav-content {
 .salvar {
     /* background-color: rgb(30, 124, 136) !important;
     color: #eee; */
-
     background: none !important;
-    border: 2px solid #26C6DA !important;;
+    border: 2px solid #26C6DA !important;
+    ;
     color: #26C6DA !important;
 }
 
 .btnLogin {
     background: none !important;
-    border: 2px solid #212c3d !important;;
+    border: 2px solid #212c3d !important;
+    ;
     color: #212c3d !important;
 }
-
 
 .btnCRUD {
     cursor: pointer;
@@ -177,16 +177,16 @@ mat-sidenav-content {
 
 .btnCRUDEditar {
     cursor: pointer;
-    color: #acaa5f;
+    color: #6db5ca;
 }
 
 .voltar {
     /* background-color: rgb(127, 210, 221) !important;
     color: #333 !important; */
     margin-left: 20px;
-
     background: none !important;
-    border: 2px solid #ddd !important;;
+    border: 2px solid #ddd !important;
+    ;
     color: #ddd !important;
 }
 
@@ -214,4 +214,106 @@ mat-header-cell {
     width: 200px !important;
     padding-left: 10px;
     padding-right: 10px;
+}
+
+th {
+    color: rgb(49, 145, 158) !important;
+    font-size: 1.1em !important;
+}
+
+.formFiltro {
+    background: none !important;
+    margin-top: -6px;
+}
+
+@media screen and (min-width: 601px) {
+    mat-cell {
+        display: flex !important;
+        justify-content: left!important;
+    }
+    mat-header-cell {
+        display: flex;
+        justify-content: left;
+    }
+
+    .mat-header-cell {
+        font-size: 0.9em;
+    }
+
+    .colunaAcoes {
+        max-width: 50px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    
+    .mat-table {
+        border: 0;
+        vertical-align: middle;
+    }
+    .mat-elevation-z8 {
+        background: none !important;
+        box-shadow: none !important;
+    }
+    .mat-header-cell {
+        display: none;
+    }
+    .mat-table caption {
+        font-size: 1em;
+    }
+    /*  Enable this to hide header
+    .mat-table .mat-header-cell {
+      
+      border: 10px solid;
+      clip: rect(0 0 0 0);
+      height: 1px;
+      margin: -1px;
+      padding: 0;
+      position: absolute;
+      width: 1px;
+    }
+    */
+    .mat-table .mat-row {
+        /* border-bottom: 10px solid #ddd;       */
+        display: block;
+    }
+    .mat-row {
+        padding: 10px;
+        box-shadow: 0 5px 5px -3px rgba(0, 0, 0, .2), 0 8px 10px 1px rgba(0, 0, 0, .14), 0 3px 14px 2px rgba(0, 0, 0, .12);
+        background: #29374a;
+        margin-bottom: 20px;
+    }
+    /*
+    .mat-table .mat-row:nth-child(even) {background: #CCC}
+    .mat-table .mat-row:nth-child(odd) {background: #FFF}
+    */
+    .mat-table .mat-cell {
+        border-bottom: 1px solid #ddd;
+        border-bottom-color: rgba(0, 0, 0, .12);
+        display: block;
+        font-size: 0.9em;
+        text-align: right;
+        font-weight: bold;
+        height: 30px;
+        margin-bottom: 1%;
+    }
+    .mat-table .mat-cell:before {
+        /*
+      * aria-label has no advantage, it won't be read inside a table
+      content: attr(aria-label);
+      */
+        content: attr(data-label);
+        float: left;
+        text-transform: uppercase;
+        font-weight: normal;
+        font-size: .85em;
+    }
+    .mat-table .mat-cell:last-child {
+        border-bottom: 0;
+        padding-right: 0 !important;
+    }
+    .mat-table .mat-cell:first-child {
+        margin-top: 1%;
+        padding-left: 0 !important;
+    }
 }

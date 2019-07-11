@@ -26,8 +26,8 @@ export class UsuarioComponent implements OnInit {
   }
 
   ngOnInit() {
-    if (this.us.getUsuarioSelecionado() != null) {
-      this.usuario = this.us.getUsuarioSelecionado();
+    if (this.us.getObjetoSelecionado() != null) {
+      this.usuario = this.us.getObjetoSelecionado();
     }
   }
 
@@ -69,12 +69,12 @@ export class UsuarioComponent implements OnInit {
     }
 
     if(Object.keys(this.usuario).indexOf("_id") == -1) {
-      this.us.incluirUsuario(this.usuario).subscribe(
+      this.us.incluir(this.usuario).subscribe(
         (dados) => {
           this.router.navigate([tela]);
         });
     } else {
-      this.us.atualizarUsuario(this.usuario).subscribe(
+      this.us.atualizar(this.usuario).subscribe(
         (dados) => {
           this.router.navigate([tela]);
         });

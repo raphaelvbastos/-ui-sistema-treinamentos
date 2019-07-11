@@ -20,11 +20,11 @@ export class UsuariosService {
 
   constructor(public http: HttpClient) { }
 
-  getUsuarios(): Observable<Usuario[]> {
+  get(): Observable<Usuario[]> {
     return this.http.get<Usuario[]>(this.url + "/usuarios");
   }
 
-  getUsuario(id): Observable<Usuario> {
+  getObjeto(id): Observable<Usuario> {
     return this.http.get<Usuario>(this.url + "/usuarios/" + id);
   }
 
@@ -32,23 +32,23 @@ export class UsuariosService {
     return this.http.get<Usuario>(this.url + "/usuarios/email/" + email);
   }
 
-  setUsuarioSelecionado(usu: Usuario) {
+  setObjetoSelecionado(usu: Usuario) {
     this.usuario = usu;
   }
 
-  getUsuarioSelecionado(): Usuario {
+  getObjetoSelecionado(): Usuario {
     return this.usuario;
   }
 
-  incluirUsuario(u: Usuario): Observable<any> {
+  incluir(u: Usuario): Observable<any> {
     return this.http.post(this.url + "/usuarios", u, this.cabecalhoJson);
   }
 
-  atualizarUsuario(u: any) {
+  atualizar(u: any) {
     return this.http.put(this.url + "/usuarios/" + u._id, u, this.cabecalhoJson);
   }
 
-  excluirUsuario(u: any) {
+  excluir(u: any) {
     return this.http.delete(this.url + "/usuarios/" + u._id);
   }
 
