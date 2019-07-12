@@ -29,7 +29,7 @@
           <mat-card-actions>
             <a mat-raised-button  color="primary" class="voltar" href="/usuarios" *ngIf="this.as.ehAdministrador()">Voltar</a>
             <a mat-raised-button  color="primary" class="voltar" href="/login" *ngIf="!this.as.ehUsuarioAutenticado()">Voltar</a>
-            <button mat-raised-button color="primary" class="salvar" (click)="salvar()">Salvar</button>
+            <button mat-raised-button color="primary" class="salvar" (click)="salvar()" aria-label="Salvar ação">Salvar</button>
           </mat-card-actions>
         </form>
   </div>
