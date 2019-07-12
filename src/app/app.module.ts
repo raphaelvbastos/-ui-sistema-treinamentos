@@ -22,6 +22,8 @@ import { UsuariosComponent } from './paginas/usuarios/usuarios.component';
 import { UsuarioComponent } from './paginas/usuario/usuario.component';
 import { ConfirmacaoComponent } from './paginas/confirmacao/confirmacao.component';
 import { ErroComponent } from './paginas/erro/erro.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 
 
@@ -62,7 +64,8 @@ import { ErroComponent } from './paginas/erro/erro.component';
     MatInputModule,
     MatSelectModule,
     MatDialogModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production })
   ],
   entryComponents: [
     ConfirmacaoComponent
