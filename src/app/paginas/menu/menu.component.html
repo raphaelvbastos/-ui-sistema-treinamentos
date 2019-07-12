@@ -64,8 +64,13 @@
     <mat-sidenav #sidenav class="sidenav">
       <mat-nav-list>
         <a (click)="sidenav.toggle()" href="" mat-list-item><i class="material-icons md-48">close</i></a>
-        <a href="#" mat-list-item>Menu Item 1</a>
-        <a href="#" mat-list-item>Menu Item 2</a>
+        <a href="/usuarios" mat-button *ngIf="this.as.ehAdministrador()">
+          <i class="material-icons md-48">account_circle</i> Usuários
+        </a>
+
+        <a href="/cursos" mat-button mat-button *ngIf="this.as.ehUsuarioAutenticado()">
+          <i class="material-icons md-48">school</i> Cursos
+        </a>
       </mat-nav-list>
     </mat-sidenav>
     <mat-sidenav-content fxFlexFill>
