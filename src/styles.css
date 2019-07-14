@@ -155,7 +155,6 @@ mat-sidenav-content {
     color: #eee; */
     background: none !important;
     border: 2px solid #26C6DA !important;
-    ;
     color: #26C6DA !important;
 }
 
@@ -235,6 +234,8 @@ th {
 .spinner {
     -webkit-animation: rotator 1.4s linear infinite;
     animation: rotator 1.4s linear infinite;
+    position: fixed;
+    top: 45%;
   }
 @-webkit-keyframes rotator {
     0% {
@@ -348,6 +349,16 @@ th {
     }
 }
 
+.salvar:disabled {
+    background: none !important;
+    border: 2px solid rgb(208, 238, 241) !important;
+    color: rgb(208, 238, 241) !important;
+  }
+
+  .mat-card-actions {
+      margin-right: -25px !important;
+  }
+
 @media screen and (max-width: 600px) {
     
     .mat-table {
@@ -363,6 +374,16 @@ th {
     }
     .mat-table caption {
         font-size: 1em;
+    }
+
+    .mat-form-field-label {
+        padding-left: 10px;
+    }
+
+    .mat-form-field-appearance-legacy .mat-form-field-wrapper {
+        padding-bottom: 1.25em;
+        width: 95%;
+        padding-left: 4px;
     }
     /*  Enable this to hide header
     .mat-table .mat-header-cell {
