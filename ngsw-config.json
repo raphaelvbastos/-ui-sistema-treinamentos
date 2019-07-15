@@ -1,5 +1,19 @@
 {
   "index": "/index.html",
+  "dataGroups": [
+    {
+      "name": "api-freshness",
+      "urls": [
+        "https://api-sistema-treinamento.herokuapp.com/*"
+      ],
+      "cacheConfig": {
+        "strategy": "freshness",
+        "maxSize": 100,
+        "maxAge": "3d",
+        "timeout": "10s"
+      }
+    }
+  ],
   "assetGroups": [{
     "name": "app",
     "installMode": "prefetch",
