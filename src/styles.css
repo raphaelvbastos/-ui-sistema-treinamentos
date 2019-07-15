@@ -43,6 +43,16 @@ menu {
     color: #eee;
 }
 
+.mat-menu-panel {
+    margin-top: 40px;
+    background: #29374a;
+    color: #fff;
+}
+
+.mat-menu-item {
+    color: #eee;
+}
+
 /* .example-full-width {
     width: 300px;
 }
