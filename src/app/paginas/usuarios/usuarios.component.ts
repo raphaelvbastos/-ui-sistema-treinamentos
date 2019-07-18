@@ -103,7 +103,7 @@ import { MensagemService } from 'src/app/servicos/mensagem.service';
 
 
 export class UsuariosComponent extends CrudListar {
-
+  tituloPagina = "Lista de usuários";
   constructor(public us: UsuariosService, public router: Router, public dialog: MatDialog, public as: AutenticacaoService) {
     super(us, router, dialog);
     this.tela = "/usuario";

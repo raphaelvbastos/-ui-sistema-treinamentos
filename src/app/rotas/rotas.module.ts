@@ -7,6 +7,8 @@ import { LoginComponent } from '../paginas/login/login.component';
 import { UsuariosComponent } from '../paginas/usuarios/usuarios.component';
 import { UsuarioComponent } from '../paginas/usuario/usuario.component';
 import { ErroComponent } from '../paginas/erro/erro.component';
+import { CursoscategoriasComponent } from '../paginas/cursoscategorias/cursoscategorias.component';
+import { CursoscategoriaComponent } from '../paginas/cursoscategoria/cursoscategoria.component';
 
 const rotas: Routes = [
   { path: "cursos", component: PaginaCursosComponent },
@@ -15,6 +17,8 @@ const rotas: Routes = [
   { path: "login", component: LoginComponent },
   { path: "usuarios", component: UsuariosComponent },
   { path: "usuario", component: UsuarioComponent },
+  { path: "cursoscategorias", component: CursoscategoriasComponent },
+  { path: "cursoscategoria", component: CursoscategoriaComponent },
   { path: "erro", component: ErroComponent },
 ]
 

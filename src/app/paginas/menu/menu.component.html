@@ -45,16 +45,18 @@
       <span class="menu-spacer"></span>
       <div fxShow="true" fxHide.lt-md>
         
-        <a href="/usuarios" mat-button *ngIf="this.as.ehAdministrador()">
+        <a routerLink="/usuarios" mat-button *ngIf="this.as.ehAdministrador()">
           <i class="material-icons md-48">account_circle</i> Usuários
         </a>
 
         <button mat-button [matMenuTriggerFor]="cursos" *ngIf="this.as.ehUsuarioAutenticado()"><i class="material-icons md-48">school</i> Cursos</button>
         <mat-menu #cursos="matMenu">
-            <a href="/cursos" mat-menu-item>
+            <a routerLink="/cursos" mat-menu-item>
               Lista de cursos
             </a>
-          <button mat-menu-item>Categorias de curso</button>
+            <a routerLink="/cursoscategorias" mat-menu-item>
+              Categorias de cursos
+            </a>
         </mat-menu>
 
         <!-- <a href="/cursos" mat-button mat-button *ngIf="this.as.ehUsuarioAutenticado()">
@@ -79,7 +81,7 @@
         </mat-menu> -->
       <mat-nav-list>
         <!-- <a (click)="sidenav.toggle()" href="" mat-list-item><i class="material-icons md-48">close</i></a> -->
-        <a href="/usuarios" mat-button *ngIf="this.as.ehAdministrador()">
+        <a routerLink="/usuarios" mat-button *ngIf="this.as.ehAdministrador()">
           <i class="material-icons md-48">account_circle</i> Usuários
         </a>
 
@@ -89,10 +91,12 @@
 
         <button mat-button [matMenuTriggerFor]="cursos" *ngIf="this.as.ehUsuarioAutenticado()"><i class="material-icons md-48">school</i> Cursos</button>
         <mat-menu #cursos="matMenu">
-            <a href="/cursos" mat-menu-item>
+            <a routerLink="/cursos" mat-menu-item>
               Lista de cursos
             </a>
-          <button mat-menu-item>Categorias de curso</button>
+            <a routerLink="/cursoscategorias" mat-menu-item>
+              Categorias de cursos
+            </a>
         </mat-menu>
       </mat-nav-list>
     </mat-sidenav>

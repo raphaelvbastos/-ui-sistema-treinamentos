@@ -1,5 +1,9 @@
 <mat-card>
-    <a mat-raised-button  color="primary" class="salvar" href="{{tela}}" style="float: right;"><i class="material-icons md-48">person_add</i> Incluir</a>
+    <h2 class="tituloPagina">{{tituloPagina}}</h2>
+    <a mat-fab href="{{tela}}" class="btnNovo" title="Novo">
+      <i class="material-icons md-48">add</i>
+    </a>
+    <!-- <a mat-raised-button  color="primary" class="incluir" href="{{tela}}" style="float: right;"><i class="material-icons md-48">person_add</i> INCLUIR</a> -->
     <div fxLayout fxLayoutAlign="right right">
         <mat-form-field class="filtro formFiltro">
           <input matInput type="text" (keyup)="doFilter($event.target.value)" placeholder="Filtro">

@@ -24,6 +24,8 @@ import { ConfirmacaoComponent } from './paginas/confirmacao/confirmacao.componen
 import { ErroComponent } from './paginas/erro/erro.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import { CursoscategoriasComponent } from './paginas/cursoscategorias/cursoscategorias.component';
+import { CursoscategoriaComponent } from './paginas/cursoscategoria/cursoscategoria.component';
 
 
 
@@ -39,7 +41,9 @@ import { environment } from '../environments/environment';
     UsuariosComponent,
     UsuarioComponent,
     ConfirmacaoComponent,
-    ErroComponent
+    ErroComponent,
+    CursoscategoriasComponent,
+    CursoscategoriaComponent
   ],
   imports: [
     BrowserModule,

@@ -27,9 +27,9 @@
             </mat-form-field>
 
           <mat-card-actions>
-            <a mat-raised-button  color="primary" class="voltar" href="/usuarios" *ngIf="this.as.ehAdministrador()"><i class="material-icons md-48">arrow_back_ios</i> Voltar</a>
-            <a mat-raised-button  color="primary" class="voltar" href="/login" *ngIf="!this.as.ehUsuarioAutenticado()"><i class="material-icons md-48">arrow_back_ios</i> Voltar</a>
-            <button mat-raised-button color="primary" class="salvar" (click)="salvar()" aria-label="Salvar ação" [disabled]="!f.valid"><i class="material-icons md-48">send</i> Salvar</button>
+            <a mat-raised-button  color="primary" class="voltar" routerLink="/usuarios" *ngIf="this.as.ehAdministrador()">CANCELAR</a>
+            <a mat-raised-button  color="primary" class="voltar" routerLink="/login" *ngIf="!this.as.ehUsuarioAutenticado()">CANCELAR</a>
+            <button mat-raised-button color="primary" class="salvar" (click)="salvar()" aria-label="Salvar ação" [disabled]="!f.valid">SALVAR</button>
           </mat-card-actions>
         </form>
   </div>
