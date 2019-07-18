@@ -26,6 +26,8 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { CursoscategoriasComponent } from './paginas/cursoscategorias/cursoscategorias.component';
 import { CursoscategoriaComponent } from './paginas/cursoscategoria/cursoscategoria.component';
+import { CursosComponent } from './paginas/cursos/cursos.component';
+import { CursoComponent } from './paginas/curso/curso.component';
 
 
 
@@ -43,7 +45,9 @@ import { CursoscategoriaComponent } from './paginas/cursoscategoria/cursoscatego
     ConfirmacaoComponent,
     ErroComponent,
     CursoscategoriasComponent,
-    CursoscategoriaComponent
+    CursoscategoriaComponent,
+    CursosComponent,
+    CursoComponent
   ],
   imports: [
     BrowserModule,

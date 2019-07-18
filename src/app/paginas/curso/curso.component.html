@@ -1,0 +1,38 @@
+<mat-card>
+  <div class="mat-elevation-z8">
+    <form class="form my-2 my-lg-0" #f="ngForm">
+      <mat-form-field class="inputFormulario">
+        <input matInput placeholder="Nome" [(ngModel)]="objeto.titulo" name="titulo" required>
+      </mat-form-field>
+
+      <mat-form-field class="inputFormulario">
+        <input matInput placeholder="Nome do Insitrutor" [(ngModel)]="objeto.nomeInstrutor" name="nomeInstrutor"
+          required>
+      </mat-form-field>
+      <!-- <div class="alert alert-danger" role="alert" [hidden]="emailValido">
+                <i class="material-icons">error</i> Email já cadastrado
+              </div> -->
+
+
+      <mat-form-field class="inputFormulario">
+        <input matInput placeholder="Palavra-Chave" [(ngModel)]="objeto.palavrasChave" name="nomeInstrutor"
+          required>
+      </mat-form-field>
+
+      <mat-form-field class="inputFormulario">
+        <mat-label>Categoria</mat-label>
+        <mat-select required [(ngModel)]="objeto.categoria" name="categoria" [compareWith]="compareById">
+          <mat-option *ngFor="let t of categorias" [value]="t">
+            {{t.nome}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-card-actions>
+        <a mat-raised-button color="primary" class="voltar" routerLink="/cursos" *ngIf="this.as.ehAdministrador()">CANCELAR</a>
+        <a mat-raised-button color="primary" class="voltar" routerLink="/login" *ngIf="!this.as.ehUsuarioAutenticado()">CANCELAR</a>
+        <button mat-raised-button color="primary" class="salvar" (click)="salvar()" aria-label="Salvar ação" [disabled]="!f.valid">SALVAR</button>
+      </mat-card-actions>
+    </form>
+  </div>
+</mat-card>

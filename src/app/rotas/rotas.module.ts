@@ -9,9 +9,12 @@ import { UsuarioComponent } from '../paginas/usuario/usuario.component';
 import { ErroComponent } from '../paginas/erro/erro.component';
 import { CursoscategoriasComponent } from '../paginas/cursoscategorias/cursoscategorias.component';
 import { CursoscategoriaComponent } from '../paginas/cursoscategoria/cursoscategoria.component';
+import { CursosComponent } from '../paginas/cursos/cursos.component';
+import { CursoComponent } from '../paginas/curso/curso.component';
 
 const rotas: Routes = [
-  { path: "cursos", component: PaginaCursosComponent },
+  { path: "cursos", component: CursosComponent },
+  { path: "curso", component: CursoComponent },
   { path: "cursos/:id", component: PaginaCursoComponent },
   { path: "", component: LoginComponent },
   { path: "login", component: LoginComponent },

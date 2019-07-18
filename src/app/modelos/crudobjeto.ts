@@ -40,6 +40,7 @@ export class Crudobjeto implements OnInit {
     }
 
     salvar() {
+        // console.log(this.objeto);
         this.os.nomeAPI = this.nomeAPI;
         if (Object.keys(this.objeto).indexOf("_id") == -1) {
             this.os.incluir(this.objeto).subscribe(
