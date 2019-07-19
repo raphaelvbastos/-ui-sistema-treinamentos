@@ -396,6 +396,16 @@ th {
     margin-right: -25px !important;
 }
 
+.inscrever {
+    color: #1B9A59;
+    cursor: pointer;
+}
+
+.sairCurso {
+    color: #b35a48;
+    cursor: pointer;
+}
+
 @media screen and (max-width: 600px) {
     .mat-table {
         border: 0;

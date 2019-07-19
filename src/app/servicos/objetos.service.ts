@@ -45,6 +45,8 @@ export class ObjetosService {
   }
 
   atualizar(u: any) {
+    console.log(u);
+    console.log(this.url  + this.nomeAPI + "/" + u._id);
     return this.http.put(this.url  + this.nomeAPI + "/" + u._id, u, this.cabecalhoJson);
   }
 
