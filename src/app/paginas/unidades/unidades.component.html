@@ -18,6 +18,11 @@
         <mat-cell *matCellDef="let row" data-label="Nome">{{row.titulo}}</mat-cell>
       </ng-container>
 
+      <ng-container matColumnDef="posicao">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>Posição</mat-header-cell>
+          <mat-cell *matCellDef="let row" data-label="Posição">{{row.posicao}}</mat-cell>
+        </ng-container>
+
       <ng-container matColumnDef="videos">
         <mat-header-cell *matHeaderCellDef mat-sort-header>Videos</mat-header-cell>
         <mat-cell *matCellDef="let row" data-label="Videos">

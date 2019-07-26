@@ -30,7 +30,7 @@ export class UnidadesComponent extends CrudListar {
 
     this.us.nomeAPI = "cursos";
     this.tela = "/unidade";
-    this.displayedColumns = ['titulo', 'videos', 'arquivos', 'questionarios', 'acoes'];
+    this.displayedColumns = ['titulo', 'posicao', 'videos', 'arquivos', 'questionarios', 'acoes'];
     this.cursoCampo = "unidades";
 
 
