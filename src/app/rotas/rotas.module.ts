@@ -11,6 +11,8 @@ import { CursoscategoriasComponent } from '../paginas/cursoscategorias/cursoscat
 import { CursoscategoriaComponent } from '../paginas/cursoscategoria/cursoscategoria.component';
 import { CursosComponent } from '../paginas/cursos/cursos.component';
 import { CursoComponent } from '../paginas/curso/curso.component';
+import { UnidadesComponent } from '../paginas/unidades/unidades.component';
+import { UnidadeComponent } from '../paginas/unidade/unidade.component';
 
 const rotas: Routes = [
   { path: "cursos", component: CursosComponent },
@@ -22,6 +24,8 @@ const rotas: Routes = [
   { path: "usuario", component: UsuarioComponent },
   { path: "cursoscategorias", component: CursoscategoriasComponent },
   { path: "cursoscategoria", component: CursoscategoriaComponent },
+  { path: "unidades", component: UnidadesComponent },
+  { path: "unidade", component: UnidadeComponent },
   { path: "erro", component: ErroComponent },
 ]
 

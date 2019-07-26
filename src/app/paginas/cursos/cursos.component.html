@@ -33,6 +33,13 @@
         <mat-cell *matCellDef="let row" data-label="Categoria">{{row.categoria?.nome}}</mat-cell>
       </ng-container>
 
+      <ng-container matColumnDef="unidades">
+          <mat-header-cell *matHeaderCellDef mat-sort-header></mat-header-cell>
+          <mat-cell *matCellDef="let row" data-label="Unidades">
+              <a (click)="unidades(row)" class="btnUnidades" title="Unidades"><i class="material-icons md-48" *ngIf="this.as.ehAdministrador()">view_list</i></a>
+          </mat-cell>
+        </ng-container>
+
       <!-- <ng-container matColumnDef="tipo">
         <mat-header-cell *matHeaderCellDef mat-sort-header>Tipo</mat-header-cell>
         <mat-cell *matCellDef="let row" data-label="Tipo">{{mostrarTipo(row.tipo)}}</mat-cell>
@@ -41,8 +48,8 @@
       <ng-container matColumnDef="acoes">
         <mat-header-cell *matHeaderCellDef mat-sort-header class="colunaAcoes">Ações</mat-header-cell>
         <mat-cell *matCellDef="let row" [style.color]="row.color" data-label="Ações" class="colunaAcoes">
-          <a (click)="inscrever(row)" class="inscrever" title="Sair do curso"><i class="material-icons md-48" *ngIf="!this.as.ehAdministrador() && !desinscrever(row)">check_circle</i></a>
-          <a (click)="sairCurso(row)" class="sairCurso" title="Inscrever"><i class="material-icons md-48" *ngIf="desinscrever(row)">highlight_off</i></a>
+          <a (click)="inscrever(row)" class="inscrever" title="Inscrever"><i class="material-icons md-48" *ngIf="!this.as.ehAdministrador() && !desinscrever(row)">check_circle</i></a>
+          <a (click)="sairCurso(row)" class="sairCurso" title="Sair do curso"><i class="material-icons md-48" *ngIf="desinscrever(row)">highlight_off</i></a>
           <a (click)="editar(row)" style="margin-right: 20px;"><i class="material-icons md-48 btnCRUDEditar" title="Editar" *ngIf="this.as.ehAdministrador()">edit</i></a>
           <a (click)="openDialog(row)" class="btnCRUDExcluir" title="Excluir"><i class="material-icons md-48" *ngIf="this.as.ehAdministrador()">delete</i></a>
         </mat-cell>

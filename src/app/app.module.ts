@@ -28,6 +28,8 @@ import { CursoscategoriasComponent } from './paginas/cursoscategorias/cursoscate
 import { CursoscategoriaComponent } from './paginas/cursoscategoria/cursoscategoria.component';
 import { CursosComponent } from './paginas/cursos/cursos.component';
 import { CursoComponent } from './paginas/curso/curso.component';
+import { UnidadesComponent } from './paginas/unidades/unidades.component';
+import { UnidadeComponent } from './paginas/unidade/unidade.component';
 
 
 
@@ -47,7 +49,9 @@ import { CursoComponent } from './paginas/curso/curso.component';
     CursoscategoriasComponent,
     CursoscategoriaComponent,
     CursosComponent,
-    CursoComponent
+    CursoComponent,
+    UnidadesComponent,
+    UnidadeComponent
   ],
   imports: [
     BrowserModule,

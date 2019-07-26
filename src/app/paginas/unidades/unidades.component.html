@@ -1,0 +1,57 @@
+<mat-card>
+  <h2 class="tituloPagina">{{tituloPagina}}</h2>
+  <a mat-fab class="btnNovo" title="Novo" (click)="novo(this.curso, 'unidade')">
+    <i class="material-icons md-48">add</i>
+  </a>
+
+  <div fxLayout fxLayoutAlign="right right">
+    <mat-form-field class="filtro formFiltro">
+      <input matInput type="text" (keyup)="doFilter($event.target.value)" placeholder="Filtro">
+    </mat-form-field>
+  </div>
+  <div class="mat-elevation-z8">
+
+
+    <mat-table [dataSource]="dataSource" matSort>
+      <ng-container matColumnDef="titulo">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Titulo</mat-header-cell>
+        <mat-cell *matCellDef="let row" data-label="Nome">{{row.titulo}}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="videos">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Videos</mat-header-cell>
+        <mat-cell *matCellDef="let row" data-label="Videos">
+          <a (click)="editar(row)" title="Videos"><i class="material-icons md-48 btnCRUDEditar" title="Editar">video_label</i></a>
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="arquivos">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Arquivos</mat-header-cell>
+        <mat-cell *matCellDef="let row" data-label="Arquivos">
+          <a (click)="editar(row)" title="Arquivos"><i class="material-icons md-48 btnCRUDEditar" title="Editar">file_copy</i></a>
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="questionarios">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Questionários</mat-header-cell>
+        <mat-cell *matCellDef="let row" data-label="Questionários">
+          <a (click)="editar(row)" title="Questionários"><i class="material-icons md-48 btnCRUDEditar" title="Editar">question_answer</i></a>
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="acoes">
+        <mat-header-cell *matHeaderCellDef mat-sort-header class="colunaAcoes">Ações</mat-header-cell>
+        <mat-cell *matCellDef="let row" [style.color]="row.color" data-label="Ações" class="colunaAcoes">
+          <a (click)="editar(row)" style="margin-right: 20px;"><i class="material-icons md-48 btnCRUDEditar" title="Editar">edit</i></a>
+          <a (click)="openDialog(row)" class="btnCRUDExcluir" title="Excluir"><i class="material-icons md-48">delete</i></a>
+        </mat-cell>
+      </ng-container>
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;">
+      </mat-row>
+    </mat-table>
+
+    <mat-paginator #paginator [length]="dataSource?.data?.length" [pageIndex]="0" [pageSize]="10" [pageSizeOptions]="[5, 10, 20, 50]">
+    </mat-paginator>
+  </div>
+</mat-card>

@@ -2,6 +2,7 @@ import { ObjetosService } from "../servicos/objetos.service";
 import { Router } from "@angular/router";
 import { AutenticacaoService } from "../servicos/autenticacao.service";
 import { OnInit } from "@angular/core";
+import { CursosService } from "../servicos/cursos.service";
 
 export class Crudobjeto implements OnInit {
     objeto: any;
@@ -10,8 +11,13 @@ export class Crudobjeto implements OnInit {
     filtro: string;
     campoFiltro: string;
     campoValido = true;
+    cursoCampo: string;
 
-    constructor(public os: ObjetosService, public router: Router, public as: AutenticacaoService) {
+    // constructor(public os: ObjetosService, public router: Router, public as: AutenticacaoService) {
+    //     this.os.nomeAPI = this.nomeAPI;
+    // }
+
+    constructor(public os: ObjetosService, public router: Router, public as: AutenticacaoService, public cursoService?: CursosService) {
         this.os.nomeAPI = this.nomeAPI;
     }
 
@@ -41,18 +47,72 @@ export class Crudobjeto implements OnInit {
 
     salvar() {
         // console.log(this.objeto);
+        // console.log(this.cursoService.getObjetoSelecionado());
         this.os.nomeAPI = this.nomeAPI;
+
+        // console.log(this.objeto);
         if (Object.keys(this.objeto).indexOf("_id") == -1) {
-            this.os.incluir(this.objeto).subscribe(
+            if(typeof this.cursoService != "undefined") {
+                let curso =  this.cursoService.getObjetoSelecionado();
+                curso[this.cursoCampo].push(this.objeto);
+                this.objeto = curso;
+
+                this.os.atualizar(this.objeto).subscribe(
+                    (dados) => {
+                        this.router.navigate([this.tela]);
+                    });
+            } else {
+                this.os.incluir(this.objeto).subscribe(
                 (dados) => {
                     this.router.navigate([this.tela]);
                 });
+            }
+
+            
+
+            // this.os.incluir(this.objeto).subscribe(
+            //     (dados) => {
+            //         this.router.navigate([this.tela]);
+            //     });
         } else {
-            this.os.atualizar(this.objeto).subscribe(
+            if(typeof this.cursoService != "undefined") {
+                
+                let curso =  this.cursoService.getObjetoSelecionado();
+                let pos = curso[this.cursoCampo].findIndex(x => x._id == this.objeto._id);
+                curso[this.cursoCampo].splice(pos, 1);
+                
+                curso[this.cursoCampo].push(this.objeto);
+                this.objeto = curso;
+
+                this.os.atualizar(this.objeto).subscribe(
                 (dados) => {
                     this.router.navigate([this.tela]);
                 });
+
+            } else {
+                this.os.atualizar(this.objeto).subscribe(
+                (dados) => {
+                    this.router.navigate([this.tela]);
+                });
+            }
+
+            // this.os.atualizar(this.objeto).subscribe(
+            //     (dados) => {
+            //         this.router.navigate([this.tela]);
+            //     });
         }
+
+        // if (Object.keys(this.objeto).indexOf("_id") == -1) {
+        //     this.os.incluir(this.objeto).subscribe(
+        //         (dados) => {
+        //             this.router.navigate([this.tela]);
+        //         });
+        // } else {
+        //     this.os.atualizar(this.objeto).subscribe(
+        //         (dados) => {
+        //             this.router.navigate([this.tela]);
+        //         });
+        // }
     }
 
     compareById(f1: any, f2: any): boolean {

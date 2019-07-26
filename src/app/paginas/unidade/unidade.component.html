@@ -1,0 +1,19 @@
+<mat-card>
+    <div class="mat-elevation-z8">
+        <form class="form my-2 my-lg-0" #f="ngForm">
+            <mat-form-field class="inputFormulario">
+                <input matInput placeholder="Nome" [(ngModel)]="objeto.titulo" name="nome" required>
+              </mat-form-field>
+  
+              <mat-form-field class="inputFormulario">
+                  <input matInput placeholder="Posição" [(ngModel)]="objeto.posicao" name="posicao" required>
+                </mat-form-field>
+  
+            <mat-card-actions>
+              <a mat-raised-button  color="primary" class="voltar" routerLink="/unidades" *ngIf="this.as.ehAdministrador()">CANCELAR</a>
+              <a mat-raised-button  color="primary" class="voltar" routerLink="/login" *ngIf="!this.as.ehUsuarioAutenticado()">CANCELAR</a>
+              <button mat-raised-button color="primary" class="salvar" (click)="salvar()" aria-label="Salvar ação" [disabled]="!f.valid">SALVAR</button>
+            </mat-card-actions>
+          </form>
+    </div>
+  </mat-card>

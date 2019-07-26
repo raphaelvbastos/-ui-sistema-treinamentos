@@ -5,6 +5,8 @@ import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material';
 import { AutenticacaoService } from 'src/app/servicos/autenticacao.service';
 import { Inscricaomodel } from 'src/app/modelos/inscricaomodel';
+import { UnidadesService } from 'src/app/servicos/unidades.service';
+import { CursosService } from 'src/app/servicos/cursos.service';
 
 @Component({
   selector: 'app-cursos',
@@ -23,11 +25,11 @@ import { Inscricaomodel } from 'src/app/modelos/inscricaomodel';
 export class CursosComponent extends CrudListar {
 
   tituloPagina = "Lista de cursos";
-  constructor(public us: ObjetosService, public router: Router, public dialog: MatDialog, public as: AutenticacaoService) {
+  constructor(public us: ObjetosService, public router: Router, public dialog: MatDialog, public as: AutenticacaoService, public cursoService: CursosService) {
     super(us, router, dialog);
     this.us.nomeAPI = "cursos";
     this.tela = "/curso";
-    this.displayedColumns = ['titulo', 'nomeInstrutor', 'palavrasChaves', 'categoria', 'acoes'];
+    this.displayedColumns = ['titulo', 'nomeInstrutor', 'palavrasChaves', 'categoria', 'unidades', 'acoes'];
 
     this.as.permissaoAcesso("LOGADO", "Acesso Negado");
   }
@@ -52,8 +54,17 @@ export class CursosComponent extends CrudListar {
     
   }
 
+  unidades(uni) {
+    // this.us.nomeAPI = "unidades";
+    // this.uniServ.setObjetoSelecionado(uni);
+
+    this.us.nomeAPI = "cursos";
+    this.cursoService.setObjetoSelecionado(uni);
+    this.router.navigate(["/unidades"]);
+  }
+
   sairCurso(curso) {
-    
+
     let usuario = this.as.getUsuario();
     let pos = curso.inscricoes.findIndex(x => x.usuario._id == usuario._id)
     curso.inscricoes.splice(pos, 1);
