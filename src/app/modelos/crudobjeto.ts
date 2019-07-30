@@ -45,6 +45,31 @@ export class Crudobjeto implements OnInit {
         });
     }
 
+    salvarNoCurso() {
+        this.os.nomeAPI = this.nomeAPI;
+        if(typeof this.cursoService != "undefined") {
+            if(typeof this.cursoCampo != "undefined") {
+                let curso =  this.cursoService.getObjetoSelecionado();
+
+                if (Object.keys(this.objeto).indexOf("_id") > -1) {
+                    let pos = curso[this.cursoCampo].findIndex(x => x._id == this.objeto._id);
+                    curso[this.cursoCampo].splice(pos, 1);
+                    curso[this.cursoCampo].push(this.objeto);
+                    this.objeto = curso;
+                } else {
+                    curso[this.cursoCampo].push(this.objeto);
+                    this.objeto = curso;
+                }
+
+                this.os.atualizar(this.objeto).subscribe(
+                    (dados) => {
+                        this.router.navigate([this.tela]);
+                    });
+            }
+
+        }
+    }
+
     salvar() {
         // console.log(this.objeto);
         // console.log(this.cursoService.getObjetoSelecionado());

@@ -17,7 +17,7 @@ export class UnidadesComponent extends CrudListar {
   tituloPagina = "Lista de unidades";
   curso: any;
 
-  constructor(public us: ObjetosService, public router: Router, public dialog: MatDialog, public as: AutenticacaoService, public cursoService: CursosService) {
+  constructor(public us: ObjetosService, public router: Router, public dialog: MatDialog, public as: AutenticacaoService, public cursoService: CursosService, public uni: UnidadesService) {
     super(us, router, dialog, cursoService);
 
     if(typeof this.cursoService.getObjetoSelecionado() != "undefined") {
@@ -35,6 +35,11 @@ export class UnidadesComponent extends CrudListar {
 
 
     this.as.permissaoAcesso("ADM", "Acesso Negado");
+  }
+
+  videos(unidade) {
+    this.uni.setObjetoSelecionado(unidade);
+    this.router.navigate(["/videos"]);
   }
 
 }

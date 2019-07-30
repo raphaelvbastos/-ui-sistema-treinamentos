@@ -10,7 +10,7 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MenuComponent } from './paginas/menu/menu.component';
 import { LayoutModule } from '@angular/cdk/layout';
-import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule, MatGridListModule, MatCardModule, MatMenuModule, MatTableModule, MatPaginatorModule, MatSortModule, MatFormFieldModule, MatInputModule, MatSelectModule, MatDialog, MatDialogModule } from '@angular/material';
+import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule, MatGridListModule, MatCardModule, MatMenuModule, MatTableModule, MatPaginatorModule, MatSortModule, MatFormFieldModule, MatInputModule, MatSelectModule, MatDialog, MatDialogModule, MatProgressBarModule } from '@angular/material';
 import { PainelComponent } from './paginas/painel/painel.component';
 import { TabelaComponent } from './paginas/tabela/tabela.component';
 import { PaginaCursosComponent } from './paginas/pagina-cursos/pagina-cursos.component';
@@ -30,6 +30,9 @@ import { CursosComponent } from './paginas/cursos/cursos.component';
 import { CursoComponent } from './paginas/curso/curso.component';
 import { UnidadesComponent } from './paginas/unidades/unidades.component';
 import { UnidadeComponent } from './paginas/unidade/unidade.component';
+import { VideosComponent } from './paginas/videos/videos.component';
+import { VideoComponent } from './paginas/video/video.component';
+
 
 
 
@@ -51,7 +54,9 @@ import { UnidadeComponent } from './paginas/unidade/unidade.component';
     CursosComponent,
     CursoComponent,
     UnidadesComponent,
-    UnidadeComponent
+    UnidadeComponent,
+    VideosComponent,
+    VideoComponent
   ],
   imports: [
     BrowserModule,
@@ -68,6 +73,7 @@ import { UnidadeComponent } from './paginas/unidade/unidade.component';
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,
+    MatProgressBarModule,
     RotasModule,
     HttpModule,
     HttpClientModule,

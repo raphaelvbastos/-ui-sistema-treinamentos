@@ -13,6 +13,8 @@ import { CursosComponent } from '../paginas/cursos/cursos.component';
 import { CursoComponent } from '../paginas/curso/curso.component';
 import { UnidadesComponent } from '../paginas/unidades/unidades.component';
 import { UnidadeComponent } from '../paginas/unidade/unidade.component';
+import { VideosComponent } from '../paginas/videos/videos.component';
+import { VideoComponent } from '../paginas/video/video.component';
 
 const rotas: Routes = [
   { path: "cursos", component: CursosComponent },
@@ -26,6 +28,8 @@ const rotas: Routes = [
   { path: "cursoscategoria", component: CursoscategoriaComponent },
   { path: "unidades", component: UnidadesComponent },
   { path: "unidade", component: UnidadeComponent },
+  { path: "videos", component: VideosComponent },
+  { path: "video", component: VideoComponent },
   { path: "erro", component: ErroComponent },
 ]
 
