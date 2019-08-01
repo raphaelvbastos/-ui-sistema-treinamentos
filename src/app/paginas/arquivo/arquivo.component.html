@@ -1,0 +1,36 @@
+<mat-card>
+    <div class="mat-elevation-z8">
+      <form class="form my-2 my-lg-0" #f="ngForm" method="post" enctype="multipart/form-data" form>
+        <mat-form-field class="inputFormulario">
+          <input matInput placeholder="Titulo" [(ngModel)]="objeto.titulo" name="titulo" required>
+        </mat-form-field>
+  
+        <mat-form-field class="inputFormulario">
+          <input matInput type="number" placeholder="Posição" [(ngModel)]="objeto.posicao" name="posicao" required>
+        </mat-form-field>
+  
+        <mat-tab-group>
+          <mat-tab label="URL para o arquivo">
+              <mat-form-field class="inputFormulario">
+                  <input matInput placeholder="URL" [(ngModel)]="objeto.url" name="url">
+                </mat-form-field>
+          </mat-tab>
+          <mat-tab label="Enviar  arquivo">
+              <button mat-button (click)="inputFile.click()" class="btnUpload">
+                  <i class="material-icons md-48">attach_file</i>
+                  Selecionar arquivo
+                </button> {{ nomeArquivo }}
+                <input #inputFile type="file" name="filetoupload" #fd="ngModel" [(ngModel)]="arquivo" (change)="fileChange($event)"
+                  [style.display]="'none'">
+          </mat-tab>
+        </mat-tab-group>
+  
+        <mat-card-actions>
+          <a mat-raised-button color="primary" class="voltar" routerLink="/arquivos" *ngIf="this.as.ehAdministrador()">CANCELAR</a>
+          <a mat-raised-button color="primary" class="voltar" routerLink="/login" *ngIf="!this.as.ehUsuarioAutenticado()">CANCELAR</a>
+          <button mat-raised-button color="primary" class="salvar" (click)="salvarNaUnidade()" aria-label="Salvar ação"
+            [disabled]="!f.valid">SALVAR</button>
+        </mat-card-actions>
+      </form>
+    </div>
+  </mat-card>

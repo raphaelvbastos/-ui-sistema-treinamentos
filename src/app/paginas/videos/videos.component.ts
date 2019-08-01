@@ -13,16 +13,6 @@ import { ConfirmacaoComponent } from '../confirmacao/confirmacao.component';
   templateUrl: './videos.component.html',
   styleUrls: ['./videos.component.css']
 })
-// export class VideosComponent implements OnInit {
-
-//   constructor() { }
-
-//   ngOnInit() {
-//   }
-
-// }
-
-
 
 export class VideosComponent extends CrudListar {
 
@@ -41,7 +31,7 @@ export class VideosComponent extends CrudListar {
 
     this.us.nomeAPI = "cursos";
     this.tela = "/video";
-    this.displayedColumns = ['titulo', 'posicao', 'url', 'acoes'];
+    this.displayedColumns = ['titulo', 'url', 'posicao', 'acoes'];
     this.cursoCampo = "unidades";
 
 
@@ -63,8 +53,6 @@ export class VideosComponent extends CrudListar {
       (dados) => {
         this.atualizar();
       });
-
-    // console.log(this.cursoService.getObjetoSelecionado());
   }
 
   abrirDialogo(objeto: any): void {
@@ -79,15 +67,4 @@ export class VideosComponent extends CrudListar {
       }
     });
   }
-
-  // editarNoCurso(objeto: any) {
-  //   this.us.setObjetoSelecionado(objeto);
-  //   this.router.navigate([this.tela]);
-  // }
-
-  // editar(objeto: any) {
-  //   this.us.setObjetoSelecionado(objeto);
-  //   this.router.navigate([this.tela]);
-  // }
- 
 }

@@ -15,6 +15,14 @@ import { UnidadesComponent } from '../paginas/unidades/unidades.component';
 import { UnidadeComponent } from '../paginas/unidade/unidade.component';
 import { VideosComponent } from '../paginas/videos/videos.component';
 import { VideoComponent } from '../paginas/video/video.component';
+import { ArquivosComponent } from '../paginas/arquivos/arquivos.component';
+import { ArquivoComponent } from '../paginas/arquivo/arquivo.component';
+import { QuestionariosComponent } from '../paginas/questionarios/questionarios.component';
+import { QuestionarioComponent } from '../paginas/questionario/questionario.component';
+import { QuestoesComponent } from '../paginas/questoes/questoes.component';
+import { QuestaoComponent } from '../paginas/questao/questao.component';
+import { AlternativasComponent } from '../paginas/alternativas/alternativas.component';
+import { AlternativaComponent } from '../paginas/alternativa/alternativa.component';
 
 const rotas: Routes = [
   { path: "cursos", component: CursosComponent },
@@ -30,6 +38,14 @@ const rotas: Routes = [
   { path: "unidade", component: UnidadeComponent },
   { path: "videos", component: VideosComponent },
   { path: "video", component: VideoComponent },
+  { path: "arquivos", component: ArquivosComponent },
+  { path: "arquivo", component: ArquivoComponent },
+  { path: "questionarios", component: QuestionariosComponent },
+  { path: "questionario", component: QuestionarioComponent },
+  { path: "questoes", component: QuestoesComponent },
+  { path: "questao", component: QuestaoComponent },
+  { path: "alternativas", component: AlternativasComponent },
+  { path: "alternativa", component: AlternativaComponent },
   { path: "erro", component: ErroComponent },
 ]
 

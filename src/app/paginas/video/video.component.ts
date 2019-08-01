@@ -7,9 +7,10 @@ import { CursosService } from 'src/app/servicos/cursos.service';
 import { UnidadesService } from 'src/app/servicos/unidades.service';
 import { Subscription, of } from 'rxjs';
 import { HttpRequest, HttpEventType, HttpErrorResponse, HttpClient } from '@angular/common/http';
-import { map, tap, last, catchError } from 'rxjs/operators';
 import { trigger, state, transition, animate, style } from '@angular/animations';
 import { UploadService } from 'src/app/servicos/upload.service';
+import { DomSanitizer } from '@angular/platform-browser';
+
 
 @Component({
   selector: 'app-video',
@@ -35,26 +36,35 @@ export class VideoComponent extends Crudobjeto {
     "vistoPor": []
   };
 
-  constructor(public os: ObjetosService, public router: Router, public as: AutenticacaoService, public cursoService: CursosService, public uni: UnidadesService, private _http: HttpClient, public uploadService: UploadService) {
+  arquivo: any;
+  uploadedFiles: Array<File>;
+  cont: Array<any>;
+  nomeArquivo = "";
+  exibirTagVideo = false;
+  exibirTagEmbebed = false;
+
+  constructor(public os: ObjetosService, public router: Router, public as: AutenticacaoService, public cursoService: CursosService, 
+      public uni: UnidadesService, private _http: HttpClient, public uploadService: UploadService, public sanitize: DomSanitizer) {
     super(os, router, as, cursoService);
     this.objeto = this.video;
     this.nomeAPI = "cursos";
     this.tela = "/videos";
     this.filtro = "titulo";
     this.cursoCampo = "unidades";
-
-    this.as.permissaoAcesso("ADM", "Acesso Negado");
-
+    this.uploadedFiles = new Array();
+    this.as.permissaoAcesso("ADM", "Acesso Negado");   
   }
 
   tituloPagina = "VIDEO";
 
+  sanitizarURL(url) {
+    return this.sanitize.bypassSecurityTrustResourceUrl(url);
+  }
+  
   salvarNaUnidade() {
     if (this.uploadedFiles.length > 0) {
-      this.objeto.url = "https://api-sistema-treinamento.herokuapp.com/arquivos/" + this.upload();
+      this.objeto.url = "https://api-sistema-treinamento.herokuapp.com/download/" + this.upload();
     }
-
-
 
     if (Object.keys(this.objeto).indexOf("_id") > -1) {
       let pos = this.uni.getObjetoSelecionado().videos.findIndex(x => x._id == this.objeto._id);
@@ -68,7 +78,6 @@ export class VideoComponent extends Crudobjeto {
       this.cursoService.getObjetoSelecionado().unidades.push(this.uni.getObjetoSelecionado());
 
       this.objeto = this.cursoService.getObjetoSelecionado();
-      // console.log(curso);
 
     } else {
       this.uni.getObjetoSelecionado().videos.push(this.objeto);
@@ -80,65 +89,35 @@ export class VideoComponent extends Crudobjeto {
       this.objeto = this.cursoService.getObjetoSelecionado();
     }
 
-    // this.os.nomeAPI = "cursos";
-    // this.os.atualizar(this.objeto).subscribe(
-    //   (dados) => {
-    //     this.router.navigate([this.tela]);
-    //   });
-
-
-    // console.log(this.cursoService.getObjetoSelecionado());
-    // console.log(this.uni.getObjetoSelecionado());
-    console.log(this.objeto);
+    this.os.nomeAPI = "cursos";
+    this.os.atualizar(this.objeto).subscribe(
+      (dados) => {
+        this.router.navigate([this.tela]);
+      });
   }
-
-  excluirNaUnidade(objeto) {
-    let pos = this.uni.getObjetoSelecionado().videos.findIndex(x => x._id == objeto._id);
-    this.uni.getObjetoSelecionado().videos.splice(pos, 1);
-
-    pos = this.cursoService.getObjetoSelecionado().unidades.findIndex(x => x._id == this.uni.getObjetoSelecionado()._id);
-
-    this.cursoService.getObjetoSelecionado().unidades.splice(pos, 1);
-    this.cursoService.getObjetoSelecionado().unidades.push(this.uni.getObjetoSelecionado());
-
-    console.log(this.cursoService.getObjetoSelecionado());
-
-  }
-
-  arquivo: any;
-
-  uploadedFiles: Array<File>;
-  cont: Array<any>;
 
   fileChange(element) {
     this.uploadedFiles = element.target.files;
+    this.nomeArquivo = element.target.files[0].name;
   }
 
   upload() {
-    
     let formData = new FormData();
     this.cont = new Array();
+    let nome = "";
 
     for (var i = 0; i < this.uploadedFiles.length; i++) {
       this.cont.push(this.uploadedFiles[i].name);
-      formData.append("nome", "AAAAAA");
       formData.append("upload", this.uploadedFiles[i], new Date().getTime() + this.uploadedFiles[i].name);
+      nome = formData.get("upload")["name"];
     }
 
-    console.log(formData.get("upload"));
     this.uploadService.upload(formData).subscribe(
       (dados) => {
-        return formData.get("upload")["name"];
-        // this.router.navigate([this.tela]);
+        nome = formData.get("upload")["name"];
       });
 
-    // console.log(formData.get("upload").name);
-
-    // this.ts.upload(formData).subscribe(
-    //   (dados) => {
-    //     this.router.navigate(["/favorito"]);
-    //   }
-    // );
+      return nome;
   }
 
 }

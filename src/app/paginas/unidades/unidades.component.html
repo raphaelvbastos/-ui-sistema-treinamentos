@@ -4,6 +4,10 @@
     <i class="material-icons md-48">add</i>
   </a>
 
+  <a mat-raised-button  color="primary" class="voltar" title="Voltar" routerLink="/cursos" style="float: right;">
+    <i class="material-icons md-48" title="Editar">arrow_back</i>
+  </a>
+
   <div fxLayout fxLayoutAlign="right right">
     <mat-form-field class="filtro formFiltro">
       <input matInput type="text" (keyup)="doFilter($event.target.value)" placeholder="Filtro">
@@ -33,14 +37,14 @@
       <ng-container matColumnDef="arquivos">
         <mat-header-cell *matHeaderCellDef mat-sort-header>Arquivos</mat-header-cell>
         <mat-cell *matCellDef="let row" data-label="Arquivos">
-          <a (click)="editar(row)" title="Arquivos"><i class="material-icons md-48 btnCRUDEditar" title="Editar">file_copy</i></a>
+          <a (click)="arquivos(row)" title="Arquivos"><i class="material-icons md-48 btnCRUDEditar" title="Editar">file_copy</i></a>
         </mat-cell>
       </ng-container>
 
       <ng-container matColumnDef="questionarios">
         <mat-header-cell *matHeaderCellDef mat-sort-header>Questionários</mat-header-cell>
         <mat-cell *matCellDef="let row" data-label="Questionários">
-          <a (click)="editar(row)" title="Questionários"><i class="material-icons md-48 btnCRUDEditar" title="Editar">question_answer</i></a>
+          <a (click)="questionarios(row)" title="Questionários"><i class="material-icons md-48 btnCRUDEditar" title="Editar">question_answer</i></a>
         </mat-cell>
       </ng-container>
 

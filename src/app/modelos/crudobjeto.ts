@@ -25,6 +25,17 @@ export class Crudobjeto implements OnInit {
     ngOnInit() {
         if (this.os.getObjetoSelecionado() != null) {
             this.objeto = this.os.getObjetoSelecionado();
+            if (Object.keys(this).indexOf("exibirTagVideo") > -1) {
+                if (this.objeto.url.indexOf("https://api-sistema-treinamento.herokuapp") > - 1 || this.objeto.url.indexOf("http://localhost") > - 1) {
+                    this["exibirTagVideo"] = true;
+                }
+            }
+
+            if (Object.keys(this).indexOf("exibirTagEmbebed") > -1) {
+                if (this.objeto.url.indexOf("https://api-sistema-treinamento.herokuapp") == - 1 || this.objeto.url.indexOf("http://localhost") == - 1) {
+                    this["exibirTagEmbebed"] = true;
+                }
+            }
         }
     }
 
@@ -47,9 +58,9 @@ export class Crudobjeto implements OnInit {
 
     salvarNoCurso() {
         this.os.nomeAPI = this.nomeAPI;
-        if(typeof this.cursoService != "undefined") {
-            if(typeof this.cursoCampo != "undefined") {
-                let curso =  this.cursoService.getObjetoSelecionado();
+        if (typeof this.cursoService != "undefined") {
+            if (typeof this.cursoCampo != "undefined") {
+                let curso = this.cursoService.getObjetoSelecionado();
 
                 if (Object.keys(this.objeto).indexOf("_id") > -1) {
                     let pos = curso[this.cursoCampo].findIndex(x => x._id == this.objeto._id);
@@ -77,8 +88,8 @@ export class Crudobjeto implements OnInit {
 
         // console.log(this.objeto);
         if (Object.keys(this.objeto).indexOf("_id") == -1) {
-            if(typeof this.cursoService != "undefined") {
-                let curso =  this.cursoService.getObjetoSelecionado();
+            if (typeof this.cursoService != "undefined") {
+                let curso = this.cursoService.getObjetoSelecionado();
                 curso[this.cursoCampo].push(this.objeto);
                 this.objeto = curso;
 
@@ -88,37 +99,37 @@ export class Crudobjeto implements OnInit {
                     });
             } else {
                 this.os.incluir(this.objeto).subscribe(
-                (dados) => {
-                    this.router.navigate([this.tela]);
-                });
+                    (dados) => {
+                        this.router.navigate([this.tela]);
+                    });
             }
 
-            
+
 
             // this.os.incluir(this.objeto).subscribe(
             //     (dados) => {
             //         this.router.navigate([this.tela]);
             //     });
         } else {
-            if(typeof this.cursoService != "undefined") {
-                
-                let curso =  this.cursoService.getObjetoSelecionado();
+            if (typeof this.cursoService != "undefined") {
+
+                let curso = this.cursoService.getObjetoSelecionado();
                 let pos = curso[this.cursoCampo].findIndex(x => x._id == this.objeto._id);
                 curso[this.cursoCampo].splice(pos, 1);
-                
+
                 curso[this.cursoCampo].push(this.objeto);
                 this.objeto = curso;
 
                 this.os.atualizar(this.objeto).subscribe(
-                (dados) => {
-                    this.router.navigate([this.tela]);
-                });
+                    (dados) => {
+                        this.router.navigate([this.tela]);
+                    });
 
             } else {
                 this.os.atualizar(this.objeto).subscribe(
-                (dados) => {
-                    this.router.navigate([this.tela]);
-                });
+                    (dados) => {
+                        this.router.navigate([this.tela]);
+                    });
             }
 
             // this.os.atualizar(this.objeto).subscribe(

@@ -171,6 +171,35 @@ mat-sidenav-content {
     box-shadow: none !important;
 }
 
+.btnUpload {
+    color: #26C6DA !important;
+    border: 2px solid #26C6DA !important;
+    background: none !important;
+}
+
+.mat-button-toggle-checked {
+    background:rgb(21, 85, 94);
+    color: #eee !important;
+}
+
+
+.mat-button-toggle-label-content {
+    color: #26C6DA !important;
+    border: 2px solid #26C6DA !important;
+    background: none !important;
+}
+
+.mat-tab-label {
+    color: #26C6DA !important;
+    font-size: 1.3em;
+}
+
+.mat-tab-label-active {
+    background: none !important;
+    border: none !important;
+    border-bottom: 2px solid #26C6DA;
+}
+
 .btnNovo {
     position: fixed !important; right: 15px !important; bottom: 50px !important;
 }

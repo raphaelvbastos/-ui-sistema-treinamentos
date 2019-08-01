@@ -1,24 +1,63 @@
 <mat-card>
-    <div class="mat-elevation-z8">
-        <form class="form my-2 my-lg-0" #f="ngForm" method="post" enctype="multipart/form-data" form >
+  <div class="mat-elevation-z8">
+    <form class="form my-2 my-lg-0" #f="ngForm" method="post" enctype="multipart/form-data" form>
+      <mat-form-field class="inputFormulario">
+        <input matInput placeholder="Titulo" [(ngModel)]="objeto.titulo" name="titulo" required>
+      </mat-form-field>
+
+      <mat-form-field class="inputFormulario">
+        <input matInput type="number" placeholder="Posição" [(ngModel)]="objeto.posicao" name="posicao" required>
+      </mat-form-field>
+
+      <mat-tab-group>
+        <mat-tab label="URL para o video">
             <mat-form-field class="inputFormulario">
-                <input matInput placeholder="Titulo" [(ngModel)]="objeto.titulo" name="titulo" required>
+                <input matInput placeholder="URL" [(ngModel)]="objeto.url" name="url">
               </mat-form-field>
-  
-              <mat-form-field class="inputFormulario">
-                  <input matInput type="number" placeholder="Posição" [(ngModel)]="objeto.posicao" name="posicao" required>
-                </mat-form-field>
+        </mat-tab>
+        <mat-tab label="Enviar  video">
+            <button mat-button (click)="inputFile.click()" class="btnUpload">
+                <i class="material-icons md-48">attach_file</i>
+                Selecionar arquivo
+              </button> {{ nomeArquivo }}
+              <input #inputFile type="file" name="filetoupload" #fd="ngModel" [(ngModel)]="arquivo" (change)="fileChange($event)"
+                [style.display]="'none'">
+        </mat-tab>
+      </mat-tab-group>
 
-                <mat-form-field class="inputFormulario">
-                    <input matInput placeholder="URL" [(ngModel)]="objeto.url" name="url" required>
-                  </mat-form-field>
+      <video controls [src]="sanitizarURL(objeto.url)" width="426" height="240" [hidden]="!exibirTagVideo"></video>
+      <iframe width="426" height="240" [src]="sanitizarURL(objeto.url)" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen [hidden]="!exibirTagEmbebed"></iframe>
 
-                    <input type="file" name="filetoupload" #fd="ngModel" [(ngModel)]="arquivo" (change)="fileChange($event)"><br>
-                    <span  class="input-group-text upload"  (click)="upload()"  id="btnUpload">Upload</span>
-              
-                    <!-- <input type="submit"> -->
 
-                  <!-- <label for="singleFile">Upload file</label>
+      <!-- <mat-form-field class="inputFormulario">
+        <input matInput placeholder="URL" [(ngModel)]="objeto.url" name="url">
+      </mat-form-field> -->
+
+      <!-- <input type="file" name="filetoupload" #fd="ngModel" [(ngModel)]="arquivo" (change)="fileChange($event)"> -->
+
+      <!-- <input id="fileInput" type="file" class="ng-hide">
+      <md-input-container flex class="md-block">
+        <input type="text" ng-model="fileName" disabled>
+        <div class="hint">Select your file</div>
+      </md-input-container>
+      <div>
+        <md-button id="uploadButton" class="md-fab md-mini">
+          <md-icon class="material-icons">attach_file</md-icon>
+        </md-button>
+      </div> -->
+
+      <!-- <button mat-button (click)="inputFile.click()" class="btnUpload">
+        <i class="material-icons md-48">attach_file</i>
+        Selecionar arquivo
+      </button> {{ nomeArquivo }}
+      <input #inputFile type="file" name="filetoupload" #fd="ngModel" [(ngModel)]="arquivo" (change)="fileChange($event)"
+        [style.display]="'none'"> -->
+
+
+
+      <!-- <input type="submit"> -->
+
+      <!-- <label for="singleFile">Upload file</label>
                   <input id="singleFile" type="file" [fileUploadInputFor]= "fileUploadQueue"/>
                   <br>
                    
@@ -29,7 +68,7 @@
                       <mat-file-upload [file]="file" [id]="i" *ngFor="let file of fileUploadQueue.files; let i = index"></mat-file-upload>
                   </mat-file-upload-queue> -->
 
-                  <!-- <button mat-button color="warn" (click)="onClick()" type="button">
+      <!-- <button mat-button color="warn" (click)="onClick()" type="button">
                       <mat-icon>file_upload</mat-icon>
                       {{text}}
                     </button>
@@ -49,12 +88,13 @@
                       </li>
                     </ul>
                     <input type="file" id="fileUpload" name="fileUpload" multiple="multiple" accept="{{accept}}" style="display:none;" /> -->
-  
-            <mat-card-actions>
-              <a mat-raised-button  color="primary" class="voltar" routerLink="/videos" *ngIf="this.as.ehAdministrador()">CANCELAR</a>
-              <a mat-raised-button  color="primary" class="voltar" routerLink="/login" *ngIf="!this.as.ehUsuarioAutenticado()">CANCELAR</a>
-              <button mat-raised-button color="primary" class="salvar" (click)="salvarNaUnidade()" aria-label="Salvar ação" [disabled]="!f.valid">SALVAR</button>
-            </mat-card-actions>
-          </form>
-    </div>
-  </mat-card>
+
+      <mat-card-actions>
+        <a mat-raised-button color="primary" class="voltar" routerLink="/videos" *ngIf="this.as.ehAdministrador()">CANCELAR</a>
+        <a mat-raised-button color="primary" class="voltar" routerLink="/login" *ngIf="!this.as.ehUsuarioAutenticado()">CANCELAR</a>
+        <button mat-raised-button color="primary" class="salvar" (click)="salvarNaUnidade()" aria-label="Salvar ação"
+          [disabled]="!f.valid">SALVAR</button>
+      </mat-card-actions>
+    </form>
+  </div>
+</mat-card>

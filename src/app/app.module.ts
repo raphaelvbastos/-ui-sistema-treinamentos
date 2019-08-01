@@ -10,7 +10,7 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MenuComponent } from './paginas/menu/menu.component';
 import { LayoutModule } from '@angular/cdk/layout';
-import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule, MatGridListModule, MatCardModule, MatMenuModule, MatTableModule, MatPaginatorModule, MatSortModule, MatFormFieldModule, MatInputModule, MatSelectModule, MatDialog, MatDialogModule, MatProgressBarModule } from '@angular/material';
+import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule, MatGridListModule, MatCardModule, MatMenuModule, MatTableModule, MatPaginatorModule, MatSortModule, MatFormFieldModule, MatInputModule, MatSelectModule, MatDialog, MatDialogModule, MatProgressBarModule, MatTabsModule, MatButtonToggleModule } from '@angular/material';
 import { PainelComponent } from './paginas/painel/painel.component';
 import { TabelaComponent } from './paginas/tabela/tabela.component';
 import { PaginaCursosComponent } from './paginas/pagina-cursos/pagina-cursos.component';
@@ -32,6 +32,14 @@ import { UnidadesComponent } from './paginas/unidades/unidades.component';
 import { UnidadeComponent } from './paginas/unidade/unidade.component';
 import { VideosComponent } from './paginas/videos/videos.component';
 import { VideoComponent } from './paginas/video/video.component';
+import { ArquivosComponent } from './paginas/arquivos/arquivos.component';
+import { ArquivoComponent } from './paginas/arquivo/arquivo.component';
+import { QuestionariosComponent } from './paginas/questionarios/questionarios.component';
+import { QuestionarioComponent } from './paginas/questionario/questionario.component';
+import { QuestoesComponent } from './paginas/questoes/questoes.component';
+import { QuestaoComponent } from './paginas/questao/questao.component';
+import { AlternativasComponent } from './paginas/alternativas/alternativas.component';
+import { AlternativaComponent } from './paginas/alternativa/alternativa.component';
 
 
 
@@ -56,7 +64,15 @@ import { VideoComponent } from './paginas/video/video.component';
     UnidadesComponent,
     UnidadeComponent,
     VideosComponent,
-    VideoComponent
+    VideoComponent,
+    ArquivosComponent,
+    ArquivoComponent,
+    QuestionariosComponent,
+    QuestionarioComponent,
+    QuestoesComponent,
+    QuestaoComponent,
+    AlternativasComponent,
+    AlternativaComponent
   ],
   imports: [
     BrowserModule,
@@ -72,7 +88,9 @@ import { VideoComponent } from './paginas/video/video.component';
     MatMenuModule,
     MatTableModule,
     MatPaginatorModule,
+    MatButtonToggleModule,
     MatSortModule,
+    MatTabsModule,
     MatProgressBarModule,
     RotasModule,
     HttpModule,

@@ -42,6 +42,16 @@ export class UnidadesComponent extends CrudListar {
     this.router.navigate(["/videos"]);
   }
 
+  questionarios(unidade) {
+    this.uni.setObjetoSelecionado(unidade);
+    this.router.navigate(["/questionarios"]);
+  }
+
+  arquivos(unidade) {
+    this.uni.setObjetoSelecionado(unidade);
+    this.router.navigate(["/arquivos"]);
+  }
+
 }
 
 

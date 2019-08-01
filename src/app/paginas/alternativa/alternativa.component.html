@@ -1,0 +1,31 @@
+<mat-card>
+    <div class="mat-elevation-z8">
+      <form class="form my-2 my-lg-0" #f="ngForm" method="post" enctype="multipart/form-data" form>
+        <mat-form-field class="inputFormulario">
+          <input matInput placeholder="Alternativa" [(ngModel)]="objeto.alternativa" name="alternativa" required>
+        </mat-form-field>
+
+            <!-- <mat-label>Correta</mat-label>
+        <mat-button-toggle-group name="correta" aria-label="Correta">
+            <mat-button-toggle value="true">Sim</mat-button-toggle>
+            <mat-button-toggle value="false">Não</mat-button-toggle>
+          </mat-button-toggle-group> -->
+
+
+          <mat-form-field class="inputFormulario">
+              <mat-label>Correta</mat-label>
+              <mat-select required [(ngModel)]="objeto.correta" name="correta" [compareWith]="compareById">
+                <mat-option value="true">Sim</mat-option>
+                <mat-option value="false">Não</mat-option>
+              </mat-select>
+            </mat-form-field>
+
+        <mat-card-actions>
+          <a mat-raised-button color="primary" class="voltar" routerLink="/questoes" *ngIf="this.as.ehAdministrador()">CANCELAR</a>
+          <a mat-raised-button color="primary" class="voltar" routerLink="/login" *ngIf="!this.as.ehUsuarioAutenticado()">CANCELAR</a>
+          <button mat-raised-button color="primary" class="salvar" (click)="salvarNaUnidade()" aria-label="Salvar ação"
+            [disabled]="!f.valid">SALVAR</button>
+        </mat-card-actions>
+      </form>
+    </div>
+  </mat-card>

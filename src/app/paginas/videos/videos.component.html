@@ -4,7 +4,9 @@
       <i class="material-icons md-48">add</i>
     </a>
 
-    <a mat-raised-button  color="primary" class="voltar" title="Voltar" routerLink="/unidades" style="float: right;">VOLTAR</a>
+    <a mat-raised-button  color="primary" class="voltar" title="Voltar" routerLink="/unidades" style="float: right;">
+      <i class="material-icons md-48" title="Editar">arrow_back</i>
+    </a>
   
     <div fxLayout fxLayoutAlign="right right">
       <mat-form-field class="filtro formFiltro">
@@ -19,16 +21,16 @@
           <mat-header-cell *matHeaderCellDef mat-sort-header>Titulo</mat-header-cell>
           <mat-cell *matCellDef="let row" data-label="Nome">{{row.titulo}}</mat-cell>
         </ng-container>
-  
-        <ng-container matColumnDef="posicao">
-            <mat-header-cell *matHeaderCellDef mat-sort-header>Posição</mat-header-cell>
-            <mat-cell *matCellDef="let row" data-label="Posição">{{row.posicao}}</mat-cell>
-          </ng-container>
 
         <ng-container matColumnDef="url">
             <mat-header-cell *matHeaderCellDef mat-sort-header>URL</mat-header-cell>
             <mat-cell *matCellDef="let row" data-label="URL">{{row.url}}</mat-cell>
           </ng-container>
+
+          <ng-container matColumnDef="posicao">
+              <mat-header-cell *matHeaderCellDef mat-sort-header style="max-width: 80px;">Posição</mat-header-cell>
+              <mat-cell *matCellDef="let row" data-label="Posição" style="max-width: 80px">{{row.posicao}}</mat-cell>
+            </ng-container>
   
         <ng-container matColumnDef="acoes">
           <mat-header-cell *matHeaderCellDef mat-sort-header class="colunaAcoes">Ações</mat-header-cell>

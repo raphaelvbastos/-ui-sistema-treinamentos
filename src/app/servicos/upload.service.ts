@@ -7,8 +7,8 @@ import { Observable } from 'rxjs';
 })
 export class UploadService {
 
-  url: string = "https://api-sistema-treinamento.herokuapp.com";
-  // url: string = "http://localhost:8080";
+  // url: string = "https://api-sistema-treinamento.herokuapp.com";
+  url: string = "http://localhost:8080";
   // url = "https://sistema-treinamentos.herokuapp.com";
 
   cabecalhoJson = {
