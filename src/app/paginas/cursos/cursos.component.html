@@ -34,9 +34,17 @@
       </ng-container>
 
       <ng-container matColumnDef="unidades">
-          <mat-header-cell *matHeaderCellDef mat-sort-header></mat-header-cell>
+          <mat-header-cell *matHeaderCellDef mat-sort-header>Unidades</mat-header-cell>
           <mat-cell *matCellDef="let row" data-label="Unidades">
               <a (click)="unidades(row)" class="btnUnidades" title="Unidades"><i class="material-icons md-48" *ngIf="this.as.ehAdministrador()">view_list</i></a>
+          </mat-cell>
+        </ng-container>
+
+
+        <ng-container matColumnDef="acessar">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>Acessar</mat-header-cell>
+          <mat-cell *matCellDef="let row" data-label="Acessar">
+              <a (click)="detalhes(row)" class="btnUnidades" title="Acessar Curso"><i class="material-icons md-48">view_list</i></a>
           </mat-cell>
         </ng-container>
 

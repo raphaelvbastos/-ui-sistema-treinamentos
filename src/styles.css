@@ -234,7 +234,7 @@ mat-sidenav-content {
     color: #b35a48;
 }
 
-.btnCRUDEditar {
+.btnCRUDEditar, .btnUnidades {
     cursor: pointer;
     color: #6db5ca;
 }

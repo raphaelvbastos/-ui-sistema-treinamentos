@@ -23,7 +23,7 @@
 
         <ng-container matColumnDef="correta">
             <mat-header-cell *matHeaderCellDef mat-sort-header>Correta</mat-header-cell>
-            <mat-cell *matCellDef="let row" data-label="Correta">{{row.correta}}</mat-cell>
+            <mat-cell *matCellDef="let row" data-label="Correta">{{tipoAlternativa(row.correta)}}</mat-cell>
           </ng-container>
   
         <ng-container matColumnDef="acoes">

@@ -83,4 +83,12 @@ export class AlternativasComponent extends CrudListar {
     this.questao.setObjetoSelecionado(questao);
     this.router.navigate(["/alternativas"]);
   }
+
+  tipoAlternativa(opcao) {
+    if(opcao == true) {
+      return "SIM";
+    } else {
+      return "NÃO";
+    }
+  }
 }

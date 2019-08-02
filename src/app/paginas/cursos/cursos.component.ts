@@ -29,7 +29,7 @@ export class CursosComponent extends CrudListar {
     super(us, router, dialog);
     this.us.nomeAPI = "cursos";
     this.tela = "/curso";
-    this.displayedColumns = ['titulo', 'nomeInstrutor', 'palavrasChaves', 'categoria', 'unidades', 'acoes'];
+    this.displayedColumns = ['titulo', 'nomeInstrutor', 'palavrasChaves', 'categoria', 'unidades',  'acessar', 'acoes'];
 
     this.as.permissaoAcesso("LOGADO", "Acesso Negado");
   }
@@ -52,6 +52,11 @@ export class CursosComponent extends CrudListar {
 
     return (curso.inscricoes.find(x => x.usuario._id == usuario._id) != null);
     
+  }
+
+  detalhes(curso) {
+    this.cursoService.setObjetoSelecionado(curso);
+    this.router.navigate(["/cursodetalhes"]);
   }
 
   unidades(uni) {

@@ -40,6 +40,7 @@ import { QuestoesComponent } from './paginas/questoes/questoes.component';
 import { QuestaoComponent } from './paginas/questao/questao.component';
 import { AlternativasComponent } from './paginas/alternativas/alternativas.component';
 import { AlternativaComponent } from './paginas/alternativa/alternativa.component';
+import { CursodetalhesComponent } from './paginas/cursodetalhes/cursodetalhes.component';
 
 
 
@@ -72,7 +73,8 @@ import { AlternativaComponent } from './paginas/alternativa/alternativa.componen
     QuestoesComponent,
     QuestaoComponent,
     AlternativasComponent,
-    AlternativaComponent
+    AlternativaComponent,
+    CursodetalhesComponent
   ],
   imports: [
     BrowserModule,
