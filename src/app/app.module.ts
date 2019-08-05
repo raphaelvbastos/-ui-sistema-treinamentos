@@ -41,6 +41,7 @@ import { QuestaoComponent } from './paginas/questao/questao.component';
 import { AlternativasComponent } from './paginas/alternativas/alternativas.component';
 import { AlternativaComponent } from './paginas/alternativa/alternativa.component';
 import { CursodetalhesComponent } from './paginas/cursodetalhes/cursodetalhes.component';
+import { AssistirvideoComponent } from './paginas/assistirvideo/assistirvideo.component';
 
 
 
@@ -74,7 +75,8 @@ import { CursodetalhesComponent } from './paginas/cursodetalhes/cursodetalhes.co
     QuestaoComponent,
     AlternativasComponent,
     AlternativaComponent,
-    CursodetalhesComponent
+    CursodetalhesComponent,
+    AssistirvideoComponent
   ],
   imports: [
     BrowserModule,

@@ -1,6 +1,9 @@
 <div class="mat-elevation-z8">
 
   <mat-card class="example-card">
+      <a mat-raised-button  color="primary" class="voltar" title="Voltar" routerLink="/cursos" style="float: right;">
+        <i class="material-icons md-48" title="Voltar">arrow_back</i>
+      </a>
     <div class="subUnidade" style="background: #29374a; margin-bottom: 20px;">
       <mat-list>
         <mat-list-item><h2 style="color: #6db5ca">{{curso.titulo}}</h2></mat-list-item>
@@ -17,15 +20,16 @@
       <h2>Instrutor: {{curso.nomeInstrutor}}</h2>
     </mat-card-subtitle> -->
     <mat-card-content>
-
+        
       <mat-card class="example-card" *ngFor="let u of curso.unidades" style="background: #29374a; margin-bottom: 20px;">
-        <h3 style="border-bottom: 1px solid rgb(221, 136, 24);padding-bottom: 5px;font-size: 1.3em">{{u.titulo}}</h3>
+          
+        <h3 style="color: rgb(221, 136, 24);padding-bottom: 5px;font-size: 1.5em">{{u.titulo}}</h3>
 
         <div class="subUnidade" *ngIf="u.videos.length > 0">
           <h3 style="font-size: 1.5em; color: #ccc">Videos</h3>
           <mat-list *ngFor="let v of u.videos">
             <mat-list-item>
-              <a (click)="video(v)" title="Videos" style="font-size: 1.2em"><i class="material-icons md-48 btnCRUDEditar"
+              <a (click)="assistirVideo(v)" title="Videos" style="font-size: 1.2em;cursor: pointer;"><i class="material-icons md-48 btnCRUDEditar"
                   title="{{v.titulo}}">video_label</i> {{v.titulo}}</a>
 
               <!-- <video controls [src]="sanitizarURL(v.url)" width="426" height="240" [hidden]="!exibirVideo(v.url)"></video>
@@ -57,6 +61,23 @@
 
       <mat-card class="example-card" style="background: #29374a; margin-bottom: 20px;">
           <h3 style="font-size: 1.5em; color: #ccc">Avaliações dos alunos</h3>
+
+          <div class="mat-elevation-z8" [hidden]="!mostrarFormAvaliacao">
+              <form class="form my-2 my-lg-0" #f="ngForm" method="post" enctype="multipart/form-data" form>
+                <mat-form-field class="inputFormulario">
+                  <input matInput placeholder="Nota" [(ngModel)]="avaliacao.nota" name="nota" type="number" min="1" max="10" required>
+                </mat-form-field>
+
+                <mat-form-field class="inputFormulario">
+                    <input matInput placeholder="Comentário" [(ngModel)]="avaliacao.comentario" name="comentario" required>
+                  </mat-form-field>
+        
+                <mat-card-actions>
+                  <button mat-raised-button color="primary" class="salvar" (click)="salvarAvaliacao()" aria-label="Salvar ação"
+                    [disabled]="!f.valid">SALVAR</button>
+                </mat-card-actions>
+              </form>
+            </div>
       </mat-card>
 
     </mat-card-content>
