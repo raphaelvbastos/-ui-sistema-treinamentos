@@ -4,6 +4,10 @@
       <a mat-raised-button  color="primary" class="voltar" title="Voltar" routerLink="/cursos" style="float: right;">
         <i class="material-icons md-48" title="Voltar">arrow_back</i>
       </a>
+
+      <a (click)="inscrever(row)" class="inscrever" title="Inscrever" style="float: right;margin-top: 5px"><i class="material-icons md-48" *ngIf="!this.usuService.ehAdministrador() && !desinscrever()">check_circle</i></a>
+      <a (click)="sairCurso(row)" class="sairCurso" title="Sair do curso" style="float: right;margin-top: 5px"><i class="material-icons md-48" *ngIf="desinscrever()">highlight_off</i></a>
+
     <div class="subUnidade" style="background: #29374a; margin-bottom: 20px;">
       <mat-list>
         <mat-list-item><h2 style="color: #6db5ca">{{curso.titulo}}</h2></mat-list-item>
@@ -48,7 +52,7 @@
           </mat-list>
         </div>
 
-        <div class="subUnidade" *ngIf="u.questionarios.length > 0">
+        <div class="subUnidade" *ngIf="u.questionarios.length > 0 && inscritoNoCurso()">
           <h3 style="font-size: 1.5em; color: #ccc">Questionários</h3>
           <mat-list *ngFor="let v of u.questionarios">
             <mat-list-item>
@@ -64,10 +68,14 @@
 
           <div class="mat-elevation-z8" [hidden]="!mostrarFormAvaliacao">
               <form class="form my-2 my-lg-0" #f="ngForm" method="post" enctype="multipart/form-data" form>
-                <mat-form-field class="inputFormulario">
+                <!-- <mat-form-field class="inputFormulario">
                   <input matInput placeholder="Nota" [(ngModel)]="avaliacao.nota" name="nota" type="number" min="1" max="10" required>
-                </mat-form-field>
+                </mat-form-field> -->
 
+                <span class="inputFormulario" style="color:#26C6DA">Nota *</span><br><br>
+                
+                <mat-star-rating [rating]="rating" [starCount]="starCount" [color]="starColor" (ratingUpdated)="onRatingChanged($event)"></mat-star-rating>
+                <br>
                 <mat-form-field class="inputFormulario">
                     <input matInput placeholder="Comentário" [(ngModel)]="avaliacao.comentario" name="comentario" required>
                   </mat-form-field>
@@ -77,6 +85,15 @@
                     [disabled]="!f.valid">SALVAR</button>
                 </mat-card-actions>
               </form>
+            </div>
+
+            
+
+            <div class="mat-elevation-z8" *ngFor="let a of curso.avaliacoes" style="margin-top: 20px;">
+              <mat-star-rating [rating]="a.nota"  [starCount]="starCount" [color]="starColor" style="float: right"></mat-star-rating>
+              <span style="float: left"><i class="material-icons md-48 btnCRUDEditar" title="Usuário">account_box</i> {{a.usuario.nome}}</span>
+              <br><br><br>
+              <div style="width: 100%">{{a.comentario}}</div>
             </div>
       </mat-card>
 

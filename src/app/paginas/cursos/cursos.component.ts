@@ -29,7 +29,15 @@ export class CursosComponent extends CrudListar {
     super(us, router, dialog);
     this.us.nomeAPI = "cursos";
     this.tela = "/curso";
+
+
+    let logado = this.as.getUsuario();
+
     this.displayedColumns = ['titulo', 'nomeInstrutor', 'palavrasChaves', 'categoria', 'unidades',  'acessar', 'acoes'];
+
+    if(logado.tipo.tipo == "Empregado") {
+      this.displayedColumns = ['titulo', 'nomeInstrutor', 'palavrasChaves', 'categoria',  'acessar', 'acoes'];
+    }
 
     this.as.permissaoAcesso("LOGADO", "Acesso Negado");
   }

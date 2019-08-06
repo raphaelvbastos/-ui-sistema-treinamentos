@@ -452,6 +452,26 @@ th {
     cursor: pointer;
 }
 
+.alternativaCorreta {
+    color: #1B9A59;
+    margin-left: 10px;
+}
+
+.alternativaIncorreta {
+    color: #b35a48;
+    margin-left: 10px;
+}
+
+.example-radio-group {
+    display: flex;
+    flex-direction: column;
+    margin: 15px 0;
+  }
+  
+  .example-radio-button {
+    margin: 5px;
+  }
+
 @media screen and (max-width: 600px) {
     .mat-table {
         border: 0;

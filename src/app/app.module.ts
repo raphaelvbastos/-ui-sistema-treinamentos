@@ -10,7 +10,7 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MenuComponent } from './paginas/menu/menu.component';
 import { LayoutModule } from '@angular/cdk/layout';
-import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule, MatGridListModule, MatCardModule, MatMenuModule, MatTableModule, MatPaginatorModule, MatSortModule, MatFormFieldModule, MatInputModule, MatSelectModule, MatDialog, MatDialogModule, MatProgressBarModule, MatTabsModule, MatButtonToggleModule } from '@angular/material';
+import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule, MatGridListModule, MatCardModule, MatMenuModule, MatTableModule, MatPaginatorModule, MatSortModule, MatFormFieldModule, MatInputModule, MatSelectModule, MatDialog, MatDialogModule, MatProgressBarModule, MatTabsModule, MatButtonToggleModule, MatSnackBar, MatTooltipModule, MatSnackBarContainer, MatSnackBarModule, MatRadioModule } from '@angular/material';
 import { PainelComponent } from './paginas/painel/painel.component';
 import { TabelaComponent } from './paginas/tabela/tabela.component';
 import { PaginaCursosComponent } from './paginas/pagina-cursos/pagina-cursos.component';
@@ -42,6 +42,9 @@ import { AlternativasComponent } from './paginas/alternativas/alternativas.compo
 import { AlternativaComponent } from './paginas/alternativa/alternativa.component';
 import { CursodetalhesComponent } from './paginas/cursodetalhes/cursodetalhes.component';
 import { AssistirvideoComponent } from './paginas/assistirvideo/assistirvideo.component';
+import { StarRatingComponent } from './paginas/star-rating/star-rating.component';
+import { QuestionarioalunoComponent } from './paginas/questionarioaluno/questionarioaluno.component';
+import { QuestionariorespostaComponent } from './paginas/questionarioresposta/questionarioresposta.component';
 
 
 
@@ -76,7 +79,10 @@ import { AssistirvideoComponent } from './paginas/assistirvideo/assistirvideo.co
     AlternativasComponent,
     AlternativaComponent,
     CursodetalhesComponent,
-    AssistirvideoComponent
+    AssistirvideoComponent,
+    StarRatingComponent,
+    QuestionarioalunoComponent,
+    QuestionariorespostaComponent
   ],
   imports: [
     BrowserModule,
@@ -96,6 +102,7 @@ import { AssistirvideoComponent } from './paginas/assistirvideo/assistirvideo.co
     MatSortModule,
     MatTabsModule,
     MatProgressBarModule,
+    MatRadioModule,
     RotasModule,
     HttpModule,
     HttpClientModule,
@@ -104,13 +111,18 @@ import { AssistirvideoComponent } from './paginas/assistirvideo/assistirvideo.co
     MatInputModule,
     MatSelectModule,
     MatDialogModule,
+    MatTooltipModule,
+    MatSnackBarModule,
     FlexLayoutModule,
     ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production })
   ],
   entryComponents: [
-    ConfirmacaoComponent
+    ConfirmacaoComponent,
   ],
-  providers: [],
+  providers: [
+    MatSnackBar,
+    MatSnackBarContainer
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

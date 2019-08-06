@@ -25,6 +25,8 @@ import { AlternativasComponent } from '../paginas/alternativas/alternativas.comp
 import { AlternativaComponent } from '../paginas/alternativa/alternativa.component';
 import { CursodetalhesComponent } from '../paginas/cursodetalhes/cursodetalhes.component';
 import { AssistirvideoComponent } from '../paginas/assistirvideo/assistirvideo.component';
+import { QuestionarioalunoComponent } from '../paginas/questionarioaluno/questionarioaluno.component';
+import { QuestionariorespostaComponent } from '../paginas/questionarioresposta/questionarioresposta.component';
 
 const rotas: Routes = [
   { path: "cursos", component: CursosComponent },
@@ -50,6 +52,8 @@ const rotas: Routes = [
   { path: "alternativa", component: AlternativaComponent },
   { path: "cursodetalhes", component: CursodetalhesComponent },
   { path: "assistirvideo", component: AssistirvideoComponent },
+  { path: "questionarioaluno", component: QuestionarioalunoComponent },
+  { path: "questionarioresposta", component: QuestionariorespostaComponent },
   { path: "erro", component: ErroComponent },
 ]
 

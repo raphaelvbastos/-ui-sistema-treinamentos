@@ -1,0 +1,26 @@
+<div class="mat-elevation-z8">
+  <mat-card class="example-card">
+    <a mat-raised-button color="primary" class="voltar" title="Voltar" routerLink="/cursos" style="float: right;">
+      <i class="material-icons md-48" title="Voltar">arrow_back</i>
+    </a>
+
+    <button mat-raised-button color="primary" class="btnUpload" (click)="ultimaTentativa()" aria-label="Ultima tentativa" style="float: right;background: none !important">Ultima tentativa
+        teste</button>
+  
+
+    <mat-card-content>
+      <h3 style="color: rgb(221, 136, 24);padding-bottom: 5px;font-size: 1.5em">{{questionario.titulo}}</h3>
+      <mat-card class="example-card" *ngFor="let q of questionario.questoes; let i = index" style="background: #29374a; margin-bottom: 20px;">
+
+        <h3>{{i+1}} - {{q.pergunta}}</h3>
+        <mat-radio-group aria-label="q.pergunta" class="example-radio-group" [(ngModel)]="respostas[q._id].resposta">
+          <mat-radio-button class="example-radio-button" *ngFor="let a of q.alternativas" [value]="a" (change)="validar()">{{a.alternativa}}</mat-radio-button>
+        </mat-radio-group>
+      </mat-card>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card-actions>
+    <button mat-raised-button color="primary" class="salvar" (click)="enviar()" aria-label="Salvar ação" [disabled]="!valido">Enviar</button>
+  </mat-card-actions>
+</div>
