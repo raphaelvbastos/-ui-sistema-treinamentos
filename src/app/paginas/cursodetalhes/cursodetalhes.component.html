@@ -5,6 +5,8 @@
         <i class="material-icons md-48" title="Voltar">arrow_back</i>
       </a>
 
+      <a (click)="gerarPDF()">PDF</a>
+
       <a (click)="inscrever()" class="inscrever" title="Inscrever" style="float: right;margin-top: 5px"><i class="material-icons md-48" *ngIf="!this.usuService.ehAdministrador() && !desinscrever()">check_circle</i></a>
       <a (click)="sairCurso()" class="sairCurso" title="Sair do curso" style="float: right;margin-top: 5px"><i class="material-icons md-48" *ngIf="desinscrever()">highlight_off</i></a>
 

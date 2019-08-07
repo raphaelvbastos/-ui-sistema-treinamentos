@@ -7,6 +7,8 @@ import { UnidadesService } from 'src/app/servicos/unidades.service';
 import { ObjetosService } from 'src/app/servicos/objetos.service';
 import { Router } from '@angular/router';
 import { Inscricaomodel } from 'src/app/modelos/inscricaomodel';
+import * as jsPDF from 'jspdf';
+
 
 @Component({
   selector: 'app-cursodetalhes',
@@ -205,6 +207,52 @@ export class CursodetalhesComponent implements OnInit {
   questionario(q) {
     this.objService.setObjetoSelecionado(q);
     this.router.navigate(["/questionarioaluno"]);
+  }
+
+  gerarPDF() {
+    let curso = this.cursoService.getObjetoSelecionado();
+    let usuario = this.usuService.getUsuario();
+
+    // let documento = new jsPDF();
+    // documento.text("Relatório em PDF no Angular", 10, 10);
+    // documento.output("dataurlnewwindow");
+
+    let documento = new jsPDF();
+    documento.setFont("Courier");
+    documento.setFontStyle("bold");
+    documento.setFontSize(20);
+    documento.text("CERTIFICADO DE PARTICIPAÇÃO", 50, 15);
+
+    documento.setFontStyle("bold");
+    documento.text(usuario.nome, 60, 30);
+
+    documento.setFontSize(12);
+    documento.text("finalizou o curso de "+ curso.titulo +", assistindo 100% dos videos e com PORCENTO% ", 10, 45);
+    documento.text("de aproveitamento nos exercicios.", 10, 55);
+
+    documento.text("SISTREN - Sistema de treinamento on-line", 50, 80);
+
+    // documento.setFillColor(50, 50, 50);
+    // documento.rect(10, 20, 30, 8, "FD");
+    // documento.rect(10, 28, 30, 8, "FD");
+    // documento.rect(10, 36, 30, 8, "FD");
+    // // documento.rect(40, 20, 160, 8, "s");
+    // // documento.rect(40, 28, 160, 8, "s");
+    // // documento.rect(40, 36, 160, 8, "s");
+
+    // documento.setFontSize(12);
+    // documento.setTextColor(255, 255, 255);
+    // documento.text("Código", 12, 25);
+    // documento.text("Nome", 12, 33);
+    // documento.text("Preço", 12, 41);
+
+    // documento.setFontStyle("normal");
+    // documento.setTextColor(0, 0, 0);
+    // documento.text("001", 42, 25);
+    // documento.text("Notebook 14' i7 8GB 1TB", 42, 33);
+    // documento.text("R$ 2400,00", 42, 41);
+
+    documento.output("dataurlnewwindow");
   }
 }
 

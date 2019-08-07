@@ -33,10 +33,10 @@ export class CursosComponent extends CrudListar {
 
     let logado = this.as.getUsuario();
 
-    this.displayedColumns = ['titulo', 'nomeInstrutor', 'palavrasChaves', 'categoria', 'unidades',  'acessar', 'acoes'];
+    this.displayedColumns = ['titulo', 'nomeInstrutor', 'palavrasChaves', 'categoria', 'unidades', 'acessar', 'acoes'];
 
-    if(logado.tipo.tipo == "Empregado") {
-      this.displayedColumns = ['titulo', 'nomeInstrutor', 'palavrasChaves', 'categoria',  'acessar', 'acoes'];
+    if (logado.tipo.tipo == "Empregado") {
+      this.displayedColumns = ['titulo', 'nomeInstrutor', 'palavrasChaves', 'categoria', 'acessar', 'acoes'];
     }
 
     this.as.permissaoAcesso("LOGADO", "Acesso Negado");
@@ -59,7 +59,7 @@ export class CursosComponent extends CrudListar {
     let usuario = this.as.getUsuario();
 
     return (curso.inscricoes.find(x => x.usuario._id == usuario._id) != null);
-    
+
   }
 
   detalhes(curso) {
