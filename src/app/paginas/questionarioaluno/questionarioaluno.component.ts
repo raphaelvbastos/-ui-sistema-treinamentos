@@ -21,20 +21,12 @@ export class QuestionarioalunoComponent implements OnInit {
 
     this.respostas = new Array();
     this.questionario.questoes.forEach(questao => {
-      console.log(questao._id);
       this.respostas[questao._id] = {
         "usuario": this.usuService.getUsuario(),
         "resposta": {}
       }
 
-      // this.respostas.push( {
-      //   "usuario": this.usuService.getUsuario(),
-      //   "resposta": {}
-      // });
-
-
     });
-    console.log(this.respostas);
   }
 
   ngOnInit() {
@@ -63,29 +55,31 @@ export class QuestionarioalunoComponent implements OnInit {
       }
     });
 
-    this.objService.nomeAPI = "cursos";
-    this.objService.atualizar(curso);
+    // this.objService.nomeAPI = "cursos";
+    this.objService.atualizar(curso).subscribe((dados) => {
+      this.cursoService.setObjetoSelecionado(curso);
 
-    this.cursoService.setObjetoSelecionado(curso);
+      this.objService.setObjetoSelecionado(this.questionario);
 
-    this.objService.setObjetoSelecionado(this.questionario);
-
-    this.router.navigate(["/questionarioresposta"]);
-
-    // return this.questionario;
+      this.router.navigate(["/questionarioresposta"]);
+    });
   }
 
   validar() {
-    this.questionario.questoes.forEach(questao => {
-      let resposta = this.respostas[questao._id];
-      
-      if(typeof resposta.resposta.alternativa == "undefined") {
-        this.valido = false;
-      }
-    });
+    let ok = true;
 
-    this.valido =  true;
-    // console.log("VALIDAR");
+    for (const key in this.respostas) {
+      if (this.respostas.hasOwnProperty(key)) {
+        const element = this.respostas[key];
+        console.log(element.resposta);
+        if(typeof element.resposta.alternativa == "undefined") {
+          ok = false;
+        }
+      }
+    }
+
+    this.valido = ok;
+    
   }
 
   ultimaTentativa() {

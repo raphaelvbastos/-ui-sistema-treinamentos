@@ -33,7 +33,7 @@ export class CursodetalhesComponent implements OnInit {
 
   constructor(public cursoService: CursosService, public sanitize: DomSanitizer, public usuService: AutenticacaoService, public uniService: UnidadesService, public objService: ObjetosService, public router: Router) {
     this.curso = this.cursoService.getObjetoSelecionado();
-    console.log(this.curso);
+
     this.starCount = 5;
     this.rating = 3;
     this.color = "primary";

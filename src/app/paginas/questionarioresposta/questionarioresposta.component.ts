@@ -43,7 +43,6 @@ export class QuestionariorespostaComponent implements OnInit {
       }
     });
 
-    console.log(listaQuestoes);
     this.totalAcertos = totalAcertos;
     this.listaQuestoes = listaQuestoes;
     this.percentual = (totalAcertos/listaQuestoes.length) * 100;
