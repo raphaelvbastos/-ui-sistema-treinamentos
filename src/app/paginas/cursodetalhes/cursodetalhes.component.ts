@@ -21,6 +21,8 @@ export class CursodetalhesComponent implements OnInit {
 
   curso: any;
 
+  starColor = "primary";
+
   avaliacao = {
     "usuario": "",
     "nota": 0,
