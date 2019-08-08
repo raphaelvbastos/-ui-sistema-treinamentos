@@ -60,8 +60,10 @@ export class AutenticacaoService {
     }
 
     getUsuario(): any {
-        const usuario = JSON.parse(localStorage.getItem('usuario'));
-        return usuario;
+        if(localStorage.getItem('usuario') != null) {
+            return JSON.parse(localStorage.getItem('usuario'));
+        }
+        return null;
     }
 
     encerrarSessao(): any {
