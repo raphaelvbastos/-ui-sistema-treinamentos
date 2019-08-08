@@ -60,10 +60,23 @@ export class AutenticacaoService {
     }
 
     getUsuario(): any {
-        if(localStorage.getItem('usuario') != null) {
-            return JSON.parse(localStorage.getItem('usuario'));
+        let usuario = null;
+        try {
+            usuario = JSON.parse(localStorage.getItem('usuario'));
+            console.log(usuario);
+        } catch (error) {
+            console.log(error);
+            console.log(localStorage.getItem('usuario'));
         }
-        return null;
+
+
+        return usuario;
+
+        // console.log(localStorage.getItem('usuario'));
+        // if(localStorage.getItem('usuario') != null) {
+        //     return JSON.parse(localStorage.getItem('usuario'));
+        // }
+        // return null;
     }
 
     encerrarSessao(): any {
