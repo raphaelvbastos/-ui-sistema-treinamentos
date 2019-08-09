@@ -29,6 +29,15 @@ menu {
     margin-left: -40px;
 }
 
+.btnGerarCertificado {
+    margin-top: 5px;
+    font-weight: bold;
+    color: #26C6DA;
+    cursor: pointer;
+    float: right;
+    margin-right: 20px;
+}
+
 .alert {
     max-width: 250px;
     padding: 10px;
@@ -466,11 +475,11 @@ th {
     display: flex;
     flex-direction: column;
     margin: 15px 0;
-  }
-  
-  .example-radio-button {
+}
+
+.example-radio-button {
     margin: 5px;
-  }
+}
 
 @media screen and (max-width: 600px) {
     .mat-table {

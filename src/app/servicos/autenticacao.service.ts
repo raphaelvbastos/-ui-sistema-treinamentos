@@ -63,10 +63,8 @@ export class AutenticacaoService {
         let usuario = null;
         try {
             usuario = JSON.parse(localStorage.getItem('usuario'));
-            console.log(usuario);
         } catch (error) {
             console.log(error);
-            console.log(localStorage.getItem('usuario'));
         }
 
 

@@ -8,6 +8,7 @@ import { ObjetosService } from 'src/app/servicos/objetos.service';
 import { Router } from '@angular/router';
 import { Inscricaomodel } from 'src/app/modelos/inscricaomodel';
 import * as jsPDF from 'jspdf';
+import { Certificado } from 'src/app/modelos/certificado';
 
 
 @Component({
@@ -23,6 +24,8 @@ export class CursodetalhesComponent implements OnInit {
 
   curso: any;
 
+  podeGerarCertificado = false;
+
   starColor = "primary";
 
   avaliacao = {
@@ -33,31 +36,46 @@ export class CursodetalhesComponent implements OnInit {
 
   mostrarFormAvaliacao = true;
 
+  c = new Certificado();
+
   constructor(public cursoService: CursosService, public sanitize: DomSanitizer, public usuService: AutenticacaoService, public uniService: UnidadesService, public objService: ObjetosService, public router: Router) {
-    this.curso = this.cursoService.getObjetoSelecionado();
+    // this.curso = this.cursoService.getObjetoSelecionado();
 
     this.starCount = 5;
     this.rating = 3;
     this.color = "primary";
+
+    this.inicializar();
+
+
+    // let cursoAtualizado = this.c.verificarConclusao(this.cursoService.getObjetoSelecionado(), this.usuService.getUsuario());
+
+    // this.objService.nomeAPI = "cursos";
+    // this.objService.atualizar(cursoAtualizado).subscribe(
+    //   (dados) => {
+    //     this.cursoService.setObjetoSelecionado(cursoAtualizado);
+    //   });
   }
 
   ngOnInit() {
-    this.curso = this.cursoService.getObjetoSelecionado();
-    let logado = this.usuService.getUsuario();
+    // this.curso = this.cursoService.getObjetoSelecionado();
+    // let logado = this.usuService.getUsuario();
 
-    let inscrito = false;
+    // let inscrito = false;
 
-    if(this.cursoService.getObjetoSelecionado().inscricoes.findIndex(x => x.usuario._id == logado._id) > -1) {
-      inscrito = true;
-    } else {
-      inscrito = false;
-    }
+    // if (this.cursoService.getObjetoSelecionado().inscricoes.findIndex(x => x.usuario._id == logado._id) > -1) {
+    //   inscrito = true;
+    // } else {
+    //   inscrito = false;
+    // }
 
-    if(inscrito && this.cursoService.getObjetoSelecionado().avaliacoes.findIndex(x => x.usuario._id == logado._id) == -1) {
-      this.mostrarFormAvaliacao = true;
-    } else {
-      this.mostrarFormAvaliacao = false;
-    }
+    // if (inscrito && this.cursoService.getObjetoSelecionado().avaliacoes.findIndex(x => x.usuario._id == logado._id) == -1) {
+    //   this.mostrarFormAvaliacao = true;
+    // } else {
+    //   this.mostrarFormAvaliacao = false;
+    // }
+
+    this.inicializar();
 
 
 
@@ -70,24 +88,59 @@ export class CursodetalhesComponent implements OnInit {
     //   this.mostrarFormAvaliacao = true;
     // }
 
-    
+
 
     // if(this.cursoService.getObjetoSelecionado().avaliacoes.length > 0) {
     //   this.mostrarFormAvaliacao = false;
     // }
   }
 
-  mostrarFormComentario() {
-    let inscrito = false;
+
+  inicializar() {
+    this.curso = this.cursoService.getObjetoSelecionado();
     let logado = this.usuService.getUsuario();
 
-    if(this.cursoService.getObjetoSelecionado().inscricoes.findIndex(x => x.usuario._id == logado._id) > -1) {
+    let inscrito = false;
+
+    if (this.cursoService.getObjetoSelecionado().inscricoes.findIndex(x => x.usuario._id == logado._id) > -1) {
       inscrito = true;
     } else {
       inscrito = false;
     }
 
-    if(inscrito && this.cursoService.getObjetoSelecionado().avaliacoes.findIndex(x => x.usuario._id == logado._id) == -1) {
+    if (inscrito && this.cursoService.getObjetoSelecionado().avaliacoes.findIndex(x => x.usuario._id == logado._id) == -1) {
+      this.mostrarFormAvaliacao = true;
+    } else {
+      this.mostrarFormAvaliacao = false;
+    }
+
+    if (inscrito) {
+      let cursoAtualizado = this.c.verificarConclusao(this.cursoService.getObjetoSelecionado(), this.usuService.getUsuario());
+
+      this.objService.nomeAPI = "cursos";
+      this.objService.atualizar(cursoAtualizado).subscribe(
+        (dados) => {
+          this.cursoService.setObjetoSelecionado(cursoAtualizado);
+        });
+
+      let insc = cursoAtualizado.inscricoes.find(x => x.usuario._id == logado._id);
+
+      this.podeGerarCertificado = insc.aprovado;
+    }
+
+  }
+
+  mostrarFormComentario() {
+    let inscrito = false;
+    let logado = this.usuService.getUsuario();
+
+    if (this.cursoService.getObjetoSelecionado().inscricoes.findIndex(x => x.usuario._id == logado._id) > -1) {
+      inscrito = true;
+    } else {
+      inscrito = false;
+    }
+
+    if (inscrito && this.cursoService.getObjetoSelecionado().avaliacoes.findIndex(x => x.usuario._id == logado._id) == -1) {
       this.mostrarFormAvaliacao = true;
     } else {
       this.mostrarFormAvaliacao = false;
@@ -142,9 +195,9 @@ export class CursodetalhesComponent implements OnInit {
       });
 
       this.objService.nomeAPI = "cursos";
-      this.objService.atualizar(curso);
-
-      this.cursoService.setObjetoSelecionado(curso);
+      this.objService.atualizar(curso).subscribe((dados) => {
+        this.cursoService.setObjetoSelecionado(curso);
+      });
     }
 
     this.objService.nomeAPI = "videos";
@@ -153,13 +206,13 @@ export class CursodetalhesComponent implements OnInit {
     this.router.navigate(["/assistirvideo"]);
   }
 
-  onRatingChanged(rating){
+  onRatingChanged(rating) {
     this.rating = rating;
   }
 
   inscritoNoCurso() {
     let logado = this.usuService.getUsuario();
-    if(this.curso.inscricoes.findIndex(x => x.usuario._id == logado._id) > -1) {
+    if (this.curso.inscricoes.findIndex(x => x.usuario._id == logado._id) > -1) {
       return true;
     }
     return false;
@@ -213,24 +266,42 @@ export class CursodetalhesComponent implements OnInit {
     let curso = this.cursoService.getObjetoSelecionado();
     let usuario = this.usuService.getUsuario();
 
+    let insc = curso.inscricoes.find(x => x.usuario._id == usuario._id);
+
+    if (insc != null) {
+      insc.gerouCertificado = true;
+
+      let pos = curso.inscricoes.findIndex(x => x.usuario._id == usuario._id)
+      curso.inscricoes.splice(pos, 1);
+      curso.inscricoes.push(insc);
+
+      this.objService.nomeAPI = "cursos";
+      this.objService.atualizar(curso).subscribe(
+        (dados) => {
+
+          let documento = new jsPDF();
+          documento.setFont("Courier");
+          documento.setFontStyle("bold");
+          documento.setFontSize(20);
+          documento.text("CERTIFICADO DE PARTICIPAÇÃO", 50, 15);
+
+          documento.setFontStyle("bold");
+          documento.text(usuario.nome, 60, 30);
+
+          documento.setFontSize(12);
+          documento.text("finalizou o curso de " + curso.titulo + ", assistindo todos os videos e com " + insc.percentualAcertos + "% de", 10, 45);
+          documento.text("aproveitamento nos exercicios.", 10, 55);
+          documento.text("SISTREN - Sistema de treinamento on-line", 50, 80);
+
+          documento.output("dataurlnewwindow");
+
+        });
+    }
+
     // let documento = new jsPDF();
     // documento.text("Relatório em PDF no Angular", 10, 10);
     // documento.output("dataurlnewwindow");
 
-    let documento = new jsPDF();
-    documento.setFont("Courier");
-    documento.setFontStyle("bold");
-    documento.setFontSize(20);
-    documento.text("CERTIFICADO DE PARTICIPAÇÃO", 50, 15);
-
-    documento.setFontStyle("bold");
-    documento.text(usuario.nome, 60, 30);
-
-    documento.setFontSize(12);
-    documento.text("finalizou o curso de "+ curso.titulo +", assistindo 100% dos videos e com PORCENTO% ", 10, 45);
-    documento.text("de aproveitamento nos exercicios.", 10, 55);
-
-    documento.text("SISTREN - Sistema de treinamento on-line", 50, 80);
 
     // documento.setFillColor(50, 50, 50);
     // documento.rect(10, 20, 30, 8, "FD");
@@ -252,7 +323,7 @@ export class CursodetalhesComponent implements OnInit {
     // documento.text("Notebook 14' i7 8GB 1TB", 42, 33);
     // documento.text("R$ 2400,00", 42, 41);
 
-    documento.output("dataurlnewwindow");
+
   }
 }
 
