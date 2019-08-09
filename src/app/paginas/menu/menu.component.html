@@ -59,6 +59,10 @@
             </a>
         </mat-menu>
 
+        <a routerLink="/relatorios" mat-button *ngIf="this.as.ehAdministrador()">
+          <i class="material-icons md-48">account_circle</i> Relatórios
+        </a>
+
         <!-- <a href="/cursos" mat-button mat-button *ngIf="this.as.ehUsuarioAutenticado()">
           <i class="material-icons md-48">school</i> Cursos
         </a> -->
@@ -98,6 +102,10 @@
               Categorias de cursos
             </a>
         </mat-menu>
+
+        <a routerLink="/relatorios" mat-button *ngIf="this.as.ehAdministrador()">
+          <i class="material-icons md-48">account_circle</i> Relatórios
+        </a>
       </mat-nav-list>
     </mat-sidenav>
     <mat-sidenav-content fxFlexFill>

@@ -1,0 +1,20 @@
+<!-- <p>
+{{cursosInscritos | json}}
+</p> -->
+<mat-card>
+    <h1>{{usuario.nome}}</h1>
+</mat-card>
+
+<mat-card *ngFor="let c of listaCursos">
+  <div class="mat-elevation-z8" style="margin-top: 10px;">
+    <mat-grid-list cols="2" rowHeight="50px">
+      <mat-grid-tile>
+        <h1>{{c.curso}}</h1>
+      </mat-grid-tile>
+      <mat-grid-tile class="relTexto"><span class="relStatus">{{c.status}}</span></mat-grid-tile>
+      <mat-grid-tile class="relTexto">Videos assistidos: <span class="relDado">{{c.videos}}%</span></mat-grid-tile>
+      <mat-grid-tile class="relTexto">Aproveitamento: <span class="relDado">{{c.aproveitamento}}%</span></mat-grid-tile>
+      <mat-grid-tile class="relTexto">Gerou certificado: <span class="relDado">{{c.gerouCertificado}}</span></mat-grid-tile>
+    </mat-grid-list>
+  </div>
+</mat-card>

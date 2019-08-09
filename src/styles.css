@@ -38,6 +38,23 @@ menu {
     margin-right: 20px;
 }
 
+.relTexto {
+    font-size: 1.2em;
+}
+
+.relDado {
+    font-weight: bold;
+    color: #26C6DA;
+    margin-left: 20px;
+    font-size: 1.3em;
+}
+
+.relStatus {
+    font-size: 1.5em;
+    font-weight: bold;
+    float: right;
+}
+
 .alert {
     max-width: 250px;
     padding: 10px;

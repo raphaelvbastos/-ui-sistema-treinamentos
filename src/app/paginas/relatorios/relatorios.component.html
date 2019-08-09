@@ -1,0 +1,46 @@
+<mat-card>
+  <h2 class="tituloPagina">{{tituloPagina}}</h2>
+
+  <div fxLayout fxLayoutAlign="right right">
+      <mat-form-field class="filtro formFiltro">
+        <input matInput type="text" (keyup)="doFilter($event.target.value)" placeholder="Filtro">
+      </mat-form-field>
+    </div>
+<div class="mat-elevation-z8">
+
+<mat-table [dataSource]="dataSource" matSort>
+    <ng-container matColumnDef="nome">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Nome</mat-header-cell>
+      <mat-cell *matCellDef="let row" data-label="Nome">{{row.nome}}</mat-cell>
+    </ng-container>
+
+    <!-- <ng-container matColumnDef="email">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Email</mat-header-cell>
+      <mat-cell *matCellDef="let row" data-label="Email">{{row.email}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="tipo">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Tipo</mat-header-cell>
+      <mat-cell *matCellDef="let row" data-label="Tipo">{{mostrarTipo(row.tipo)}}</mat-cell>
+    </ng-container> -->
+
+    <ng-container matColumnDef="acoes">
+        <mat-header-cell *matHeaderCellDef mat-sort-header class="colunaAcoes">Ações</mat-header-cell>
+        <mat-cell *matCellDef="let row" [style.color]="row.color" data-label="Ações" class="colunaAcoes">
+            <a (click)="relatorio(row)" style="margin-right: 20px;"><i class="material-icons md-48 btnCRUDEditar" title="Editar">edit</i></a> 
+            <!-- <a (click)="openDialog(row)" class="btnCRUDExcluir" title="Excluir"><i class="material-icons md-48" *ngIf="row._id!='5d1b995f1c9d440000ddea3d'">delete</i></a> -->
+        </mat-cell>
+      </ng-container>
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;">
+    </mat-row>
+  </mat-table>
+
+<mat-paginator #paginator
+  [length]="dataSource?.data?.length"
+  [pageIndex]="0"
+  [pageSize]="10"
+  [pageSizeOptions]="[5, 10, 20, 50]">
+</mat-paginator>
+</div>
+</mat-card>

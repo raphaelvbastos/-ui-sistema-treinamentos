@@ -45,6 +45,8 @@ import { AssistirvideoComponent } from './paginas/assistirvideo/assistirvideo.co
 import { StarRatingComponent } from './paginas/star-rating/star-rating.component';
 import { QuestionarioalunoComponent } from './paginas/questionarioaluno/questionarioaluno.component';
 import { QuestionariorespostaComponent } from './paginas/questionarioresposta/questionarioresposta.component';
+import { RelatoriosComponent } from './paginas/relatorios/relatorios.component';
+import { RelatorioComponent } from './paginas/relatorio/relatorio.component';
 
 
 
@@ -82,7 +84,9 @@ import { QuestionariorespostaComponent } from './paginas/questionarioresposta/qu
     AssistirvideoComponent,
     StarRatingComponent,
     QuestionarioalunoComponent,
-    QuestionariorespostaComponent
+    QuestionariorespostaComponent,
+    RelatoriosComponent,
+    RelatorioComponent
   ],
   imports: [
     BrowserModule,

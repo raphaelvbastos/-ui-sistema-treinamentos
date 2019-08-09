@@ -27,6 +27,8 @@ import { CursodetalhesComponent } from '../paginas/cursodetalhes/cursodetalhes.c
 import { AssistirvideoComponent } from '../paginas/assistirvideo/assistirvideo.component';
 import { QuestionarioalunoComponent } from '../paginas/questionarioaluno/questionarioaluno.component';
 import { QuestionariorespostaComponent } from '../paginas/questionarioresposta/questionarioresposta.component';
+import { RelatoriosComponent } from '../paginas/relatorios/relatorios.component';
+import { RelatorioComponent } from '../paginas/relatorio/relatorio.component';
 
 const rotas: Routes = [
   { path: "cursos", component: CursosComponent },
@@ -54,6 +56,8 @@ const rotas: Routes = [
   { path: "assistirvideo", component: AssistirvideoComponent },
   { path: "questionarioaluno", component: QuestionarioalunoComponent },
   { path: "questionarioresposta", component: QuestionariorespostaComponent },
+  { path: "relatorios", component: RelatoriosComponent },
+  { path: "relatorio", component: RelatorioComponent },
   { path: "erro", component: ErroComponent },
 ]
 
