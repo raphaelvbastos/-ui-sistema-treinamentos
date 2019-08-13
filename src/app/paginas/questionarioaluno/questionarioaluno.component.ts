@@ -4,6 +4,7 @@ import { AutenticacaoService } from 'src/app/servicos/autenticacao.service';
 import { ObjetosService } from 'src/app/servicos/objetos.service';
 import { Router } from '@angular/router';
 import { UnidadesService } from 'src/app/servicos/unidades.service';
+import { Certificado } from 'src/app/modelos/certificado';
 
 @Component({
   selector: 'app-questionarioaluno',
@@ -54,6 +55,9 @@ export class QuestionarioalunoComponent implements OnInit {
         unidade.questionarios.push(this.questionario);
       }
     });
+
+    let c = new Certificado();
+    curso = c.verificarConclusao(curso, this.usuService.getUsuario());
 
     // this.objService.nomeAPI = "cursos";
     this.objService.atualizar(curso).subscribe((dados) => {

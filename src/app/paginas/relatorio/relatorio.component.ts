@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ObjetosService } from 'src/app/servicos/objetos.service';
 import { UsuariosService } from 'src/app/servicos/usuarios.service';
+import { RelatoriosService } from 'src/app/servicos/relatorios.service';
 
 @Component({
   selector: 'app-relatorio',
@@ -13,13 +14,13 @@ export class RelatorioComponent implements OnInit {
   cursos = new Array();
   cursosInscritos = new Array();
   listaCursos = new Array();
-  
 
-  constructor(public us: UsuariosService, public os: ObjetosService) { 
+
+  constructor(public us: RelatoriosService, public os: ObjetosService) {
     this.usuario = this.us.getObjetoSelecionado();
 
     this.os.nomeAPI = "cursos";
-    this.os.get().subscribe( (dados) => {
+    this.os.get().subscribe((dados) => {
       this.cursos = dados;
 
       this.montar();
@@ -28,14 +29,15 @@ export class RelatorioComponent implements OnInit {
 
   montar() {
     this.cursosInscritos = this.cursos.filter(x => x.inscricoes.findIndex(y => y.usuario._id == this.usuario._id) > -1);
-    
+
     this.cursosInscritos.forEach(curso => {
       let relusuario = {
         "curso": "",
         "status": "",
         "videos": "",
         "aproveitamento": "",
-        "gerouCertificado": ""
+        "gerouCertificado": "",
+        "questionarios": []
       }
       relusuario.curso = curso.titulo;
       let insc = curso.inscricoes.find(y => y.usuario._id == this.usuario._id);
@@ -44,8 +46,48 @@ export class RelatorioComponent implements OnInit {
       relusuario.aproveitamento = insc.percentualAcertos;
       relusuario.gerouCertificado = (insc.gerouCertificado) ? "SIM" : "NÃO";
 
+      let listaQuestoes = new Array();
+
+      curso.unidades.forEach(unidade => {
+        unidade.questionarios.forEach(questionario => {
+          let quest = {
+            "titulo": questionario.titulo,
+            "questoes": 0,
+            "corretas": 0,
+            "aproveitamento": 0
+          };
+          questionario.questoes.forEach(questao => {
+            questao.respostas.forEach(resposta => {
+              if (resposta.resposta.correta) {
+                quest.corretas++;
+              }
+            });
+          });
+
+          quest.questoes = questionario.questoes.length;
+          quest.aproveitamento = (quest.corretas / quest.questoes) * 100;
+
+          relusuario.questionarios.push(quest);
+          listaQuestoes.push(quest);
+        });
+      });
+
+      // console.log(insc);
+      // console.log(relusuario);
+
       this.listaCursos.push(relusuario);
     });
+  }
+
+  definirEstilo(dado) {
+    let classe = "";
+    if (dado == "APROVADO" || dado == "SIM" || parseFloat(dado) >= 70) {
+      classe = "relStatusAprovado";
+    } else {
+      classe = "relStatusReprovado";
+    }
+
+    return classe;
   }
 
   ngOnInit() {

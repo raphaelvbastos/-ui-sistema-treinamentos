@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material';
 import { AutenticacaoService } from 'src/app/servicos/autenticacao.service';
 import { CrudListar } from 'src/app/modelos/crudmodel';
+import { RelatoriosService } from 'src/app/servicos/relatorios.service';
 
 @Component({
   selector: 'app-relatorios',
@@ -15,7 +16,7 @@ export class RelatoriosComponent extends CrudListar {
   tituloPagina = "Lista de usuários";
   usuarios = new Array();
 
-  constructor(public us: UsuariosService, public router: Router, public dialog: MatDialog, public as: AutenticacaoService) {
+  constructor(public us: RelatoriosService, public router: Router, public dialog: MatDialog, public as: AutenticacaoService) {
     super(us, router, dialog);
     this.tela = "/relatorio";
     this.displayedColumns = ['nome', 'acoes'];

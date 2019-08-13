@@ -447,6 +447,29 @@ th {
     }
 }
 
+.divComentario {
+    margin-top: 20px;
+    box-shadow: none;
+    /* border-bottom: 1px solid #aaa; */
+    padding-top: 20px;
+}
+
+.relStatusAprovado {
+    color: #1B9A59  !important;
+    font-size: 1.5em;
+    font-weight: bold;
+    float: right;
+    margin-left: 15px;
+}
+
+.relStatusReprovado {
+    color: #b35a48  !important;
+    font-size: 1.5em;
+    font-weight: bold;
+    float: right;
+    margin-left: 15px;
+}
+
 @media screen and (min-width: 601px) {
     mat-cell {
         display: flex !important;
@@ -585,5 +608,44 @@ th {
         letter-spacing: 5px !important;
         box-shadow: none !important;
         background: none !important;
+    }
+
+    .relTexto {
+        font-size: 1em;
+    }
+    
+    .relDado {
+        font-weight: bold;
+        color: #26C6DA;
+        margin-left: 20px;
+        font-size: 1em;
+    }
+    
+    .relStatus {
+        font-size: 1em;
+        font-weight: bold;
+        float: right;
+    }
+
+    .relStatusAprovado {
+        color: #1B9A59  !important;
+        font-size: 1em;
+        font-weight: bold;
+        float: right;
+        margin-left: 15px;
+    }
+    
+    .relStatusReprovado {
+        color: #b35a48  !important;
+        font-size: 1em;
+        font-weight: bold;
+        float: right;
+        margin-left: 15px;
+    }
+
+    .divRelatorio {
+        background: #29374a;
+        color: #eee;
+        padding: 24px;
     }
 }

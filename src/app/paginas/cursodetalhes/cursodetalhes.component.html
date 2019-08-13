@@ -9,7 +9,7 @@
       <a (click)="sairCurso()" class="sairCurso" title="Sair do curso" style="float: right;margin-top: 5px"><i class="material-icons md-48" *ngIf="desinscrever()">highlight_off</i></a>
 
     <div class="subUnidade" style="background: #29374a; margin-bottom: 20px;">
-      <a (click)="gerarPDF()" [hidden]="!podeGerarCertificado" class="btnGerarCertificado"><i class="material-icons md-48" title="Voltar">picture_as_pdf</i> Gerar Certificado</a>
+      <a (click)="gerarPDF()" [hidden]="!podeGerarCertificado" class="btnGerarCertificado"><i class="material-icons md-48" title="Gerar Certificado">picture_as_pdf</i></a>
       <mat-list>
         <mat-list-item><h2 style="color: #6db5ca">{{curso.titulo}}</h2></mat-list-item>
         <mat-list-item><h2 style="color: #ccc">Instrutor: {{curso.nomeInstrutor}}</h2></mat-list-item>
@@ -90,7 +90,7 @@
 
             
 
-            <div class="mat-elevation-z8" *ngFor="let a of curso.avaliacoes" style="margin-top: 20px;">
+            <div class="divComentario" *ngFor="let a of curso.avaliacoes" style="margin-top: 20px;">
               <mat-star-rating [rating]="a.nota"  [starCount]="starCount" [color]="starColor" style="float: right"></mat-star-rating>
               <span style="float: left"><i class="material-icons md-48 btnCRUDEditar" title="Usuário">account_box</i> {{a.usuario.nome}}</span>
               <br><br><br>

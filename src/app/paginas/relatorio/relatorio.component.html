@@ -1,20 +1,30 @@
 <!-- <p>
 {{cursosInscritos | json}}
 </p> -->
-<mat-card>
-    <h1>{{usuario.nome}}</h1>
+<mat-card style="padding-bottom: 50px;">
+    <h2 style="float: left;" class="tituloPagina">{{usuario.nome}}</h2>
+
+    <a mat-raised-button  color="primary" class="voltar" title="Voltar" routerLink="/relatorios" style="float: right;">
+      <i class="material-icons md-48" title="Voltar">arrow_back</i>
+    </a>
 </mat-card>
 
-<mat-card *ngFor="let c of listaCursos">
+<mat-card *ngFor="let c of listaCursos" class="divRelatorio">
   <div class="mat-elevation-z8" style="margin-top: 10px;">
     <mat-grid-list cols="2" rowHeight="50px">
       <mat-grid-tile>
-        <h1>{{c.curso}}</h1>
+        <h1 class="tituloPagina">{{c.curso}}</h1>
       </mat-grid-tile>
-      <mat-grid-tile class="relTexto"><span class="relStatus">{{c.status}}</span></mat-grid-tile>
-      <mat-grid-tile class="relTexto">Videos assistidos: <span class="relDado">{{c.videos}}%</span></mat-grid-tile>
-      <mat-grid-tile class="relTexto">Aproveitamento: <span class="relDado">{{c.aproveitamento}}%</span></mat-grid-tile>
-      <mat-grid-tile class="relTexto">Gerou certificado: <span class="relDado">{{c.gerouCertificado}}</span></mat-grid-tile>
+      <mat-grid-tile class="relTexto"><span class="relStatus" [class]="definirEstilo(c.status)">{{c.status}}</span></mat-grid-tile>
+      <mat-grid-tile class="relTexto">Videos assistidos: <span class="relDado" [class]="definirEstilo(c.videos)">{{c.videos}}%</span></mat-grid-tile>
+      <mat-grid-tile class="relTexto">Aproveitamento: <span class="relDado" [class]="definirEstilo(c.aproveitamento)">{{c.aproveitamento}}%</span></mat-grid-tile>
+      <mat-grid-tile class="relTexto">Gerou certificado: <span class="relDado" [class]="definirEstilo(c.gerouCertificado)">{{c.gerouCertificado}}</span></mat-grid-tile>
+    </mat-grid-list>
+
+    <h2 class="tituloPagina" style="text-align: center" [hidden]="c.questionarios.length == 0">Questionários</h2>
+    <mat-grid-list cols="2" rowHeight="30px" *ngFor="let q of c.questionarios" [hidden]="c.questionarios.length == 0">
+      <mat-grid-tile class="relTexto">{{q.titulo}}</mat-grid-tile>
+      <mat-grid-tile class="relTexto"><span class="relDado" [class]="definirEstilo(q.aproveitamento)">{{q.aproveitamento}}%</span></mat-grid-tile>
     </mat-grid-list>
   </div>
 </mat-card>

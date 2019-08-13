@@ -27,7 +27,7 @@
     <ng-container matColumnDef="acoes">
         <mat-header-cell *matHeaderCellDef mat-sort-header class="colunaAcoes">Ações</mat-header-cell>
         <mat-cell *matCellDef="let row" [style.color]="row.color" data-label="Ações" class="colunaAcoes">
-            <a (click)="relatorio(row)" style="margin-right: 20px;"><i class="material-icons md-48 btnCRUDEditar" title="Editar">edit</i></a> 
+            <a (click)="relatorio(row)" style="margin-right: 20px;"><i class="material-icons md-48 btnCRUDEditar" title="Visualizar">search</i></a> 
             <!-- <a (click)="openDialog(row)" class="btnCRUDExcluir" title="Excluir"><i class="material-icons md-48" *ngIf="row._id!='5d1b995f1c9d440000ddea3d'">delete</i></a> -->
         </mat-cell>
       </ng-container>
