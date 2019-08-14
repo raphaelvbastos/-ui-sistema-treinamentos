@@ -54,7 +54,7 @@ export class QuestaoComponent extends Crudobjeto {
       this.cursoService.getObjetoSelecionado().unidades.splice(pos, 1);
       this.cursoService.getObjetoSelecionado().unidades.push(this.uni.getObjetoSelecionado());
 
-      this.objeto = this.cursoService.getObjetoSelecionado();
+      // this.objeto = this.cursoService.getObjetoSelecionado();
 
     } else {
       this.quest.getObjetoSelecionado().questoes.push(this.objeto);
@@ -69,11 +69,11 @@ export class QuestaoComponent extends Crudobjeto {
       this.cursoService.getObjetoSelecionado().unidades.splice(pos, 1);
       this.cursoService.getObjetoSelecionado().unidades.push(this.uni.getObjetoSelecionado());
 
-      this.objeto = this.cursoService.getObjetoSelecionado();
+      // this.objeto = this.cursoService.getObjetoSelecionado();
     }
 
     this.os.nomeAPI = "cursos";
-    this.os.atualizar(this.objeto).subscribe(
+    this.os.atualizar(this.cursoService.getObjetoSelecionado()).subscribe(
       (dados) => {
         this.router.navigate([this.tela]);
       });

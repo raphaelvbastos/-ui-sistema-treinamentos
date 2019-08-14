@@ -5,7 +5,7 @@
         <i class="material-icons md-48" title="Voltar">arrow_back</i>
       </a>
 
-      <a (click)="inscrever()" class="inscrever" title="Inscrever" style="float: right;margin-top: 5px"><i class="material-icons md-48" *ngIf="!this.usuService.ehAdministrador() && !desinscrever()">check_circle</i></a>
+      <a (click)="inscrever()" class="inscrever" title="Inscrever no curso" style="float: right;margin-top: 5px"><i class="material-icons md-48" *ngIf="!this.usuService.ehAdministrador() && !desinscrever()">check_circle</i></a>
       <a (click)="sairCurso()" class="sairCurso" title="Sair do curso" style="float: right;margin-top: 5px"><i class="material-icons md-48" *ngIf="desinscrever()">highlight_off</i></a>
 
     <div class="subUnidade" style="background: #29374a; margin-bottom: 20px;">
@@ -18,12 +18,7 @@
       </mat-list>
 
     </div>
-    <!-- <mat-card-title>
-      <h2>{{curso.titulo}}</h2>
-    </mat-card-title>
-    <mat-card-subtitle>
-      <h2>Instrutor: {{curso.nomeInstrutor}}</h2>
-    </mat-card-subtitle> -->
+
     <mat-card-content>
         
       <mat-card class="example-card" *ngFor="let u of curso.unidades" style="background: #29374a; margin-bottom: 20px;">
@@ -36,9 +31,6 @@
             <mat-list-item>
               <a (click)="assistirVideo(v)" title="Videos" style="font-size: 1.2em;cursor: pointer;"><i class="material-icons md-48 btnCRUDEditar"
                   title="{{v.titulo}}">video_label</i> {{v.titulo}}</a>
-
-              <!-- <video controls [src]="sanitizarURL(v.url)" width="426" height="240" [hidden]="!exibirVideo(v.url)"></video>
-                <iframe width="426" height="240" [src]="sanitizarURL(v.url)" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen [hidden]="!exibirTagEmbebed(v.url)"></iframe> -->
             </mat-list-item>
           </mat-list>
         </div>
@@ -69,9 +61,6 @@
 
           <div class="mat-elevation-z8" [hidden]="!mostrarFormAvaliacao">
               <form class="form my-2 my-lg-0" #f="ngForm" method="post" enctype="multipart/form-data" form>
-                <!-- <mat-form-field class="inputFormulario">
-                  <input matInput placeholder="Nota" [(ngModel)]="avaliacao.nota" name="nota" type="number" min="1" max="10" required>
-                </mat-form-field> -->
 
                 <span class="inputFormulario" style="color:#26C6DA">Nota *</span><br><br>
                 
@@ -87,8 +76,6 @@
                 </mat-card-actions>
               </form>
             </div>
-
-            
 
             <div class="divComentario" *ngFor="let a of curso.avaliacoes" style="margin-top: 20px;">
               <mat-star-rating [rating]="a.nota"  [starCount]="starCount" [color]="starColor" style="float: right"></mat-star-rating>

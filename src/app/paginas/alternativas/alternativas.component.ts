@@ -21,6 +21,62 @@ export class AlternativasComponent extends CrudListar {
   tituloPagina = "Lista de Alternativas";
   curso: any;
 
+  // constructor(public us: ObjetosService, public router: Router, public dialog: MatDialog, public as: AutenticacaoService,
+  //   public cursoService: CursosService, public uni: UnidadesService, public quest: QuestionariosService, public questao: QuestoesService) {
+  //   super(us, router, dialog, cursoService);
+
+  //   if (typeof this.questao.getObjetoSelecionado() != "undefined") {
+  //     this.us.nomeAPI = "cursos";
+
+  //     let listaCursos = new Array();
+  //     this.us.get().subscribe((dados) => {
+  //       listaCursos = dados;
+
+  //       let cursoSel = listaCursos.find(x => x._id === this.cursoService.getObjetoSelecionado()._id);
+
+  //       this.cursoService.setObjetoSelecionado(cursoSel);
+
+  //       let uniSel = cursoSel.unidades.find(x => x._id === this.uni.getObjetoSelecionado()._id);
+
+  //       this.uni.setObjetoSelecionado(uniSel);
+
+  //       let questionarioSel = uniSel.questionarios.find(x => x._id === this.quest.getObjetoSelecionado()._id);
+
+  //       this.quest.setObjetoSelecionado(questionarioSel);
+
+  //       let questaoSel = questionarioSel.questoes.find(x => x._id === this.questao.getObjetoSelecionado()._id);
+
+  //       this.questao.setObjetoSelecionado(questaoSel);
+
+  //       this.dadosSessao = this.questao.getObjetoSelecionado().alternativas;
+
+  //       this.curso = this.cursoService.getObjetoSelecionado();
+
+  //       this.atualizar();
+
+  //       console.log(this.dadosSessao);
+  //       this.tela = "/alternativa";
+  //       this.displayedColumns = ['alternativa', 'correta', 'acoes'];
+  //       this.cursoCampo = "unidades";
+
+  //     });
+
+
+  //     // this.dadosSessao = this.questao.getObjetoSelecionado().alternativas;
+  //     // console.log(this.dadosSessao);
+  //   }
+
+  //   // this.curso = this.cursoService.getObjetoSelecionado();
+
+
+  //   // this.tela = "/alternativa";
+  //   // this.displayedColumns = ['alternativa', 'correta', 'acoes'];
+  //   // this.cursoCampo = "unidades";
+
+
+  //   this.as.permissaoAcesso("ADM", "Acesso Negado");
+  // }
+
   constructor(public us: ObjetosService, public router: Router, public dialog: MatDialog, public as: AutenticacaoService, 
     public cursoService: CursosService, public uni: UnidadesService, public quest: QuestionariosService, public questao: QuestoesService) {
     super(us, router, dialog, cursoService);
@@ -85,7 +141,7 @@ export class AlternativasComponent extends CrudListar {
   }
 
   tipoAlternativa(opcao) {
-    if(opcao == true) {
+    if (opcao == true) {
       return "SIM";
     } else {
       return "NÃO";

@@ -36,11 +36,22 @@ export class AlternativaComponent extends Crudobjeto {
 
 
   salvarNaUnidade() {
+    console.log(this.cursoService.getObjetoSelecionado());
+    console.log(this.uni.getObjetoSelecionado());
+    console.log(this.quest.getObjetoSelecionado());
+    console.log(this.questao.getObjetoSelecionado());
+    console.log(this.objeto);
+
     if (Object.keys(this.objeto).indexOf("_id") > -1) {
-      // localizar a questao no array de questoes do questionario
+
+      // localizar a alternativa no array de alternativas do questionario
       let pos = this.questao.getObjetoSelecionado().alternativas.findIndex(x => x._id == this.objeto._id);
-      this.questao.getObjetoSelecionado().alternativas.splice(pos, 1);
-      this.questao.getObjetoSelecionado().alternativas.push(this.objeto);
+
+      if (pos > -1) {
+        this.questao.getObjetoSelecionado().alternativas.splice(pos, 1);
+        this.questao.getObjetoSelecionado().alternativas.push(this.objeto);
+      }
+
 
       // localizar a questao no array de questoes do questionario
       pos = this.quest.getObjetoSelecionado().questoes.findIndex(x => x._id == this.questao.getObjetoSelecionado()._id);
@@ -58,31 +69,36 @@ export class AlternativaComponent extends Crudobjeto {
       this.cursoService.getObjetoSelecionado().unidades.splice(pos, 1);
       this.cursoService.getObjetoSelecionado().unidades.push(this.uni.getObjetoSelecionado());
 
-      this.objeto = this.cursoService.getObjetoSelecionado();
+      // this.objeto = this.cursoService.getObjetoSelecionado();
 
     } else {
-      this.questao.getObjetoSelecionado().alternativas.push(this.objeto);
+      let pos = this.questao.getObjetoSelecionado().alternativas.findIndex(x => x.alternativa == this.objeto.alternativa);
 
-      // localizar a questao no array de questoes do questionario
-      let pos = this.quest.getObjetoSelecionado().questoes.findIndex(x => x._id == this.questao.getObjetoSelecionado()._id);
-      this.quest.getObjetoSelecionado().questoes.splice(pos, 1);
-      this.quest.getObjetoSelecionado().questoes.push(this.questao.getObjetoSelecionado());
+      if(pos == -1) {
+        this.questao.getObjetoSelecionado().alternativas.push(this.objeto);
 
-      // localizar o questionario na unidade
-      pos = this.uni.getObjetoSelecionado().questionarios.findIndex(x => x._id == this.quest.getObjetoSelecionado()._id);
-      this.uni.getObjetoSelecionado().questionarios.splice(pos, 1);
-      this.uni.getObjetoSelecionado().questionarios.push(this.quest.getObjetoSelecionado());
-
-      // localizar unidade no curso
-      pos = this.cursoService.getObjetoSelecionado().unidades.findIndex(x => x._id == this.uni.getObjetoSelecionado()._id);
-      this.cursoService.getObjetoSelecionado().unidades.splice(pos, 1);
-      this.cursoService.getObjetoSelecionado().unidades.push(this.uni.getObjetoSelecionado());
-
-      this.objeto = this.cursoService.getObjetoSelecionado();
+        // localizar a questao no array de questoes do questionario
+        let pos = this.quest.getObjetoSelecionado().questoes.findIndex(x => x._id == this.questao.getObjetoSelecionado()._id);
+        this.quest.getObjetoSelecionado().questoes.splice(pos, 1);
+        this.quest.getObjetoSelecionado().questoes.push(this.questao.getObjetoSelecionado());
+  
+        // localizar o questionario na unidade
+        pos = this.uni.getObjetoSelecionado().questionarios.findIndex(x => x._id == this.quest.getObjetoSelecionado()._id);
+        this.uni.getObjetoSelecionado().questionarios.splice(pos, 1);
+        this.uni.getObjetoSelecionado().questionarios.push(this.quest.getObjetoSelecionado());
+  
+        // localizar unidade no curso
+        pos = this.cursoService.getObjetoSelecionado().unidades.findIndex(x => x._id == this.uni.getObjetoSelecionado()._id);
+        this.cursoService.getObjetoSelecionado().unidades.splice(pos, 1);
+        this.cursoService.getObjetoSelecionado().unidades.push(this.uni.getObjetoSelecionado());
+      }
+      // this.objeto = this.cursoService.getObjetoSelecionado();
     }
 
+    console.log(this.cursoService.getObjetoSelecionado());
+
     this.os.nomeAPI = "cursos";
-    this.os.atualizar(this.objeto).subscribe(
+    this.os.atualizar(this.cursoService.getObjetoSelecionado()).subscribe(
       (dados) => {
         this.router.navigate([this.tela]);
       });

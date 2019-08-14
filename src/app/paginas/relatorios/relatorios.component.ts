@@ -13,7 +13,7 @@ import { RelatoriosService } from 'src/app/servicos/relatorios.service';
 })
 
 export class RelatoriosComponent extends CrudListar {
-  tituloPagina = "Lista de usuários";
+  tituloPagina = "Relatórios por usuário";
   usuarios = new Array();
 
   constructor(public us: RelatoriosService, public router: Router, public dialog: MatDialog, public as: AutenticacaoService) {

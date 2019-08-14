@@ -6,6 +6,9 @@ export class Certificado {
         let aproveitamento = true;
         let total = 0;
         let andamento = 0;
+        let totalTodasQuestoes = 0;
+        let totalAprov = 0;
+        let totalQuestionarios = 0;
 
         if(inscricao != null) {
 
@@ -25,18 +28,26 @@ export class Certificado {
                     assistiuTudo = false;
                 }
 
-                andamento = (videosAssistidos / unidade.videos.length) * 100;
+                if(videosAssistidos > 0) {
+                    andamento = (videosAssistidos / unidade.videos.length) * 100;
+                }
 
                 unidade.questionarios.forEach(questionario => {
                     let respQuest = new Array();
 
+                    totalQuestionarios++;
+
                     questionario.questoes.forEach(questao => {
-                        respQuest.push(questao.respostas.find(x => x.usuario._id == usuario._id));
+                        let ru = questao.respostas.find(x => x.usuario._id == usuario._id);
+                        if(ru != null) {
+                            respQuest.push(ru);
+                        }                        
                     });
 
                     if(respQuest.length != questionario.questoes.length) {
                         aproveitamento = false;
                     } else {
+
                         let corretas = 0;
                         respQuest.forEach(resp => {
                             if(resp.resposta.correta) {
@@ -54,8 +65,22 @@ export class Certificado {
                             aproveitamento = false;
                         }
                     }
+
+                    if(respQuest.length == 0) {
+                        totalTodasQuestoes += 0;
+                    } else {
+                        totalTodasQuestoes += total;
+                    }
                 });
             });
+
+            if(totalTodasQuestoes > 0 && totalQuestionarios > 0) {
+                totalAprov = totalTodasQuestoes / totalQuestionarios;
+            } else {
+                totalAprov = 0;
+            }
+
+           
 
             //percentualAndamento: 0, percentualAcertos: 0, gerouCertificado: false, aprovado: false }
             if(assistiuTudo && aproveitamento) {
@@ -68,7 +93,7 @@ export class Certificado {
         // console.log("aproveitamento", aproveitamento);
         // console.log("total%", total);
 
-            inscricao.percentualAcertos = total;
+            inscricao.percentualAcertos = totalAprov;
             inscricao.percentualAndamento = andamento;
 
             let pos = curso.inscricoes.findIndex(x => x.usuario._id == usuario._id);

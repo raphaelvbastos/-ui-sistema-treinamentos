@@ -1,6 +1,3 @@
-<!-- <p>
-{{cursosInscritos | json}}
-</p> -->
 <mat-card style="padding-bottom: 50px;">
     <h2 style="float: left;" class="tituloPagina">{{usuario.nome}}</h2>
 
@@ -13,7 +10,7 @@
   <div class="mat-elevation-z8" style="margin-top: 10px;">
     <mat-grid-list cols="2" rowHeight="50px">
       <mat-grid-tile>
-        <h1 class="tituloPagina">{{c.curso}}</h1>
+        <h2 class="tituloPagina" style="color: #26C6DA">{{c.curso}}</h2>
       </mat-grid-tile>
       <mat-grid-tile class="relTexto"><span class="relStatus" [class]="definirEstilo(c.status)">{{c.status}}</span></mat-grid-tile>
       <mat-grid-tile class="relTexto">Videos assistidos: <span class="relDado" [class]="definirEstilo(c.videos)">{{c.videos}}%</span></mat-grid-tile>
