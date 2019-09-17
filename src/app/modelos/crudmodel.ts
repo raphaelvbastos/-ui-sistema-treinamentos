@@ -3,6 +3,10 @@ import { MatTableDataSource, MatSort, MatPaginator, MatDialog } from "@angular/m
 import { Router } from "@angular/router";
 import { ConfirmacaoComponent } from "../paginas/confirmacao/confirmacao.component";
 import { CursosService } from "../servicos/cursos.service";
+import { AutenticacaoService } from "../servicos/autenticacao.service";
+import { QuestoesService } from "../servicos/questoes.service";
+import { QuestionariosService } from "../servicos/questionarios.service";
+import { UnidadesService } from "../servicos/unidades.service";
 
 export class CrudListar implements OnInit, AfterViewInit {
 
@@ -13,13 +17,21 @@ export class CrudListar implements OnInit, AfterViewInit {
   public displayedColumns;
   public tela;
   public dadosSessao = null;
+  public listarAlternativas = false;
   cursoCampo: string;
+  curso: any;
 
-  constructor(public us: any, public router: Router, public dialog: MatDialog, public cursoService?: CursosService) {
+  constructor(public us: any, public router: Router, public dialog: MatDialog, public cursoService?: CursosService,  public as?: AutenticacaoService,
+    public uni?: UnidadesService, public quest?: QuestionariosService, public questao?: QuestoesService) {
   }
 
   ngOnInit() {
-    this.atualizar();
+    if(!this.listarAlternativas) {
+      this.atualizar();
+    } else {
+      this.atualizarAlternativas();
+    }
+    
   }
 
   ngAfterViewInit(): void {
@@ -100,5 +112,53 @@ export class CrudListar implements OnInit, AfterViewInit {
       this.dataSource.data = this.dadosSessao;
     }
 
+  }
+
+  atualizarAlternativas() {
+    
+    this.us.nomeAPI = "cursos";
+
+    let cursoAtualizado = null;
+
+    this.listarAlternativas = true;
+
+    this.us.getObjeto(this.cursoService.getObjetoSelecionado()._id).subscribe(
+      (dados) => {
+        cursoAtualizado = dados;
+
+        this.curso = cursoAtualizado;
+
+        // localizar unidade no curso
+        let uniAtualizada = cursoAtualizado.unidades.find(x => x._id == this.uni.getObjetoSelecionado()._id);
+        let questionarioAtualizado = uniAtualizada.questionarios.find(x => x._id == this.quest.getObjetoSelecionado()._id);
+        
+        if(typeof this.questao.getObjetoSelecionado()._id == "undefined") {
+          this.questao.setObjetoSelecionado(questionarioAtualizado.questoes[questionarioAtualizado.questoes.length -1]);
+        }
+
+        let questaoAtualizada = questionarioAtualizado.questoes.find(x => x._id == this.questao.getObjetoSelecionado()._id);
+
+        if(questaoAtualizada != null) {
+          this.dadosSessao = questaoAtualizada.alternativas;
+          this.questao.setObjetoSelecionado(questaoAtualizada);
+          this.dataSource.data = this.dadosSessao;
+        }
+
+        
+
+        this.cursoService.setObjetoSelecionado(cursoAtualizado);
+        this.uni.setObjetoSelecionado(uniAtualizada);
+        this.quest.setObjetoSelecionado(questionarioAtualizado);
+        
+
+
+        this.tela = "/alternativa";
+        this.displayedColumns = ['alternativa', 'correta', 'acoes'];
+        this.cursoCampo = "unidades";
+
+        this.as.permissaoAcesso("ADM", "Acesso Negado");
+
+      }
+    );
   }
 }

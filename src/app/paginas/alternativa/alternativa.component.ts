@@ -36,11 +36,6 @@ export class AlternativaComponent extends Crudobjeto {
 
 
   salvarNaUnidade() {
-    console.log(this.cursoService.getObjetoSelecionado());
-    console.log(this.uni.getObjetoSelecionado());
-    console.log(this.quest.getObjetoSelecionado());
-    console.log(this.questao.getObjetoSelecionado());
-    console.log(this.objeto);
 
     if (Object.keys(this.objeto).indexOf("_id") > -1) {
 
@@ -95,7 +90,6 @@ export class AlternativaComponent extends Crudobjeto {
       // this.objeto = this.cursoService.getObjetoSelecionado();
     }
 
-    console.log(this.cursoService.getObjetoSelecionado());
 
     this.os.nomeAPI = "cursos";
     this.os.atualizar(this.cursoService.getObjetoSelecionado()).subscribe(

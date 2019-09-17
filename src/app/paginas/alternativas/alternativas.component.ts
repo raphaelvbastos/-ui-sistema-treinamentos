@@ -19,7 +19,7 @@ import { ConfirmacaoComponent } from '../confirmacao/confirmacao.component';
 export class AlternativasComponent extends CrudListar {
 
   tituloPagina = "Lista de Alternativas";
-  curso: any;
+  // curso: any;
 
   // constructor(public us: ObjetosService, public router: Router, public dialog: MatDialog, public as: AutenticacaoService,
   //   public cursoService: CursosService, public uni: UnidadesService, public quest: QuestionariosService, public questao: QuestoesService) {
@@ -77,33 +77,71 @@ export class AlternativasComponent extends CrudListar {
   //   this.as.permissaoAcesso("ADM", "Acesso Negado");
   // }
 
-  constructor(public us: ObjetosService, public router: Router, public dialog: MatDialog, public as: AutenticacaoService, 
+  constructor(public us: ObjetosService, public router: Router, public dialog: MatDialog, public as: AutenticacaoService,
     public cursoService: CursosService, public uni: UnidadesService, public quest: QuestionariosService, public questao: QuestoesService) {
     super(us, router, dialog, cursoService);
 
-    if(typeof this.questao.getObjetoSelecionado() != "undefined") {
-      this.dadosSessao = this.questao.getObjetoSelecionado().alternativas;
-    }
-    
-    this.curso = this.cursoService.getObjetoSelecionado();
-
     this.us.nomeAPI = "cursos";
-    this.tela = "/alternativa";
-    this.displayedColumns = ['alternativa', 'correta', 'acoes'];
-    this.cursoCampo = "unidades";
+
+    this.listarAlternativas = true;
+
+    // this.curso = this.cursoService.getObjetoSelecionado();
+
+    // this.us.getObjeto(this.cursoService.getObjetoSelecionado()._id).subscribe(
+    //   (dados) => {
+    //     cursoAtualizado = dados;
+
+    //     console.log(dados);
+
+    //     // localizar unidade no curso
+    //     let uniAtualizada = cursoAtualizado.unidades.find(x => x._id == this.uni.getObjetoSelecionado()._id);
+    //     let questionarioAtualizado = uniAtualizada.questionarios.find(x => x._id == this.quest.getObjetoSelecionado()._id);
+    //     let questaoAtualizada = questionarioAtualizado.questoes.find(x => x._id == this.questao.getObjetoSelecionado()._id);
+
+    //     this.dadosSessao = questaoAtualizada.alternativas;
+
+    //     this.curso = cursoAtualizado;
+
+    //     this.cursoService.setObjetoSelecionado(cursoAtualizado);
+    //     this.uni.setObjetoSelecionado(uniAtualizada);
+    //     this.quest.setObjetoSelecionado(questionarioAtualizado);
+    //     this.questao.setObjetoSelecionado(questaoAtualizada);
 
 
-    this.as.permissaoAcesso("ADM", "Acesso Negado");
+    //     this.tela = "/alternativa";
+    //     this.displayedColumns = ['alternativa', 'correta', 'acoes'];
+    //     this.cursoCampo = "unidades";
+
+
+    //     this.as.permissaoAcesso("ADM", "Acesso Negado");
+
+    //     console.log(this.dadosSessao);
+    //   }
+    // );
+
+    // if (typeof this.questao.getObjetoSelecionado() != "undefined") {
+    //   console.log(this.cursoService.getObjetoSelecionado()._id);
+
+
+
+
+
+    //   this.dadosSessao = this.questao.getObjetoSelecionado().alternativas;
+    // }
+
+
   }
 
   excluirNaUnidade(objeto) {
     // localizar a questao no array de questoes do questionario
+
     let pos = this.questao.getObjetoSelecionado().alternativas.findIndex(x => x._id == objeto._id);
     this.questao.getObjetoSelecionado().alternativas.splice(pos, 1);
 
     // localizar a questao no array de questoes do questionario
     pos = this.quest.getObjetoSelecionado().questoes.findIndex(x => x._id == this.questao.getObjetoSelecionado()._id);
     this.quest.getObjetoSelecionado().questoes.splice(pos, 1);
+    this.quest.getObjetoSelecionado().questoes.push(this.questao.getObjetoSelecionado());
 
     // localizar o questionario na unidade
     pos = this.uni.getObjetoSelecionado().questionarios.findIndex(x => x._id == this.quest.getObjetoSelecionado()._id);
