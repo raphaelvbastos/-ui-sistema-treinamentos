@@ -456,18 +456,18 @@ th {
 
 .relStatusAprovado {
     color: #1B9A59  !important;
-    font-size: 1.5em;
+    /* font-size: 1.5em; */
     font-weight: bold;
-    float: right;
-    margin-left: 15px;
+    /* float: right; */
+    /* margin-left: 15px; */
 }
 
 .relStatusReprovado {
     color: #b35a48  !important;
-    font-size: 1.5em;
+    /* font-size: 1.5em; */
     font-weight: bold;
-    float: right;
-    margin-left: 15px;
+    /* float: right; */
+    /* margin-left: 15px; */
 }
 
 @media screen and (min-width: 601px) {

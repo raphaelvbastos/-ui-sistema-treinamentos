@@ -1,12 +1,12 @@
 <mat-card style="padding-bottom: 50px;">
-    <h2 style="float: left;" class="tituloPagina">{{usuario.nome}}</h2>
+  <h2 style="float: left;" class="tituloPagina">{{usuario.nome}}</h2>
 
-    <a mat-raised-button  color="primary" class="voltar" title="Voltar" routerLink="/relatorios" style="float: right;">
-      <i class="material-icons md-48" title="Voltar">arrow_back</i>
-    </a>
+  <a mat-raised-button color="primary" class="voltar" title="Voltar" routerLink="/relatorios" style="float: right;">
+    <i class="material-icons md-48" title="Voltar">arrow_back</i>
+  </a>
 </mat-card>
 
-<mat-card *ngFor="let c of listaCursos" class="divRelatorio">
+<!-- <mat-card *ngFor="let c of listaCursos" class="divRelatorio">
   <div class="mat-elevation-z8" style="margin-top: 10px;">
     <mat-grid-list cols="2" rowHeight="50px">
       <mat-grid-tile>
@@ -14,7 +14,6 @@
       </mat-grid-tile>
       <mat-grid-tile class="relTexto"><span class="relStatus" [class]="definirEstilo(c.status)">{{c.status}}</span></mat-grid-tile>
       <mat-grid-tile class="relTexto">Videos assistidos: <span class="relDado" [class]="definirEstilo(c.videos)">{{c.videos}}%</span></mat-grid-tile>
-      <!-- <mat-grid-tile class="relTexto">Aproveitamento: <span class="relDado" [class]="definirEstilo(c.aproveitamento)">{{c.aproveitamento}}%</span></mat-grid-tile> -->
       <mat-grid-tile class="relTexto">Gerou certificado: <span class="relDado" [class]="definirEstilo(c.gerouCertificado)">{{c.gerouCertificado}}</span></mat-grid-tile>
     </mat-grid-list>
 
@@ -25,3 +24,112 @@
     </mat-grid-list>
   </div>
 </mat-card>
+
+<mat-card *ngFor="let c of listaCursos" class="divRelatorio">
+    <div class="mat-elevation-z8" style="margin-top: 10px;">
+      <mat-grid-list cols="2" rowHeight="500px">
+        <mat-grid-tile>
+          <h2 class="tituloPagina" style="color: #26C6DA">{{c.curso}}</h2><br>
+          <span class="relStatus" [class]="definirEstilo(c.status)">{{c.status}}</span><br>
+          Videos assistidos: <span class="relDado" [class]="definirEstilo(c.videos)">{{c.videos}}%</span><br>
+          Gerou certificado: <span class="relDado" [class]="definirEstilo(c.gerouCertificado)">{{c.gerouCertificado}}</span>
+        </mat-grid-tile>
+
+        <mat-grid-tile>
+
+            <mat-grid-list cols="2" rowHeight="300px" *ngFor="let q of c.questionarios" [hidden]="c.questionarios.length == 0">
+              <mat-grid-tile class="relTexto">{{q.titulo}}aaaaaaaa</mat-grid-tile>
+              <mat-grid-tile class="relTexto"><span class="relDado" [class]="definirEstilo(q.aproveitamento)">{{q.aproveitamento}}%aaaa</span></mat-grid-tile>
+            </mat-grid-list>
+
+        </mat-grid-tile>
+      </mat-grid-list>
+    </div>
+  </mat-card> -->
+
+<mat-card>
+  <table class="mat-elevation-z8 tabela-rel">
+    <thead>
+      <tr>
+        <th>Curso</th>
+        <th>Videos</th>
+        <th>Certificado</th>
+        <th>Status</th>
+        <th>Questionários</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let c of listaCursos">
+        <td style="color: #26C6DA;font-weight: bold;">{{c.curso}}</td>
+        <td [class]="definirEstilo(c.videos)">{{c.videos}}%</td>
+        <td [class]="definirEstilo(c.gerouCertificado)">{{c.gerouCertificado}}</td>
+        <td [class]="definirEstilo(c.status)">{{c.status}}</td>
+        <td>
+      <tr *ngFor="let q of c.questionarios" [hidden]="c.questionarios.length == 0">
+        <td style="border-bottom: none !important">{{q.titulo}} - </td>
+        <td style="border-bottom: none !important" [class]="definirEstilo(q.aproveitamento)">{{q.aproveitamento}}%</td>
+      </tr>
+      </td>
+      </tr>
+    </tbody>
+  </table>
+</mat-card>
+
+<style>
+  .tabela-rel {
+    width: 99%;
+  }
+
+  .tabela-rel tbody tr td {
+    border-width: 0;
+    border-bottom-width: 0px;
+    border-bottom-width: 1px;
+    border-style: solid;
+    align-items: center;
+    box-sizing: border-box;
+    color: #ddd;
+    text-align: center;
+
+    border-bottom-color: rgba(0, 0, 0, .12);
+    height: 48px;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+  }
+
+  .tabela-rel thead tr th {
+    color: #ddd !important;
+    text-align: center !important;
+    font-weight: 700 !important;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    font-size: .9em !important;
+    height: 56px !important;
+  }
+</style>
+
+
+<!-- <mat-table [dataSource]="dataSource" matSort>
+    <ng-container matColumnDef="nome">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Nome</mat-header-cell>
+      <mat-cell *matCellDef="let row" data-label="Nome">{{row.nome}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="email">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Email</mat-header-cell>
+      <mat-cell *matCellDef="let row" data-label="Email">{{row.email}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="tipo">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Tipo</mat-header-cell>
+      <mat-cell *matCellDef="let row" data-label="Tipo">{{mostrarTipo(row.tipo)}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="acoes">
+        <mat-header-cell *matHeaderCellDef mat-sort-header class="colunaAcoes">Ações</mat-header-cell>
+        <mat-cell *matCellDef="let row" [style.color]="row.color" data-label="Ações" class="colunaAcoes">
+            <a (click)="editar(row)" style="margin-right: 20px;"><i class="material-icons md-48 btnCRUDEditar" title="Editar">edit</i></a> 
+            <a (click)="openDialog(row)" class="btnCRUDExcluir" title="Excluir"><i class="material-icons md-48" *ngIf="row._id!='5d1b995f1c9d440000ddea3d'">delete</i></a>
+        </mat-cell>
+      </ng-container>
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;">
+    </mat-row>
+  </mat-table> -->
