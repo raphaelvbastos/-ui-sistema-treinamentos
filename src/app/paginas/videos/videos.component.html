@@ -19,7 +19,7 @@
       <mat-table [dataSource]="dataSource" matSort>
         <ng-container matColumnDef="titulo">
           <mat-header-cell *matHeaderCellDef mat-sort-header>Titulo</mat-header-cell>
-          <mat-cell *matCellDef="let row" data-label="Nome">{{row.titulo}}</mat-cell>
+          <mat-cell *matCellDef="let row" data-label="Nome"><a (click)="editar(row)" style="cursor: pointer;">{{row.titulo}}</a></mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="url">

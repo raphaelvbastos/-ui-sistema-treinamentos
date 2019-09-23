@@ -18,7 +18,7 @@
       <mat-table [dataSource]="dataSource" matSort>
         <ng-container matColumnDef="pergunta">
           <mat-header-cell *matHeaderCellDef mat-sort-header>Pergunta</mat-header-cell>
-          <mat-cell *matCellDef="let row" data-label="Pergunta">{{row.pergunta}}</mat-cell>
+          <mat-cell *matCellDef="let row" data-label="Pergunta"><a (click)="editar(row)" style="cursor: pointer;">{{row.pergunta}}</a></mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="alternativas">

@@ -22,12 +22,17 @@ export class UsuarioComponent implements OnInit {
     this.usuario = new Usuario();
     this.ut.getTiposUsuario().subscribe((dados: any[]) => {
       this.tipoUsuario = dados;
+      
     });
   }
 
   ngOnInit() {
     if (this.us.getObjetoSelecionado() != null) {
       this.usuario = this.us.getObjetoSelecionado();
+    }
+
+    if(this.as.getUsuario().tipo.tipo == "Empregado") {
+      this.usuario =  this.as.getUsuario();
     }
   }
 

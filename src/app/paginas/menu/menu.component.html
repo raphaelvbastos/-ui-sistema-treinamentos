@@ -49,7 +49,16 @@
           <i class="material-icons md-48">account_circle</i> Usuários
         </a>
 
-        <button mat-button [matMenuTriggerFor]="cursos" *ngIf="this.as.ehUsuarioAutenticado()"><i class="material-icons md-48">school</i> Cursos</button>
+        <a routerLink="/usuario" mat-button *ngIf="this.as.ehUsuarioAutenticado() && !this.as.ehAdministrador()">
+          <i class="material-icons md-48">account_circle</i> Perfil
+        </a>
+
+        <a routerLink="/cursos" mat-button *ngIf="this.as.ehUsuarioAutenticado() && !this.as.ehAdministrador()">
+          <i class="material-icons md-48">school</i> Cursos
+        </a>
+        
+
+        <button mat-button [matMenuTriggerFor]="cursos" *ngIf="this.as.ehUsuarioAutenticado() && this.as.ehAdministrador()"><i class="material-icons md-48">school</i> Cursos</button>
         <mat-menu #cursos="matMenu">
             <a routerLink="/cursos" mat-menu-item>
               Lista de cursos
@@ -92,11 +101,19 @@
           <i class="material-icons md-48">account_circle</i> Usuários
         </a>
 
+        <a routerLink="/usuario" mat-button *ngIf="this.as.ehUsuarioAutenticado() && !this.as.ehAdministrador()">
+          <i class="material-icons md-48">account_circle</i> Perfil
+        </a>
+
         <!-- <a href="/cursos" mat-button mat-button *ngIf="this.as.ehUsuarioAutenticado()">
           <i class="material-icons md-48">school</i> Cursos
         </a> -->
 
-        <button mat-button [matMenuTriggerFor]="cursos" *ngIf="this.as.ehUsuarioAutenticado()"><i class="material-icons md-48">school</i> Cursos</button>
+        <a routerLink="/cursos" mat-button *ngIf="this.as.ehUsuarioAutenticado() && !this.as.ehAdministrador()">
+          <i class="material-icons md-48">school</i> Cursos
+        </a>
+
+        <button mat-button [matMenuTriggerFor]="cursos" *ngIf="this.as.ehUsuarioAutenticado() && this.as.ehAdministrador()"><i class="material-icons md-48">school</i> Cursos</button>
         <mat-menu #cursos="matMenu">
             <a routerLink="/cursos" mat-menu-item>
               Lista de cursos

@@ -47,8 +47,28 @@
     </div>
   </mat-card> -->
 
-<mat-card>
-  <table class="mat-elevation-z8 tabela-rel">
+
+  <mat-card *ngFor="let c of listaCursos" class="divRelatorio divLinha">
+    <div class="mat-elevation-z8" style="margin-top: 10px;">
+      <mat-grid-list cols="2" rowHeight="50px">
+        <mat-grid-tile>
+          <h2 class="tituloPagina" style="color: #26C6DA">{{c.curso}}</h2>
+        </mat-grid-tile>
+        <mat-grid-tile class="relTexto"><span class="relStatus" [class]="definirEstilo(c.status)">{{c.status}}</span></mat-grid-tile>
+        <mat-grid-tile class="relTexto">Videos assistidos: <span class="relDado" [class]="definirEstilo(c.videos)">{{c.videos}}%</span></mat-grid-tile>
+        <mat-grid-tile class="relTexto">Gerou certificado: <span class="relDado" [class]="definirEstilo(c.gerouCertificado)">{{c.gerouCertificado}}</span></mat-grid-tile>
+      </mat-grid-list>
+  
+      <h2 class="tituloPagina" style="text-align: center" [hidden]="c.questionarios.length == 0">Questionários</h2>
+      <mat-grid-list cols="2" rowHeight="30px" *ngFor="let q of c.questionarios" [hidden]="c.questionarios.length == 0">
+        <mat-grid-tile class="relTexto">{{q.titulo}}</mat-grid-tile>
+        <mat-grid-tile class="relTexto"><span class="relDado" [class]="definirEstilo(q.aproveitamento)">{{q.aproveitamento}}%</span></mat-grid-tile>
+      </mat-grid-list>
+    </div>
+  </mat-card>
+
+<mat-card class="divTabela">
+  <table class="mat-elevation-z8 tabela-rel table table-action">
     <thead>
       <tr>
         <th>Curso</th>
@@ -102,6 +122,30 @@
     font-family: Roboto, "Helvetica Neue", sans-serif;
     font-size: .9em !important;
     height: 56px !important;
+  }
+
+  @media (max-width: 600px) {
+    .tituloPagina, .relTexto {
+      font-size: .9em;
+    }
+
+    .divTabela {
+      display: none;
+    }
+
+    .divLinha {
+      display: block;
+    }
+  }
+
+  @media (min-width: 601px) {
+    .divTabela {
+      display: block;
+    }
+
+    .divLinha {
+      display: none;
+    }
   }
 </style>
 
