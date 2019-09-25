@@ -67,7 +67,7 @@
     </div>
   </mat-card>
 
-<mat-card class="divTabela">
+<mat-card class="divTabela" *ngIf="listaCursos.length > 0">
   <table class="mat-elevation-z8 tabela-rel table table-action">
     <thead>
       <tr>
@@ -93,6 +93,10 @@
       </tr>
     </tbody>
   </table>
+</mat-card>
+
+<mat-card *ngIf="listaCursos.length == 0">
+  <h3 style="text-align: center; color: #ccc; text-shadow: none;">Não há dados deste usuário</h3>
 </mat-card>
 
 <style>

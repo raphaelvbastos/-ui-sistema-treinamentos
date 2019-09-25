@@ -11,7 +11,7 @@
 <mat-table [dataSource]="dataSource" matSort>
     <ng-container matColumnDef="nome">
       <mat-header-cell *matHeaderCellDef mat-sort-header>Nome</mat-header-cell>
-      <mat-cell *matCellDef="let row" data-label="Nome">{{row.nome}}</mat-cell>
+      <mat-cell *matCellDef="let row" data-label="Nome"><a (click)="relatorio(row)" style="cursor: pointer;">{{row.nome}}</a></mat-cell>
     </ng-container>
 
     <!-- <ng-container matColumnDef="email">

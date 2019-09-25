@@ -447,6 +447,10 @@ th {
     }
 }
 
+.mat-cell, .mat-footer-cell {
+    font-size: 16px;
+}
+
 .divComentario {
     margin-top: 20px;
     box-shadow: none;

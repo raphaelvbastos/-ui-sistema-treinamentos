@@ -30,6 +30,7 @@
           <mat-card-actions>
             <a mat-raised-button  color="primary" class="voltar" routerLink="/usuarios" *ngIf="this.as.ehAdministrador()">CANCELAR</a>
             <a mat-raised-button  color="primary" class="voltar" routerLink="/login" *ngIf="!this.as.ehUsuarioAutenticado()">CANCELAR</a>
+            <a mat-raised-button  color="primary" class="voltar" routerLink="/cursos" *ngIf="!this.as.ehAdministrador() && this.as.ehUsuarioAutenticado()">CANCELAR</a>
             <button mat-raised-button color="primary" class="salvar" (click)="salvar()" aria-label="Salvar ação" [disabled]="!f.valid">SALVAR</button>
           </mat-card-actions>
         </form>
