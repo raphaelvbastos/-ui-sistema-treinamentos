@@ -26,12 +26,13 @@
         </mat-tab>
       </mat-tab-group>
 
-      <video controls height="240" width="426" [hidden]="!exibirTagVideo">
+      <video controls height="240" width="426" *ngIf="exibirTagVideo">
         <source [src]="sanitizarURL(objeto.url)" type="video/mp4">
         Desculpe; seu navegador não suporta vídeos HTML5 em WebM com VP8 ou MP4 com H.264.
       </video>
+
       <iframe width="426" height="240" [src]="sanitizarURL(objeto.url)" frameborder="0" allow="autoplay; encrypted-media"
-        allowfullscreen [hidden]="!exibirTagEmbebed"></iframe>
+        allowfullscreen *ngIf="!exibirTagVideo"></iframe>
 
 
       <!-- <mat-form-field class="inputFormulario">
