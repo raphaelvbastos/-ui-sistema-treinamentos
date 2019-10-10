@@ -1,6 +1,6 @@
 <mat-card>
   <div class="mat-elevation-z8">
-      <h2 style="float: left;" class="tituloPagina">Video</h2>
+    <h2 style="float: left;" class="tituloPagina">Video</h2>
     <form class="form my-2 my-lg-0" #f="ngForm" method="post" enctype="multipart/form-data" form>
       <mat-form-field class="inputFormulario">
         <input matInput placeholder="Titulo" [(ngModel)]="objeto.titulo" name="titulo" required>
@@ -12,22 +12,26 @@
 
       <mat-tab-group>
         <mat-tab label="URL para o video">
-            <mat-form-field class="inputFormulario">
-                <input matInput placeholder="URL" [(ngModel)]="objeto.url" name="url">
-              </mat-form-field>
+          <mat-form-field class="inputFormulario">
+            <input matInput placeholder="URL" [(ngModel)]="objeto.url" name="url">
+          </mat-form-field>
         </mat-tab>
         <mat-tab label="Enviar  video">
-            <button mat-button (click)="inputFile.click()" class="btnUpload">
-                <i class="material-icons md-48">attach_file</i>
-                Selecionar arquivo
-              </button> {{ nomeArquivo }}
-              <input #inputFile type="file" name="filetoupload" #fd="ngModel" [(ngModel)]="arquivo" (change)="fileChange($event)"
-                [style.display]="'none'">
+          <button mat-button (click)="inputFile.click()" class="btnUpload">
+            <i class="material-icons md-48">attach_file</i>
+            Selecionar arquivo
+          </button> {{ nomeArquivo }}
+          <input #inputFile type="file" name="filetoupload" #fd="ngModel" [(ngModel)]="arquivo" (change)="fileChange($event)"
+            [style.display]="'none'">
         </mat-tab>
       </mat-tab-group>
 
-      <video controls [src]="sanitizarURL(objeto.url)" width="426" height="240" [hidden]="!exibirTagVideo"></video>
-      <iframe width="426" height="240" [src]="sanitizarURL(objeto.url)" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen [hidden]="!exibirTagEmbebed"></iframe>
+      <video controls height="240" width="426" [hidden]="!exibirTagVideo">
+        <source [src]="sanitizarURL(objeto.url)" type="video/mp4">
+        Desculpe; seu navegador não suporta vídeos HTML5 em WebM com VP8 ou MP4 com H.264.
+      </video>
+      <iframe width="426" height="240" [src]="sanitizarURL(objeto.url)" frameborder="0" allow="autoplay; encrypted-media"
+        allowfullscreen [hidden]="!exibirTagEmbebed"></iframe>
 
 
       <!-- <mat-form-field class="inputFormulario">
