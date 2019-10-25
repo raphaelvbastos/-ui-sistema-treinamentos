@@ -1,6 +1,6 @@
 <div class="mat-elevation-z8">
 
-  <mat-card class="example-card">
+  <mat-card class="example-card" style="background: #29374a !important; box-shadow: none !important">
     <button mat-raised-button color="primary" class="btnUpload" (click)="refazer()" aria-label="Refazer" style="float: right;background: none !important">Refazer
       teste</button>
 
@@ -14,7 +14,7 @@
 
       <span style="font-size: 1.4em;float: right;font-weight: bold">Percentual: {{ percentual }}%</span>
 
-      <mat-card class="example-card" *ngFor="let q of listaQuestoes; let i = index" style="background: #29374a; margin-bottom: 20px;">
+      <mat-card class="example-card" *ngFor="let q of listaQuestoes; let i = index" style="background: #29374a; margin-bottom: 20px; box-shadow: none !important">
         <h3 [class]="marcarAlternativa(q.respostaAluno.correta)">{{i+1}} - {{q.titulo}}</h3>
         <i class="material-icons md-48 alternativaCorreta" *ngIf="q.respostaAluno.correta" style="float: right;">done</i>
         <i class="material-icons md-48 alternativaIncorreta" *ngIf="!q.respostaAluno.correta" style="float: right;">clear</i>
