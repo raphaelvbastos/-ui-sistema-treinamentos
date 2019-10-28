@@ -122,16 +122,17 @@ export class CrudListar implements OnInit, AfterViewInit {
 
     this.listarAlternativas = true;
 
+    
     this.us.getObjeto(this.cursoService.getObjetoSelecionado()._id).subscribe(
       (dados) => {
-        cursoAtualizado = dados;
+        cursoAtualizado = this.cursoService.getObjetoSelecionado();
 
         this.curso = cursoAtualizado;
 
         // localizar unidade no curso
         let uniAtualizada = cursoAtualizado.unidades.find(x => x._id == this.uni.getObjetoSelecionado()._id);
         let questionarioAtualizado = uniAtualizada.questionarios.find(x => x._id == this.quest.getObjetoSelecionado()._id);
-        
+
         if(typeof this.questao.getObjetoSelecionado()._id == "undefined") {
           this.questao.setObjetoSelecionado(questionarioAtualizado.questoes[questionarioAtualizado.questoes.length -1]);
         }

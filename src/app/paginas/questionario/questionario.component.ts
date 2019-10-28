@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { AutenticacaoService } from 'src/app/servicos/autenticacao.service';
 import { CursosService } from 'src/app/servicos/cursos.service';
 import { UnidadesService } from 'src/app/servicos/unidades.service';
+import { QuestionariosService } from 'src/app/servicos/questionarios.service';
 
 @Component({
   selector: 'app-questionario',
@@ -22,7 +23,7 @@ export class QuestionarioComponent extends Crudobjeto {
 
 
   constructor(public os: ObjetosService, public router: Router, public as: AutenticacaoService, public cursoService: CursosService, 
-      public uni: UnidadesService) {
+      public uni: UnidadesService, public quest?: QuestionariosService) {
     super(os, router, as, cursoService);
     this.objeto = this.questionario;
     this.nomeAPI = "cursos";
@@ -63,8 +64,13 @@ export class QuestionarioComponent extends Crudobjeto {
 
     this.os.nomeAPI = "cursos";
     this.os.atualizar(this.objeto).subscribe(
-      (dados) => {
-        this.router.navigate([this.tela]);
+      (x) => {
+        this.os.getObjeto(this.cursoService.getObjetoSelecionado()._id).subscribe(
+          (dados) => {
+            this.cursoService.setObjetoSelecionado(dados);
+            this.router.navigate([this.tela]);
+          }
+        )
       });
   }
 }
