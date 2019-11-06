@@ -34,10 +34,10 @@
 </mat-card> -->
 
 
-<div fxLayout="row" fxLayoutWrap="wrap">
+<div fxLayout="row" fxLayoutWrap="wrap" class="fd">
   <!-- column -->
   <div fxFlex.gt-sm="100" fxFlex.gt-xs="100" fxFlex="100">
-    <mat-card style="box-shadow: none">
+    <mat-card style="box-shadow: none;background: none;">
       <mat-card-content>
         <!-- Row -->
         <div fxLayout="row" fxLayoutWrap="wrap">
@@ -92,3 +92,16 @@
   </div>
   <!-- column -->
 </div>
+
+<style>
+.fd {
+  background-image: url("../assets/fundo.jpg");
+  height: 100vh;
+  /*background geralmente uso o modo compacto, mas aqui vou colocar separadamente para explicar cada parte*/
+  /* aqui defino a imagem maior*/
+  /*deixa o background com efeito paralax*/
+  background-attachment: fixed;
+  /* cover é para nunca deixar espaço sem imagem*/
+  background-size: cover;
+}
+</style>
