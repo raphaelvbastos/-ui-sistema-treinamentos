@@ -1,28 +1,46 @@
 <div class="mat-elevation-z8">
 
   <mat-card class="example-card">
-      <a mat-raised-button  color="primary" class="voltar" title="Voltar" routerLink="/cursos" style="float: right;">
+    <div style="background: #29374a; float: right;padding-left: 10px; margin: 15px 15px 0 0;">
+
+      <a mat-raised-button color="primary" class="voltar" title="Voltar" routerLink="/cursos" style="float: right;">
         <i class="material-icons md-48" title="Voltar">arrow_back</i>
       </a>
 
-      <a (click)="inscrever()" class="inscrever" title="Inscrever no curso" style="float: right;margin-top: 5px"><i class="material-icons md-48" *ngIf="!this.usuService.ehAdministrador() && !desinscrever()">check_circle</i></a>
-      <a (click)="sairCurso()" class="sairCurso" title="Sair do curso" style="float: right;margin-top: 5px"><i class="material-icons md-48" *ngIf="desinscrever()">highlight_off</i></a>
+      <a (click)="inscrever()" class="inscrever" title="Inscrever no curso" style="float: right;margin-top: 5px"><i
+          class="material-icons md-48" *ngIf="!this.usuService.ehAdministrador() && !desinscrever()">check_circle</i></a>
+      <a (click)="sairCurso()" class="sairCurso" title="Sair do curso" style="float: right;margin-top: 5px"><i class="material-icons md-48"
+          *ngIf="desinscrever()">highlight_off</i></a>
+
+      <a (click)="gerarPDF()" [hidden]="!podeGerarCertificado" class="btnGerarCertificado"><i class="material-icons md-48"
+          title="Gerar Certificado">picture_as_pdf</i></a>
+
+    </div>
+
 
     <div class="subUnidade" style="background: #29374a; margin-bottom: 20px;">
-      <a (click)="gerarPDF()" [hidden]="!podeGerarCertificado" class="btnGerarCertificado"><i class="material-icons md-48" title="Gerar Certificado">picture_as_pdf</i></a>
-      <mat-list>
-        <mat-list-item><h2 style="color: #6db5ca">{{curso.titulo}}</h2></mat-list-item>
-        <mat-list-item><h2 style="color: #ccc">Instrutor: {{curso.nomeInstrutor}}</h2></mat-list-item>
-        <mat-list-item><h2 style="color: #ccc">Categoria: {{curso.categoria.nome}}</h2></mat-list-item>
-        <mat-list-item><h2 style="color: #ccc">Palavras-chave: {{curso.palavrasChave}}</h2></mat-list-item>
+
+      <mat-list class="cursofd">
+        <mat-list-item>
+          <h2 class="destaqueCurso" style="color: #6db5ca">{{curso.titulo}}</h2>
+        </mat-list-item>
+        <mat-list-item>
+          <h2 class="destaqueCurso" style="color: #ccc">Instrutor: {{curso.nomeInstrutor}}</h2>
+        </mat-list-item>
+        <mat-list-item>
+          <h2 class="destaqueCurso" style="color: #ccc">Categoria: {{curso.categoria.nome}}</h2>
+        </mat-list-item>
+        <mat-list-item>
+          <h2 class="destaqueCurso" style="color: #ccc">Palavras-chave: {{curso.palavrasChave}}</h2>
+        </mat-list-item>
       </mat-list>
 
     </div>
 
     <mat-card-content>
-        
-      <mat-card class="example-card" *ngFor="let u of curso.unidades" style="background: #29374a; margin-bottom: 20px;">
-          
+
+      <mat-card class="example-card bloco" *ngFor="let u of curso.unidades" style="background: #29374a; margin-bottom: 20px;">
+
         <h3 style="color: rgb(221, 136, 24);padding-bottom: 5px;font-size: 1.5em">{{u.titulo}}</h3>
 
         <div class="subUnidade" *ngIf="u.videos.length > 0">
@@ -49,43 +67,67 @@
           <h3 style="font-size: 1.5em; color: #ccc">Questionários</h3>
           <mat-list *ngFor="let v of u.questionarios">
             <mat-list-item>
-              <a (click)="questionario(v)" style="font-size: 1.2em; color: #eee; text-decoration: none;cursor: pointer;" target="_blank"><i
-                  class="material-icons md-48 btnCRUDEditar" title="Questionário">question_answer</i> {{v.titulo}}</a>
+              <a (click)="questionario(v)" style="font-size: 1.2em; color: #eee; text-decoration: none;cursor: pointer;"
+                target="_blank"><i class="material-icons md-48 btnCRUDEditar" title="Questionário">question_answer</i>
+                {{v.titulo}}</a>
             </mat-list-item>
           </mat-list>
         </div>
       </mat-card>
 
-      <mat-card class="example-card" style="background: #29374a; margin-bottom: 20px;">
-          <h3 style="font-size: 1.5em; color: #ccc">Avaliações dos alunos</h3>
+      <mat-card class="example-card bloco" style="background: #29374a; margin-bottom: 20px;">
+        <h3 style="font-size: 1.5em; color: #ccc">Avaliações dos alunos</h3>
 
-          <div class="mat-elevation-z8" [hidden]="!mostrarFormAvaliacao">
-              <form class="form my-2 my-lg-0" #f="ngForm" method="post" enctype="multipart/form-data" form>
+        <div class="mat-elevation-z8" [hidden]="!mostrarFormAvaliacao">
+          <form class="form my-2 my-lg-0" #f="ngForm" method="post" enctype="multipart/form-data" form>
 
-                <span class="inputFormulario" style="color:#26C6DA">Nota *</span><br><br>
-                
-                <mat-star-rating [rating]="rating" [starCount]="starCount" [color]="starColor" (ratingUpdated)="onRatingChanged($event)"></mat-star-rating>
-                <br>
-                <mat-form-field class="inputFormulario">
-                    <input matInput placeholder="Comentário" [(ngModel)]="avaliacao.comentario" name="comentario" required>
-                  </mat-form-field>
-        
-                <mat-card-actions>
-                  <button mat-raised-button color="primary" class="salvar" (click)="salvarAvaliacao()" aria-label="Salvar ação"
-                    [disabled]="!f.valid">SALVAR</button>
-                </mat-card-actions>
-              </form>
-            </div>
+            <span class="inputFormulario" style="color:#26C6DA">Nota *</span><br><br>
 
-            <div class="divComentario" *ngFor="let a of curso.avaliacoes" style="margin-top: 20px;">
-              <mat-star-rating [rating]="a.nota"  [starCount]="starCount" [color]="starColor" style="float: right"></mat-star-rating>
-              <span style="float: left"><i class="material-icons md-48 btnCRUDEditar" title="Usuário">account_box</i> {{a.usuario.nome}}</span>
-              <br><br><br>
-              <div style="width: 100%">{{a.comentario}}</div>
-            </div>
+            <mat-star-rating [rating]="rating" [starCount]="starCount" [color]="starColor" (ratingUpdated)="onRatingChanged($event)"></mat-star-rating>
+            <br>
+            <mat-form-field class="inputFormulario">
+              <input matInput placeholder="Comentário" [(ngModel)]="avaliacao.comentario" name="comentario" required>
+            </mat-form-field>
+
+            <mat-card-actions>
+              <button mat-raised-button color="primary" class="salvar" (click)="salvarAvaliacao()" aria-label="Salvar ação"
+                [disabled]="!f.valid">SALVAR</button>
+            </mat-card-actions>
+          </form>
+        </div>
+
+        <div class="divComentario" *ngFor="let a of curso.avaliacoes" style="margin-top: 20px;">
+          <mat-star-rating [rating]="a.nota" [starCount]="starCount" [color]="starColor" style="float: right"></mat-star-rating>
+          <span style="float: left"><i class="material-icons md-48 btnCRUDEditar" title="Usuário">account_box</i>
+            {{a.usuario.nome}}</span>
+          <br><br><br>
+          <div style="width: 100%">{{a.comentario}}</div>
+        </div>
       </mat-card>
 
     </mat-card-content>
   </mat-card>
 
 </div>
+
+<style>
+  .cursofd {
+    background-image: url("../assets/c2.jpg");
+    /* height: 100vh; */
+    /*background geralmente uso o modo compacto, mas aqui vou colocar separadamente para explicar cada parte*/
+    /* aqui defino a imagem maior*/
+    /*deixa o background com efeito paralax*/
+    background-attachment: fixed;
+    /* cover é para nunca deixar espaço sem imagem*/
+    background-size: cover;
+  }
+
+  .destaqueCurso {
+    background: #29374a;
+    padding: 3px;
+  }
+
+  .bloco {
+    border: 3px solid #6db5ca;
+  }
+</style>

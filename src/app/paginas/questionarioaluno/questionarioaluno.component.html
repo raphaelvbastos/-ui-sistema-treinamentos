@@ -1,4 +1,4 @@
-<div class="mat-elevation-z8">
+<!-- <div class="mat-elevation-z8">
   <mat-card class="example-card" style="background: #29374a !important; box-shadow: none !important">
 
     <button mat-raised-button color="primary" class="btnUpload" (click)="ultimaTentativa()" aria-label="Ultima tentativa"
@@ -13,7 +13,8 @@
       <mat-card class="example-card" *ngFor="let q of questionario.questoes; let i = index" style="background: #29374a; margin-bottom: 20px; box-shadow: none !important">
 
         <h3>{{i+1}} - {{q.pergunta}}</h3>
-        <mat-radio-group aria-label="q.pergunta" class="example-radio-group" [(ngModel)]="respostas[q._id].resposta" (change)="validar()">
+        <mat-radio-group aria-label="q.pergunta" class="example-radio-group" [(ngModel)]="respostas[q._id].resposta"
+          (change)="validar()">
           <mat-radio-button class="example-radio-button" *ngFor="let a of q.alternativas" [value]="a">{{a.alternativa}}</mat-radio-button>
         </mat-radio-group>
       </mat-card>
@@ -23,4 +24,39 @@
   <mat-card-actions style="margin-right: 0 !important">
     <button mat-raised-button color="primary" class="salvar" (click)="enviar()" aria-label="Salvar ação" [disabled]="!valido">Enviar</button>
   </mat-card-actions>
+</div> -->
+
+
+<div class="mat-elevation-z8">
+
+  <mat-card class="example-card">
+    <div style="margin-bottom: 20px;">
+      <span style="color: rgb(221, 136, 24);padding-bottom: 5px;font-size: 1.5em;font-weight: bold;">{{questionario.titulo}}</span>
+      <button mat-raised-button color="primary" class="btnUpload" (click)="ultimaTentativa()" aria-label="Ultima tentativa"
+        style="float: right;background: none !important">Ultima tentativa</button>
+
+      <a mat-raised-button color="primary" class="voltar" title="Voltar" routerLink="/cursodetalhes" style="float: right;">
+        <i class="material-icons md-48" title="Voltar">arrow_back</i>
+      </a>
+    </div>
+
+    <div class="subUnidade" style="background: #29374a; margin-bottom: 20px; padding: 10px;" *ngFor="let q of questionario.questoes; let i = index">
+      <h3>{{i+1}} - {{q.pergunta}}</h3>
+      <mat-radio-group aria-label="q.pergunta" class="example-radio-group" [(ngModel)]="respostas[q._id].resposta"
+        (change)="validar()">
+        <mat-radio-button class="example-radio-button" *ngFor="let a of q.alternativas" [value]="a">{{a.alternativa}}</mat-radio-button>
+      </mat-radio-group>
+    </div>
+  </mat-card>
+
+  <mat-card-actions style="margin-right: 0 !important">
+      <button mat-raised-button color="primary" class="salvar" (click)="enviar()" aria-label="Salvar ação" [disabled]="!valido">Enviar</button>
+    </mat-card-actions>
+
 </div>
+
+<style>
+  .mat-radio-outer-circle {
+    border-color: none !important;
+  }
+</style>
