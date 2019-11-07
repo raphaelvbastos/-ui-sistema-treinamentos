@@ -17,9 +17,10 @@ export class UploadService {
 
   constructor(public http: HttpClient) { }
 
-  upload(arquivo: any): Observable<any> {
+  upload(arquivo: any, nome: string): Observable<any> {
     try {
-      return this.http.post(this.url + "/upload", arquivo);
+      // return this.http.post(this.url + "/upload", arquivo);
+      return this.http.post("https://www.unisim.cepetro.unicamp.br/api/v1/index.php/sistren/"+nome, arquivo);
     } catch (error) {
       console.log(error);
     }

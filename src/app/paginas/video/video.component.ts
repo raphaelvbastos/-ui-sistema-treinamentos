@@ -63,7 +63,8 @@ export class VideoComponent extends Crudobjeto {
   
   salvarNaUnidade() {
     if (this.uploadedFiles.length > 0) {
-      this.objeto.url = "https://api-sistema-treinamento.herokuapp.com/download/" + this.upload();
+      // this.objeto.url = "https://api-sistema-treinamento.herokuapp.com/download/" + this.upload();
+      this.objeto.url = "https://www.unisim.cepetro.unicamp.br/sistren/" + this.upload();
     }
 
     if (Object.keys(this.objeto).indexOf("_id") > -1) {
@@ -112,7 +113,7 @@ export class VideoComponent extends Crudobjeto {
       nome = formData.get("upload")["name"];
     }
 
-    this.uploadService.upload(formData).subscribe(
+    this.uploadService.upload(formData, nome).subscribe(
       (dados) => {
         nome = formData.get("upload")["name"];
       });
