@@ -10,7 +10,7 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MenuComponent } from './paginas/menu/menu.component';
 import { LayoutModule } from '@angular/cdk/layout';
-import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule, MatGridListModule, MatCardModule, MatMenuModule, MatTableModule, MatPaginatorModule, MatSortModule, MatFormFieldModule, MatInputModule, MatSelectModule, MatDialog, MatDialogModule, MatProgressBarModule, MatTabsModule, MatButtonToggleModule, MatSnackBar, MatTooltipModule, MatSnackBarContainer, MatSnackBarModule, MatRadioModule, MatExpansionPanelTitle, MatExpansionPanelDescription, MatExpansionPanelHeader, MatExpansionPanel, MatAccordion } from '@angular/material';
+import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule, MatGridListModule, MatCardModule, MatMenuModule, MatTableModule, MatPaginatorModule, MatSortModule, MatFormFieldModule, MatInputModule, MatSelectModule, MatDialog, MatDialogModule, MatProgressBarModule, MatTabsModule, MatButtonToggleModule, MatSnackBar, MatTooltipModule, MatSnackBarContainer, MatSnackBarModule, MatRadioModule, MatExpansionPanelTitle, MatExpansionPanelDescription, MatExpansionPanelHeader, MatExpansionPanel, MatAccordion, MatExpansionModule } from '@angular/material';
 import { PainelComponent } from './paginas/painel/painel.component';
 import { TabelaComponent } from './paginas/tabela/tabela.component';
 import { PaginaCursosComponent } from './paginas/pagina-cursos/pagina-cursos.component';
@@ -87,12 +87,7 @@ import { PortalModule } from '@angular/cdk/portal';
     QuestionarioalunoComponent,
     QuestionariorespostaComponent,
     RelatoriosComponent,
-    RelatorioComponent,
-    MatExpansionPanelTitle,
-    MatExpansionPanelDescription,
-    MatExpansionPanelHeader,
-    MatExpansionPanel,
-    MatAccordion
+    RelatorioComponent
   ],
   imports: [
     BrowserModule,
@@ -125,6 +120,7 @@ import { PortalModule } from '@angular/cdk/portal';
     MatSnackBarModule,
     FlexLayoutModule,
     PortalModule,
+    MatExpansionModule,
     ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production })
   ],
   entryComponents: [
