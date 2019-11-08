@@ -37,7 +37,7 @@
 
     </div>
 
-    <mat-card-content>
+    <!-- <mat-card-content>
 
       <mat-card class="example-card bloco" *ngFor="let u of curso.unidades" style="background: #29374a; margin-bottom: 20px;">
 
@@ -105,10 +105,113 @@
         </div>
       </mat-card>
 
+    </mat-card-content> -->
+  </mat-card>
+
+
+
+  <mat-card>
+    <mat-card-content>
+      <mat-accordion *ngFor="let u of curso.unidades" style="background: #29374a !important; margin-bottom: 20px;">
+        <mat-expansion-panel class="mat-card bloco" style="background: #29374a; margin-bottom: 20px;">
+          <mat-expansion-panel-header>
+            <mat-panel-title style="color: rgb(221, 136, 24);padding-bottom: 5px;font-size: 1.5em; font-weight: bold">
+              {{u.titulo}}
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+
+          <mat-accordion  *ngIf="u.videos.length > 0" style="background: #29374a; margin-bottom: 20px;">
+            <mat-expansion-panel class="mat-card" style="background: #29374a; margin-bottom: 20px;">
+              <mat-expansion-panel-header>
+                <mat-panel-title style="font-size: 1.5em; color: #ccc; font-weight: bold">
+                    Videos
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+              <mat-list *ngFor="let v of u.videos">
+                  <mat-list-item>
+                    <a (click)="assistirVideo(v)" title="Videos" style="font-size: 1.2em;cursor: pointer;"><i class="material-icons md-48 btnCRUDEditar"
+                        title="{{v.titulo}}">video_label</i> {{v.titulo}}</a>
+                  </mat-list-item>
+                </mat-list>
+
+            </mat-expansion-panel>
+          </mat-accordion>
+
+          <mat-accordion  *ngIf="u.arquivos.length > 0" style="background: #29374a; margin-bottom: 20px;">
+              <mat-expansion-panel class="mat-card" style="background: #29374a; margin-bottom: 20px;">
+                <mat-expansion-panel-header>
+                  <mat-panel-title style="font-size: 1.5em; color: #ccc; font-weight: bold">
+                      Arquivos
+                  </mat-panel-title>
+                </mat-expansion-panel-header>
+                <mat-list *ngFor="let v of u.arquivos">
+                    <mat-list-item>
+                        <a href="{{v.url}}" style="font-size: 1.2em; color: #eee; text-decoration: none" target="_blank"><i
+                            class="material-icons md-48 btnCRUDEditar" title="Arquivos">file_copy</i> {{v.titulo}}</a>
+                      </mat-list-item>
+                  </mat-list>
+  
+              </mat-expansion-panel>
+            </mat-accordion>
+
+            <mat-accordion  *ngIf="u.arquivos.length > 0" style="background: #29374a; margin-bottom: 20px;">
+                <mat-expansion-panel class="mat-card" style="background: #29374a;">
+                  <mat-expansion-panel-header>
+                    <mat-panel-title style="font-size: 1.5em; color: #ccc; font-weight: bold">
+                        Questionários
+                    </mat-panel-title>
+                  </mat-expansion-panel-header>
+                  <mat-list *ngFor="let v of u.arquivos">
+                      <mat-list-item>
+                          <a (click)="questionario(v)" style="font-size: 1.2em; color: #eee; text-decoration: none;cursor: pointer;"
+                            target="_blank"><i class="material-icons md-48 btnCRUDEditar" title="Questionário">question_answer</i>
+                            {{v.titulo}}</a>
+                        </mat-list-item>
+                    </mat-list>
+    
+                </mat-expansion-panel>
+              </mat-accordion>
+
+        </mat-expansion-panel>
+      </mat-accordion>
+
+      <mat-card class="example-card bloco" style="background: #29374a; margin-bottom: 20px;">
+          <h3 style="font-size: 1.5em; color: #ccc">Avaliações dos alunos</h3>
+  
+          <div class="mat-elevation-z8" [hidden]="!mostrarFormAvaliacao">
+            <form class="form my-2 my-lg-0" #f="ngForm" method="post" enctype="multipart/form-data" form>
+  
+              <span class="inputFormulario" style="color:#26C6DA">Nota *</span><br><br>
+  
+              <mat-star-rating [rating]="rating" [starCount]="starCount" [color]="starColor" (ratingUpdated)="onRatingChanged($event)"></mat-star-rating>
+              <br>
+              <mat-form-field class="inputFormulario">
+                <input matInput placeholder="Comentário" [(ngModel)]="avaliacao.comentario" name="comentario" required>
+              </mat-form-field>
+  
+              <mat-card-actions>
+                <button mat-raised-button color="primary" class="salvar" (click)="salvarAvaliacao()" aria-label="Salvar ação"
+                  [disabled]="!f.valid">SALVAR</button>
+              </mat-card-actions>
+            </form>
+          </div>
+  
+          <div class="divComentario" *ngFor="let a of curso.avaliacoes" style="margin-top: 20px;">
+            <mat-star-rating [rating]="a.nota" [starCount]="starCount" [color]="starColor" style="float: right"></mat-star-rating>
+            <span style="float: left"><i class="material-icons md-48 btnCRUDEditar" title="Usuário">account_box</i>
+              {{a.usuario.nome}}</span>
+            <br><br><br>
+            <div style="width: 100%">{{a.comentario}}</div>
+          </div>
+        </mat-card>
+        
     </mat-card-content>
   </mat-card>
 
+
 </div>
+
+
 
 <style>
   .cursofd {
@@ -129,5 +232,13 @@
 
   .bloco {
     border: 3px solid #6db5ca;
+  }
+
+  .mat-expansion-indicator::after,
+  .mat-expansion-panel-header-description {
+    background: #6ab0c5 !important;
+    color: #fff !important;
+    padding: 10px !important;
+    max-height: 28px !important;
   }
 </style>
