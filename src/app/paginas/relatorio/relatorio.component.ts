@@ -49,6 +49,8 @@ export class RelatorioComponent implements OnInit {
       let listaQuestoes = new Array();
       let totalVideos = 0;
       let totalAssistidos = 0;
+      let aprovadoQuestionarios = true;
+      let aprovado = false;
 
       curso.unidades.forEach(unidade => {
         unidade.questionarios.forEach(questionario => {
@@ -70,7 +72,11 @@ export class RelatorioComponent implements OnInit {
           });
 
           quest.questoes = questionario.questoes.length;
-          quest.aproveitamento = (quest.corretas / quest.questoes) * 100;
+          quest.aproveitamento = parseInt("" + (quest.corretas / quest.questoes) * 100);
+
+          if(quest.aproveitamento < 70) {
+            aprovadoQuestionarios = false;
+          }
 
           relusuario.questionarios.push(quest);
           listaQuestoes.push(quest);
@@ -86,11 +92,17 @@ export class RelatorioComponent implements OnInit {
       });
 
       if(totalAssistidos > 0) {
-        relusuario.videos = "" + (totalAssistidos/totalVideos) * 100;
+        let total = (totalAssistidos/totalVideos) * 100;
+        relusuario.videos = "" + parseInt(total+"");
+        
+        if((totalAssistidos/totalVideos * 100) >= 70 && aprovadoQuestionarios) {
+          aprovado = true;
+        }
       } else {
         relusuario.videos = "0";
       }
 
+      relusuario.status = (aprovado) ? "APROVADO" : "REPROVADO";
       
 
       // console.log(this.cursosInscritos);
