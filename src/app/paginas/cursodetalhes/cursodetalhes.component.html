@@ -154,14 +154,14 @@
               </mat-expansion-panel>
             </mat-accordion>
 
-            <mat-accordion  *ngIf="u.arquivos.length > 0" style="background: #29374a; margin-bottom: 20px;">
+            <mat-accordion  *ngIf="u.questionarios.length > 0" style="background: #29374a; margin-bottom: 20px;">
                 <mat-expansion-panel class="mat-card" style="background: #29374a;">
                   <mat-expansion-panel-header>
                     <mat-panel-title style="font-size: 1.5em; color: #ccc; font-weight: bold">
                         Questionários
                     </mat-panel-title>
                   </mat-expansion-panel-header>
-                  <mat-list *ngFor="let v of u.arquivos">
+                  <mat-list *ngFor="let v of u.questionarios">
                       <mat-list-item>
                           <a (click)="questionario(v)" style="font-size: 1.2em; color: #eee; text-decoration: none;cursor: pointer;"
                             target="_blank"><i class="material-icons md-48 btnCRUDEditar" title="Questionário">question_answer</i>

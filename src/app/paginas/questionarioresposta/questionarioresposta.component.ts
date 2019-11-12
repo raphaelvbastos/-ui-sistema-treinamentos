@@ -16,7 +16,7 @@ export class QuestionariorespostaComponent implements OnInit {
   listaQuestoes = new Array();
   totalAcertos = 0;
   percentual = 0;
-  constructor(public cursoService: CursosService, public uni: UnidadesService, public usuService: AutenticacaoService, public objService: ObjetosService, public router: Router) { 
+  constructor(public cursoService: CursosService, public uni: UnidadesService, public usuService: AutenticacaoService, public objService: ObjetosService, public router: Router) {
     this.questionario = this.objService.getObjetoSelecionado();
     this.questoesRespostas();
   }
@@ -30,26 +30,28 @@ export class QuestionariorespostaComponent implements OnInit {
     let totalAcertos = 0;
 
     this.questionario.questoes.forEach(questao => {
-      let obj = {
-        "titulo": questao.pergunta,
-        "respostaCerta": questao.alternativas.find(x => x.correta == true),
-        "respostaAluno": questao.respostas.find(x => x.usuario._id == logado._id).resposta
-      }
+      if (typeof questao.respostas.find(x => x.usuario._id == logado._id) != "undefined") {
+        let obj = {
+          "titulo": questao.pergunta,
+          "respostaCerta": questao.alternativas.find(x => x.correta == true),
+          "respostaAluno": questao.respostas.find(x => x.usuario._id == logado._id).resposta
+        }
 
-      listaQuestoes.push(obj);
+        listaQuestoes.push(obj);
 
-      if(obj.respostaAluno.correta) {
-        totalAcertos++;
+        if (obj.respostaAluno.correta) {
+          totalAcertos++;
+        }
       }
     });
 
     this.totalAcertos = totalAcertos;
     this.listaQuestoes = listaQuestoes;
-    this.percentual = (totalAcertos/listaQuestoes.length) * 100;
+    this.percentual = (totalAcertos / listaQuestoes.length) * 100;
   }
 
   marcarAlternativa(correta) {
-    if(correta) {
+    if (correta) {
       return "alternativaCorreta";
     }
 
