@@ -47,6 +47,8 @@ export class RelatorioComponent implements OnInit {
       relusuario.gerouCertificado = (insc.gerouCertificado) ? "SIM" : "NÃO";
 
       let listaQuestoes = new Array();
+      let totalVideos = 0;
+      let totalAssistidos = 0;
 
       curso.unidades.forEach(unidade => {
         unidade.questionarios.forEach(questionario => {
@@ -57,9 +59,12 @@ export class RelatorioComponent implements OnInit {
             "aproveitamento": 0
           };
           questionario.questoes.forEach(questao => {
+
             questao.respostas.forEach(resposta => {
-              if (resposta.resposta.correta) {
-                quest.corretas++;
+              if (resposta.usuario._id == this.usuario._id) {
+                if (resposta.resposta.correta) {
+                  quest.corretas++;
+                }
               }
             });
           });
@@ -70,9 +75,27 @@ export class RelatorioComponent implements OnInit {
           relusuario.questionarios.push(quest);
           listaQuestoes.push(quest);
         });
+
+        unidade.videos.forEach(video => {
+          if(typeof video.vistoPor.find(y => y._id == this.usuario._id) != "undefined") {
+            totalAssistidos++;
+          }
+        });
+
+        totalVideos += unidade.videos.length;
       });
 
-      // console.log(insc);
+      if(totalAssistidos > 0) {
+        relusuario.videos = "" + (totalAssistidos/totalVideos) * 100;
+      } else {
+        relusuario.videos = "0";
+      }
+
+      
+
+      // console.log(this.cursosInscritos);
+      // console.log(totalVideos);
+      // console.log(totalAssistidos);
       // console.log(relusuario);
 
       this.listaCursos.push(relusuario);
