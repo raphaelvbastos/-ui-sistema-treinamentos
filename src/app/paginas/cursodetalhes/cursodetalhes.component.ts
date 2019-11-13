@@ -35,6 +35,7 @@ export class CursodetalhesComponent implements OnInit {
   };
 
   mostrarFormAvaliacao = true;
+  inscritoCurso = false;
 
   c = new Certificado();
 
@@ -107,6 +108,8 @@ export class CursodetalhesComponent implements OnInit {
     } else {
       inscrito = false;
     }
+
+    this.inscritoCurso = inscrito;
 
     if (inscrito && this.cursoService.getObjetoSelecionado().avaliacoes.findIndex(x => x.usuario._id == logado._id) == -1) {
       this.mostrarFormAvaliacao = true;
