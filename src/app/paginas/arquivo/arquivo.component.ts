@@ -107,4 +107,9 @@ export class ArquivoComponent extends Crudobjeto {
       return nome;
   }
 
+  preencher() {   
+    this.arquivoObjeto.titulo = "Apostila";
+    this.arquivoObjeto.posicao = 1;
+  }
+
 }

@@ -73,4 +73,9 @@ export class QuestionarioComponent extends Crudobjeto {
         )
       });
   }
+
+  preencher() {   
+    this.questionario.titulo = "Questionário da unidade";
+    this.questionario.posicao = 1;
+  }
 }

@@ -86,4 +86,17 @@ export class UsuarioComponent implements OnInit {
     }
   }
 
+  preencher() {   
+    let tipo = {
+      _id: "5d0a252f024766700740e08a",
+      tipo: "Empregado"
+    };
+
+    this.usuario.nome = "Danilo Souza";
+    this.usuario.email = "d@gmail.com";
+    this.usuario.senha = "123mudar";
+    this.usuario.tipo = tipo;
+  }
+
+
 }

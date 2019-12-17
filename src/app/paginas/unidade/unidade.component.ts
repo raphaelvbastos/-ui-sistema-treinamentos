@@ -38,4 +38,9 @@ export class UnidadeComponent extends Crudobjeto {
   salvarCurso() {
     this.cursoService.getObjetoSelecionado().unidades.push(this.objeto);
   }
+
+  preencher() {   
+    this.unidade.titulo = "Unidade 1";
+    this.unidade.posicao = 1;
+  }
 }

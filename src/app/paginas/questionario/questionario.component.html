@@ -1,6 +1,7 @@
 <mat-card>
     <div class="mat-elevation-z8">
         <h2 style="float: left;" class="tituloPagina">Questionário</h2>
+        <button mat-raised-button color="primary" class="salvar preencher" (click)="preencher()" aria-label="Salvar ação">Preencher</button>
       <form class="form my-2 my-lg-0" #f="ngForm" method="post" enctype="multipart/form-data" form>
         <mat-form-field class="inputFormulario">
           <input matInput placeholder="Titulo" [(ngModel)]="objeto.titulo" name="titulo" required>

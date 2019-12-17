@@ -179,6 +179,7 @@
           <h3 style="font-size: 1.5em; color: #ccc">Avaliações dos alunos</h3>
   
           <div class="mat-elevation-z8" [hidden]="!mostrarFormAvaliacao">
+            <button mat-raised-button color="primary" class="salvar preencher" (click)="preencher()" aria-label="Salvar ação">Preencher</button>
             <form class="form my-2 my-lg-0" #f="ngForm" method="post" enctype="multipart/form-data" form>
   
               <span class="inputFormulario" style="color:#26C6DA">Nota *</span><br><br>

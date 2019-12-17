@@ -29,6 +29,11 @@ menu {
     margin-left: -40px;
 }
 
+.preencher {
+    float: right;
+    /* display: none !important; */
+}
+
 .btnGerarCertificado {
     margin-top: 5px;
     font-weight: bold;

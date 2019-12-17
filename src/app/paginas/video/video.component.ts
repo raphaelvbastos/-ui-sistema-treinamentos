@@ -121,4 +121,9 @@ export class VideoComponent extends Crudobjeto {
       return nome;
   }
 
+  preencher() {   
+    this.video.titulo = "Introdução";
+    this.video.posicao = 1;
+  }
+
 }

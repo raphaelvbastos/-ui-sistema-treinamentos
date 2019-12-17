@@ -170,6 +170,12 @@ export class CursodetalhesComponent implements OnInit {
     return true;
   }
 
+  preencher() {   
+    this.avaliacao.usuario = this.usuService.getUsuario();
+    this.avaliacao.nota = 5;
+    this.avaliacao.comentario = "Curso bem detalhado!";
+  }
+
   salvarAvaliacao() {
     this.avaliacao.usuario = this.usuService.getUsuario();
     this.avaliacao.nota = this.rating;

@@ -78,4 +78,9 @@ export class QuestaoComponent extends Crudobjeto {
         this.router.navigate([this.tela]);
       });
   }
+
+  preencher() {   
+    this.questao.pergunta = "O Material Design tem como objetivo:";
+  }
+
 }

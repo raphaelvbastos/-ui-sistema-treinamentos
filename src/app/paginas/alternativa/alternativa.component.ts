@@ -97,5 +97,15 @@ export class AlternativaComponent extends Crudobjeto {
         this.router.navigate([this.tela]);
       });
   }
+
+  preencher() {   
+    this.alternativa.alternativa = "Sintetizar os conceitos clássicos de um bom design com a inovação e possibilidades trazidas com a tecnologia e a ciência";
+    this.alternativa.correta = true;
+  }
+
+  preencher2() {   
+    this.alternativa.alternativa = "Tornar todo design responsivo";
+    this.alternativa.correta = false;
+  }
 }
 

@@ -52,4 +52,16 @@ export class CursoComponent extends Crudobjeto {
       this.categorias = dados;
     });
   }
+
+  preencher() {
+    let cat = {
+      _id: "5d2f52601c9d440000dd4ee6",
+      nome: "FRONT-END"
+    };
+
+    this.curso.titulo = "Material Design";
+    this.curso.nomeInstrutor = "Roger da Silva";
+    this.curso.palavrasChave = "npm, angular";
+    this.curso.categoria = cat;
+  }
 }
